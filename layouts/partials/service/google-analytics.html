@@ -1,0 +1,11 @@
+{{/* BEGIN */}}
+{{/*
+{{ if not .Site.IsServer }}
+*/}}
+{{/* MID */}}
+{{/* OK? */}}
+{{ if and ($.Site.Params.googleAnalytics) (not .Site.IsServer) }}
+{{/* END */}}
+  {{ template "_internal/google_analytics.html" . }}
+  {{ template "_internal/google_analytics_async.html" . }}
+{{ end }}

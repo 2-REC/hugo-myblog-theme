@@ -6,7 +6,7 @@
 //$grid_main_side_unit: {{ .Site.Data.grid.grid_main_side_unit }};
 //$grid_column_gap_width: {{ .Site.Data.grid.grid_column_gap_width }};
 //$grid_column_gap_unit: {{ .Site.Data.grid.grid_column_gap_unit }};
-//$grid_navbar_height: {{ .Site.Data.grid.grid_navbar_height }};
+$grid_navbar_height: {{ .Site.Data.grid.grid_navbar_height }};
 //$grid_row_gap: {{ .Site.Data.grid.grid_row_gap }};
 
 //////// BEGIN
@@ -53,14 +53,14 @@ $cursive-font: {{ .Site.Data.font.cursive_font }};
 //@import 'base/helpers';
 //@import 'base/typography';
 //@import 'base/animation';
-//
-//@import 'layout/navigation';
+
+@import 'layout/navigation';
 //@import 'layout/grid';
 //@import 'layout/header';
 //@import 'layout/body';
 //@import 'layout/footer';
 //@import 'layout/sidebar';
-//
+
 //@import 'components/alert';
 //@import 'components/bio';
 //@import 'components/breadcrumb';

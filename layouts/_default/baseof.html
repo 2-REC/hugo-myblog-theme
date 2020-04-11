@@ -17,12 +17,38 @@
     {{ partial "head/custom-head" . }}
 </head>
 
-CONTNIUE FROM HERE!
-<body>
+<body id="root" class="theme__{{ index .Site.Params.themeOptions 0 }}">
+    <script>
+        var localTheme = localStorage.getItem('theme');
+        if (localTheme) {
+            document.getElementById('root').className = 'theme__' + localTheme;
+        }
+    </script>
     <div id="container">
+{{/* TODO
+        {{ partial "body/main-left" . }}
+*/}}
+<div>MAIN-LEFT</div>
         <div class="wrapper" data-type="{{ .Type }}" data-kind="{{ .Kind }}">
+            {{ partial "navbar/site-nav" . }}
+{{/* TODO
+            {{ partial "header/site-header" . }}
+*/}}
+<div>SITES-HEADER</div>
             {{ block "main" . }}{{ end }}
+{{/* TODO
+            {{ partial "body/custom-body" . }}
+*/}}
+<div>CUSTOM-BODY</div>
+{{/* TODO
+            {{ partial "footer/site-footer" . }}
+*/}}
+<div>FOOTER</div>
         </div>
+{{/* TODO
+        {{ partial "body/main-right" . }}
+*/}}
+<div>MAIN-RIGHT</div>
     </div>
 </body>
 

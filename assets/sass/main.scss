@@ -1,13 +1,13 @@
-//$grid_max_width: {{ .Site.Data.grid.grid_max_width }};
-//$grid_max_unit: {{ .Site.Data.grid.grid_max_unit }};
-//$grid_main_main_width: {{ .Site.Data.grid.grid_main_main_width }};
-//$grid_main_main_unit: {{ .Site.Data.grid.grid_main_main_unit }};
-//$grid_main_side_width: {{ .Site.Data.grid.grid_main_side_width }};
-//$grid_main_side_unit: {{ .Site.Data.grid.grid_main_side_unit }};
-//$grid_column_gap_width: {{ .Site.Data.grid.grid_column_gap_width }};
-//$grid_column_gap_unit: {{ .Site.Data.grid.grid_column_gap_unit }};
+$grid_max_width: {{ .Site.Data.grid.grid_max_width }};
+$grid_max_unit: {{ .Site.Data.grid.grid_max_unit }};
+$grid_main_main_width: {{ .Site.Data.grid.grid_main_main_width }};
+$grid_main_main_unit: {{ .Site.Data.grid.grid_main_main_unit }};
+$grid_main_side_width: {{ .Site.Data.grid.grid_main_side_width }};
+$grid_main_side_unit: {{ .Site.Data.grid.grid_main_side_unit }};
+$grid_column_gap_width: {{ .Site.Data.grid.grid_column_gap_width }};
+$grid_column_gap_unit: {{ .Site.Data.grid.grid_column_gap_unit }};
 $grid_navbar_height: {{ .Site.Data.grid.grid_navbar_height }};
-//$grid_row_gap: {{ .Site.Data.grid.grid_row_gap }};
+$grid_row_gap: {{ .Site.Data.grid.grid_row_gap }};
 
 //////// BEGIN
 //$theme_light_chroma: {{ .Site.Data.skin.theme_light_chroma }};
@@ -39,7 +39,7 @@ $title-font: {{ .Site.Data.font.title_font }};
 $content-font: {{ .Site.Data.font.content_font }};
 $cursive-font: {{ .Site.Data.font.cursive_font }};
 
-//$viewport_size: {{ .Site.Params.viewportSize | default "normal" }};
+$viewport_size: {{ .Site.Params.viewportSize | default "normal" }};
 
 @import 'abstracts/variables';
 @import 'abstracts/mixins';
@@ -58,7 +58,7 @@ $cursive-font: {{ .Site.Data.font.cursive_font }};
 //@import 'layout/grid';
 //@import 'layout/header';
 //@import 'layout/body';
-//@import 'layout/footer';
+@import 'layout/footer';
 //@import 'layout/sidebar';
 
 //@import 'components/alert';
@@ -66,7 +66,7 @@ $cursive-font: {{ .Site.Data.font.cursive_font }};
 //@import 'components/breadcrumb';
 //@import 'components/diagram';
 //@import 'components/expand';
-//@import 'components/gtt';
+@import 'components/gtt';
 //@import 'components/hr';
 //@import 'components/math';
 //@import 'components/notice';
@@ -80,7 +80,7 @@ $cursive-font: {{ .Site.Data.font.cursive_font }};
 //@import 'components/toc';
 //@import 'components/tooltip';
 //@import 'components/whoami';
-//@import 'components/busuanzi';
+// 2-REC: Removed Busuanzi site counter
 //@import 'components/donation';
 //@import 'components/box';
 //@import 'components/modal';

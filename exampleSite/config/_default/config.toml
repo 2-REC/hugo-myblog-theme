@@ -1,0 +1,19 @@
+baseURL = "https://example.com/"
+title = "MyBlog Theme"
+theme = "hugo-myblog-theme"
+
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = true
+hasCJKLanguage = false
+
+
+
+
+copyright = "&copy;{year}, All Rights Reserved" # TODO: can adapt: copyright = "&copy;{} {year}, All Rights Reserved"
+
+
+
+
+
+
+googleAnalytics = ""

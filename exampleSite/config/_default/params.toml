@@ -14,7 +14,7 @@ themeOptions = [ "light"] #TODO: add other themes if desired
 notAllowedTypesInHomeFeed = ["about", "archive", "contact", "talks", "showcase", "publication", "presentation", "resume", "gallery"] #TODO: adapt!
 
 viewportSize = "normal" # widest, wider, wide, normal, narrow
-enableUiAnimation = false #TODO: change if other themes are added
+enableUiAnimation = true
 
 
 
@@ -58,11 +58,11 @@ myname = "2-REC"
 
 
 
-
-
-
-
-
+enableToc = true # or "toc" (idem)
+hideToc = false #TODO: use? (can't see effect)
+tocFolding = true #TODO: use? (can't see effect)
+tocPosition = "inner" # inner, outer #TODO: use? (can't see effect)
+enableTocSwitch = true
 
 
 

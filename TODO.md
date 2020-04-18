@@ -71,8 +71,10 @@ TODO
 
 ### layouts
 * [ ] partials
-    * [ ] svgs
-        * [ ] Rename+change svgs (see what want to keep or change)
+    * [ ] sidebar
+        * [ ] sidebar-menu => Empty!?
     * [ ] social
         * [ ] See what to keep... (+associated in "params.toml")
         * [ ] See if want to change icons
+    * [ ] svgs
+        * [ ] Rename+change svgs (see what want to keep or change)

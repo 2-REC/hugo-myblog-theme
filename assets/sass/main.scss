@@ -55,11 +55,11 @@ $viewport_size: {{ .Site.Params.viewportSize | default "normal" }};
 //@import 'base/animation';
 
 @import 'layout/navigation';
-//@import 'layout/grid';
+@import 'layout/grid';
 //@import 'layout/header';
 //@import 'layout/body';
 @import 'layout/footer';
-//@import 'layout/sidebar';
+@import 'layout/sidebar';
 
 //@import 'components/alert';
 //@import 'components/bio';
@@ -75,9 +75,9 @@ $viewport_size: {{ .Site.Params.viewportSize | default "normal" }};
 //@import 'components/search';
 //@import 'components/summary';
 //@import 'components/swiper';
-//@import 'components/switch';
+@import 'components/switch';
 //@import 'components/taxo';
-//@import 'components/toc';
+@import 'components/toc';
 //@import 'components/tooltip';
 //@import 'components/whoami';
 // 2-REC: Removed Busuanzi site counter
@@ -100,6 +100,6 @@ $viewport_size: {{ .Site.Params.viewportSize | default "normal" }};
 //@import 'pages/contact';
 //@import 'pages/talk';
 //@import 'pages/showcase';
-//@import 'pages/wrapper';
+@import 'pages/wrapper';
 //@import 'pages/publication';
 //@import 'pages/resume';

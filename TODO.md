@@ -8,7 +8,7 @@
         * [ ] Add more entries?
     * [ ] params.toml
         * [ ] notAllowedTypesInHomeFeed
-            => adapt to page/posts types
+            => Adapt to page/posts types
 
 
 ## THEME
@@ -19,7 +19,7 @@
     * [ ] Add other themes?
 
     * [ ] MOVE/ADD TO README!
-        * Remove Features
+        * Removed Features
             * All themes but "light"
             * Search feature
             * Busuanzi site counter
@@ -36,7 +36,7 @@ TODO
 
 
 ### assets
-* [ ] FIX CSS+FONTS ISSUES!
+* [x] FIX CSS+FONTS ISSUES!
 * [ ] Adapt CSS
 
 * [ ] sass
@@ -46,6 +46,9 @@ TODO
         * [ ] _variables.scss
             * [ ] $z-indexes
                 => keep all?
+    * [ ] base
+        * [ ] _fonts.scss => See what to keep/adapt (+relate font files in "static/fonts")
+            * [ ] Should be moved to site (?)
     * [ ] components
         * [ ] See what to keep/adapt
         * [ ] _ie.scss
@@ -67,10 +70,13 @@ TODO
 ### static
 * [ ] Change images! (make basic simple examples)
 * [ ] Move images to example site?
+    * [ ] Logos?
 
 
 ### layouts
 * [ ] partials
+    * [ ] navbar
+        * [ ] site-nav: Set "logo" image as parameter (instead of hardcoded "/logo/logo.png")
     * [ ] sidebar
         * [ ] sidebar-menu => Empty!?
     * [ ] social

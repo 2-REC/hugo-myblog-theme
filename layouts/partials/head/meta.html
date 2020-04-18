@@ -102,9 +102,10 @@
 {{ else }}
 <link rel="canonical" href="{{ .Permalink | absLangURL }}">
 {{ end }}
-<link rel="manifest" href="{{ "manifest.json" | relURL }}">
+{{/* TODO: ok with "logo/"? */}}
+<link rel="manifest" href="{{ "logo/manifest.json" | relURL }}">
 {{ if $.Site.Params.useFaviconGenerator }}
-  {{/* TODO: see if use all those sizes */}}
+  {{/* TODO: see if use all those sizes (+change dir to "logo" (?)) */}}
   <link rel="apple-touch-icon" sizes="57x57" href="{{ "favicon/apple-icon-57x57.png" | relURL }}">
   <link rel="apple-touch-icon" sizes="60x60" href="{{ "favicon/apple-icon-60x60.png" | relURL }}">
   <link rel="apple-touch-icon" sizes="72x72" href="{{ "favicon/apple-icon-72x72.png" | relURL }}">
@@ -125,9 +126,10 @@
   {{ if (fileExists "static/apple-touch-icon.png") -}}
   <link rel="apple-touch-icon" href="{{ "apple-touch-icon.png" | relURL }}">
   {{- end }}
-  <link rel="shortcut icon" href="{{ "favicon.ico" | relURL }}" type="image/x-icon">
-  <link rel="icon" href="{{ "favicon.png" | relURL }}" sizes="any" type="image/png" />
-  {{ if (fileExists "static/logo.svg") -}}
+  <link rel="shortcut icon" href="{{ "logo/favicon.ico" | relURL }}" type="image/x-icon">
+  <link rel="icon" href="{{ "logo/favicon.png" | relURL }}" sizes="any" type="image/png" />
+  {{/* TODO: need "static"? */}}
+  {{ if (fileExists "static/logo/logo.svg") -}}
   <link rel="icon" href="{{ "logo.svg" | relURL }}" sizes="any" type="image/svg+xml" />
   {{- end }}
 {{ end }}

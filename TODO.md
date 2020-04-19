@@ -5,7 +5,7 @@
     * [ ] config.toml
         => Adapt...
     * [ ] menus.en.toml
-        * [ ] Add more entries?
+        * [ ] Adapt entries (+order)
     * [ ] params.toml
         * [ ] notAllowedTypesInHomeFeed
             => Adapt to page/posts types
@@ -35,7 +35,6 @@
 
 LATER:
 * [ ] CSS => Make "custom CSS" as in "myportfolio-theme" => Instead of having to modify the code
-
 
 
 ### Archetypes
@@ -69,20 +68,17 @@ LATER:
     * [ ] syntax
         => want/need?
 
+
 ### data
 * [ ] font.toml
     * [ ] Set desired fonts
     * [ ] Move to exampleSite!
 
 
-### static
-* [ ] Change images! (make basic simple examples)
-* [ ] Move images to example site?
-    * [ ] Logos?
-
-
 ### layouts
 * [ ] partials
+    * [ ] body
+        * [ ] baseof: Purpose? => Same file as in "_default" (can ignore/delete?)
     * [ ] navbar
         * [ ] site-nav: Set "logo" image as parameter (instead of hardcoded "/logo/logo.png")
     * [ ] sidebar
@@ -92,3 +88,10 @@ LATER:
         * [ ] See if want to change icons
     * [ ] svgs
         * [ ] Rename+change svgs (see what want to keep or change)
+
+
+### static
+* [ ] Change images! (make basic simple examples)
+* [ ] Move images to example site?
+    * [ ] Logos?
+

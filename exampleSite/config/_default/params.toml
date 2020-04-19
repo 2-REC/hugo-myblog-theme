@@ -5,7 +5,7 @@ custom_css = []
 custom_js = []
 useFaviconGenerator = false # https://www.favicon-generator.org/
 meta_image = ""
-
+#themecolor = "" #TODO: used where? (related to "themeNavbarColor"?)
 
 themeOptions = [ "light"] #TODO: add other themes if desired
 

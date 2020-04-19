@@ -9,7 +9,7 @@ hasCJKLanguage = false
 
 
 
-copyright = "&copy;{year}, All Rights Reserved" # TODO: can adapt: copyright = "&copy;{} {year}, All Rights Reserved"
+copyright = "&copy;{year}, All Rights Reserved" #TODO: can adapt: copyright = "&copy;{} {year}, All Rights Reserved"
 
 
 

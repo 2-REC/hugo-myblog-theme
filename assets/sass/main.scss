@@ -74,7 +74,7 @@ $viewport_size: {{ .Site.Params.viewportSize | default "normal" }};
 //@import 'components/related';
 //@import 'components/search';
 //@import 'components/summary';
-//@import 'components/swiper';
+@import 'components/swiper';
 @import 'components/switch';
 //@import 'components/taxo';
 @import 'components/toc';

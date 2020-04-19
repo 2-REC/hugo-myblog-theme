@@ -18,7 +18,7 @@ enableUiAnimation = true
 
 
 # header
-homeHeaderType = "text" # text, img, slide
+homeHeaderType = "slide" # text, img, slide
 
 # menu
 showMobileMenuTerms = ["tags", "categories", "series"] #TODO: change "series" to "types"

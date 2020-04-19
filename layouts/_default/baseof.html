@@ -5,7 +5,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    {{/*
+    {{/* TODO: not useful anymore (?)
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     */}}
     <title>{{ block "title" . }}{{ .Title }} – {{ .Site.Title }}{{ end }}</title>
@@ -28,10 +28,7 @@
         {{ partial "body/main-left" . }}
         <div class="wrapper" data-type="{{ .Type }}" data-kind="{{ .Kind }}">
             {{ partial "navbar/site-nav" . }}
-{{/* TODO
             {{ partial "header/site-header" . }}
-*/}}
-<div>SITES-HEADER</div>
             {{ block "main" . }}{{ end }}
 {{/* TODO
             {{ partial "body/custom-body" . }}

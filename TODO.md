@@ -9,6 +9,9 @@
     * [ ] params.toml
         * [ ] notAllowedTypesInHomeFeed
             => Adapt to page/posts types
+* content
+    * [ ] _index.md => ADAPT! (+change/adpat resources: images, fonts, etc.)
+
 
 
 ## THEME
@@ -18,21 +21,26 @@
 * [ ] Rename "light" colour theme to more appropriate
     * [ ] Add other themes?
 
-    * [ ] MOVE/ADD TO README!
-        * Removed Features
-            * All themes but "light"
-            * Search feature
-            * Busuanzi site counter
-            * Baidu Analytics
-        * Info
-            * Post main image for social networks:
-                Reconciling the guidelines for the image is simple:
-                Follow Facebook’s recommendation of a minimum dimension of 1200×630 pixels and an aspect ratio of 1.91:1, but adhere to Twitter’s file size requirement of less than 1MB.
-            * Adapt static/manifest.json + icons stuff in head/meta
+* [ ] MOVE/ADD TO README!
+    * Removed Features
+        * All themes but "light"
+        * Search feature
+        * Busuanzi site counter
+        * Baidu Analytics
+    * Info
+        * Post main image for social networks:
+            Reconciling the guidelines for the image is simple:
+            Follow Facebook’s recommendation of a minimum dimension of 1200×630 pixels and an aspect ratio of 1.91:1, but adhere to Twitter’s file size requirement of less than 1MB.
+        * Adapt static/manifest.json + icons stuff in head/meta
+
+LATER:
+* [ ] CSS => Make "custom CSS" as in "myportfolio-theme" => Instead of having to modify the code
+
 
 
 ### Archetypes
-TODO
+* [ ] header
+    * [ ] Adapt layout + settings
 
 
 ### assets
@@ -64,7 +72,7 @@ TODO
 ### data
 * [ ] font.toml
     * [ ] Set desired fonts
-    * [ ] Move to exampleSite?
+    * [ ] Move to exampleSite!
 
 
 ### static

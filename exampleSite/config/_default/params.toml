@@ -17,8 +17,8 @@ viewportSize = "normal" # widest, wider, wide, normal, narrow
 enableUiAnimation = true
 
 
-
-
+# header
+homeHeaderType = "text" # text, img, slide
 
 # menu
 showMobileMenuTerms = ["tags", "categories", "series"] #TODO: change "series" to "types"

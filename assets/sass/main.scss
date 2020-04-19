@@ -56,7 +56,7 @@ $viewport_size: {{ .Site.Params.viewportSize | default "normal" }};
 
 @import 'layout/navigation';
 @import 'layout/grid';
-//@import 'layout/header';
+@import 'layout/header';
 //@import 'layout/body';
 @import 'layout/footer';
 @import 'layout/sidebar';

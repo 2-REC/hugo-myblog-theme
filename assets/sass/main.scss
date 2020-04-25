@@ -1,3 +1,4 @@
+//TODO: removed unused once done
 $grid_max_width: {{ .Site.Data.grid.grid_max_width }};
 $grid_max_unit: {{ .Site.Data.grid.grid_max_unit }};
 $grid_main_main_width: {{ .Site.Data.grid.grid_main_main_width }};
@@ -91,12 +92,12 @@ $viewport_size: {{ .Site.Params.viewportSize | default "normal" }};
 //@import 'components/featuredImage';
 //
 //@import 'pages/404';
-//@import 'pages/about';
+@import 'pages/about';
 //@import 'pages/archive';
 //@import 'pages/gallery';
 //@import 'pages/list';
-//@import 'pages/single';
-//@import 'pages/terms';
+@import 'pages/single';
+@import 'pages/terms';
 //@import 'pages/contact';
 //@import 'pages/talk';
 //@import 'pages/showcase';

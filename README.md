@@ -25,6 +25,10 @@ TODO: complete/rewrite/etc.
 
 Check list when making a new site using the theme.
 
+* [ ] archetypes
+    * [ ] Override desired archetypes
+    * [ ] Add new archetypes
+
 * [ ] config/_default
     * [ ] config.toml : Global site settings
         * [ ] Adapt values
@@ -41,6 +45,9 @@ Check list when making a new site using the theme.
     * [ ] _index.md: Homepage header definition
         * [ ] Adapt: images, texts, style, layout, etc.
             => Resources must be located in "static" directory (or sub directories)
+    * [ ] about:
+        * [ ] Adapt index.md
+        * [ ] Add content (images, etc.)
     TODO: continue...
 
 * [ ] data
@@ -53,10 +60,22 @@ Check list when making a new site using the theme.
     * [ ] logo : Favicon and logo images
         !TODO: Location defined in code ("head/meta" and "navbar/site-nav"), should be changed to be a site parameter
         * [ ] Add desired icons and logo images
+            => See about different sizes, density, etc. (see Zzo original theme)
     TODO: continue...
 
 
+Additionnally, can adapt style+layouts in SCSS files:
+...
+* assets/sass
+    * pages
+        => Most pages, except "_wrapper"?
+        * [ ] _about
+        * [ ] _single
+        * [ ] _terms: generic titles, links, tags, etc.
+
+
+
 ## DISCLAIMER
-- Hugo (+dev)
-- Zzo Theme (+dev)
-- others?
+* Hugo (+dev)
+* Zzo Theme (+dev)
+* others?

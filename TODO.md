@@ -13,8 +13,9 @@
 
 
 ### content
-* [ ] _index.md => ADAPT! (+change/adpat resources: images, fonts, etc.)
-
+* [ ] _index.md => Adapt for basic header example (images, fonts, etc.)
+* [ ] about
+    * [ ] index.md: Set some content
 
 ### static
 * [ ] Change images (make basic simple examples)
@@ -33,8 +34,7 @@ LATER:
 
 
 ### Archetypes
-* [ ] header
-    * [ ] Adapt layout + settings
+* [ ] header => Make sure it isn't needed
 
 
 ### assets
@@ -60,6 +60,9 @@ LATER:
             => see what keep depending on layout...
         * [ ] grid
             => check if need to adapt
+    * [ ] pages
+        * [ ] _terms.scss
+            => Adapt (titles, links, tags, etc.)
     * [ ] syntax
         => want/need?
 
@@ -81,6 +84,9 @@ LATER:
         * [ ] site-nav: Set "logo" image as parameter (instead of hardcoded "/logo/logo.png")
     * [ ] sidebar
         * [ ] sidebar-menu => Empty!?
+    * [ ] script
+        => See what to keep (and remove uses in code)
+        * [ ] about-script.html (empty)
     * [ ] social
         * [ ] See what to keep... (+associated in "params.toml")
         * [ ] See if want to change icons

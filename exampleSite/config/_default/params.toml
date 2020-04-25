@@ -11,7 +11,7 @@ themeOptions = [ "light"] #TODO: add other themes if desired
 
 
 
-notAllowedTypesInHomeFeed = ["about", "archive", "contact", "talks", "showcase", "publication", "presentation", "resume", "gallery"] #TODO: adapt!
+notAllowedTypesInHomeFeed = ["about", "archive", "contact"] #TODO: adapt! #notAllowedTypesInHomeFeed = ["about", "archive", "contact", "talks", "showcase", "publication", "presentation", "resume", "gallery"] #TODO: adapt!
 
 viewportSize = "normal" # widest, wider, wide, normal, narrow
 enableUiAnimation = true

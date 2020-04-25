@@ -102,8 +102,7 @@
 {{ else }}
 <link rel="canonical" href="{{ .Permalink | absLangURL }}">
 {{ end }}
-{{/* TODO: ok with "logo/"? */}}
-<link rel="manifest" href="{{ "logo/manifest.json" | relURL }}">
+<link rel="manifest" href="{{ "manifest.json" | relURL }}">
 {{ if $.Site.Params.useFaviconGenerator }}
   {{/* TODO: see if use all those sizes (+change dir to "logo" (?)) */}}
   <link rel="apple-touch-icon" sizes="57x57" href="{{ "favicon/apple-icon-57x57.png" | relURL }}">

@@ -1,17 +1,24 @@
 # TODO
 
 ## EXAMPLE SITE
-* config
-    * [ ] config.toml
-        => Adapt...
-    * [ ] menus.en.toml
-        * [ ] Adapt entries (+order)
-    * [ ] params.toml
-        * [ ] notAllowedTypesInHomeFeed
-            => Adapt to page/posts types
-* content
-    * [ ] _index.md => ADAPT! (+change/adpat resources: images, fonts, etc.)
 
+### config
+* [ ] config.toml
+    => Adapt...
+* [ ] menus.en.toml
+    * [ ] Adapt entries (+order)
+* [ ] params.toml
+    * [ ] notAllowedTypesInHomeFeed
+        => Adapt to page/posts types
+
+
+### content
+* [ ] _index.md => ADAPT! (+change/adpat resources: images, fonts, etc.)
+
+
+### static
+* [ ] Change images (make basic simple examples)
+* [ ] Change logos/icons (make basic simple examples)
 
 
 ## THEME
@@ -20,18 +27,6 @@
 * [ ] Change taxonomies "series" to "type"
 * [ ] Rename "light" colour theme to more appropriate
     * [ ] Add other themes?
-
-* [ ] MOVE/ADD TO README!
-    * Removed Features
-        * All themes but "light"
-        * Search feature
-        * Busuanzi site counter
-        * Baidu Analytics
-    * Info
-        * Post main image for social networks:
-            Reconciling the guidelines for the image is simple:
-            Follow Facebook’s recommendation of a minimum dimension of 1200×630 pixels and an aspect ratio of 1.91:1, but adhere to Twitter’s file size requirement of less than 1MB.
-        * Adapt static/manifest.json + icons stuff in head/meta
 
 LATER:
 * [ ] CSS => Make "custom CSS" as in "myportfolio-theme" => Instead of having to modify the code
@@ -71,14 +66,17 @@ LATER:
 
 ### data
 * [ ] font.toml
-    * [ ] Set desired fonts
+    * [ ] Set desired fonts => Remove as much as possible
     * [ ] Move to exampleSite!
+        * [ ] Determine their use (set as site parameters?)
 
 
 ### layouts
 * [ ] partials
     * [ ] body
         * [ ] baseof: Purpose? => Same file as in "_default" (can ignore/delete?)
+    * [ ] head
+        * [ ] meta: Set "logo" location as parameter (instead of hardcoded "/logo/...")
     * [ ] navbar
         * [ ] site-nav: Set "logo" image as parameter (instead of hardcoded "/logo/logo.png")
     * [ ] sidebar
@@ -89,9 +87,4 @@ LATER:
     * [ ] svgs
         * [ ] Rename+change svgs (see what want to keep or change)
 
-
-### static
-* [ ] Change images! (make basic simple examples)
-* [ ] Move images to example site?
-    * [ ] Logos?
 

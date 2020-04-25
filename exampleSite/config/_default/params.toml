@@ -1,4 +1,4 @@
-logoText = "GMV"
+logoText = "ExampleSite"
 logoType = "short" # long, short
 description = "MyBlog Theme for Hugo example site."
 custom_css = []

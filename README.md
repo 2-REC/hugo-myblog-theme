@@ -48,6 +48,10 @@ Check list when making a new site using the theme.
     * [ ] about:
         * [ ] Adapt index.md
         * [ ] Add content (images, etc.)
+    * [ ] contact:
+        * [ ] Adapt index.md
+            => Choose a form (or "none")
+        * [ ] Add content (images, etc.)
     TODO: continue...
 
 * [ ] static

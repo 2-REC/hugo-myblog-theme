@@ -16,6 +16,8 @@
 * [ ] _index.md => Adapt for basic header example (images, fonts, etc.)
 * [ ] about
     * [ ] index.md: Set some content
+* [ ] contact
+    * [ ] index.md: Set some content
 
 ### static
 * [ ] Change images (make basic simple examples)
@@ -76,6 +78,9 @@ LATER:
 
 ### layouts
 * [ ] partials
+    * [ ] contact
+        * [ ] Add a "netlifyform.html"?
+            => Look at: https://brianli.com/how-to-create-a-contact-form-in-hugo-with-netlify-forms/
     * [ ] body
         * [ ] baseof: Purpose? => Same file as in "_default" (can ignore/delete?)
     * [ ] head
@@ -87,6 +92,7 @@ LATER:
     * [ ] script
         => See what to keep (and remove uses in code)
         * [ ] about-script.html (empty)
+        * [ ] contact-script.html (empty)
     * [ ] social
         * [ ] See what to keep... (+associated in "params.toml")
         * [ ] See if want to change icons

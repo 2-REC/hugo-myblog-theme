@@ -8,10 +8,10 @@ meta_image = ""
 #themecolor = "" #TODO: used where? (related to "themeNavbarColor"?)
 
 themeOptions = [ "light"] #TODO: add other themes if desired
+notAllowedTypesInHome = ["about", "contact"] #TODO: adapt!
 
 
-
-notAllowedTypesInHomeFeed = ["about", "archive", "contact"] #TODO: adapt! #notAllowedTypesInHomeFeed = ["about", "archive", "contact", "talks", "showcase", "publication", "presentation", "resume", "gallery"] #TODO: adapt!
+# notAllowedTypesInHomeFeed = ["about", "archive", "contact"] #TODO: IF using 'showFeedLinks' - adapt! (look in original Zzo)
 
 viewportSize = "normal" # widest, wider, wide, normal, narrow
 enableUiAnimation = true
@@ -70,7 +70,7 @@ enableTocSwitch = true
 
 # footer
 showPoweredBy = true
-showFeedLinks = true
+showFeedLinks = false
 showSocialLinks = true
 enableLangChange = false
 enableThemeChange = false #TODO: set to "true" if add more themes - (why in footer?)

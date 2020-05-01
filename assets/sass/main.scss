@@ -81,7 +81,7 @@ $viewport_size: {{ .Site.Params.viewportSize | default "normal" }};
 @import 'components/toc';
 //@import 'components/tooltip';
 //@import 'components/whoami';
-// 2-REC: Removed Busuanzi site counter
+//@import 'components/busuanzi'; //TODO: uncomment if using Busuanzi
 //@import 'components/donation';
 //@import 'components/box';
 //@import 'components/modal';

@@ -26,7 +26,7 @@ showMobileMenuTerms = ["tags", "categories", "series"] #TODO: change "series" to
 # body
 
 
-#enableSearch = false #TODO: keep? (not convinced)
+#enableSearch = false #2-REC: renoved search
 #enableSearchHighlight = false
 enableGoToTop = true
 
@@ -72,15 +72,15 @@ enableTocSwitch = true
 showPoweredBy = true
 showFeedLinks = true
 showSocialLinks = true
-enableLangChange = true
+enableLangChange = false
 enableThemeChange = false #TODO: set to "true" if add more themes - (why in footer?)
 
 # service
 googleTagManager = "" # GTM-XXXXXX #TODO: can comment line if not used?
-
-
-
-
+baiduAnalytics = ""
+enableBusuanzi = false
+#busuanziSiteUV = true #TODO: uncomment if using Busuanzi
+#busuanziSitePV = true #TODO: uncomment if using Busuanzi
 
 
 

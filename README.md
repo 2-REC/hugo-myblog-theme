@@ -50,9 +50,6 @@ Check list when making a new site using the theme.
         * [ ] Add content (images, etc.)
     TODO: continue...
 
-* [ ] data
-    TODO: continue...
-
 * [ ] static
     => Resources used globally by the website: images, icons, fonts, etc.
     * [ ] manifest.json : Info for PWA

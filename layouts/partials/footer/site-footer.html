@@ -12,7 +12,7 @@
     </div>
 
     <div class="footer__poweredby">
-        {{/* 2-REC: Removed Busuanzi site counter */}}
+        {{ partial "footer/site-counter" . }}
         {{ if $.Site.Copyright }}        
             <p class="caption">
                 {{ if $.Site.Params.copyrightOptions.enableCopyrightLink }}

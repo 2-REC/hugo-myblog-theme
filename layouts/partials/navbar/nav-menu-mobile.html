@@ -1,7 +1,5 @@
 {{ partial "navbar/select-theme-mobile" . }}
-{{/* TODO: keep? (not covinced)
-{{ partial "search/site-search-mobile" . }}
-*/}}
+{{/* 2-REC: removed search */}}
 
 <a role="button" class="navbar__burger" aria-label="menu" aria-expanded="false"
   data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}">

@@ -18,6 +18,8 @@
     * [ ] index.md: Set some content
 * [ ] contact
     * [ ] index.md: Set some content
+* [ ] posts
+    * [ ] _index.md: adapt (?)
 
 ### static
 * [ ] Change images (make basic simple examples)
@@ -77,6 +79,11 @@ LATER:
 
 
 ### layouts
+* [ ] _default
+    * [ ] single
+        * [ ] continue as in Zzo! (+"single-script"!)
+    * [ ] taxonomy
+        * [ ] continue as in Zzo!
 * [ ] partials
     * [ ] contact
         * [ ] Add a "netlifyform.html"?
@@ -93,9 +100,15 @@ LATER:
         => See what to keep (and remove uses in code)
         * [ ] about-script.html (empty)
         * [ ] contact-script.html (empty)
+        * [ ] single-script.html => PROBABLY NEEDED! (TO BE ADDED)
+        * [ ] taxo-script.html (empty)
     * [ ] social
         * [ ] See what to keep... (+associated in "params.toml")
         * [ ] See if want to change icons
+    * [ ] summary
+        * [ ] card: TODO!
+        * [ ] classic: TODO!
+        * [ ] compact: TODO!
     * [ ] svgs
         * [ ] Rename+change svgs (see what want to keep or change)
 

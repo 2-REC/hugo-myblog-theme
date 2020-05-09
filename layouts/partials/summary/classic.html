@@ -1,0 +1,20 @@
+<article class="summary-classic" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}">
+  <div class="summary-classic__flex-box" {{ if eq ($.Param "sidebarPosition") "left" }}data-position="left"{{ end }}>
+    <div class="summary-classic__content">
+      <header>
+        <h5 class="title h5"><a href='{{ .Permalink }}'> {{ .Title }}</a> </h5>
+      </header>
+      <div>
+        <div class="summary-classic__text p2">
+          <div>TODO: SUMMARY-CLASSIC</div>
+          {{ with .Params.description }}
+            {{ . }}
+          {{ else }}
+            {{ .Summary | safeHTML }}
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr />
+</article>

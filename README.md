@@ -53,6 +53,9 @@ Check list when making a new site using the theme.
             => Choose a form (or "none")
         * [ ] Add content (images, etc.)
     TODO: continue...
+    * [ ] posts:
+        * [ ] Adapt _index.md
+        * [ ] Add content...
 
 * [ ] static
     => Resources used globally by the website: images, icons, fonts, etc.

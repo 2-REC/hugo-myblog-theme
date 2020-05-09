@@ -1,0 +1,16 @@
+<article class="summary-card" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}">
+  <header>
+    <h5 class="title h5"><a href='{{ .Permalink }}'> {{ .Title }}</a> </h5>
+  </header>
+  <div class="summary-card__content">
+    <div class="summary-card__text p2">
+      <div>TODO: SUMMARY-CARD</div>
+      {{ with .Params.description }}
+      {{ . }}
+      {{ else }}
+      {{ .Summary }}
+      {{ end }}
+    </div>
+  </div>
+  <hr />
+</article>

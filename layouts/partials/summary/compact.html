@@ -1,0 +1,21 @@
+<article class="summary-compact" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}">
+  <div class="summary-compact__flex-box">
+    {{ $params := .Params }}
+    <div class="summary-compact__meta">
+      <header>
+        <h5 class="title h6"><a href='{{ .Permalink }}'> {{ .Title }}</a> </h5>
+      </header>
+      <div class="summary-compact__tag--wrapper">
+        <div>TODO: SUMMARY-COMPACT</div>
+        {{ range $params.tags }}
+          {{ if . }}
+            <a href="{{ "tags/" | relLangURL }}{{ . | urlize }}" class="summary-compact__tag">
+              {{ . }}
+            </a>
+          {{ end }}
+        {{ end }}
+      </div>
+    </div>
+  </div>
+  <hr />
+</article>

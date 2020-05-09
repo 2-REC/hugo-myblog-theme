@@ -30,11 +30,11 @@ showMobileMenuTerms = ["tags", "categories", "series"] #TODO: change "series" to
 #enableSearchHighlight = false
 enableGoToTop = true
 
+summaryShape = "compact" # card, classic, compact
 
 
 
-
-
+paginateWindow = 1
 
 
 
@@ -52,7 +52,7 @@ myname = "2-REC"
 
 
 
-
+enableSidebar = false #TODO: CHANGE!
 
 
 
@@ -64,7 +64,7 @@ tocFolding = true #TODO: use? (can't see effect)
 tocPosition = "inner" # inner, outer #TODO: use? (can't see effect)
 enableTocSwitch = true
 
-
+sidebarPosition = "right"
 
 
 

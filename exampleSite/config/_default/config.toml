@@ -12,8 +12,43 @@ hasCJKLanguage = false
 copyright = "&copy;{year}, All Rights Reserved" #TODO: can adapt: copyright = "&copy;{} {year}, All Rights Reserved"
 
 
-
+paginate = 13 #TODO: used? use?
 
 
 
 googleAnalytics = ""
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+  series = "series"

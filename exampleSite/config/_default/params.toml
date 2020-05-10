@@ -7,9 +7,9 @@ useFaviconGenerator = false # https://www.favicon-generator.org/
 meta_image = ""
 #themecolor = "" #TODO: used where? (related to "themeNavbarColor"?)
 
-themeOptions = [ "light"] #TODO: add other themes if desired
+themeOptions = ["light"] #TODO: add other themes if desired
 notAllowedTypesInHome = ["about", "contact"] #TODO: adapt!
-
+notAllowedTypesInHomeSidebar = ["about", "archive"] #TODO: adapt! (contact?)
 
 # notAllowedTypesInHomeFeed = ["about", "archive", "contact"] #TODO: IF using 'showFeedLinks' - adapt! (look in original Zzo)
 
@@ -52,21 +52,21 @@ myname = "2-REC"
 
 
 
-enableSidebar = false #TODO: CHANGE!
-
-
-
-
-
-enableToc = true # or "toc" (idem)
+enableSidebar = true
+enableSidebarTags = true
+enableSidebarSeries = true
+enableSidebarCategories = true #TODO: swap position with "enableSidebarCategories"
+enableHomeSidebarTitles = true #TODO: change name?
+enableListSidebarTitles = true #TODO: change name?
+enableToc = false # or "toc" (idem)
 hideToc = false #TODO: use? (can't see effect)
 tocFolding = true #TODO: use? (can't see effect)
 tocPosition = "inner" # inner, outer #TODO: use? (can't see effect)
 enableTocSwitch = true
-
+itemsPerCategory = 5 #TODO: adapt?
 sidebarPosition = "right"
 
-
+enableSidebarPostsByOrder = false
 
 # footer
 showPoweredBy = true

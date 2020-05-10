@@ -9,7 +9,7 @@ tags:
 - example
 categories:
 - examples
-types:
+series:
 - Examples
 ---
 

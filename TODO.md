@@ -5,12 +5,18 @@
 ### config
 * [ ] config.toml
     => Adapt...
+    * [ ] outputs
+        => Use/purpose? (remove "SearchIndex")
+    * [ ] taxonomies => Change "series" to "types"?
 * [ ] menus.en.toml
     * [ ] Adapt entries (+order)
 * [ ] params.toml
+    * [ ] notAllowedTypesInHome, notAllowedTypesInHomeSidebar, etc.
+        => Should instead have "allowedTypesInHome", "allowedTypesInHomeSidebar", etc.
     * [ ] notAllowedTypesInHomeFeed
         => Adapt to page/posts types
-
+    * [ ] enableHomeSidebarTitles
+        => Should change name? (to "enableHomeSidebarPosts"?)
 
 ### content
 * [ ] _index.md => Adapt for basic header example (images, fonts, etc.)
@@ -29,7 +35,7 @@
 ## THEME
 
 ### General
-* [ ] Change taxonomies "series" to "type"
+* [ ] Change taxonomies "series" to "type" (?)
 * [ ] Rename "light" colour theme to more appropriate
     * [ ] Add other themes?
 
@@ -58,7 +64,12 @@ LATER:
     * [ ] components
         * [ ] See what to keep/adapt
         * [ ] _ie.scss
-          => change? remove things?
+          => change? keep all?
+        * [ ] _hr.scss
+          => change? keep all?
+        * [ ] _taxonomy.scss
+            * [ ] Adapt
+            * [ ] Keep all?
     * [ ] layout
         * [ ] footer
             => see what keep depending on layout...
@@ -95,11 +106,14 @@ LATER:
     * [ ] navbar
         * [ ] site-nav: Set "logo" image as parameter (instead of hardcoded "/logo/logo.png")
     * [ ] sidebar
+        * [ ] list
+            * [ ] posts-by-order => how does it work? (seems broken?)
         * [ ] sidebar-menu => Empty!?
     * [ ] script
         => See what to keep (and remove uses in code)
         * [ ] about-script.html (empty)
         * [ ] contact-script.html (empty)
+        * [ ] list-script.html (empty)
         * [ ] single-script.html => PROBABLY NEEDED! (TO BE ADDED)
         * [ ] taxo-script.html (empty)
     * [ ] social
@@ -111,5 +125,7 @@ LATER:
         * [ ] compact: TODO!
     * [ ] svgs
         * [ ] Rename+change svgs (see what want to keep or change)
+* [ ] index
+    * [ ] Add "recent posts carousel"
 
 

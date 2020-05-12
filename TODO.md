@@ -2,15 +2,28 @@
 
 ## PRIORITIES / CURRENT STATE
 
-* [ ] Make sure taxonomies are ok (working correctly and not missing anything)
-* [ ] Continue/finish sidebar on homepage
+* [ ] Finish taxonomies
+* [ ] Continue sidebar on homepage
     * [ ] See how taxonomies are ordered
         => specified where/how?
-    * [ ] Add subscription (?)
-        => check with notes
-* [ ] Check sidebar stuff for "single" (post)
-* [ ] Add default case for theme stuff (if current value in local storage is not valid, use default case)
-    => set as index 0 in themes list (so ok even if have only 1 theme)
+    * [ ] Add subscription/newsletter
+        => check with notes (probably will use MailChimmp)
+* [ ] Add "breadcrumb" stuff!
+    * [ ] in "list"
+        * [ ] +add optional (as in "single")
+    * [ ] in "taxonomies"
+        * [ ] +add optional (as in "single")
+    * [ ] in "single"
+* [ ] Continue "single" layout
+    * [ ] Sidebar
+        * [ ] Keep TOC?
+        * [ ] Could have toc + tags, etc.
+        * [ ] NO "recent posts"
+        * [ ] subscribe?
+        * [ ] +more?
+    * [ ] See about "inner", "outer" for sidebar stuff... (nice to have, but a bit buggy)
+    * [ ] check for "hideSingleContentsWhenJSDisabled" role and effects
+    * [ ] ...
 * [ ] Handle themes more cleanly
     => see how could be more modular (adding new theme by simply adding new files in the specific locations)
     - not in theme but in website

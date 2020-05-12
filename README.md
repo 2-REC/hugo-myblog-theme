@@ -5,6 +5,11 @@ HUGO theme for blogs.
 TODO: complete/rewrite/etc.
 
 
+## Changed Features from original Zzo Theme
+* Default case for 'theme' if current value in local storage is not valid
+    => Remove 'theme' from localStorage if value is not in list of themes 'themeOptions'.
+
+
 ## Removed Features from original Zzo Theme
 
 * All themes but "light"

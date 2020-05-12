@@ -1,13 +1,13 @@
 ---
-title: Basic Post
+title: Other Post
 date: 2020-05-09T12:00:00+07:00
 description: Basic post.
-draft: false
+draft: true
 author: 2-REC
 tags:
 - post
-- basic
 - example
+- image
 categories:
 - examples
 series:

@@ -1,12 +1,14 @@
 {{ if $.Param "enableSidebar" }}
+{{/*TODO: REWRITE ALL TO HANDLE SIDEBAR BLOCKS FROM PARAMS! (+same for sidebar-list & sidebar-single) */}}
 <div class="sidebar">
     {{/* 2-REC: removed search */}}
-    {{/* 2-REC: don't want bio in sidebar
+    {{/*TODO: put bio back
     {{ partial "sidebar/site-bio" . }}
     */}}
     {{ partial "sidebar/custom-home" . }}
     {{ partial "sidebar/list/posts-by-order" . }}
 
+    {{/* 2-REC: make a partial "sidebar/recent"? */}}
     {{ if and ($.Param "itemsPerCategory") ($.Param "enableHomeSidebarTitles") }}
         {{ $filteredSections := .Site.Sections }}
         {{ range $.Param "notAllowedTypesInHomeSidebar" }}

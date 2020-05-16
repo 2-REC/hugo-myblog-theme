@@ -49,10 +49,14 @@ myname = "2-REC"
 
 
 
-
-
-
+# sidebar
+#enableBio = true #TODO
+#enableBioImage = true #TODO
 enableSidebar = true
+#sidebarHomeLeft = []
+sidebarHomeRight = [ "" ]
+#sidebarListLeft = []
+#sidebarListRight = []
 enableSidebarTags = true
 enableSidebarSeries = true
 enableSidebarCategories = true #TODO: swap position with "enableSidebarCategories"

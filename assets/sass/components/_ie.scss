@@ -289,14 +289,6 @@
       margin-top: 0;
     }
 
-    /* 2-REC - SIDEBAR_MID */
-    /*TODO: change to "0px 1fr 0px"? (+change for other lines?) */
-    &[data-sidebar-position="none"] {
-      -ms-grid-columns: 1fr 1fr 1fr;
-      grid-template-columns: 1fr 1fr 1fr;
-    }
-    /* 2-REC - SIDEBAR_END */
-
     &[data-sidebar-position="left"] {
       -ms-grid-columns: 320px 1fr 1fr;
       grid-template-columns: 320px 1fr 1fr;
@@ -306,13 +298,6 @@
       -ms-grid-columns: 1fr 1fr 320px;
       grid-template-columns: 1fr 1fr 320px;
     }
-
-    /* 2-REC - SIDEBAR_MID */
-    &[data-sidebar-position="both"] {
-      -ms-grid-columns: 320px 1fr 320px;
-      grid-template-columns: 320px 1fr 320px;
-    }
-    /* 2-REC - SIDEBAR_END */
   }
 
 

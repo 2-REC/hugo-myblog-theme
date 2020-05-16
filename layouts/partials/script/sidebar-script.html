@@ -1,8 +1,53 @@
 <script>
+    /* 2-REC - SIDEBARS - BEGIN */
+    /*
     {{ $sidebarPosition:= $.Param "sidebarPosition" }}
     var sidebarPosition = JSON.parse({{ $sidebarPosition | jsonify }});
     {{ $enableSidebar:= $.Param "enableSidebar" }}
     var enableSidebar = JSON.parse({{ $enableSidebar | jsonify }});
+    */
+    /* 2-REC - SIDEBARS - MID */
+    /*TODO: refactor more properly */
+    {{ $sidebarPosition := "right" }}
+    {{ $enableSidebar := false }}
+
+    {{ $kind := $.Kind }}
+    {{ if eq $kind "home" }}
+        {{ if $.Param "sidebarHome" }}
+            {{ $enableSidebar = true }}
+        {{ end }}
+        {{ if $.Param "sidebarHomePosition" }}
+            {{ $sidebarPosition = $.Param "sidebarHomePosition" }}
+        {{ end }}
+    /*TODO: also check if .Type === "posts"? */
+    {{ else if eq $kind "page" }}
+        {{ if $.Param "sidebarSingle" }}
+            {{ $enableSidebar = true }}
+        {{ end }}
+        {{ if $.Param "sidebarSinglePosition" }}
+            {{ $sidebarPosition = $.Param "sidebarSinglePosition" }}
+        {{ end }}
+    /*TODO: also check if .Type === "posts"? */
+    {{ else if eq $kind "section" }}
+        {{ if $.Param "sidebarList" }}
+            {{ $enableSidebar = true }}
+        {{ end }}
+        {{ if $.Param "sidebarListPosition" }}
+            {{ $sidebarPosition = $.Param "sidebarListPosition" }}
+        {{ end }}
+    {{ else if eq $kind "taxonomy" }}
+        {{ if $.Param "sidebarTaxonomy" }}
+            {{ $enableSidebar = true }}
+        {{ end }}
+        {{ if $.Param "sidebarTaxonomyPosition" }}
+            {{ $sidebarPosition = $.Param "sidebarTaxonomyPosition" }}
+        {{ end }}
+    {{ end }}
+
+    var sidebarPosition = JSON.parse({{ $sidebarPosition | jsonify }});
+    var enableSidebar = JSON.parse({{ $enableSidebar | jsonify }});
+    /* 2-REC - SIDEBARS - END */
+
 
     var listMainElem = document.querySelector('.list__main');
     var listSideElem = document.querySelector('.list__sidebar');

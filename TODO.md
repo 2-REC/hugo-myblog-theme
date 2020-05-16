@@ -7,16 +7,14 @@
 SIDEBAR:
 - keep "params.toml" up to date
 - make sidebar changes to:
-  layouts\_default\taxonomy.html
+v  layouts\_default\taxonomy.html
   layouts\_default\single.html
     => more complicated, as different layout (NEED TO CHANGE ON NOT USE ONLY "TOC")
 - look for "data-sidebar-position" => check all
 - look for "sidebar" => check all
-  - layouts\partials\script\sidebar-script.html !!??
-    => ADAPT "sidebarPosition" stuff! (how?)
+v  - layouts\partials\script\sidebar-script.html !!??
   - layouts\partials\sidebar\sidebar-home.html
     => ADAPT ""enableSidebar"" stuff!
-    (change call of partial using dict, and change all uses of '.' to '.context') - (?)
     => same in sidebar-list & sidebar-single
 - see about "enableSidebarMenu" (?)
 

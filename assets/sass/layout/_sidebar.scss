@@ -1,6 +1,16 @@
 .sidebar {
   margin-top: 1rem;
 
+  /* 2-REC: Moved "floating taxo" ("taxo-root") to here */
+  &-float {
+    position: -webkit-sticky;
+    position: sticky;
+    top: $grid_navbar_height;
+    @include themify($themes) {
+      background-color: themed('body-background-color');
+    }    
+  }
+
   &-recent {
     padding: 0.25rem;
 

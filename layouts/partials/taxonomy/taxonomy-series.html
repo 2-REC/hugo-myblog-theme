@@ -1,4 +1,4 @@
-{{ if and ($.Param "enableSidebarSeries") (ne (len .Site.Taxonomies.series) 0) }}
+{{ if ne (len .Site.Taxonomies.series) 0 }}
 <div class="taxo">
     <section>
         <span class="title p2">

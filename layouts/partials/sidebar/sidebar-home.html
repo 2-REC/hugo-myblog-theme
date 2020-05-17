@@ -1,41 +1,58 @@
-{{ if $.Param "enableSidebar" }}
-{{/*TODO: REWRITE ALL TO HANDLE SIDEBAR BLOCKS FROM PARAMS! (+same for sidebar-list & sidebar-single) */}}
+{{ if $.Param "sidebarHome" }}
+
+{{/*TODO: remove "hr" div stuff from each component, and add it here after each loop iteration in range */}}
+
 <div class="sidebar">
+
+{{ range $index, $value := $.Param "sidebarHome" }}
+
+    {{/* 2-REC: Special "separator" for floating section */}}
+    {{ if eq $value "-" }}
+</div>
+<div class="sidebar-float">
     {{/* 2-REC: removed search */}}
-    {{/*TODO: put bio back
-    {{ partial "sidebar/site-bio" . }}
-    */}}
-    {{ partial "sidebar/custom-home" . }}
-    {{ partial "sidebar/list/posts-by-order" . }}
+    {{ else if eq $value "bio" }}
+        {{/*TODO: put bio back
+        {{ partial "sidebar/site-bio" $.Page }}
+        */}}
+    {{/*TODO: include "custom" in tests? Or just include partial anyway? */}}
+    {{ else if eq $value "custom" }}
+        {{ partial "sidebar/custom-home" $.Page }}
+    {{/*TODO: ok? */}}
+    {{ else if eq $value "top" }}
+        {{ partial "sidebar/list/posts-by-order" $.Page }}
+    {{ else if eq $value "recent" }}
+        {{/*TODO: make a partial "sidebar/recent" */}}
+        {{ if and ($.Param "itemsPerCategory") ($.Param "enableHomeSidebarTitles") }}
+            {{ $filteredSections := $.Site.Sections }}
+            {{ range $.Param "notAllowedTypesInHomeSidebar" }}
+                {{ $filteredSections = (where $filteredSections "Type" "!=" (lower .)) }}
+            {{ end }}
 
-    {{/* 2-REC: make a partial "sidebar/recent"? */}}
-    {{ if and ($.Param "itemsPerCategory") ($.Param "enableHomeSidebarTitles") }}
-        {{ $filteredSections := .Site.Sections }}
-        {{ range $.Param "notAllowedTypesInHomeSidebar" }}
-            {{ $filteredSections = (where $filteredSections "Type" "!=" (lower .)) }}
+            {{ range $filteredSections }}
+            <section class="sidebar-recent">
+                <a href="{{ .RelPermalink }}" class="sidebar-recent__title p2">{{ .Title }}</a>
+                <ul class="sidebar-recent__ul">
+                    {{ range first ($.Param "itemsPerCategory") .Pages }}
+                        <li>
+                            <a href="{{ .RelPermalink }}" class="sidebar-recent__a p2">{{ .Title }}</a>
+                        </li>
+                    {{ end }}
+                </ul>
+            </section>
+            <hr class="hr-fade sidebar-hr" />
+            {{ end }}
         {{ end }}
-
-        {{ range $filteredSections }}
-        <section class="sidebar-recent">
-            <a href="{{ .RelPermalink }}" class="sidebar-recent__title p2">{{ .Title }}</a>
-            <ul class="sidebar-recent__ul">
-                {{ range first ($.Param "itemsPerCategory") .Pages }}
-                    <li>
-                        <a href="{{ .RelPermalink }}" class="sidebar-recent__a p2">{{ .Title }}</a>
-                    </li>
-                {{ end }}
-            </ul>
-        </section>
-        <hr class="hr-fade sidebar-hr" />
-        {{ end }}
+    {{ else if eq $value "tags" }}
+        {{ partial "taxonomy/taxonomy-tags" $.Page }}
+    {{ else if eq $value "categories" }}
+        {{ partial "taxonomy/taxonomy-categories" $.Page }}
+    {{ else if eq $value "series" }}
+        {{ partial "taxonomy/taxonomy-series" $.Page }}
     {{ end }}
+{{ end }}
 </div>
-
-<div class="taxo-root">
-{{ partial "taxonomy/taxonomy-tags" . }}
-{{ partial "taxonomy/taxonomy-categories" . }}
-{{ partial "taxonomy/taxonomy-series" . }}
-</div>
+{{/*TODO: should be removed => and moved inside loop (end) */}}
 <hr class="hr-fade sidebar-hr" />
 
 {{ end }}

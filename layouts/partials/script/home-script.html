@@ -1,3 +1,5 @@
+{{/* 2-REC: Added Busuanzi check */}}
+{{ if .Site.Params.enableBusuanzi }}
 <script>
   window.onload = function() {
     // counter
@@ -11,3 +13,4 @@
     }
   }
 </script>
+{{ end }}

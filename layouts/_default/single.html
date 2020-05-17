@@ -1,14 +1,53 @@
 {{ define "main" }}
-{{/* TODO: continue as in Zzo */}}
-{{/* TODO: SIDEBAR AS IN LIST! */}}
-<main class="single__main main">
-  <div class="single">
-    <h2 class="single__title" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}">{{ .Title }}</h2>
-    <article class="single__contents" data-dir="{{ if ne ($.Param "languagedir") "rtl" }}ltr{{ else }}rtl{{ end }}" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}">
-      {{ .Content }}
-      <div><b>TODO!</b></div>
-    </article>
-    {{/* 2-REC: removed search */}}
-  </div>
+
+{{/* TODO: what is tag "main-main"? */}}
+{{/* 2-REC - SIDEBAR - BEGIN */}}
+{{/*
+<main class="single__main {{ if or ($.Param "enableToc") ($.Param "toc") }}{{ if $.Param "hideToc" }}main{{ else if eq ($.Param "tocPosition") "outer" }}main{{ else }}main-main{{ end }}{{ else }}main{{ end }}">
+*/}}
+{{/* 2-REC - SIDEBAR - MID */}}
+{{ $sidebarPosition := "right" }}
+{{ if $.Param "sidebarSinglePosition" }}
+    {{ $sidebarPosition = $.Param "sidebarSinglePosition" }}
+{{ end }}
+{{ $enableSidebar := false }}
+{{ if $.Param "sidebarSingle" }}
+    {{ $enableSidebar = true }}
+{{ end }}
+<main class="main inner" data-sidebar-position="$sidebarPosition">
+    <div class="list__main {{ if $enableSidebar }}{{ if eq $sidebarPosition "left" }}mr{{ else }}lm{{ end }}{{ else }}lmr{{ end }}">
+{{/* 2-REC - SIDEBAR - END */}}
+        {{/* TODO: breadcrumb
+        {{ if $.Param "enableBreadcrumb" }}
+            {{ partial "body/breadcrumb" . }}
+        {{ end }}
+        */}}
+
+        {{/* TODO: ADD CONTENT! - see ZZO original (nojs, and other partials) */}}
+        <div class="single">
+            <h2 class="single__title" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}">{{ .Title }}</h2>
+            <article class="single__contents" data-dir="{{ if ne ($.Param "languagedir") "rtl" }}ltr{{ else }}rtl{{ end }}" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}">
+                {{ .Content }}
+                <div><b>TODO!</b></div>
+            </article>
+
+            {{/* 2-REC: removed search */}}
+        </div>
+    </div>
+
+    {{/* 2-REC - SIDEBAR - MID */}}
+    {{ if $enableSidebar }}
+        <aside class="list__sidebar {{ if eq $sidebarPosition "left" }}l{{ else }}r{{ end }}" data-dir="{{ $.Param "languagedir" | default "ltr" }}">
+            {{ partial "sidebar/sidebar-single" . }}
+        </aside>
+    {{ end }}
+    {{/* 2-REC - SIDEBAR - END */}}
 </main>
+
+{{/* 2-REC: Removed "toc" stuff ("aside" + "script") => Moved to sidebar */}}
+
+{{ partial "script/sidebar-script" . }}
+{{/*TODO: SINGLE-SCRIPT
+{{ partial "script/single-script" . }}
+*/}}
 {{ end }}

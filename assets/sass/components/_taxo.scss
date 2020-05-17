@@ -3,6 +3,8 @@
   margin: 2.5rem 0;
   z-index: z('taxo');
 
+  /* 2-REC: Moved "floating taxo" ("taxo-root") to "sidebar" */
+  /*
   &-root {
     position: -webkit-sticky;
     position: sticky;
@@ -11,6 +13,7 @@
       background-color: themed('body-background-color');
     }    
   }
+  */
 
   &__title {
     font-weight: 700;

@@ -8,6 +8,11 @@ TODO: complete/rewrite/etc.
 ## Changed Features from original Zzo Theme
 * Default case for 'theme' if current value in local storage is not valid
     => Remove 'theme' from localStorage if value is not in list of themes 'themeOptions'.
+* Sidebar
+  - list to define content of each toolbar (home, single, list, taxonomy)
+  - special "-" separator to have "floating" section
+  - left/right position
+  - added taxonomy specific sidebar (different from "list")
 
 
 ## Removed Features from original Zzo Theme

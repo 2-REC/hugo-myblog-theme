@@ -1,11 +1,11 @@
-{{ if $.Param "sidebarList" }}
+{{ if $.Param "sidebarTaxonomy" }}
 
 {{/*TODO: remove "hr" div stuff from each component, and add it here after each loop iteration in range */}}
 
 {{/*TODO: reason for being "ul"? */}}
 <ul class="sidebar">
 
-{{ range $index, $value := $.Param "sidebarList" }}
+{{ range $index, $value := $.Param "sidebarTaxonomy" }}
 
     {{/* 2-REC: Special "separator" for floating section */}}
     {{ if eq $value "-" }}
@@ -14,7 +14,7 @@
     {{/* 2-REC: removed search */}}
     {{/*TODO: include "custom" in tests? Or just include partial anyway? */}}
     {{ else if eq $value "custom" }}
-        {{ partial "sidebar/custom-list" $.Page }}
+        {{ partial "sidebar/custom-taxonomy" $.Page }}
     {{/*TODO: ok? */}}
     {{ else if eq $value "top" }}
         {{ partial "sidebar/list/posts-by-order" $.Page }}

@@ -8,8 +8,8 @@
     */
     /* 2-REC - SIDEBARS - MID */
     /*TODO: refactor more properly */
-    {{ $sidebarPosition := "right" }}
     {{ $enableSidebar := false }}
+    {{ $sidebarPosition := "right" }}
 
     {{ $kind := $.Kind }}
     {{ if eq $kind "home" }}
@@ -47,7 +47,6 @@
     var sidebarPosition = JSON.parse({{ $sidebarPosition | jsonify }});
     var enableSidebar = JSON.parse({{ $enableSidebar | jsonify }});
     /* 2-REC - SIDEBARS - END */
-
 
     var listMainElem = document.querySelector('.list__main');
     var listSideElem = document.querySelector('.list__sidebar');

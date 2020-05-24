@@ -19,6 +19,7 @@ v  - layouts\partials\sidebar\sidebar-home.html
 v    => ADAPT ""enableSidebar"" stuff!
 v    => same in sidebar-list & sidebar-single
 - set idividual component (adapt/create each partial, +handle specific parameters)
+- see how to make sidebars code more generic (instead of copyied for every type)
 - see about sidebar menu
   - check "body/main-left" + "body/main-right"
     => include empty partial "sidebar-menu.html"

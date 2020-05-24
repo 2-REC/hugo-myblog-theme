@@ -39,25 +39,25 @@ paginateWindow = 1
 
 
 
-# whoami
-myname = "2-REC"
-
-
-
-
-
-
-
+# whoami #TODO: renme all params to "bio..." (+propagate impacts)
+myname = "Someone"
+email = "someone@email.com" #TODO: use same as in "socialOptions"
+whoami = "Blogger"
+bioImageUrl = ""
+useGravatar = false
+location = "City, Country"
+organization = "Hugo"
+link = "https://somesite.org"
 
 # sidebar
-#enableBio = true #TODO
-#enableBioImage = true #TODO
+#enableBio = true #TODO: remove
+#enableBioImage = true
 enableSidebar = true #TODO: remove!
-sidebarHome = [ "top", "recent", "-", "tags", "categories", "series" ]
+sidebarHome = [ "bio", "top", "recent", "-", "tags", "categories", "series" ]
 sidebarHomePosition = "right" # "left"|"right"
 #sidebarSingle = [ "-", "tags", "categories", "series" ] #TODO
 #sidebarSinglePosition = "right" # "left"|"right" #TODO
-sidebarList = ["recent", "-", "tags", "categories", "series" ]
+sidebarList = [ "recent", "-", "tags", "categories", "series" ]
 sidebarListPosition = "right" # "left"|"right"
 sidebarTaxonomy = [ "-", "tags", "categories", "series" ] #TODO
 #sidebarTaxonomyPosition = "right" # "left"|"right"
@@ -153,7 +153,7 @@ enableBusuanzi = false
   phone = ""
   facebook = "http://example.org/"
   twitter = "http://example.org/"
-  github = "https://github.com/zzossig/hugo-theme-zzo"
+  github = "https://github.com/2-REC/hugo-myblog-theme"
   #stack-overflow = ""
   instagram = ""
   google-plus = ""

@@ -8,33 +8,37 @@
     {{ if eq $value "-" }}
 </ul>
 <ul class="sidebar-float">
-    {{/* 2-REC: removed search */}}
-    {{/*TODO: write a partial "toc"
-    {{ else if eq $value "toc" }}
-        => based on all TOC stuff from original "sidebar-single" and other toc related code)
-    */}}
-    {{/*TODO: include "custom" in tests? Or just include partial anyway? */}}
-    {{ else if eq $value "custom" }}
-        {{ partial "sidebar/custom-single" $.Page }}
-    {{/*TODO: ok? */}}
-    {{ else if eq $value "top" }}
-        {{ partial "sidebar/list/posts-by-order" $.Page }}
-    {{ else if eq $value "recent" }}
-        {{/*TODO: make a partial "sidebar/recent" */}}
-        {{ if and ($.Param "itemsPerCategory") ($.Param "enableListSidebarTitles") }}
-            {{ range first ($.Param "itemsPerCategory") $.Pages }}
-            <li class="sidebar-recent">
-                <a href="{{ .RelPermalink }}" class="sidebar-recent__title p1">{{ .Title }}</a>
-            </li>
+    {{ else }}
+        {{/* 2-REC: removed search */}}
+        {{ if eq $value "bio" }}
+            {{ partial "sidebar/site-bio" $.Page }}
+        {{/*TODO: write a partial "toc"
+        {{ else if eq $value "toc" }}
+            => based on all TOC stuff from original "sidebar-single" and other toc related code)
+        */}}
+        {{/*TODO: include "custom" in tests? Or just include partial anyway? */}}
+        {{ else if eq $value "custom" }}
+            {{ partial "sidebar/custom-single" $.Page }}
+        {{/*TODO: ok? */}}
+        {{ else if eq $value "top" }}
+            {{ partial "sidebar/list/posts-by-order" $.Page }}
+        {{ else if eq $value "recent" }}
+            {{/*TODO: make a partial "sidebar/recent" */}}
+            {{ if and ($.Param "itemsPerCategory") ($.Param "enableListSidebarTitles") }}
+                {{ range first ($.Param "itemsPerCategory") $.Pages }}
+                <li class="sidebar-recent">
+                    <a href="{{ .RelPermalink }}" class="sidebar-recent__title p1">{{ .Title }}</a>
+                </li>
+                {{ end }}
             {{ end }}
-            <hr class="hr-fade sidebar-hr" />
+        {{ else if eq $value "tags" }}
+            {{ partial "taxonomy/taxonomy-tags" $.Page }}
+        {{ else if eq $value "categories" }}
+            {{ partial "taxonomy/taxonomy-categories" $.Page }}
+        {{ else if eq $value "series" }}
+            {{ partial "taxonomy/taxonomy-series" $.Page }}
         {{ end }}
-    {{ else if eq $value "tags" }}
-        {{ partial "taxonomy/taxonomy-tags" $.Page }}
-    {{ else if eq $value "categories" }}
-        {{ partial "taxonomy/taxonomy-categories" $.Page }}
-    {{ else if eq $value "series" }}
-        {{ partial "taxonomy/taxonomy-series" $.Page }}
+        <hr class="hr-fade sidebar-hr" />
     {{ end }}
 {{ end }}
 </ul>

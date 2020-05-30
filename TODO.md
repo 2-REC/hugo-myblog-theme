@@ -7,18 +7,12 @@
 SIDEBARS:
 - TEST EVERYTHING RELATED TO SIDEBARS!
 - keep "params.toml" up to date
-  - remove enableSidebar, enableTags, etc (after adapted!)
-  - remove "toc" stuff
-v- make sidebar changes to:
-v  layouts\_default\taxonomy.html
-v  layouts\_default\single.html => more complicated, as different layout (NEED TO CHANGE ON NOT USE ONLY "TOC")
-v- look for "data-sidebar-position" => check all
-v- look for "sidebar" => check all
-v  - layouts\partials\script\sidebar-script.html
-v  - layouts\partials\sidebar\sidebar-home.html
-v    => ADAPT ""enableSidebar"" stuff!
-v    => same in sidebar-list & sidebar-single
+  - remove enableSidebar, etc (after adapted!)
+  - adapt "toc" stuff (=> component in sidebar)
 - set idividual component (adapt/create each partial, +handle specific parameters)
+  - toc
+  - recent
+  - other?
 - see how to make sidebars code more generic (instead of copyied for every type)
 - see about sidebar menu
   - check "body/main-left" + "body/main-right"

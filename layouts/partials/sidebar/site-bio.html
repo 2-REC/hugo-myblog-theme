@@ -1,3 +1,4 @@
+{{ if $.Param "enableSidebarBio" }}
 <section class="bio" data-dir="{{ $.Param "languagedir" | default "ltr" }}">
   {{ if ($.Param "enableBioImage" | default true) }}
   {{/* 2-REC: Don't want "bio-hr" (?)
@@ -79,3 +80,7 @@
     {{ end }}
   </div>
 </section>
+{{ if $.Param "enableSidebarSeparator" }}
+<hr class="hr-fade sidebar-hr"/>
+{{ end }}
+{{ end }}

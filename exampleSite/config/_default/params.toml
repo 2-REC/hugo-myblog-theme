@@ -49,9 +49,8 @@ location = "City, Country"
 organization = "Hugo"
 link = "https://somesite.org"
 
-# sidebar
-#enableBio = true #TODO: remove
-#enableBioImage = true
+# Sidebar
+# Allowed components: "bio", "top", "recent", "tags", "categories", "series", "-"
 enableSidebar = true #TODO: remove!
 sidebarHome = [ "bio", "top", "recent", "-", "tags", "categories", "series" ]
 sidebarHomePosition = "right" # "left"|"right"
@@ -61,20 +60,23 @@ sidebarList = [ "recent", "-", "tags", "categories", "series" ]
 sidebarListPosition = "right" # "left"|"right"
 sidebarTaxonomy = [ "-", "tags", "categories", "series" ] #TODO
 #sidebarTaxonomyPosition = "right" # "left"|"right"
-#enableSidebarTags = true #TODO: remove
-#enableSidebarSeries = true #TODO: remove
-#enableSidebarCategories = true  #TODO: remove
-enableHomeSidebarTitles = true #TODO: change name?
-enableListSidebarTitles = true #TODO: change name?
+enableSidebarSeparator = true # Default: true
+enableSidebarBio = true # Default: false
+enableBioImage = true # Default: true
+#enableSidebarCustom = false # Default: false
+enableSidebarPostsByOrder = false # Default: false #TODO: rename to "enableTop"?
+enableSidebarRecent = false # Default: false
+enableSidebarTags = true # Default: false
+enableSidebarSeries = true # Default: false
+enableSidebarCategories = true # Default: false
 enableToc = false #TODO: remove
 hideToc = false #TODO: remove
 tocFolding = true #TODO: remove
 tocPosition = "inner" #TODO: remove
 enableTocSwitch = true #TODO: remove
-itemsPerCategory = 5 #TODO: set 1 for each component (recent, top, ...others?)
-#sidebarPosition = "right" #TODO: remove
+itemsPerCategory = 5 #TODO: set 1 for each component? (recent, top, etc.)
+#sidebarPosition = "right" #TODO: remove (?) - or allow to specify at page level?
 
-enableSidebarPostsByOrder = false
 
 # footer
 showPoweredBy = true

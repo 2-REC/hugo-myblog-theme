@@ -3,7 +3,6 @@
 {{/*TODO: ok if "div" instead of "section"? */}}
 <ul class="sidebar">
 {{ range $index, $value := $.Param "sidebarSingle" }}
-
     {{/* 2-REC: Special "separator" for floating section */}}
     {{ if eq $value "-" }}
 </ul>
@@ -18,17 +17,25 @@
         */}}
         {{/*TODO: include "custom" in tests? Or just include partial anyway? */}}
         {{ else if eq $value "custom" }}
-            {{ partial "sidebar/custom-single" $.Page }}
+            {{ if $.Param "enableSidebarCustom" }}
+                {{ partial "sidebar/custom-single" $.Page }}
+                {{ if $.Param "enableSidebarSeparator" }}
+                <hr class="hr-fade sidebar-hr"/>
+                {{ end }}
+            {{ end }}
         {{/*TODO: ok? */}}
         {{ else if eq $value "top" }}
             {{ partial "sidebar/list/posts-by-order" $.Page }}
         {{ else if eq $value "recent" }}
             {{/*TODO: make a partial "sidebar/recent" */}}
-            {{ if and ($.Param "itemsPerCategory") ($.Param "enableListSidebarTitles") }}
+            {{ if and ($.Param "enableSidebarRecent") ($.Param "itemsPerCategory") }}
                 {{ range first ($.Param "itemsPerCategory") $.Pages }}
                 <li class="sidebar-recent">
                     <a href="{{ .RelPermalink }}" class="sidebar-recent__title p1">{{ .Title }}</a>
                 </li>
+                {{ end }}
+                {{ if $.Param "enableSidebarSeparator" }}
+                <hr class="hr-fade sidebar-hr"/>
                 {{ end }}
             {{ end }}
         {{ else if eq $value "tags" }}
@@ -38,7 +45,6 @@
         {{ else if eq $value "series" }}
             {{ partial "taxonomy/taxonomy-series" $.Page }}
         {{ end }}
-        <hr class="hr-fade sidebar-hr" />
     {{ end }}
 {{ end }}
 </ul>

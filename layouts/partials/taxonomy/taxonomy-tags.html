@@ -1,4 +1,4 @@
-{{ if ne (len .Site.Taxonomies.tags) 0 }}
+{{ if and ($.Param "enableSidebarTags") (ne (len .Site.Taxonomies.tags) 0) }}
 <div class="taxo">
     <section>
         <span class="title p2">
@@ -22,4 +22,7 @@
         {{ end }}
     </section>
 </div>
+{{ if $.Param "enableSidebarSeparator" }}
+<hr class="hr-fade sidebar-hr"/>
+{{ end }}
 {{ end }}

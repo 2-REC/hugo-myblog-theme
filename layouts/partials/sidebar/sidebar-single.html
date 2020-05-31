@@ -14,7 +14,6 @@
         {{ else if eq $value "toc" }}
             => based on all TOC stuff from original "sidebar-single" and other toc related code)
         */}}
-        {{/*TODO: include "custom" in tests? Or just include partial anyway? */}}
         {{ else if eq $value "custom" }}
             {{ if $.Param "enableSidebarCustom" }}
                 {{ partial "sidebar/custom-single" $.Page }}
@@ -33,6 +32,11 @@
             {{ partial "taxonomy/taxonomy-categories" $.Page }}
         {{ else if eq $value "series" }}
             {{ partial "taxonomy/taxonomy-series" $.Page }}
+        {{ else }}
+            <script>
+            var value = JSON.parse({{ $value | jsonify }});
+            console.error("Component '" + value + "' not handled in 'single' sidebar => Ignored");
+            </script>
         {{ end }}
     {{ end }}
 {{ end }}

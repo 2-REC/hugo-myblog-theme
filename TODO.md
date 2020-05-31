@@ -11,6 +11,7 @@ SIDEBARS:
   - adapt "toc" stuff (=> component in sidebar)
 - set idividual component (adapt/create each partial, +handle specific parameters)
   - toc
+    !!!! - PUT AS IT WAS, ONLY ADAPT "single.html" to "extend" sidebar (not only TOC)
   v- recent
   - other?
 - see how to make sidebars code more generic (instead of copyied for every type)

@@ -10,7 +10,6 @@
         {{/* 2-REC: removed search */}}
         {{ if eq $value "bio" }}
             {{ partial "sidebar/site-bio" $.Page }}
-        {{/*TODO: include "custom" in tests? Or just include partial anyway? */}}
         {{ else if eq $value "custom" }}
             {{ if $.Param "enableSidebarCustom" }}
                 {{ partial "sidebar/custom-list" $.Page }}
@@ -29,6 +28,11 @@
             {{ partial "taxonomy/taxonomy-categories" $.Page }}
         {{ else if eq $value "series" }}
             {{ partial "taxonomy/taxonomy-series" $.Page }}
+        {{ else }}
+            <script>
+            var value = JSON.parse({{ $value | jsonify }});
+            console.error("Component '" + value + "' not handled in 'list' sidebar => Ignored");
+            </script>
         {{ end }}
     {{ end }}
 {{ end }}

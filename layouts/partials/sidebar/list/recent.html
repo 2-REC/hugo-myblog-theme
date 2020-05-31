@@ -1,0 +1,12 @@
+{{ if and ($.Param "enableSidebarRecent") ($.Param "itemsPerCategory") }}
+    {{/* TODO: how is the order determined? */}}
+    {{ range first ($.Param "itemsPerCategory") .Pages }}
+    <li class="sidebar-recent">
+        <a href="{{ .RelPermalink }}" class="sidebar-recent__title p1">{{ .Title }}</a>
+    </li>
+    {{ end }}
+    {{/* TODO: inside or outside the "range"? */}}
+    {{ if $.Param "enableSidebarSeparator" }}
+    <hr class="hr-fade sidebar-hr"/>
+    {{ end }}
+{{ end }}

@@ -22,17 +22,7 @@
         {{ else if eq $value "top" }}
             {{ partial "sidebar/list/posts-by-order" $.Page }}
         {{ else if eq $value "recent" }}
-            {{/*TODO: make a partial "sidebar/recent" */}}
-            {{ if and ($.Param "enableSidebarRecent") ($.Param "itemsPerCategory") }}
-                {{ range first ($.Param "itemsPerCategory") $.Pages }}
-                <li class="sidebar-recent">
-                    <a href="{{ .RelPermalink }}" class="sidebar-recent__title p1">{{ .Title }}</a>
-                </li>
-                {{ end }}
-                {{ if $.Param "enableSidebarSeparator" }}
-                <hr class="hr-fade sidebar-hr"/>
-                {{ end }}
-            {{ end }}
+            {{ partial "sidebar/list/recent" $.Page }}
         {{ else if eq $value "tags" }}
             {{ partial "taxonomy/taxonomy-tags" $.Page }}
         {{ else if eq $value "categories" }}
@@ -43,5 +33,4 @@
     {{ end }}
 {{ end }}
 </ul>
-
 {{ end }}

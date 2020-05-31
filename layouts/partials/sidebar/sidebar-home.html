@@ -21,29 +21,7 @@
         {{ else if eq $value "top" }}
             {{ partial "sidebar/list/posts-by-order" $.Page }}
         {{ else if eq $value "recent" }}
-            {{/*TODO: make a partial "sidebar/recent" */}}
-            {{ if and ($.Param "enableSidebarRecent") ($.Param "itemsPerCategory") }}
-                {{ $filteredSections := $.Site.Sections }}
-                {{ range $.Param "notAllowedTypesInHomeSidebar" }}
-                    {{ $filteredSections = (where $filteredSections "Type" "!=" (lower .)) }}
-                {{ end }}
-
-                {{ range $filteredSections }}
-                <section class="sidebar-recent">
-                    <a href="{{ .RelPermalink }}" class="sidebar-recent__title p2">{{ .Title }}</a>
-                    <ul class="sidebar-recent__ul">
-                        {{ range first ($.Param "itemsPerCategory") .Pages }}
-                            <li>
-                                <a href="{{ .RelPermalink }}" class="sidebar-recent__a p2">{{ .Title }}</a>
-                            </li>
-                        {{ end }}
-                    </ul>
-                </section>
-                {{ end }}
-                {{ if $.Param "enableSidebarSeparator" }}
-                <hr class="hr-fade sidebar-hr"/>
-                {{ end }}
-            {{ end }}
+            {{ partial "sidebar/list/recent-home" $.Page }}
         {{ else if eq $value "tags" }}
             {{ partial "taxonomy/taxonomy-tags" $.Page }}
         {{ else if eq $value "categories" }}

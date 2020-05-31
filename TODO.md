@@ -11,7 +11,7 @@ SIDEBARS:
   - adapt "toc" stuff (=> component in sidebar)
 - set idividual component (adapt/create each partial, +handle specific parameters)
   - toc
-  - recent
+  v- recent
   - other?
 - see how to make sidebars code more generic (instead of copyied for every type)
 - see about sidebar menu

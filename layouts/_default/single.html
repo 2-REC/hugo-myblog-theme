@@ -23,10 +23,11 @@
         {{ end }}
         */}}
 
-        {{/* TODO: ADD CONTENT! - see ZZO original (nojs, and other partials) */}}
+        {{/* TODO: ADD CONTENT! - see ZZO original (nojs, and other partials: infos, tags, etc.) */}}
         <div class="single">
             <h2 class="single__title" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}">{{ .Title }}</h2>
             <article class="single__contents" data-dir="{{ if ne ($.Param "languagedir") "rtl" }}ltr{{ else }}rtl{{ end }}" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}">
+                {{ partial "body/toc" . }}
                 {{ .Content }}
                 <div><b>TODO!</b></div>
             </article>
@@ -44,7 +45,9 @@
     {{/* 2-REC - SIDEBAR - END */}}
 </main>
 
-{{/* TODO: Put "toc" script stuff back => Adapt sidebar check */}}
+{{/* TODO: SEE IF NEED TO PUT "toc" SCRIPT STUFF BACK => handled by sidebar?
+  - what about 'navbar' stuff?!?
+ */}}
 
 {{ partial "script/sidebar-script" . }}
 {{/*TODO: SINGLE-SCRIPT

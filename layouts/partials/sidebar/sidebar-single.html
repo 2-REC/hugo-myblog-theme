@@ -10,10 +10,8 @@
         {{/* 2-REC: removed search */}}
         {{ if eq $value "bio" }}
             {{ partial "sidebar/site-bio" $.Page }}
-        {{/*TODO: write a partial "toc"
         {{ else if eq $value "toc" }}
-            => based on all TOC stuff from original "sidebar-single" and other toc related code)
-        */}}
+            {{ partial "sidebar/sidebar-toc" $.Page }}
         {{ else if eq $value "custom" }}
             {{ if $.Param "enableSidebarCustom" }}
                 {{ partial "sidebar/custom-single" $.Page }}

@@ -4,6 +4,15 @@
 
 
 !!!!
+TOC:
+- sidebar => SET CLASS SIMILAR TO TAGS, etc
+- see about scripts in
+  - "head/scripts" => 'scroll' part (remove hide, folding, outer, etc)
+  - "script/single-script" => 'toc' part (remove hide, folding, outer, etc)
+- check in "params.toml"
+  + 'enableToc' => rename to enableSidebarToc
+- check in "archetypes/default.md"
+
 SIDEBARS:
 - TEST EVERYTHING RELATED TO SIDEBARS!
 - keep "params.toml" up to date

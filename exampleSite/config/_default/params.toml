@@ -24,6 +24,7 @@ homeHeaderType = "slide" # text, img, slide
 showMobileMenuTerms = ["tags", "categories", "series"] #TODO: change "series" to "types"
 
 # body
+enableTocContent = true # TOC in page body
 
 
 #enableSearch = false #2-REC: renoved search
@@ -54,7 +55,7 @@ link = "https://somesite.org"
 enableSidebar = true #TODO: remove!
 sidebarHome = [ "bio", "top", "recent", "-", "tags", "categories", "series" ]
 sidebarHomePosition = "right" # "left"|"right"
-#sidebarSingle = [ "-", "tags", "categories", "series" ] #TODO
+sidebarSingle = [ "toc", "-", "tags", "categories", "series" ] #TODO
 #sidebarSinglePosition = "right" # "left"|"right" #TODO
 sidebarList = [ "recent", "-", "tags", "categories", "series" ]
 sidebarListPosition = "right" # "left"|"right"
@@ -69,7 +70,7 @@ enableSidebarRecent = true # Default: false
 enableSidebarTags = true # Default: false
 enableSidebarSeries = true # Default: false
 enableSidebarCategories = true # Default: false
-enableToc = false #TODO: remove
+enableToc = true #TODO: rename to enableSidebarToc
 hideToc = false #TODO: remove
 tocFolding = true #TODO: remove
 tocPosition = "inner" #TODO: remove

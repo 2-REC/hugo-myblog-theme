@@ -4,14 +4,17 @@
 
 
 !!!!
+- ADD+ADAPT SINGLE-SCRIPT!!!!
+  - "script/single-script" => 'toc' part (remove hide, folding, outer, etc)
+  + see about each lib
+  + etc...
 TOC:
 - sidebar => SET CLASS SIMILAR TO TAGS, etc
-- see about scripts in
-  - "head/scripts" => 'scroll' part (remove hide, folding, outer, etc)
-  - "script/single-script" => 'toc' part (remove hide, folding, outer, etc)
 - check in "params.toml"
   + 'enableToc' => rename to enableSidebarToc
 - check in "archetypes/default.md"
+- FIX LAYOUT IN SIDEBARS!
+  - related to data-folding?
 
 SIDEBARS:
 - TEST EVERYTHING RELATED TO SIDEBARS!
@@ -29,7 +32,7 @@ SIDEBARS:
     => include empty partial "sidebar-menu.html"
 
 
-
+* [ ] "Archives" page (?)
 * [ ] Finish taxonomies
 * [ ] Continue sidebar on homepage
     * [ ] See how taxonomies are ordered
@@ -44,8 +47,6 @@ SIDEBARS:
     * [ ] in "single"
 * [ ] Continue "single" layout
     * [ ] Sidebar
-        * [ ] Keep TOC?
-        * [ ] Could have toc + tags, etc.
         * [ ] NO "recent posts"
         * [ ] subscribe?
         * [ ] +more?

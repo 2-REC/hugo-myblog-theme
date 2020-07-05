@@ -102,15 +102,10 @@
     // ============================================================
 
 
+    /* 2-REC: Removed search feature
     // =================== search-result desktop ==================
-    var summaryContainer = document.querySelector('.summary__container');
-    var searchResult = document.querySelector('.search-result');
-    var searchResultCloseBtn = document.querySelector('.search-result__close');
-    searchResultCloseBtn ? searchResultCloseBtn.addEventListener('click', function (e) {
-      searchResult.setAttribute('data-display', 'none');
-      summaryContainer.setAttribute('data-display', 'block');
-    }) : null;
     // =============================================================
+    */
 
 
     // ============================ tab ============================
@@ -226,17 +221,17 @@
     var lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
     var tocElem = document.querySelector('.toc');
     var tableOfContentsElem = tocElem ? tocElem.querySelector('#TableOfContents') : null;
-    var toggleTocElem = document.getElementById('toggle-toc');
+    //var toggleTocElem = document.getElementById('toggle-toc');
     var singleContentsElem = document.querySelector('.single__contents');
     var navbar = document.querySelector('.navbar');
     var tocFlexbox = document.querySelector('.toc__flexbox');
-    var tocFlexboxOuter = document.querySelector('.toc__flexbox--outer');
+    //var tocFlexboxOuter = document.querySelector('.toc__flexbox--outer');
     var expandContents = document.querySelectorAll('.expand__content');
     var boxContents = document.querySelectorAll('.box');
     var notAllowedTitleIds = null;
 
-    {{ $tocFolding := $.Param "tocFolding" }}
-    var tocFolding = JSON.parse({{ $tocFolding | jsonify }});
+    //{{ $tocFolding := $.Param "tocFolding" }}
+    //var tocFolding = JSON.parse({{ $tocFolding | jsonify }});
     {{ $tocLevels := ($.Param "tocLevels") }}
     var tocLevels = JSON.parse({{ $tocLevels | jsonify }});
     
@@ -299,9 +294,11 @@
         if (singleContentsElem) {
           if (singleContentsElem.querySelectorAll(tocLevels).length > 0) {
             singleContentsElem.querySelectorAll(tocLevels).forEach(function (elem) {
+              /*
               if (toggleTocElem && !toggleTocElem.checked) {
                 return null;
               }
+              */
 
               if (notAllowedTitleIds && notAllowedTitleIds.includes(elem.getAttribute('id'))) {
                 return null;
@@ -316,6 +313,7 @@
                   tocElem.querySelector('a[href="#' + id + '"]') ?
                     tocElem.querySelector('a[href="#' + id + '"]').classList.add('active') : null;
 
+                  /*
                   if (false === tocFolding) {
                     
                   } else {
@@ -328,6 +326,7 @@
                         });
                       }) : null;
                   }
+                  */
 
                   var curElem = tableOfContentsElem.querySelector("[href='#" + id + "']");
                   if (curElem && curElem.nextElementSibling) {
@@ -347,12 +346,14 @@
                 tocFlexbox.classList.add('hide');
               }
             }
+            /*
             if (tocFlexboxOuter) {
               tocFlexboxOuter.setAttribute('data-position', '');
               if (!tocFlexboxOuter.classList.contains('hide')) {
                 tocFlexboxOuter.classList.add('hide');
               }
             }
+            */
           }
         }
       } else { // scroll up
@@ -369,9 +370,11 @@
         if (singleContentsElem) {
           if (singleContentsElem.querySelectorAll(tocLevels).length > 0) {
             singleContentsElem.querySelectorAll(tocLevels).forEach(function (elem) {
+              /*
               if (toggleTocElem && !toggleTocElem.checked) {
                 return null;
               }
+              */
               
               if (notAllowedTitleIds && notAllowedTitleIds.includes(elem.getAttribute('id'))) {
                 return null;
@@ -386,6 +389,7 @@
                   tocElem.querySelector('a[href="#' + id + '"]') ?
                     tocElem.querySelector('a[href="#' + id + '"]').classList.add('active') : null;
 
+                  /*
                   if (false === tocFolding) {
                     
                   } else {
@@ -398,6 +402,7 @@
                         });
                       }) : null;
                   }
+                  */
 
                   var curElem = tableOfContentsElem.querySelector("[href='#" + id + "']");
                   if (curElem && curElem.nextElementSibling) {
@@ -414,13 +419,16 @@
             if (tocFlexbox && !tocFlexbox.classList.contains('hide')) {
               tocFlexbox.classList.add('hide');
             }
+            /*
             if (tocFlexboxOuter && !tocFlexboxOuter.classList.contains('hide')) {
               tocFlexboxOuter.classList.add('hide');
             }
+            */
           }
           
         }
 
+        /*
         if (tableOfContentsElem && document.documentElement.scrollTop < 250) {
           if (false === tocFolding) {
 
@@ -433,6 +441,7 @@
               }) : null;
           }
         }
+        */
       }
       lastScrollTop = st <= 0 ? 0 : st;
     };
@@ -451,6 +460,8 @@
       var metaMsapplicationNavbuttonColor = document.getElementsByName('msapplication-navbutton-color')[0];
       var metaAppleMobileWebAappStatusBarStyle = document.getElementsByName('apple-mobile-web-app-status-bar-style')[0];
 
+      //// BEGIN
+      /* 2-REC - TODO: Themes - adapt
       if (themeColor.includes('dark')) {
         metaMsapplicationTileColor.setAttribute('content', '#fcfcfa');
         metaThemeColor.setAttribute('content', '#403E41');
@@ -477,6 +488,16 @@
         metaMsapplicationNavbuttonColor.setAttribute('content', '#eee8d5');
         metaAppleMobileWebAappStatusBarStyle.setAttribute('content', '#eee8d5');
       } 
+      */
+      //// MID
+      if (themeColor.includes('light')) {
+        metaMsapplicationTileColor.setAttribute('content', '#555');
+        metaThemeColor.setAttribute('content', '#eee');
+        metaMsapplicationNavbuttonColor.setAttribute('content', '#eee');
+        metaAppleMobileWebAappStatusBarStyle.setAttribute('content', '#eee');
+      }
+      //else...
+      //// END
     }
     
     if (localTheme) {
@@ -519,6 +540,7 @@
           });
         });
 
+        /* 2-REC: Removed Mermaid support
         if (window.mermaid) {
           if (selectedThemeVariant === "dark" || selectedThemeVariant === "hacker") {
             mermaid.initialize({ theme: 'dark' });
@@ -528,7 +550,9 @@
             location.reload();
           }
         }
+        */
 
+        /* 2-REC - TODO: Keep Utterances comments?
         var utterances = document.querySelector('iframe');
         if (utterances) {
           utterances.contentWindow.postMessage({
@@ -536,6 +560,7 @@
             theme: selectedThemeVariant === "dark" || selectedThemeVariant === "hacker" ? 'photon-dark' : selectedThemeVariant === 'kimbie' ? 'github-dark-orange' : 'github-light',
           }, 'https://utteranc.es');
         }
+        */
       });
     }) : null;
   // ============================================================  

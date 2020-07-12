@@ -230,8 +230,8 @@
     var boxContents = document.querySelectorAll('.box');
     var notAllowedTitleIds = null;
 
-    //{{ $tocFolding := $.Param "tocFolding" }}
-    //var tocFolding = JSON.parse({{ $tocFolding | jsonify }});
+    {{ $tocFolding := $.Param "tocFolding" }}
+    var tocFolding = JSON.parse({{ $tocFolding | jsonify }});
     {{ $tocLevels := ($.Param "tocLevels") }}
     var tocLevels = JSON.parse({{ $tocLevels | jsonify }});
     
@@ -313,7 +313,6 @@
                   tocElem.querySelector('a[href="#' + id + '"]') ?
                     tocElem.querySelector('a[href="#' + id + '"]').classList.add('active') : null;
 
-                  /*
                   if (false === tocFolding) {
                     
                   } else {
@@ -326,7 +325,6 @@
                         });
                       }) : null;
                   }
-                  */
 
                   var curElem = tableOfContentsElem.querySelector("[href='#" + id + "']");
                   if (curElem && curElem.nextElementSibling) {
@@ -389,7 +387,6 @@
                   tocElem.querySelector('a[href="#' + id + '"]') ?
                     tocElem.querySelector('a[href="#' + id + '"]').classList.add('active') : null;
 
-                  /*
                   if (false === tocFolding) {
                     
                   } else {
@@ -402,7 +399,6 @@
                         });
                       }) : null;
                   }
-                  */
 
                   var curElem = tableOfContentsElem.querySelector("[href='#" + id + "']");
                   if (curElem && curElem.nextElementSibling) {
@@ -428,7 +424,6 @@
           
         }
 
-        /*
         if (tableOfContentsElem && document.documentElement.scrollTop < 250) {
           if (false === tocFolding) {
 
@@ -441,7 +436,6 @@
               }) : null;
           }
         }
-        */
       }
       lastScrollTop = st <= 0 ? 0 : st;
     };

@@ -89,8 +89,6 @@
   }
 
   &[data-dir="ltr"] {
-    //////// BEGIN
-    /* 2-REC: Removed data-folding (?)
     &[data-folding=true] {
       @include themify($themes) {
         a {
@@ -145,32 +143,6 @@
         }   
       }
     }
-    */
-    //////// MID
-    //TODO: check that ok!
-    @include themify($themes) {
-      a {
-        color: themed('toc-vertical-line');
-
-        &.active {
-          color: themed('toc-vertical-line-active');
-          
-          &::before {
-            background-color: themed('toc-vertical-line-active');
-            content: '';
-            height: 0.95rem;
-            left: -1rem;
-            margin-top: 2px;
-            position: absolute;
-            width: 2px;            
-            &:last-child {
-              background-color: transparent;
-            }
-          }
-        }
-      }   
-    }
-    //////// END
 
     ul {
       @include themify($themes) {
@@ -185,8 +157,6 @@
   }
 
   &[data-dir="rtl"] {
-    //////// BEGIN
-    /* 2-REC: Removed data-folding (?)
     &[data-folding=true] {
       a {
         color: inherit;
@@ -242,32 +212,6 @@
         }   
       }
     }
-    */
-    //////// MID
-    //TODO: check that ok!
-    @include themify($themes) {
-      a {
-        color: themed('toc-vertical-line');
-
-        &.active {
-          color: themed('toc-vertical-line-active');
-          
-          &::before {
-            background-color: themed('toc-vertical-line-active');
-            content: '';
-            height: 0.95rem;
-            right: -1rem;
-            margin-top: 2px;
-            position: absolute;
-            width: 2px;            
-            &:last-child {
-              background-color: transparent;
-            }
-          }
-        }
-      }   
-    }
-    //////// END
 
     ul {
       @include themify($themes) {

@@ -4,10 +4,13 @@
 
 
 !!!!
-- ADD+ADAPT SINGLE-SCRIPT!!!!
-  - "script/single-script" => 'toc' part (remove hide, folding, outer, etc)
-  + see about each lib
-  + etc...
+- Finish adapting script/single-script
+  ok- 'toc' part (remove hide, outer, etc)
+  ok- see about each lib
+  - see about markdown + codeblocks
+    => If keep, need to handle all codes...
+    + check what is "language $"!
+
 TOC:
 - sidebar => SET CLASS SIMILAR TO TAGS, etc
 - check in "params.toml"
@@ -31,6 +34,9 @@ SIDEBARS:
   - check "body/main-left" + "body/main-right"
     => include empty partial "sidebar-menu.html"
 
+
+* [ ] busuanzi
+    => Keep? (as now: not enabled, but code still present)
 
 * [ ] "Archives" page (?)
 * [ ] Finish taxonomies

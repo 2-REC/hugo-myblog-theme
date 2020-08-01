@@ -72,16 +72,18 @@
     }
   }
 
-  pre.chroma {
-    &:first-child {
-      border: 6px solid transparent;
-      border-top: none;
-      border-bottom: none;
-    }
-    .lnt {
-      padding: 0 !important;
-    }
-  }
+// CHROMA - BEGIN
+//  pre.chroma {
+//    &:first-child {
+//      border: 6px solid transparent;
+//      border-top: none;
+//      border-bottom: none;
+//    }
+//    .lnt {
+//      padding: 0 !important;
+//    }
+//  }
+// CHROMA - MID
   
 
 

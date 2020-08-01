@@ -10,6 +10,10 @@
   - see about markdown + codeblocks
     => If keep, need to handle all codes...
     + check what is "language $"!
+    ok- chroma stuff
+    - $ => check!
+- Chroma
+  => rename all tags "CHROMA" to "2-REC: CHROMA"
 
 TOC:
 - sidebar => SET CLASS SIMILAR TO TAGS, etc

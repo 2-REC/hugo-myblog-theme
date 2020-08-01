@@ -30,9 +30,11 @@ $grid_row_gap: {{ .Site.Data.grid.grid_row_gap }};
 //$button_kimbie_primary_color: {{ .Site.Data.button.kimbie_primary_color }};
 //////// MID
 //TODO: see how to make dynamic?
-// (could also change names to 'theme_1_chroma', etc)
-$theme_light_chroma: {{ .Site.Data.skin.theme_light_chroma }};
-$theme_light_chroma_background: {{ .Site.Data.skin.theme_light_chroma_background }};
+// CHROMA - BEGIN
+//// (could also change names to 'theme_1_chroma', etc)
+//$theme_light_chroma: {{ .Site.Data.skin.theme_light_chroma }};
+//$theme_light_chroma_background: {{ .Site.Data.skin.theme_light_chroma_background }};
+// CHROMA - MID
 $button_light_primary_color: {{ .Site.Data.button.light_primary_color }};
 //////// END
 
@@ -47,7 +49,9 @@ $viewport_size: {{ .Site.Params.viewportSize | default "normal" }};
 @import 'abstracts/functions';
 @import 'abstracts/flexbox';
 
+// CHROMA - BEGIN
 //@import 'syntax/syntax';
+// CHROMA - MID
 
 @import 'base/reset';
 @import 'base/fonts';

@@ -153,6 +153,10 @@
     }
 
     pre {
+// CHROMA - MID
+      position: relative;
+// CHROMA - END
+
       padding: 34px 12px 8px;
       overflow: auto;
       border-radius: 0.34rem;
@@ -166,19 +170,21 @@
       }
     }
 
-    pre:not(.chroma) {
-      position: relative;
-    }
-
-    div.chroma {
-      position: relative;
-
-      @include on-event {
-        .copy-to-clipboard {
-          opacity: 1;
-        }
-      }
-    }
+// CHROMA - BEGIN
+//    pre:not(.chroma) {
+//      position: relative;
+//    }
+//
+//    div.chroma {
+//      position: relative;
+//
+//      @include on-event {
+//        .copy-to-clipboard {
+//          opacity: 1;
+//        }
+//      }
+//    }
+// CHROMA - MID
     
     pre > code:not([class^=language]) {
       &::before {
@@ -241,17 +247,19 @@
     .copy-to-clipboard:hover {
       @include translateY(-0.1rem);
     }
-    .chroma .copy-to-clipboard {
-      position: absolute;
-      right: 4px;
-      top: 5px;      
-      border-radius: 2px;
-      z-index: z('clipboard');
-      @include transition(all, 0.2s, ease);
-    }
-    .chroma .copy-to-clipboard:hover {
-      @include translateY(-0.1rem);
-    }
+// CHROMA - BEGIN
+//    .chroma .copy-to-clipboard {
+//      position: absolute;
+//      right: 4px;
+//      top: 5px;      
+//      border-radius: 2px;
+//      z-index: z('clipboard');
+//      @include transition(all, 0.2s, ease);
+//    }
+//    .chroma .copy-to-clipboard:hover {
+//      @include translateY(-0.1rem);
+//    }
+// CHROMA - MID
     .language-code .copy-to-clipboard {
       position: absolute;
       right: 4px;
@@ -463,7 +471,12 @@ code, pre {
   }
 }
 
-*:not(.chroma) {
+// CHROMA - BEGIN
+//*:not(.chroma) {
+// CHROMA - MID
+// TODO: should merge with previous block (?)
+* {
+// CHROMA - END
   code, pre {
     @include themify($codeblock) {
       color: themed('content-pre-color');
@@ -484,7 +497,11 @@ code:not([class^=language]) {
   }
 }
 
-pre:not(.chroma) {
+// CHROMA - BEGIN
+//pre:not(.chroma) {
+// CHROMA - MID
+pre {
+// CHROMA - END
   overflow: auto;
 }
 
@@ -530,100 +547,102 @@ pre:not(.chroma) {
   }
 }
 
-.highlight > .chroma {
-  margin: 1em 0;
-  border-radius: 5px;
-  box-shadow: 1px 1px 2px rgba(0,0,0,0.125);
-  z-index: z('content');
-  overflow-x: auto;
-  direction: ltr;
-  position: relative;
-
-  @include themify($codeblock) {
-    color: themed('content-pre-color');
-    background: themed('content-pre-background-color');
-  }
-
-  code {
-    padding: 0;
-  }
-  
-  code[data-lang] {
-    &::before {
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: z('grid');
-      padding: 2px 7px;
-      width: 100%;
-      height: 30px;
-      line-height: 1.9;
-      font-size: 13.8px;
-      font-family: $title-font;
-      font-weight: bold;
-      display: inline-block;
-      text-transform: capitalize;      
-      content: attr(data-lang);
-
-      @include themify($codeblock) {
-        color: themed('content-pre-header-color');
-        background: themed('content-pre-header-background-color');
-      }
-    }
-  }
-
-  table, tr, td {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    border-collapse: collapse;
-  }
-
-  .lntd {
-    &:first-child {
-      width: 10px;
-      @include no-select;
-
-      pre {
-        margin: 0;
-        padding: 34px 4px 6px;
-      }
-    }
-
-    &:last-child {
-      vertical-align: top;
-
-      pre {
-        margin: 0;
-        padding: 34px 4px 6px;
-      }
-    }
-  }
-
-  /* LineNumbersTable */  
-  .lnt {
-    @include themify($codeblock) {
-      color: themed('content-pre-number-color');
-    }
-  }
-
-  table.lntable {
-    overflow-x: auto;
-    @include themify($themes) {
-      @include webkit-scrollbars(themed('custom-scrollbar-foreground-color'), themed('custom-scrollbar-background-color'));
-      @include moz-scrollbars(themed('custom-scrollbar-foreground-color'), themed('custom-scrollbar-background-color'));
-    }
-  }
-}
-
-li .highlight > .chroma {
-  .lnt:first-child {
-    padding: 0 0.3rem;
-  }
-  .lnt:not(:first-child) {
-    padding: 0 0.3rem;
-  }
-}
+// CHROMA - MID
+//.highlight > .chroma {
+//  margin: 1em 0;
+//  border-radius: 5px;
+//  box-shadow: 1px 1px 2px rgba(0,0,0,0.125);
+//  z-index: z('content');
+//  overflow-x: auto;
+//  direction: ltr;
+//  position: relative;
+//
+//  @include themify($codeblock) {
+//    color: themed('content-pre-color');
+//    background: themed('content-pre-background-color');
+//  }
+//
+//  code {
+//    padding: 0;
+//  }
+//  
+//  code[data-lang] {
+//    &::before {
+//      position: absolute;
+//      top: 0;
+//      left: 0;
+//      z-index: z('grid');
+//      padding: 2px 7px;
+//      width: 100%;
+//      height: 30px;
+//      line-height: 1.9;
+//      font-size: 13.8px;
+//      font-family: $title-font;
+//      font-weight: bold;
+//      display: inline-block;
+//      text-transform: capitalize;      
+//      content: attr(data-lang);
+//
+//      @include themify($codeblock) {
+//        color: themed('content-pre-header-color');
+//        background: themed('content-pre-header-background-color');
+//      }
+//    }
+//  }
+//
+//  table, tr, td {
+//    margin: 0;
+//    padding: 0;
+//    width: 100%;
+//    border-collapse: collapse;
+//  }
+//
+//  .lntd {
+//    &:first-child {
+//      width: 10px;
+//      @include no-select;
+//
+//      pre {
+//        margin: 0;
+//        padding: 34px 4px 6px;
+//      }
+//    }
+//
+//    &:last-child {
+//      vertical-align: top;
+//
+//      pre {
+//        margin: 0;
+//        padding: 34px 4px 6px;
+//      }
+//    }
+//  }
+//
+//  /* LineNumbersTable */  
+//  .lnt {
+//    @include themify($codeblock) {
+//      color: themed('content-pre-number-color');
+//    }
+//  }
+//
+//  table.lntable {
+//    overflow-x: auto;
+//    @include themify($themes) {
+//      @include webkit-scrollbars(themed('custom-scrollbar-foreground-color'), themed('custom-scrollbar-background-color'));
+//      @include moz-scrollbars(themed('custom-scrollbar-foreground-color'), themed('custom-scrollbar-background-color'));
+//    }
+//  }
+//}
+//
+//li .highlight > .chroma {
+//  .lnt:first-child {
+//    padding: 0 0.3rem;
+//  }
+//  .lnt:not(:first-child) {
+//    padding: 0 0.3rem;
+//  }
+//}
+// CHROMA - MID
 
 td:not(.lntd) {
   code {

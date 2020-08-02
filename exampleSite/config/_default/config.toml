@@ -18,21 +18,21 @@ paginate = 13 #TODO: used? use?
 
 googleAnalytics = ""
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      hardWraps = true
+      unsafe = true
+      xHTML = true
+  [markup.highlight]
+    codeFences = true
+    lineNos = true
+    lineNumbersInTable = true
+    noClasses = false
+  [markup.tableOfContents]
+    endLevel = 4
+    ordered = false
+    startLevel = 2
 
 
 

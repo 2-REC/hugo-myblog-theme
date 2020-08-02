@@ -10,7 +10,7 @@ $grid_column_gap_unit: {{ .Site.Data.grid.grid_column_gap_unit }};
 $grid_navbar_height: {{ .Site.Data.grid.grid_navbar_height }};
 $grid_row_gap: {{ .Site.Data.grid.grid_row_gap }};
 
-//////// BEGIN
+//////// THEMES - BEGIN
 //$theme_light_chroma: {{ .Site.Data.skin.theme_light_chroma }};
 //$theme_dark_chroma: {{ .Site.Data.skin.theme_dark_chroma }};
 //$theme_hacker_chroma: {{ .Site.Data.skin.theme_hacker_chroma }};
@@ -28,15 +28,13 @@ $grid_row_gap: {{ .Site.Data.grid.grid_row_gap }};
 //$button_hacker_primary_color: {{ .Site.Data.button.hacker_primary_color }};
 //$button_solarized_primary_color: {{ .Site.Data.button.solarized_primary_color }};
 //$button_kimbie_primary_color: {{ .Site.Data.button.kimbie_primary_color }};
-//////// MID
+//////// THEMES - MID
 //TODO: see how to make dynamic?
-// CHROMA - BEGIN
-//// (could also change names to 'theme_1_chroma', etc)
-//$theme_light_chroma: {{ .Site.Data.skin.theme_light_chroma }};
-//$theme_light_chroma_background: {{ .Site.Data.skin.theme_light_chroma_background }};
-// CHROMA - MID
+// (could also change names to 'theme_1_chroma', etc)
+$theme_light_chroma: {{ .Site.Data.skin.theme_light_chroma }};
+$theme_light_chroma_background: {{ .Site.Data.skin.theme_light_chroma_background }};
 $button_light_primary_color: {{ .Site.Data.button.light_primary_color }};
-//////// END
+//////// THEMES - END
 
 $title-font: {{ .Site.Data.font.title_font }};
 $content-font: {{ .Site.Data.font.content_font }};
@@ -49,9 +47,7 @@ $viewport_size: {{ .Site.Params.viewportSize | default "normal" }};
 @import 'abstracts/functions';
 @import 'abstracts/flexbox';
 
-// CHROMA - BEGIN
-//@import 'syntax/syntax';
-// CHROMA - MID
+@import 'syntax/syntax';
 
 @import 'base/reset';
 @import 'base/fonts';
@@ -62,11 +58,11 @@ $viewport_size: {{ .Site.Params.viewportSize | default "normal" }};
 @import 'layout/navigation';
 @import 'layout/grid';
 @import 'layout/header';
-//@import 'layout/body';
+@import 'layout/body';
 @import 'layout/footer';
 @import 'layout/sidebar';
 
-//@import 'components/alert';
+@import 'components/alert';
 @import 'components/bio';
 //@import 'components/breadcrumb';
 //@import 'components/diagram';
@@ -74,7 +70,7 @@ $viewport_size: {{ .Site.Params.viewportSize | default "normal" }};
 @import 'components/gtt';
 @import 'components/hr';
 //@import 'components/math';
-//@import 'components/notice';
+@import 'components/notice';
 @import 'components/pagination';
 //@import 'components/related';
 //@import 'components/search';
@@ -83,15 +79,15 @@ $viewport_size: {{ .Site.Params.viewportSize | default "normal" }};
 @import 'components/switch';
 @import 'components/taxo';
 @import 'components/toc';
-//@import 'components/tooltip';
+@import 'components/tooltip';
 //@import 'components/whoami';
 //@import 'components/busuanzi'; //TODO: uncomment if using Busuanzi
 //@import 'components/donation';
-//@import 'components/box';
+@import 'components/box';
 //@import 'components/modal';
-//@import 'components/codetab';
+@import 'components/codetab';
 @import 'components/ie';
-//@import 'components/tab';
+@import 'components/tab';
 @import 'components/button';
 //@import 'components/featuredImage';
 

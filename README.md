@@ -3,13 +3,11 @@ HUGO theme for blogs.
 
 
 TODO: complete/rewrite/etc.
-- Chroma: code syntax highlighting
-  => Removed, but can put back by uncommenting blocks delimited by "CHROMA - BEGIN/MID/END"
-- skin.toml
-  => only used with Chroma
-- sass/syntax/*
-  + _syntax.scss
-  => Chroma styles, can put back those desired if using Chroma
+- Syntax highlighting (using Chroma)
+  - sass/syntax
+    (+reference Chroma site? - or indicate in )
+    - Only keep minimum, add as desired
+        => For each language: scss file + entry in "_syntax.scss"
 
 
 ## Changed Features from original Zzo Theme

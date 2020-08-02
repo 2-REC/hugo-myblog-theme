@@ -336,13 +336,8 @@
 
 
     // =========================== clipboard ===========================
-    /* 2-REC - TODO: CONTINUE FROM HERE!!!! */
     var clipInit = false;
-    {{/* 2-REC - CHROMA - BEGIN */}}
-    {{/*
     var preChromaElem = document.querySelectorAll('pre.chroma');
-    */}}
-    {{/* 2-REC - CHROMA - MID */}}
     var langCodeElem = document.querySelectorAll('.language-code');
     var dollarCodeElem = document.querySelectorAll('div.language-\\$');
     var gtCodeElem = document.querySelectorAll('div.language-\\>');
@@ -426,16 +421,12 @@
       elem.parentNode.parentNode.insertBefore(clipboardSpan, elem.parentNode.nextElementSibling);
     }
 
-    {{/* 2-REC - CHROMA - BEGIN */}}
-    {{/*
     preChromaElem ? 
     preChromaElem.forEach(function(elem) {
       elem.querySelectorAll('code').forEach(function(codeElem) {
         makeClipboard(codeElem);
       });
     }) : null;
-    */}}
-    {{/* 2-REC - CHROMA - MID */}}
     
     langCodeElem ? 
     langCodeElem.forEach(function(elem) {

@@ -3,19 +3,17 @@
 ## PRIORITIES / CURRENT STATE
 
 
-!!!!
-- Finish adapting script/single-script
-  ok- 'toc' part (remove hide, outer, etc)
-  ok- see about each lib
-  - see about markdown + codeblocks
-    => If keep, need to handle all codes...
-    + check what is "language $"!
-    ok- chroma stuff
-    - $ => check!
-- Chroma
-  => rename all tags "CHROMA" to "2-REC: CHROMA"
+- [ ] set codeblock-script optional in single-script
+  => config param
+- fix colors in code blocks (somehow different tahn zzo, but same css)
+- FIX TOC (overlap rest of sidebar +all unfolded +fonts?)
+  => probably related to previous point (folding+toggle)
+- implement/finish "summary" stuff
 
+!!!!
 TOC:
+! - LOOK AGAIN AT TOC-FOLDING & TOGGLE-TOC!!!!
+  => FIX TOC UNFOLDING WHEN GOING DOW IN PAGE
 - sidebar => SET CLASS SIMILAR TO TAGS, etc
 - check in "params.toml"
   + 'enableToc' => rename to enableSidebarToc

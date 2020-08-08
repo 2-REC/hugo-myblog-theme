@@ -55,7 +55,7 @@ link = "https://somesite.org"
 enableSidebar = true #TODO: remove!
 sidebarHome = [ "bio", "top", "recent", "-", "tags", "categories", "series" ]
 sidebarHomePosition = "right" # "left"|"right"
-sidebarSingle = [ "toc", "-", "tags", "categories", "series" ] #TODO
+sidebarSingle = [ "-", "toc", "tags", "categories", "series" ] #TODO
 #sidebarSinglePosition = "right" # "left"|"right" #TODO
 sidebarList = [ "recent", "-", "tags", "categories", "series" ]
 sidebarListPosition = "right" # "left"|"right"
@@ -71,12 +71,9 @@ enableSidebarTags = true # Default: false
 enableSidebarSeries = true # Default: false
 enableSidebarCategories = true # Default: false
 enableToc = true #TODO: rename to enableSidebarToc
-#hideToc = false #TODO: remove
-tocFolding = false # ul 'dot' before TOC elements
-tocPosition = "inner" #TODO: remove
-enableTocSwitch = true #TODO: remove
+tocLevels = ["h2", "h3", "h4"]
+tocFolding = true # collapse sub titles
 itemsPerCategory = 5 #TODO: set 1 for each component? (recent, top, etc.)
-#sidebarPosition = "right" #TODO: remove (?) - or allow to specify at page level?
 
 
 # footer

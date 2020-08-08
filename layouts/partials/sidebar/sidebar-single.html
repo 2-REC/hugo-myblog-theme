@@ -1,4 +1,5 @@
 {{ if $.Param "sidebarSingle" }}
+{{ if $.Param "enableToc" }}
 {{/*TODO: ok if "div" instead of "section"? */}}
 <ul class="sidebar">
 {{ range $index, $value := $.Param "sidebarSingle" }}
@@ -39,4 +40,5 @@
     {{ end }}
 {{ end }}
 </ul>
+{{ end }}
 {{ end }}

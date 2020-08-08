@@ -1,7 +1,9 @@
 .toc {
   width: 100%;
   max-width: $sidebar-width;
+  /* 2-REC: to allow floating in sidebar
   position: fixed;
+  */
   top: 7rem;
   font-size: 0.85rem;
   padding-left: 0.5rem;

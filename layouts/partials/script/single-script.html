@@ -133,7 +133,7 @@
     /* 2-REC: removed "hideToc" */
     //var hideToc = JSON.parse({{ $hideToc | jsonify }});
     var tocFlexbox = document.querySelector('.toc__flexbox');
-    /* 2-REC: removed "outer toc" (redundant "enableToc") */
+    /* 2-REC: removed "outer toc" */
     //var tocFlexboxOuter = document.querySelector('.toc__flexbox--outer');
     var tocFolding = JSON.parse({{ $tocFolding | jsonify }});
     
@@ -188,7 +188,7 @@
               tocFlexbox.classList.add('hide');
             }
           }
-          /* 2-REC: removed "outer toc" (redundant "enableToc") */
+          /* 2-REC: removed "outer toc" */
           /*
           if (tocFlexboxOuter) {
             tocFlexboxOuter.setAttribute('data-position', '');
@@ -472,11 +472,13 @@
     // =================================================================
 
 
-    {{/* 2-REC: Removed "Mermaid"
-    // ============================ mermaid ============================
+    {{/* 2-REC: Removed libs
     {{ $lib := .Params.libraries }}
     var lib = JSON.parse({{ $lib | jsonify }});
+    */}}
 
+    {{/* 2-REC: Removed "Mermaid"
+    // ============================ mermaid ============================
     if (lib && lib.includes('mermaid')) {
       {{ $themeVariant := (index .Site.Params.themeOptions 0) }}
       var themeVariant = localStorage.getItem('theme') || JSON.parse({{ $themeVariant | jsonify }});

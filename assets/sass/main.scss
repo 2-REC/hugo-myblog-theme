@@ -64,7 +64,7 @@ $viewport_size: {{ .Site.Params.viewportSize | default "normal" }};
 
 @import 'components/alert';
 @import 'components/bio';
-//@import 'components/breadcrumb';
+@import 'components/breadcrumb';
 //@import 'components/diagram';
 @import 'components/expand';
 @import 'components/gtt';

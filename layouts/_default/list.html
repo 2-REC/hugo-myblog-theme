@@ -17,9 +17,9 @@
 <main class="main inner" data-sidebar-position="$sidebarPosition">
     <div class="list__main {{ if $enableSidebar }}{{ if eq $sidebarPosition "left" }}mr{{ else }}lm{{ end }}{{ else }}lmr{{ end }}">
 {{/* 2-REC - SIDEBAR - END */}}
-        {{/* TODO: breadcrumb + add enable check!
-        {{ partial "body/breadcrumb" . }}
-        */}}
+        {{ if $.Param "enableBreadcrumb" }}
+            {{ partial "body/breadcrumb" . }}
+        {{ end }}
         <header class="list__header">
             <h5 class="list__header--title capitalize h5">{{.Title}}</h5>
         </header>

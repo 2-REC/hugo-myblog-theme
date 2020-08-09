@@ -29,15 +29,14 @@ SIDEBARS:
         => specified where/how?
     * [ ] Add subscription/newsletter
         => check with notes (probably will use MailChimmp)
-* [ ] Add "breadcrumb" stuff!
-    * [ ] in "list"
-        * [ ] +add optional (as in "single")
-    * [ ] in "taxonomies"
-        * [ ] +add optional (as in "single")
-    * [ ] in "single"
+* [x] Add "breadcrumb" stuff!
+    * [x] in "list"
+        * [x] +add optional (as in "single")
+    * [x] in "taxonomies"
+        * [x] +add optional (as in "single")
+    * [x] in "single"
 * [ ] Continue "single" layout
     * [ ] Sidebar
-        * [ ] NO "recent posts"
         * [ ] subscribe?
         * [ ] +more?
     * [ ] See about "inner", "outer" for sidebar stuff... (nice to have, but a bit buggy)

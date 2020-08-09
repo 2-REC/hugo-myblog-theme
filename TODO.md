@@ -15,17 +15,8 @@ TOC:
 
 SIDEBARS:
 - TEST EVERYTHING RELATED TO SIDEBARS!
-- keep "params.toml" up to date
-  - remove enableSidebar, etc (after adapted!)
 - set idividual component (adapt/create each partial, +handle specific parameters)
-  - toc
-    !!!! - PUT AS IT WAS, ONLY ADAPT "single.html" to "extend" sidebar (not only TOC)
-  v- recent
-  - other?
 - see how to make sidebars code more generic (instead of copied for every type)
-- see about sidebar menu
-  - check "body/main-left" + "body/main-right"
-    => include empty partial "sidebar-menu.html"
 
 
 * [ ] busuanzi

@@ -10,6 +10,7 @@
     /*TODO: refactor more properly */
     {{ $enableSidebar := false }}
     {{ $sidebarPosition := "right" }}
+    {{ $sidebarSingle := false }}
 
     {{ $kind := $.Kind }}
     {{ if eq $kind "home" }}
@@ -23,6 +24,7 @@
     {{ else if eq $kind "page" }}
         {{ if $.Param "sidebarSingle" }}
             {{ $enableSidebar = true }}
+            {{ $sidebarSingle = true }}
         {{ end }}
         {{ if $.Param "sidebarSinglePosition" }}
             {{ $sidebarPosition = $.Param "sidebarSinglePosition" }}
@@ -46,10 +48,15 @@
 
     var sidebarPosition = JSON.parse({{ $sidebarPosition | jsonify }});
     var enableSidebar = JSON.parse({{ $enableSidebar | jsonify }});
+    var sidebarSingle = JSON.parse({{ $sidebarSingle | jsonify }});
     /* 2-REC - SIDEBARS - END */
 
-    var listMainElem = document.querySelector('.list__main');
-    var listSideElem = document.querySelector('.list__sidebar');
+    var mainElem = document.querySelector('.list__main');
+    var sideElem = document.querySelector('.list__sidebar');
+    if (sidebarSingle) {
+        mainElem = document.querySelector('.single__main');
+        sideElem = document.querySelector('.single__sidebar');
+    }
 
     var gridSmall = 'l';
     var gridBig = 'mr';
@@ -63,36 +70,36 @@
     enquire.register("screen and (max-width: 769px)", {
         match: function () {
             if (enableSidebar) {
-                listMainElem.classList.remove(gridBig);
-                listMainElem.classList.add(gridFull);
-                listSideElem.classList.remove(gridSmall);
-                listSideElem.classList.add('hide');
+                mainElem.classList.remove(gridBig);
+                mainElem.classList.add(gridFull);
+                sideElem.classList.remove(gridSmall);
+                sideElem.classList.add('hide');
             } else {
-                if (listMainElem && !listMainElem.classList.contains(gridFull)) {
-                    listMainElem.classList.remove(gridBig);
-                    listMainElem.classList.add(gridFull);
+                if (mainElem && !mainElem.classList.contains(gridFull)) {
+                    mainElem.classList.remove(gridBig);
+                    mainElem.classList.add(gridFull);
                 }
 
-                if (listSideElem && !listSideElem.classList.contains('hide')) {
-                    listSideElem.classList.add('hide');
+                if (sideElem && !sideElem.classList.contains('hide')) {
+                    sideElem.classList.add('hide');
                 }
             }
 
         },
         unmatch: function () {
             if (enableSidebar) {
-                listMainElem.classList.remove(gridFull);
-                listMainElem.classList.add(gridBig);
-                listSideElem.classList.add(gridSmall);
-                listSideElem.classList.remove('hide');
+                mainElem.classList.remove(gridFull);
+                mainElem.classList.add(gridBig);
+                sideElem.classList.add(gridSmall);
+                sideElem.classList.remove('hide');
             } else {
-                if (listMainElem && !listMainElem.classList.contains(gridFull)) {
-                    listMainElem.classList.remove(gridBig);
-                    listMainElem.classList.add(gridFull);
+                if (mainElem && !mainElem.classList.contains(gridFull)) {
+                    mainElem.classList.remove(gridBig);
+                    mainElem.classList.add(gridFull);
                 }
 
-                if (listSideElem && !listSideElem.classList.contains('hide')) {
-                    listSideElem.classList.add('hide');
+                if (sideElem && !sideElem.classList.contains('hide')) {
+                    sideElem.classList.add('hide');
                 }
             }
 
@@ -106,11 +113,7 @@
             if (document.getElementsByClassName('navbar__menu')[0]) {
                 document.getElementsByClassName('navbar__menu')[0].classList.remove('is-active');
             }
-            {{/* 2-REC: removed search
-            if (document.getElementsByClassName('mobile-search')[0]) {
-                document.getElementsByClassName('mobile-search')[0].classList.add('hide');
-            }
-            */}}
+            {{/* 2-REC: removed search */}}
         },
         setup: function () { },
         deferSetup: true,

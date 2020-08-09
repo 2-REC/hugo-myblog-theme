@@ -52,7 +52,6 @@ link = "https://somesite.org"
 
 # Sidebar
 # Allowed components: "bio", "top", "recent", "tags", "categories", "series", "-"
-enableSidebar = true #TODO: remove!
 sidebarHome = [ "bio", "top", "recent", "-", "tags", "categories", "series" ]
 sidebarHomePosition = "right" # "left"|"right"
 sidebarSingle = [ "-", "toc", "tags", "categories", "series" ] #TODO

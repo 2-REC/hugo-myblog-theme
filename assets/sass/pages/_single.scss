@@ -5,6 +5,46 @@
   width: 100%;
   overflow-wrap: break-word;
 
+//// 2-REC - SIDEBAR - MID
+  &__main {
+    position: relative;
+  
+    &[data-display="block"] {
+      display: block; 
+    }
+
+    &[data-display="none"] {
+      display: none;
+    }
+  }
+
+  &__sidebar {
+    &.l {
+      margin-left: 1rem;
+
+      &[data-dir="rtl"] {
+        margin-left: 0;
+        margin-right: 1rem;
+      }
+
+      &[data-dir="ltr"] {
+        margin-left: 1rem;
+        margin-right: 0;
+      }
+    }
+
+    &[data-dir="rtl"] {
+      margin-left: 1rem;
+      margin-right: 0;
+    }
+
+    &[data-dir="ltr"] {
+      margin-left: 0;
+      margin-right: 1rem;
+    }
+  }
+//// 2-REC - SIDEBAR - END
+
   &__title {
     font-size: 2.5rem;
     font-weight: 900;

@@ -1,6 +1,5 @@
 {{ define "main" }}
 
-{{/* TODO: what is tag "main-main"? */}}
 {{/* 2-REC - SIDEBAR - BEGIN */}}
 {{/*
 <main class="single__main {{ if or ($.Param "enableToc") ($.Param "toc") }}{{ if $.Param "hideToc" }}main{{ else if eq ($.Param "tocPosition") "outer" }}main{{ else }}main-main{{ end }}{{ else }}main{{ end }}">
@@ -15,7 +14,7 @@
     {{ $enableSidebar = true }}
 {{ end }}
 <main class="main inner" data-sidebar-position="$sidebarPosition">
-    <div class="list__main {{ if $enableSidebar }}{{ if eq $sidebarPosition "left" }}mr{{ else }}lm{{ end }}{{ else }}lmr{{ end }}">
+    <div class="single__main {{ if $enableSidebar }}{{ if eq $sidebarPosition "left" }}mr{{ else }}lm{{ end }}{{ else }}lmr{{ end }}">
 {{/* 2-REC - SIDEBAR - END */}}
         {{/* TODO: breadcrumb
         {{ if $.Param "enableBreadcrumb" }}
@@ -41,67 +40,13 @@
 
     {{/* 2-REC - SIDEBAR - MID */}}
     {{ if $enableSidebar }}
-        <aside class="list__sidebar {{ if eq $sidebarPosition "left" }}l{{ else }}r{{ end }}" data-dir="{{ $.Param "languagedir" | default "ltr" }}">
+        <aside class="single__sidebar {{ if eq $sidebarPosition "left" }}l{{ else }}r{{ end }}" data-dir="{{ $.Param "languagedir" | default "ltr" }}">
             {{ partial "sidebar/sidebar-single" . }}
         </aside>
     {{ end }}
     {{/* 2-REC - SIDEBAR - END */}}
 </main>
 
-{{/* TODO: SEE IF NEED TO PUT "toc" SCRIPT STUFF BACK => handled by sidebar?
-  - toc stuff => CHECK IF NEED TO ADD+ADAPT SCRIPT WITH "list__main"+"list__sidebar" (instead of "single__main"+"single__side")
-    (+remove "outer" stuff)
-  - what about 'navbar' stuff?!?
- */}}
-
 {{ partial "script/sidebar-script" . }}
-
-
-{{/* 2-REC: only if "single__main" class for main div element.
-    => BUT if using it, need to adapt rest (cannot use "list__sidebar")
-<script>
-  {{ $enableToc:= $.Param "enableToc" }}
-
-  var enableToc = JSON.parse({{ $enableToc | jsonify }});
-  
-  var singleMainElem = document.querySelector('.single__main');
-  var singleSideElem = document.querySelector('.single__side');
-
-  enquire.register("screen and (max-width: 769px)", {
-    match: function () {
-      if (enableToc) {
-        if (singleMainElem && singleSideElem) {
-          singleMainElem.classList.remove('main-main');
-          singleMainElem.classList.add('main');
-          singleSideElem.classList.remove('main-side');
-          singleSideElem.classList.add('hide');
-        }
-      }
-    },
-    unmatch: function () {
-      if (enableToc) {
-        singleMainElem.classList.remove('main');
-        singleMainElem.classList.add('main-main');
-        singleSideElem.classList.remove('hide');
-        singleSideElem.classList.add('main-side');
-      }
-
-      var navCollapseBtn = document.querySelector('.navbar__burger');
-      var navCollapse = document.getElementsByClassName('navbarm__collapse')[0];
-      if (navCollapse) {
-        navCollapse.setAttribute('data-open', false);
-        navCollapse.style.maxHeight = 0;
-        navCollapseBtn.classList.remove('is-active');
-      }
-      document.getElementsByClassName('navbar__menu')[0].classList.remove('is-active');
-    },
-    setup: function () { },
-    deferSetup: true,
-    destroy: function () { },
-  });
-</script>
-*/}}
-
-
 {{ partial "script/single-script" . }}
 {{ end }}

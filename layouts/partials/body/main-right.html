@@ -8,9 +8,4 @@
 <div class="wrapper__right hide" data-pad="{{ $isPad }}" dir="ltr">
   <script>document.querySelector('.wrapper__right').classList.remove('hide')</script>
 </div>
-{{/* TODO: "enableSidebarMenu"? => defined where? (same as "enableSidebar"?) */}}
-{{ else if and (eq ($.Param "languagedir") "rtl") ($.Param "enableSidebarMenu") }}
-  <div class="wrapper__right" data-pad="{{ $isPad }}" dir="rtl">
-    
-  </div>
 {{ end }}

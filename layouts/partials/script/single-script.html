@@ -380,7 +380,7 @@
           clipInit = true;
         }
 
-        {{/* 2-REC - SIDEBAR - BEGIN */}}
+        {{/* 2-REC - BEGIN */}}
         {{/* 2-REC: Removed most libraries
         var notAllowedClass = ['language-mermaid', 'language-viz', 'language-wave', 'language-chart', 'language-msc', 'language-flowchart'];
         var isNotAllowedIncluded = false;
@@ -402,7 +402,7 @@
           }
         }
         */}}
-        {{/* 2-REC - SIDEBAR - MID */}}
+        {{/* 2-REC - MID */}}
         var curClassName = code.getAttribute('class');
         if (curClassName) {
           var newClipboardElem = document.createElement('span');
@@ -410,7 +410,7 @@
           newClipboardElem.setAttribute('title', 'Copy to clipboard');
           elem.parentNode.parentNode.insertBefore(newClipboardElem, elem.parentNode.nextElementSibling);
         }
-        {{/* 2-REC - SIDEBAR - END */}}
+        {{/* 2-REC - END */}}
       }
     }
 

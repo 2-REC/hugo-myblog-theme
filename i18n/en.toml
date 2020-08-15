@@ -95,8 +95,8 @@ other = "Home"
 #[showcase-pinned]
 #other = "Pinned"
 #
-#[nojs-message]
-#other = "This page looks best with JavaScript enabled"
+[nojs-message]
+other = "This page looks best with JavaScript enabled"
 #
 #[posts-by-order]
 #other = "TOP POSTS"

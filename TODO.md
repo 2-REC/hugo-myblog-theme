@@ -7,6 +7,7 @@
   => config param
 - fix colors in code blocks (somehow different tahn zzo, but same css)
 - implement/finish "summary" stuff
+- make sure "archetypes/header" is only as example
 
 !!!!
 TOC:
@@ -37,9 +38,11 @@ SIDEBARS:
     * [x] in "single"
 * [ ] Continue "single" layout
     * [ ] Sidebar
+        * [ ] donation?
         * [ ] subscribe?
         * [ ] +more?
-    * [ ] See about "inner", "outer" for sidebar stuff... (nice to have, but a bit buggy)
+    * [x] See about "inner", "outer" for sidebar stuff... (nice to have, but a bit buggy)
+        => Don't keep
     * [ ] check for "hideSingleContentsWhenJSDisabled" role and effects
     * [ ] ...
 * [ ] Handle themes more cleanly
@@ -99,7 +102,7 @@ LATER:
 
 
 ### assets
-* [x] FIX CSS+FONTS ISSUES!
+* [ ] Check CSS + fonts for every component/page
 * [ ] Adapt CSS
 
 * [ ] sass
@@ -115,7 +118,10 @@ LATER:
     * [ ] components
         * [ ] See what to keep/adapt
         * [ ] _ie.scss
-          => change? keep all?
+            * [ ] change? keep all?
+            * [ ] keep "-main" and "-side" stuff? => CHECK IF USED! (header, footer, nav, ...)
+        * [ ] _grid.scss
+            * [ ] keep "-main" and "-side" stuff? => CHECK IF USED! (header, footer, nav, ...)
         * [ ] _hr.scss
           => change? keep all?
         * [ ] _taxonomy.scss
@@ -143,7 +149,26 @@ LATER:
 ### layouts
 * [ ] _default
     * [ ] single
-        * [ ] continue as in Zzo! (+"single-script"!)
+        * [ ] "single-script"
+            => Make sure everything is ok
+        * [ ] nojs
+            => Make nicer CSS (?)
+        * [ ] meta
+            * [ ] body/infos
+            * [ ] body/tags
+            * [ ] add more? share?
+        * [ ] Content, other partials
+            * [x] "script/codeblock-script"
+            * [ ] "body/share"
+                => Here, or in meta?
+            * [ ] "body/donation"
+                => Here or in sidebar?
+            * [ ] "body/whoami"
+                => Here or only in sidebar?
+            * [ ] "body/related"
+            * [ ] "pagination/pagination-single"
+            * [ ] "comments/comments.html"
+            * [ ] "body/photoswipe"
     * [ ] taxonomy
         * [ ] continue as in Zzo!
 * [ ] partials

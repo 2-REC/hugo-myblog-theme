@@ -15,7 +15,7 @@ notAllowedTypesInHomeSidebar = ["about", "archive"] #TODO: adapt! (contact?)
 
 viewportSize = "normal" # widest, wider, wide, normal, narrow
 enableUiAnimation = true
-
+hideSingleContentsWhenJSDisabled = false
 
 # header
 homeHeaderType = "slide" # text, img, slide

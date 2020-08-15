@@ -19,18 +19,35 @@
         {{ if $.Param "enableBreadcrumb" }}
             {{ partial "body/breadcrumb" . }}
         {{ end }}
-
-        {{/* TODO: ADD CONTENT! - see ZZO original (nojs, and other partials: infos, tags, etc.) */}}
-        <div class="single">
+        {{ if $.Param "hideSingleContentsWhenJSDisabled" }}
+        <noscript>
+            <div class="single__nojs">
+                {{ i18n "nojs-message" }}
+            </div>
+        </noscript>
+        {{ end }}
+        <div class="single {{ if $.Param "hideSingleContentsWhenJSDisabled" }}hide{{ end }}">
+            {{/* 2-REC: why here as well? */}}
+            <div class="single__nojs">{{ i18n "nojs-message" }}</div>
+            <script>document.querySelector('.single').classList.remove('hide'); document.querySelector('.single__nojs').classList.add('hide');</script>
             <h2 class="single__title" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}">{{ .Title }}</h2>
+            {{/* TODO: add meta */}}
             <article class="single__contents" data-dir="{{ if ne ($.Param "languagedir") "rtl" }}ltr{{ else }}rtl{{ end }}" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}">
                 {{ partial "body/toc" . }}
                 {{ .Content }}
             </article>
 
-            {{/* 2-REC: Add partials! */}}
-            {{/* ... */}}
             {{ partial "script/codeblock-script" . }}
+            {{/* TODO: Add other partials */}}
+            {{/*
+            ? {{ partial "body/share" . }}
+            ? {{ partial "body/donation" . }}
+            x {{ partial "body/whoami" . }}
+            {{ partial "body/related" . }}
+            {{ partial "pagination/pagination-single" . }}
+            {{ partial "comments/comments.html" . }}
+            {{ partial "body/photoswipe" . }}
+            */}}
 
             {{/* 2-REC: removed search */}}
         </div>
@@ -38,7 +55,8 @@
 
     {{/* 2-REC - SIDEBAR - MID */}}
     {{ if $enableSidebar }}
-        <aside class="single__sidebar {{ if eq $sidebarPosition "left" }}l{{ else }}r{{ end }}" data-dir="{{ $.Param "languagedir" | default "ltr" }}">
+        <aside class="single__sidebar hide {{ if eq $sidebarPosition "left" }}l{{ else }}r{{ end }}" data-dir="{{ $.Param "languagedir" | default "ltr" }}">
+            <script>document.querySelector('.single__sidebar').classList.remove('hide')</script>
             {{ partial "sidebar/sidebar-single" . }}
         </aside>
     {{ end }}

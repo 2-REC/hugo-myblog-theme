@@ -1,20 +1,37 @@
 {{ define "main" }}
 
+{{/* TODO: make sure it's ok... */}}
 {{/* 2-REC - SIDEBAR - BEGIN */}}
 {{/*
 <main class="single__main {{ if or ($.Param "enableToc") ($.Param "toc") }}{{ if $.Param "hideToc" }}main{{ else if eq ($.Param "tocPosition") "outer" }}main{{ else }}main-main{{ end }}{{ else }}main{{ end }}">
 */}}
 {{/* 2-REC - SIDEBAR - MID */}}
-{{ $sidebarPosition := "right" }}
-{{ if $.Param "sidebarSinglePosition" }}
-    {{ $sidebarPosition = $.Param "sidebarSinglePosition" }}
-{{ end }}
 {{ $enableSidebar := false }}
-{{ if $.Param "sidebarSingle" }}
+{{ $enableSidebarRight := not ($.Param "disableSidebarRight") }}
+{{ $enableSidebarLeft := not ($.Param "disableSidebarLeft") }}
+{{ $sidebarPosition := "none" }}
+{{ if and $enableSidebarRight ($.Param "sidebarSingleRight") }}
     {{ $enableSidebar = true }}
+    {{ if and $enableSidebarLeft ($.Param "sidebarSingleLeft") }}
+        {{ $sidebarPosition = "both" }}
+    {{ else }}
+        {{ $sidebarPosition = "right" }}
+    {{ end }}
+{{ else }}
+    {{ if and $enableSidebarLeft ($.Param "sidebarSingleLeft") }}
+        {{ $enableSidebar = true }}
+        {{ $sidebarPosition = "left" }}
+    {{ end }}
 {{ end }}
 <main class="main inner" data-sidebar-position="$sidebarPosition">
-    <div class="single__main {{ if $enableSidebar }}{{ if eq $sidebarPosition "left" }}mr{{ else }}lm{{ end }}{{ else }}lmr{{ end }}">
+    {{ if $enableSidebar }}
+        {{ if or (eq $sidebarPosition "both") (eq $sidebarPosition "left") }}
+        <aside class="list__sidebar_l l" data-dir="{{ $.Param "languagedir" | default "ltr" }}">
+            {{ partial "sidebar/sidebar-single" (dict "context" . "sidebarComponents" "sidebarSingleLeft") }}
+        </aside>
+        {{ end }}
+    {{ end }}
+    <div class="single__main {{ if $enableSidebar }}{{ if eq $sidebarPosition "both" }}m{{ else if eq $sidebarPosition "left" }}mr{{ else }}lm{{ end }}{{ else }}lmr{{ end }}">
 {{/* 2-REC - SIDEBAR - END */}}
         {{ if $.Param "enableBreadcrumb" }}
             {{ partial "body/breadcrumb" . }}
@@ -55,14 +72,16 @@
 
     {{/* 2-REC - SIDEBAR - MID */}}
     {{ if $enableSidebar }}
-        <aside class="single__sidebar hide {{ if eq $sidebarPosition "left" }}l{{ else }}r{{ end }}" data-dir="{{ $.Param "languagedir" | default "ltr" }}">
-            <script>document.querySelector('.single__sidebar').classList.remove('hide')</script>
-            {{ partial "sidebar/sidebar-single" . }}
+        {{ if or (eq $sidebarPosition "both") (eq $sidebarPosition "right") }}
+        <aside class="list__sidebar_r r" data-dir="{{ $.Param "languagedir" | default "ltr" }}">
+            {{ partial "sidebar/sidebar-single" (dict "context" . "sidebarComponents" "sidebarSingleRight") }}
         </aside>
+        {{ end }}
     {{ end }}
     {{/* 2-REC - SIDEBAR - END */}}
 </main>
 
-{{ partial "script/sidebar-script" . }}
+{{ partial "script/sidebar-script" (dict "context" . "sidebarPosition" $sidebarPosition "sidebarSingle" true) }}
+{{ partial "script/list-script" . }}
 {{ partial "script/single-script" . }}
 {{ end }}

@@ -53,14 +53,17 @@ link = "https://somesite.org"
 
 # Sidebar
 # Allowed components: "bio", "top", "recent", "tags", "categories", "series", "-"
-sidebarHome = [ "bio", "top", "recent", "-", "tags", "categories", "series" ]
-sidebarHomePosition = "right" # "left"|"right"
-sidebarSingle = [ "-", "toc", "tags", "categories", "series" ] #TODO
-#sidebarSinglePosition = "right" # "left"|"right" #TODO
-sidebarList = [ "recent", "-", "tags", "categories", "series" ]
-sidebarListPosition = "right" # "left"|"right"
-sidebarTaxonomy = [ "-", "tags", "categories", "series" ] #TODO
-#sidebarTaxonomyPosition = "right" # "left"|"right"
+#sidebarHomeLeft = [ ... ] #TODO
+sidebarHomeRight = [ "bio", "top", "recent", "-", "tags", "categories", "series" ] #TODO
+sidebarSingleLeft = [ "-", "toc" ] #TODO
+#sidebarSingleRight = [ "toc", "tags", "categories", "series" ] #TODO
+sidebarSingleRight = [ "bio", "-", "tags", "categories", "series" ] #TODO
+#sidebarListLeft = [ ... ] #TODO
+sidebarListRight = [ "recent", "-", "tags", "categories", "series" ] #TODO
+#sidebarTaxonomyLeft = [ "-", "bio" ] #TODO
+sidebarTaxonomyRight = [ "-", "tags", "categories", "series" ] #TODO
+#disableSidebarLeft = false # default: false
+#disableSidebarRight = false # default: false
 enableSidebarSeparator = true # Default: true
 enableSidebarBio = true # Default: false
 enableBioImage = true # Default: true

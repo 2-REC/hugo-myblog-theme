@@ -1,6 +1,6 @@
-{{ if $.Param "sidebarHome" }}
 <div class="sidebar">
-{{ range $index, $value := $.Param "sidebarHome" }}
+{{ $context := .context }}
+{{ range $index, $value := .context.Param .sidebarComponents }}
     {{/* 2-REC: Special "separator" for floating section */}}
     {{ if eq $value "-" }}
 </div>
@@ -8,25 +8,25 @@
     {{ else }}
         {{/* 2-REC: removed search */}}
         {{ if eq $value "bio" }}
-            {{ partial "sidebar/site-bio" $.Page }}
+            {{ partial "sidebar/site-bio" $context.Page }}
         {{ else if eq $value "custom" }}
-            {{ if $.Param "enableSidebarCustom" }}
-                {{ partial "sidebar/custom-home" $.Page }}
-                {{ if $.Param "enableSidebarSeparator" }}
+            {{ if $context.Param "enableSidebarCustom" }}
+                {{ partial "sidebar/custom-home" $context.Page }}
+                {{ if $context.Param "enableSidebarSeparator" }}
                 <hr class="hr-fade sidebar-hr"/>
                 {{ end }}
             {{ end }}
         {{/*TODO: ok? */}}
         {{ else if eq $value "top" }}
-            {{ partial "sidebar/list/posts-by-order" $.Page }}
+            {{ partial "sidebar/list/posts-by-order" $context.Page }}
         {{ else if eq $value "recent" }}
-            {{ partial "sidebar/list/recent-home" $.Page }}
+            {{ partial "sidebar/list/recent-home" $context.Page }}
         {{ else if eq $value "tags" }}
-            {{ partial "taxonomy/taxonomy-tags" $.Page }}
+            {{ partial "taxonomy/taxonomy-tags" $context.Page }}
         {{ else if eq $value "categories" }}
-            {{ partial "taxonomy/taxonomy-categories" $.Page }}
+            {{ partial "taxonomy/taxonomy-categories" $context.Page }}
         {{ else if eq $value "series" }}
-            {{ partial "taxonomy/taxonomy-series" $.Page }}
+            {{ partial "taxonomy/taxonomy-series" $context.Page }}
         {{ else }}
             <script>
             var value = JSON.parse({{ $value | jsonify }});
@@ -36,4 +36,3 @@
     {{ end }}
 {{ end }}
 </div>
-{{ end }}

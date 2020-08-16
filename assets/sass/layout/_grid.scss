@@ -92,6 +92,20 @@ $grid_column_gap: $grid_column_gap_width + $grid_column_gap_unit;
     grid-column-gap: 16px;
     grid-row-gap: 0px;
 
+// DUAL_SIDEBAR - BEGIN
+//    &[data-sidebar-position="left"] {
+//        grid-template-columns: 266px 1fr 1fr;
+//    }
+//
+//    &[data-sidebar-position="right"] {
+//        grid-template-columns: 1fr 1fr 266px;
+//    }
+// DUAL_SIDEBAR - MID
+    //TODO: keep "266px"?
+    &[data-sidebar-position="none"] {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
     &[data-sidebar-position="left"] {
         grid-template-columns: 266px 1fr 1fr;
     }
@@ -99,6 +113,11 @@ $grid_column_gap: $grid_column_gap_width + $grid_column_gap_unit;
     &[data-sidebar-position="right"] {
         grid-template-columns: 1fr 1fr 266px;
     }
+
+    &[data-sidebar-position="both"] {
+        grid-template-columns: 266px 1fr 266px;
+    }
+// DUAL_SIDEBAR - END
 }
 
 .l { grid-area: 1 / 1 / 2 / 2; } // left

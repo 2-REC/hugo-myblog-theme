@@ -1,23 +1,32 @@
 {{ define "title" }}{{ .Site.Title }}{{ end }}
 
 {{ define "main" }}
-{{/* 2-REC - SIDEBAR - BEGIN */}}
-{{/*
-<main class="main inner" data-sidebar-position="{{ $.Param "sidebarPosition" }}">
-    <div class="list__main {{ if $.Param "enableSidebar" }}{{ if eq ($.Param "sidebarPosition") "left" }}mr{{ else }}lm{{ end }}{{ else }}lmr{{ end }}">
-*/}}
-{{/* 2-REC - SIDEBAR - MID */}}
-{{ $sidebarPosition := "right" }}
-{{ if $.Param "sidebarHomePosition" }}
-    {{ $sidebarPosition = $.Param "sidebarHomePosition" }}
-{{ end }}
 {{ $enableSidebar := false }}
-{{ if $.Param "sidebarHome" }}
+{{ $enableSidebarRight := not ($.Param "disableSidebarRight") }}
+{{ $enableSidebarLeft := not ($.Param "disableSidebarLeft") }}
+{{ $sidebarPosition := "none" }}
+{{ if and $enableSidebarRight ($.Param "sidebarHomeRight") }}
     {{ $enableSidebar = true }}
+    {{ if and $enableSidebarLeft ($.Param "sidebarHomeLeft") }}
+        {{ $sidebarPosition = "both" }}
+    {{ else }}
+        {{ $sidebarPosition = "right" }}
+    {{ end }}
+{{ else }}
+    {{ if and $enableSidebarLeft ($.Param "sidebarHomeLeft") }}
+        {{ $enableSidebar = true }}
+        {{ $sidebarPosition = "left" }}
+    {{ end }}
 {{ end }}
 <main class="main inner" data-sidebar-position="$sidebarPosition">
-    <div class="list__main {{ if $enableSidebar }}{{ if eq $sidebarPosition "left" }}mr{{ else }}lm{{ end }}{{ else }}lmr{{ end }}">
-{{/* 2-REC - SIDEBAR - END */}}
+    {{ if $enableSidebar }}
+        {{ if or (eq $sidebarPosition "both") (eq $sidebarPosition "left") }}
+        <aside class="list__sidebar_l l" data-dir="{{ $.Param "languagedir" | default "ltr" }}">
+            {{ partial "sidebar/sidebar-home" (dict "context" . "sidebarComponents" "sidebarHomeLeft") }}
+        </aside>
+        {{ end }}
+    {{ end }}
+    <div class="list__main {{ if $enableSidebar }}{{ if eq $sidebarPosition "both" }}m{{ else if eq $sidebarPosition "left" }}mr{{ else }}lm{{ end }}{{ else }}lmr{{ end }}">
         {{/* TODO: Add "recent posts carousel" */}}
         <div class="summary__container" data-display="block">
             {{ $filteredPages := .Site.RegularPages }}
@@ -33,22 +42,14 @@
         {{/* 2-REC: removed search */}}
     </div>
 
-    {{/* 2-REC - SIDEBAR - BEGIN */}}
-    {{/*
-    {{ if $.Param "enableSidebar" }}
-        <aside class="list__sidebar {{ if eq ($.Param "sidebarPosition") "left" }}l{{ else }}r{{ end }}" data-dir="{{ $.Param "languagedir" | default "ltr" }}">
-            {{ partial "sidebar/sidebar-home" . }}
-        </aside>
-    {{ end }}
-    */}}
-    {{/* 2-REC - SIDEBAR - MID */}}
     {{ if $enableSidebar }}
-        <aside class="list__sidebar {{ if eq $sidebarPosition "left" }}l{{ else }}r{{ end }}" data-dir="{{ $.Param "languagedir" | default "ltr" }}">
-            {{ partial "sidebar/sidebar-home" . }}
+        {{ if or (eq $sidebarPosition "both") (eq $sidebarPosition "right") }}
+        <aside class="list__sidebar_r r" data-dir="{{ $.Param "languagedir" | default "ltr" }}">
+            {{ partial "sidebar/sidebar-home" (dict "context" . "sidebarComponents" "sidebarHomeRight") }}
         </aside>
+        {{ end }}
     {{ end }}
-    {{/* 2-REC - SIDEBAR - END */}}
 </main>
-{{ partial "script/sidebar-script" . }}
+{{ partial "script/sidebar-script" (dict "context" . "sidebarPosition" $sidebarPosition "sidebarSingle" false) }}
 {{ partial "script/home-script" . }}
 {{ end }}

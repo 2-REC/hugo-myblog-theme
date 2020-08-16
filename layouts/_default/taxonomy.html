@@ -1,22 +1,31 @@
 {{ define "main" }}
 
-{{/* 2-REC - SIDEBAR - BEGIN */}}
-{{/*
-<main class="main inner" data-sidebar-position="{{ $.Param "sidebarPosition" }}">
-  <div class="list__main {{ if $.Param "enableSidebar" }}{{ if eq ($.Param "sidebarPosition") "left" }}mr{{ else }}lm{{ end }}{{ else }}lmr{{ end }}">
-*/}}
-{{/* 2-REC - SIDEBAR - MID */}}
-{{ $sidebarPosition := "right" }}
-{{ if $.Param "sidebarTaxonomyPosition" }}
-    {{ $sidebarPosition = $.Param "sidebarTaxonomyPosition" }}
-{{ end }}
 {{ $enableSidebar := false }}
-{{ if $.Param "sidebarTaxonomy" }}
+{{ $enableSidebarRight := not ($.Param "disableSidebarRight") }}
+{{ $enableSidebarLeft := not ($.Param "disableSidebarLeft") }}
+{{ $sidebarPosition := "none" }}
+{{ if and $enableSidebarRight ($.Param "sidebarTaxonomyRight") }}
     {{ $enableSidebar = true }}
+    {{ if and $enableSidebarLeft ($.Param "sidebarTaxonomyLeft") }}
+        {{ $sidebarPosition = "both" }}
+    {{ else }}
+        {{ $sidebarPosition = "right" }}
+    {{ end }}
+{{ else }}
+    {{ if and $enableSidebarLeft ($.Param "sidebarTaxonomyLeft") }}
+        {{ $enableSidebar = true }}
+        {{ $sidebarPosition = "left" }}
+    {{ end }}
 {{ end }}
 <main class="main inner" data-sidebar-position="$sidebarPosition">
-    <div class="list__main {{ if $enableSidebar }}{{ if eq $sidebarPosition "left" }}mr{{ else }}lm{{ end }}{{ else }}lmr{{ end }}">
-{{/* 2-REC - SIDEBAR - END */}}
+    {{ if $enableSidebar }}
+        {{ if or (eq $sidebarPosition "both") (eq $sidebarPosition "left") }}
+        <aside class="list__sidebar_l l" data-dir="{{ $.Param "languagedir" | default "ltr" }}">
+            {{ partial "sidebar/sidebar-taxonomy" (dict "context" . "sidebarComponents" "sidebarTaxonomyLeft") }}
+        </aside>
+        {{ end }}
+    {{ end }}
+    <div class="list__main {{ if $enableSidebar }}{{ if eq $sidebarPosition "both" }}m{{ else if eq $sidebarPosition "left" }}mr{{ else }}lm{{ end }}{{ else }}lmr{{ end }}">
     {{ if $.Param "enableBreadcrumb" }}
         {{ partial "body/breadcrumb" . }}
     {{ end }}
@@ -37,24 +46,17 @@
     {{/* 2-REC: removed search */}}
   </div>
 
-  {{/* 2-REC - SIDEBAR - BEGIN */}}
-  {{/*
-  {{ if $.Param "enableSidebar" }}
-    <aside class="list__sidebar {{ if eq ($.Param "sidebarPosition") "left" }}l{{ else }}r{{ end }}" data-dir="{{ $.Param "languagedir" | default "ltr" }}">
-      {{ partial "sidebar/sidebar-list" . }}
-    </aside>
-  {{ end }}
-  */}}
-  {{/* 2-REC - SIDEBAR - MID */}}
   {{ if $enableSidebar }}
-    <aside class="list__sidebar {{ if eq $sidebarPosition "left" }}l{{ else }}r{{ end }}" data-dir="{{ $.Param "languagedir" | default "ltr" }}">
-      {{/* TODO: use a different sidebar for taxonomies ('sidebar/sidebar-taxo')! */}}
-      {{ partial "sidebar/sidebar-taxonomy" . }}
-    </aside>
+    {{ if or (eq $sidebarPosition "both") (eq $sidebarPosition "right") }}
+      <aside class="list__sidebar_r r" data-dir="{{ $.Param "languagedir" | default "ltr" }}">
+        {{/* TODO: see if need separate "sidebar-taxonomy" (additionally to "sidebar-list") */}}
+        {{ partial "sidebar/sidebar-taxonomy" (dict "context" . "sidebarComponents" "sidebarTaxonomyRight") }}
+      </aside>
+    {{ end }}
   {{ end }}
-  {{/* 2-REC - SIDEBAR - END */}}
 </main>
 
-{{ partial "script/sidebar-script" . }}
+{{ partial "script/sidebar-script" (dict "context" . "sidebarPosition" $sidebarPosition "sidebarSingle" false) }}
+{{ partial "script/list-script" . }}
 {{ partial "script/taxo-script" . }}
 {{ end }}

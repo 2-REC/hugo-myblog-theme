@@ -294,6 +294,23 @@
       margin-top: 0;
     }
 
+// DUAL_SIDEBAR - BEGIN
+//    &[data-sidebar-position="left"] {
+//      -ms-grid-columns: 320px 1fr 1fr;
+//      grid-template-columns: 320px 1fr 1fr;
+//    }
+//
+//    &[data-sidebar-position="right"] {
+//      -ms-grid-columns: 1fr 1fr 320px;
+//      grid-template-columns: 1fr 1fr 320px;
+//    }
+// DUAL_SIDEBAR - MID
+    //TODO: keep "320px"?
+    &[data-sidebar-position="none"] {
+      -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
     &[data-sidebar-position="left"] {
       -ms-grid-columns: 320px 1fr 1fr;
       grid-template-columns: 320px 1fr 1fr;
@@ -303,6 +320,12 @@
       -ms-grid-columns: 1fr 1fr 320px;
       grid-template-columns: 1fr 1fr 320px;
     }
+
+    &[data-sidebar-position="none"] {
+      -ms-grid-columns: 320px 1fr 320px;
+      grid-template-columns: 320px 1fr 320px;
+    }
+// DUAL_SIDEBAR - END
   }
 
 

@@ -1,70 +1,39 @@
 <script>
-    /* 2-REC - SIDEBARS - BEGIN */
-    /*
-    {{ $sidebarPosition:= $.Param "sidebarPosition" }}
-    var sidebarPosition = JSON.parse({{ $sidebarPosition | jsonify }});
-    {{ $enableSidebar:= $.Param "enableSidebar" }}
-    var enableSidebar = JSON.parse({{ $enableSidebar | jsonify }});
-    */
-    /* 2-REC - SIDEBARS - MID */
-    /*TODO: refactor more properly */
-    {{ $enableSidebar := false }}
-    {{ $sidebarPosition := "right" }}
-    {{ $sidebarSingle := false }}
-
-    {{ $kind := $.Kind }}
-    {{ if eq $kind "home" }}
-        {{ if $.Param "sidebarHome" }}
-            {{ $enableSidebar = true }}
-        {{ end }}
-        {{ if $.Param "sidebarHomePosition" }}
-            {{ $sidebarPosition = $.Param "sidebarHomePosition" }}
-        {{ end }}
-    /*TODO: also check if .Type === "posts"? */
-    {{ else if eq $kind "page" }}
-        {{ if $.Param "sidebarSingle" }}
-            {{ $enableSidebar = true }}
-            {{ $sidebarSingle = true }}
-        {{ end }}
-        {{ if $.Param "sidebarSinglePosition" }}
-            {{ $sidebarPosition = $.Param "sidebarSinglePosition" }}
-        {{ end }}
-    /*TODO: also check if .Type === "posts"? */
-    {{ else if eq $kind "section" }}
-        {{ if $.Param "sidebarList" }}
-            {{ $enableSidebar = true }}
-        {{ end }}
-        {{ if $.Param "sidebarListPosition" }}
-            {{ $sidebarPosition = $.Param "sidebarListPosition" }}
-        {{ end }}
-    {{ else if eq $kind "taxonomy" }}
-        {{ if $.Param "sidebarTaxonomy" }}
-            {{ $enableSidebar = true }}
-        {{ end }}
-        {{ if $.Param "sidebarTaxonomyPosition" }}
-            {{ $sidebarPosition = $.Param "sidebarTaxonomyPosition" }}
-        {{ end }}
-    {{ end }}
+    {{ $sidebarPosition := .sidebarPosition }}
+    {{ $sidebarSingle := .sidebarSingle }}
+    {{ $enableSidebar := not (eq $sidebarPosition "none") }}
 
     var sidebarPosition = JSON.parse({{ $sidebarPosition | jsonify }});
-    var enableSidebar = JSON.parse({{ $enableSidebar | jsonify }});
     var sidebarSingle = JSON.parse({{ $sidebarSingle | jsonify }});
-    /* 2-REC - SIDEBARS - END */
+    var enableSidebar = JSON.parse({{ $enableSidebar | jsonify }});
+
 
     var mainElem = document.querySelector('.list__main');
-    var sideElem = document.querySelector('.list__sidebar');
+    var sideElemR = document.querySelector('.list__sidebar_r');
+    var sideElemL = document.querySelector('.list__sidebar_l');
     if (sidebarSingle) {
         mainElem = document.querySelector('.single__main');
         sideElem = document.querySelector('.single__sidebar');
     }
 
-    var gridSmall = 'l';
-    var gridBig = 'mr';
-    var gridFull = 'lmr'
+    //TODO: make sure '' is ok (for 'add' and 'remove')
+    var gridSmallR = '';
+    var gridSmallL = '';
+    var gridBig = 'lmr';
+    var gridFull = 'lmr';
 
-    if (sidebarPosition === "right") {
-        gridSmall = 'r';
+    if (sidebarPosition === "both") {
+        gridSmallR = 'r';
+        gridSmallL = 'l';
+        gridBig = 'm'
+    }
+    else if (sidebarPosition === "right") {
+        gridSmallR = 'r';
         gridBig = 'lm'
+    }
+    else if (sidebarPosition === "left") {
+        gridSmallL = 'l';
+        gridBig = 'mr'
     }
 
     enquire.register("screen and (max-width: 769px)", {
@@ -72,16 +41,31 @@
             if (enableSidebar) {
                 mainElem.classList.remove(gridBig);
                 mainElem.classList.add(gridFull);
-                sideElem.classList.remove(gridSmall);
-                sideElem.classList.add('hide');
+                if (sidebarPosition === "both") {
+                    sideElemR.classList.remove(gridSmallR);
+                    sideElemR.classList.add('hide');
+                    sideElemL.classList.remove(gridSmallL);
+                    sideElemL.classList.add('hide');
+                }
+                else if (sidebarPosition === "right") {
+                    sideElemR.classList.remove(gridSmallR);
+                    sideElemR.classList.add('hide');
+                }
+                else if (sidebarPosition === "left") {
+                    sideElemL.classList.remove(gridSmallL);
+                    sideElemL.classList.add('hide');
+                }
             } else {
                 if (mainElem && !mainElem.classList.contains(gridFull)) {
                     mainElem.classList.remove(gridBig);
                     mainElem.classList.add(gridFull);
                 }
 
-                if (sideElem && !sideElem.classList.contains('hide')) {
-                    sideElem.classList.add('hide');
+                if (sideElemR && !sideElemR.classList.contains('hide')) {
+                    sideElemR.classList.add('hide');
+                }
+                if (sideElemL && !sideElemL.classList.contains('hide')) {
+                    sideElemL.classList.add('hide');
                 }
             }
 
@@ -90,16 +74,31 @@
             if (enableSidebar) {
                 mainElem.classList.remove(gridFull);
                 mainElem.classList.add(gridBig);
-                sideElem.classList.add(gridSmall);
-                sideElem.classList.remove('hide');
+                if (sidebarPosition === "both") {
+                    sideElemR.classList.add(gridSmallR);
+                    sideElemR.classList.remove('hide');
+                    sideElemL.classList.add(gridSmallL);
+                    sideElemL.classList.remove('hide');
+                }
+                else if (sidebarPosition === "right") {
+                    sideElemR.classList.add(gridSmallR);
+                    sideElemR.classList.remove('hide');
+                }
+                else if (sidebarPosition === "left") {
+                    sideElemL.classList.add(gridSmallL);
+                    sideElemL.classList.remove('hide');
+                }
             } else {
                 if (mainElem && !mainElem.classList.contains(gridFull)) {
                     mainElem.classList.remove(gridBig);
                     mainElem.classList.add(gridFull);
                 }
 
-                if (sideElem && !sideElem.classList.contains('hide')) {
-                    sideElem.classList.add('hide');
+                if (sideElemR && !sideElemR.classList.contains('hide')) {
+                    sideElemR.classList.add('hide');
+                }
+                if (sideElemL && !sideElemL.classList.contains('hide')) {
+                    sideElemL.classList.add('hide');
                 }
             }
 

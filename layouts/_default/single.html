@@ -26,7 +26,7 @@
 <main class="main inner" data-sidebar-position="$sidebarPosition">
     {{ if $enableSidebar }}
         {{ if or (eq $sidebarPosition "both") (eq $sidebarPosition "left") }}
-        <aside class="list__sidebar_l l" data-dir="{{ $.Param "languagedir" | default "ltr" }}">
+        <aside class="single__sidebar_l l" data-dir="{{ $.Param "languagedir" | default "ltr" }}">
             {{ partial "sidebar/sidebar-single" (dict "context" . "sidebarComponents" "sidebarSingleLeft") }}
         </aside>
         {{ end }}
@@ -73,7 +73,7 @@
     {{/* 2-REC - SIDEBAR - MID */}}
     {{ if $enableSidebar }}
         {{ if or (eq $sidebarPosition "both") (eq $sidebarPosition "right") }}
-        <aside class="list__sidebar_r r" data-dir="{{ $.Param "languagedir" | default "ltr" }}">
+        <aside class="single__sidebar_r r" data-dir="{{ $.Param "languagedir" | default "ltr" }}">
             {{ partial "sidebar/sidebar-single" (dict "context" . "sidebarComponents" "sidebarSingleRight") }}
         </aside>
         {{ end }}
@@ -82,6 +82,5 @@
 </main>
 
 {{ partial "script/sidebar-script" (dict "context" . "sidebarPosition" $sidebarPosition "sidebarSingle" true) }}
-{{ partial "script/list-script" . }}
 {{ partial "script/single-script" . }}
 {{ end }}

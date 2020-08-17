@@ -23,7 +23,7 @@
         {{ $sidebarPosition = "left" }}
     {{ end }}
 {{ end }}
-<main class="main inner" data-sidebar-position="$sidebarPosition">
+<main class="main inner" data-sidebar-position={{$sidebarPosition}}>
     {{ if $enableSidebar }}
         {{ if or (eq $sidebarPosition "both") (eq $sidebarPosition "left") }}
         <aside class="single__sidebar_l l" data-dir="{{ $.Param "languagedir" | default "ltr" }}">

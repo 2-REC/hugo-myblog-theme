@@ -106,15 +106,15 @@ $grid_column_gap: $grid_column_gap_width + $grid_column_gap_unit;
     }
 
     &[data-sidebar-position="left"] {
-        grid-template-columns: 266px 1fr 1fr;
+        grid-template-columns: minmax(0, $grid_main_side) minmax(0, $grid_main_main) 1fr;
     }
 
     &[data-sidebar-position="right"] {
-        grid-template-columns: 1fr 1fr 266px;
+        grid-template-columns: 1fr minmax(0, $grid_main_main) minmax(0, $grid_main_side);
     }
 
     &[data-sidebar-position="both"] {
-        grid-template-columns: 266px 1fr 266px;
+        grid-template-columns: minmax(0, $grid_main_side) minmax(0, $grid_main_main) minmax(0, $grid_main_side);
     }
 // DUAL_SIDEBAR - END
 }

@@ -1,5 +1,7 @@
 .sidebar {
   margin-top: 1rem;
+  //TODO: see if want (only if long words...)
+  //overflow-wrap: break-word;
 
   /* 2-REC: Moved "floating taxo" ("taxo-root") to here */
   &-float {

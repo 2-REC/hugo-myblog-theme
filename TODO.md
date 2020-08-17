@@ -3,6 +3,18 @@
 ## PRIORITIES / CURRENT STATE
 
 
+- [ ] overflow
+    - [ ] _sidebar.scss
+        => See if want "overflow-wrap: break-word" (only if long words...)
+    - [ ] _taxo.scss
+        => See if want "overflow-wrap: anywhere" (only if long words...)
+    - [ ] _bio.scss
+        => See if want "overflow-wrap: break-word" (only if long name...)
+
+- [ ] Make content width wider
+    => Why smaller than Zzo?
+
+
 - [ ] set codeblock-script optional in single-script
   => config param
 - fix colors in code blocks (somehow different tahn zzo, but same css)

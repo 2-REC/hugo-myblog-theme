@@ -1,4 +1,5 @@
 <article class="summary-classic" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}">
+  {{/* TODO: Adapt 'sidebarPosition'! */}}
   <div class="summary-classic__flex-box" {{ if eq ($.Param "sidebarPosition") "left" }}data-position="left"{{ end }}>
     <div class="summary-classic__content">
       <header>

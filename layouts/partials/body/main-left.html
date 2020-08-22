@@ -1,11 +1,7 @@
-{{/* TODO: ADAPT PAGE TYPES + CHECK IF NEED SOME CHANGES */}}
-{{ $isPad := or (in (slice "archive" "posts" "page") .Type) }}
-{{ $isPad = or $isPad (and (eq .Kind "page") (not (in (slice "about" "contact" "publication") .Type))) }}
-{{ $isPad = or $isPad (and (eq .Kind "section") (eq .Type "publication")) }}
-{{ $isPad = or $isPad (and (eq .Type "tags") (ne .Kind "taxonomyTerm")) }}
-
-{{ if eq ($.Param "languagedir") "rtl" }}
-<div class="wrapper__left hide" data-pad="{{ $isPad }}" dir="rtl">
-  <script>document.querySelector('.wrapper__left').classList.remove('hide')</script>
-</div>
+{{ if $.Param "enableSideDataLeft" }}
+  <div class="wrapper__left" dir="{{$.Param "languagedir"}}">
+    <div class="sidebar__out">
+      {{ partial "body/sidedata-left" . }}
+    </div>
+  </div>
 {{ end }}

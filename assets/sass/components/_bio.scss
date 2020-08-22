@@ -8,8 +8,9 @@
   }
 
   width: 100%;
-  //TODO: see if want
-  //overflow-wrap: anywhere;
+  //TODO: Keep? (long words)
+  // => See how can add options in CSS
+  overflow-wrap: anywhere;
   max-width: 928px;
   font-family: $title-font;
 

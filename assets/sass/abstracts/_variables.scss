@@ -23,6 +23,7 @@ $code-font-stack: Consolas,
               Courier, 
               monospace !default;
 
+//TODO: remove unused (card-outter, card-inner, ...)
 $z-indexes: ("modal", "navbar", "dropdown", "header", "gtt", "clipboard", "grid", "search-btn", "search", "content", "footer", "taxo", "toc", "gallery-mask", "card-outter", "card-inner");
 
 $breakpoints: (
@@ -33,4 +34,5 @@ $breakpoints: (
   'xl': 1960px,
 );
 
+//TODO: use?
 $sidebar-width: 250px;

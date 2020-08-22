@@ -17,6 +17,10 @@ viewportSize = "normal" # widest, wider, wide, normal, narrow
 enableUiAnimation = true
 hideSingleContentsWhenJSDisabled = false
 
+#TODO: here?
+#enableSideDataLeft = true # Default: false
+#enableSideDataRight = true # Default: false
+
 # header
 homeHeaderType = "slide" # text, img, slide
 
@@ -62,8 +66,8 @@ sidebarSingleRight = [ "bio", "-", "tags", "categories", "series" ] #TODO
 sidebarListRight = [ "recent", "-", "tags", "categories", "series" ] #TODO
 #sidebarTaxonomyLeft = [ "-", "bio" ] #TODO
 sidebarTaxonomyRight = [ "-", "tags", "categories", "series" ] #TODO
-#disableSidebarLeft = false # default: false
-#disableSidebarRight = false # default: false
+#disableSidebarLeft = false # Default: false
+#disableSidebarRight = false # Default: false
 enableSidebarSeparator = true # Default: true
 enableSidebarBio = true # Default: false
 enableBioImage = true # Default: true

@@ -1,7 +1,8 @@
 .sidebar {
   margin-top: 1rem;
-  //TODO: see if want (only if long words...)
-  //overflow-wrap: break-word;
+  //TODO: Keep? (long words)
+  // => See how can add options in CSS
+  overflow-wrap: break-word;
 
   /* 2-REC: Moved "floating taxo" ("taxo-root") to here */
   &-float {
@@ -56,9 +57,10 @@
     margin: 1.5rem 0;
   }
 
-  &__menu {
-    margin-top: $grid_navbar_height;
-    padding: 0 1rem;
+  &__out {
+    // 2-REC: no padding on sides
+    //margin-top: $grid_navbar_height;
+    //padding: 0 1rem;
 
     @include flexbox();
     @include flex-direction(column);

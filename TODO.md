@@ -2,34 +2,27 @@
 
 ## PRIORITIES / CURRENT STATE
 
-
-- [ ] overflow
-    - [ ] _sidebar.scss
-        => See if want "overflow-wrap: break-word" (only if long words...)
-    - [ ] _taxo.scss
-        => See if want "overflow-wrap: anywhere" (only if long words...)
-    - [ ] _bio.scss
-        => See if want "overflow-wrap: break-word" (only if long name...)
-
-- [ ] Make content width wider
-    => Why smaller than Zzo?
-
-
-- [ ] set codeblock-script optional in single-script
+* [ ] set codeblock-script optional in single-script
   => config param
-- fix colors in code blocks (somehow different tahn zzo, but same css)
-- implement/finish "summary" stuff
-- make sure "archetypes/header" is only as example
+* [ ] fix colors in code blocks (somehow different tahn zzo, but same css)
+* [ ] implement/finish "summary" stuff
+* [ ] make sure "archetypes/header" is only as example
 
-!!!!
-TOC:
-- sidebar => SET CSS/CLASS SIMILAR TO TAGS, etc
-  => shouldn't use "bio" class...
+* [ ] Sidebars
+    * [ ] TOC in sidebar
+        => SET CSS/CLASS SIMILAR TO TAGS, etc (shouldn't use "bio" class)
+    * [ ] Set idividual components
+        => Adapt/create each partial, +handle specific parameters
+    * [ ] See how to make sidebars code more generic (instead of copied for every type)
+    * [ ] See how taxonomies are ordered
+        => specified where/how?
+    * [ ] Add subscription/newsletter
+        => check with notes (probably will use MailChimmp)
 
-SIDEBARS:
-- TEST EVERYTHING RELATED TO SIDEBARS!
-- set idividual component (adapt/create each partial, +handle specific parameters)
-- see how to make sidebars code more generic (instead of copied for every type)
+* [x] main-left + main_right
+    => Allow side panels, eg adverts or images
+    * [x] Replace 'enableSidebarMenu' with 'enableSideDataLeft' & 'enableSideDataRight'
+    * [x] Replace 'sidebar/sidebar-menu' with 'body/sidedata-left' & 'body/sidedata-right'
 
 
 * [ ] busuanzi
@@ -37,24 +30,13 @@ SIDEBARS:
 
 * [ ] "Archives" page (?)
 * [ ] Finish taxonomies
-* [ ] Continue sidebar on homepage
-    * [ ] See how taxonomies are ordered
-        => specified where/how?
-    * [ ] Add subscription/newsletter
-        => check with notes (probably will use MailChimmp)
-* [x] Add "breadcrumb" stuff!
-    * [x] in "list"
-        * [x] +add optional (as in "single")
-    * [x] in "taxonomies"
-        * [x] +add optional (as in "single")
-    * [x] in "single"
 * [ ] Continue "single" layout
     * [ ] Sidebar
         * [ ] donation?
         * [ ] subscribe?
         * [ ] +more?
     * [x] See about "inner", "outer" for sidebar stuff... (nice to have, but a bit buggy)
-        => Don't keep
+        => Don't keep (replaced with 'sidedata')
     * [ ] check for "hideSingleContentsWhenJSDisabled" role and effects
     * [ ] ...
 * [ ] Handle themes more cleanly
@@ -104,6 +86,14 @@ SIDEBARS:
 * [ ] Change taxonomies "series" to "type" (?)
 * [ ] Rename "light" colour theme to more appropriate
     * [ ] Add other themes?
+* [ ] Overflow
+    * [ ] _sidebar.scss
+        => See if want "overflow-wrap: break-word" (long words)
+    * [ ] _taxo.scss
+        => See if want "overflow-wrap: anywhere" (long keywords)
+    * [ ] _bio.scss
+        => See if want "overflow-wrap: break-word" (long name)
+
 
 LATER:
 * [ ] CSS => Make "custom CSS" as in "myportfolio-theme" => Instead of having to modify the code

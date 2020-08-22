@@ -2,6 +2,9 @@
 .taxo {
   margin: 2.5rem 0;
   z-index: z('taxo');
+  //TODO: Keep? (long words)
+  // => See how can add options in CSS
+  overflow-wrap: anywhere;
 
   /* 2-REC: Moved "floating taxo" ("taxo-root") to "sidebar" */
   /*

@@ -1,9 +1,10 @@
 .toc {
   width: 100%;
   max-width: $sidebar-width;
-  /* 2-REC: to allow floating in sidebar
-  position: fixed;
-  */
+//// BEGIN
+// 2-REC: to allow floating in sidebar
+//  position: fixed;
+//// MID
   top: 7rem;
   font-size: 0.85rem;
   padding-left: 0.5rem;
@@ -36,38 +37,39 @@
     position: absolute;
   }
 
-  /* 2-REC: Removed outer toc
-  &__flexbox--outer[data-position="fixed"] {
-    @include flexbox();
-    @include align-items(center);
-    top: 4.2rem;
-    left: 1rem;
-    position: absolute;
-    
-    @media only screen and (max-width: 1300px) {
-      display: none;
-    }
-
-    &[data-ani="true"] {
-      @include animation('slide-in-down-little .2s .3s 1 ease-in backwards');
-    }
-  }
-
-  &__flexbox--outer[data-dir="ltr"] {
-    top: 4.2rem;
-    left: 1rem;
-  }
-
-  &__flexbox--outer[data-dir="rtl"] {
-    top: 4.2rem;
-    right: 1rem;
-
-    .toc__title {
-      margin-top: 0.75rem;
-      margin-left: 0.5rem;
-    }
-  }
-  */
+//// BEGIN
+// 2-REC: Removed outer toc
+//  &__flexbox--outer[data-position="fixed"] {
+//    @include flexbox();
+//    @include align-items(center);
+//    top: 4.2rem;
+//    left: 1rem;
+//    position: absolute;
+//    
+//    @media only screen and (max-width: 1300px) {
+//      display: none;
+//    }
+//
+//    &[data-ani="true"] {
+//      @include animation('slide-in-down-little .2s .3s 1 ease-in backwards');
+//    }
+//  }
+//
+//  &__flexbox--outer[data-dir="ltr"] {
+//    top: 4.2rem;
+//    left: 1rem;
+//  }
+//
+//  &__flexbox--outer[data-dir="rtl"] {
+//    top: 4.2rem;
+//    right: 1rem;
+//
+//    .toc__title {
+//      margin-top: 0.75rem;
+//      margin-left: 0.5rem;
+//    }
+//  }
+//// MID
 
   &__title {
     font-size: 0.9rem;
@@ -81,13 +83,14 @@
       color: themed('toc-label-color');
     }
 
-    /* 2-REC: Removed Mermaid support
-    &--outer {
-      @media only screen and (max-width: 1300px) {
-        display: none;
-      }
-    }
-    */
+//// BEGIN
+// 2-REC: Removed Mermaid support
+//    &--outer {
+//      @media only screen and (max-width: 1300px) {
+//        display: none;
+//      }
+//    }
+//// MID
   }
 
   &[data-dir="ltr"] {
@@ -238,17 +241,18 @@
     }
   }
 
-  /* 2-REC: Removed Mermaid support
-  &__outer {
-    padding-right: 1rem;
-    padding-left: 2.5rem;
-    max-width: calc((100vw - 980px) / 2);
-
-    @media only screen and (max-width: 1300px) {
-      display: none;
-    }
-  }
-  */
+//// BEGIN
+// 2-REC: Removed Mermaid support
+//  &__outer {
+//    padding-right: 1rem;
+//    padding-left: 2.5rem;
+//    max-width: calc((100vw - 980px) / 2);
+//
+//    @media only screen and (max-width: 1300px) {
+//      display: none;
+//    }
+//  }
+//// MID
 }
 
 .expand__content {

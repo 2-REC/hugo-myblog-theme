@@ -10,7 +10,7 @@ meta_image = ""
 themeOptions = ["light"] #TODO: add other themes if desired
 notAllowedTypesInHome = ["about", "contact"] #TODO: adapt!
 notAllowedTypesInHomeSidebar = ["about", "archive"] #TODO: adapt! (contact?)
-
+# notAllowedTypesInArchive #TODO!
 # notAllowedTypesInHomeFeed = ["about", "archive", "contact"] #TODO: IF using 'showFeedLinks' - adapt! (look in original Zzo)
 
 viewportSize = "normal" # widest, wider, wide, normal, narrow

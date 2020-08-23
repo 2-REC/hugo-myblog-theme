@@ -44,7 +44,6 @@
         </noscript>
         {{ end }}
         <div class="single {{ if $.Param "hideSingleContentsWhenJSDisabled" }}hide{{ end }}">
-            {{/* 2-REC: why here as well? */}}
             <div class="single__nojs">{{ i18n "nojs-message" }}</div>
             <script>document.querySelector('.single').classList.remove('hide'); document.querySelector('.single__nojs').classList.add('hide');</script>
             <h2 class="single__title" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}">{{ .Title }}</h2>

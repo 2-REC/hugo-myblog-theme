@@ -15,6 +15,19 @@
 #theme_solarized_chroma_background = "default"
 #theme_kimbie_chroma_background = "default"
 #### MID
-theme_light_chroma = "default"
-theme_light_chroma_background = "default"
+#### DYNAMIC_THEMES - MID
+#theme_light_chroma = "default"
+#theme_light_chroma_background = "default"
+#### DYNAMIC_THEMES - MID
+[[skins]]
+  name = "light"
+  chroma = "duotonelight"
+  chroma_background = "lightcode"
+  primary_color = "#ccc"
+[[skins]]
+  name = "dark"
+  chroma = "dracula"
+  chroma_background = "darkcode"
+  primary_color = "#82aaff"
+#### DYNAMIC_THEMES - MID
 #### END

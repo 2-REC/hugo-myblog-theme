@@ -443,7 +443,16 @@
 
 
   // ======================= theme change =======================
+    {{/* 2-REC: check if saved 'theme' is valid*/}}
+    //var localTheme = localStorage.getItem('theme');
+    {{ $themeOptions := .Site.Params.themeOptions }}
+    var themes = JSON.parse({{ $themeOptions | jsonify }});
     var localTheme = localStorage.getItem('theme');
+    if (localTheme && !themes.includes(localTheme)) {
+        localStorage.removeItem('theme');
+        localTheme = null
+    }
+
     var rootEleme = document.getElementById('root');
     var selectThemeElem = document.querySelectorAll('.select-theme');
     var selectThemeItemElem = document.querySelectorAll('.select-theme__item');

@@ -1,0 +1,58 @@
+// //////// BEGIN
+// //@import 'dark';
+// //@import 'light';
+// //@import 'hacker';
+// //@import 'solarized';
+// //@import 'kimbie';
+// //
+// //@import 'darkcode';
+// //@import 'lightcode';
+// //@import 'hackercode';
+// //@import 'solarizedcode';
+// //@import 'kimbiecode';
+// //
+// //$themes: (
+// //  dark: $dark,
+// //  light: $light,
+// //  hacker: $hacker,  
+// //  solarized: $solarized,
+// //  kimbie: $kimbie,
+// //);
+// //
+// //$codeblock: (
+// //  dark: $darkcode,
+// //  light: $lightcode,
+// //  hacker: $hackercode,  
+// //  solarized: $solarizedcode,
+// //  kimbie: $kimbiecode,
+// //);
+// //////// MID
+// @import 'light';
+// 
+// @import 'lightcode';
+// 
+// $themes: (
+//   light: $light,
+// );
+// 
+// $codeblock: (
+//   light: $lightcode,
+// );
+// //////// END
+/*
+@import 'light';
+//@import 'dark';
+
+//@import 'lightcode';
+//@import 'darkcode';
+
+$themes: (
+  light: $light,
+  dark: $dark,
+);
+
+$codeblock: (
+  light: $lightcode,
+//  dark: $darkcode,
+);
+*/

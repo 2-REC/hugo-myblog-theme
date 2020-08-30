@@ -16,7 +16,7 @@ $grid_row_gap: {{ .Site.Data.grid.grid_row_gap }};
 //$theme_hacker_chroma: {{ .Site.Data.skin.theme_hacker_chroma }};
 //$theme_solarized_chroma: {{ .Site.Data.skin.theme_solarized_chroma }};
 //$theme_kimbie_chroma: {{ .Site.Data.skin.theme_kimbie_chroma }};
-
+//
 //$theme_light_chroma_background: {{ .Site.Data.skin.theme_light_chroma_background }};
 //$theme_dark_chroma_background: {{ .Site.Data.skin.theme_dark_chroma_background }};
 //$theme_hacker_chroma_background: {{ .Site.Data.skin.theme_hacker_chroma_background }};
@@ -29,38 +29,26 @@ $grid_row_gap: {{ .Site.Data.grid.grid_row_gap }};
 //$button_solarized_primary_color: {{ .Site.Data.button.solarized_primary_color }};
 //$button_kimbie_primary_color: {{ .Site.Data.button.kimbie_primary_color }};
 //////// THEMES - MID
-//////// DYNAMIC_THEMES - BEGIN
-//TODO: see how to make dynamic?
-// (could also change names to 'theme_1_chroma', etc)
-//$theme_light_chroma: {{ .Site.Data.skin.theme_light_chroma }};
-//$theme_light_chroma_background: {{ .Site.Data.skin.theme_light_chroma_background }};
-//$button_light_primary_color: {{ .Site.Data.button.light_primary_color }};
-//////// DYNAMIC_THEMES - MID
-{{ range .Site.Data.skin.skins }}
+{{ range .Site.Data.theme.themes }}
 $button_{{ .name }}_primary_color: {{ .primary_color }};
 {{ end }}
 
-{{ range .Site.Data.skin.skins }}
+{{ range .Site.Data.theme.themes }}
 @import 'themes/{{ .name }}';
 @import 'themes/{{ .chroma_background }}';
 {{ end }}
 
 $themes: (
-{{ range .Site.Data.skin.skins }}
-    {{ if in $.Site.Params.themeOptions .name }}
+{{ range .Site.Data.theme.themes }}
     {{ .name }}: ${{ .name }},
-    {{ end }}
 {{ end }}
 );
 
 $codeblock: (
-{{ range .Site.Data.skin.skins }}
-    {{ if in $.Site.Params.themeOptions .name }}
+{{ range .Site.Data.theme.themes }}
     {{ .name }}: ${{ .chroma_background }},
-    {{ end }}
 {{ end }}
 );
-//////// DYNAMIC_THEMES - END
 //////// THEMES - END
 
 $title-font: {{ .Site.Data.font.title_font }};
@@ -74,16 +62,16 @@ $viewport_size: {{ .Site.Params.viewportSize | default "normal" }};
 @import 'abstracts/functions';
 @import 'abstracts/flexbox';
 
-//////// DYNAMIC_THEMES - BEGIN
+//////// THEMES - BEGIN
 //@import 'syntax/syntax';
-//////// DYNAMIC_THEMES - MID
-{{ range .Site.Data.skin.skins }}
+//////// THEMES - MID
+{{ range .Site.Data.theme.themes }}
 @import 'syntax/{{ .chroma }}';
 .theme__{{.name}} {
     @include chroma-{{ .chroma }};
 }
 {{ end }}
-//////// DYNAMIC_THEMES - END
+//////// THEMES - END
 
 @import 'base/reset';
 @import 'base/fonts';

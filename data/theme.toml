@@ -19,15 +19,19 @@
 #theme_light_chroma = "default"
 #theme_light_chroma_background = "default"
 #### DYNAMIC_THEMES - MID
-[[skins]]
+[[themes]]
   name = "light"
   chroma = "duotonelight"
   chroma_background = "lightcode"
   primary_color = "#ccc"
-[[skins]]
+  app_color = "#eee"
+  tile_color = "#555"
+[[themes]]
   name = "dark"
   chroma = "dracula"
   chroma_background = "darkcode"
   primary_color = "#82aaff"
+  app_color = "#403E41"
+  tile_color = "#FCFCFA"
 #### DYNAMIC_THEMES - MID
 #### END

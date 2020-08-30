@@ -17,10 +17,13 @@
     {{ partial "head/custom-head" . }}
 </head>
 
-<body id="root" class="theme__{{ index .Site.Params.themeOptions 0 }}">
+{{ $themeOptions := slice }}
+{{ range .Site.Data.theme.themes }}
+    {{ $themeOptions = $themeOptions | append .name }}
+{{ end }}
+<body id="root" class="theme__{{ index $themeOptions 0 }}">
     <script>
-        {{/* 2-REC: check if saved 'theme' is valid*/}}
-        {{ $themeOptions := .Site.Params.themeOptions }}
+        {{/* 2-REC: check if saved 'theme' is valid */}}
         var themes = JSON.parse({{ $themeOptions | jsonify }});
         var localTheme = localStorage.getItem('theme');
         if (localTheme && !themes.includes(localTheme)) {

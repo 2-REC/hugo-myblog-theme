@@ -445,7 +445,10 @@
   // ======================= theme change =======================
     {{/* 2-REC: check if saved 'theme' is valid*/}}
     //var localTheme = localStorage.getItem('theme');
-    {{ $themeOptions := .Site.Params.themeOptions }}
+    {{ $themeOptions := slice }}
+    {{ range .Site.Data.theme.themes }}
+        {{ $themeOptions = $themeOptions | append .name }}
+    {{ end }}
     var themes = JSON.parse({{ $themeOptions | jsonify }});
     var localTheme = localStorage.getItem('theme');
     if (localTheme && !themes.includes(localTheme)) {
@@ -493,13 +496,16 @@
       } 
       */
       //// MID
-      if (themeColor.includes('light')) {
-        metaMsapplicationTileColor.setAttribute('content', '#555');
-        metaThemeColor.setAttribute('content', '#eee');
-        metaMsapplicationNavbuttonColor.setAttribute('content', '#eee');
-        metaAppleMobileWebAappStatusBarStyle.setAttribute('content', '#eee');
+      /* 2-REC - TODO: make sure it's ok */
+      {{ range $index, $value := .Site.Data.theme.themes }}
+      {{ if not (eq $index 0) }}else {{ end }}if (themeColor.includes('{{ .name }}')) {
+        metaMsapplicationTileColor.setAttribute('content', '{{ .tile_color }}');
+        metaThemeColor.setAttribute('content', '{{ .app_color }}');
+        metaMsapplicationNavbuttonColor.setAttribute('content', '{{ .app_color }}');
+        metaAppleMobileWebAappStatusBarStyle.setAttribute('content', '{{ .app_color }}');
       }
-      //else...
+      {{ end }}
+
       //// END
     }
     

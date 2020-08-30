@@ -7,8 +7,6 @@ useFaviconGenerator = false # https://www.favicon-generator.org/
 meta_image = ""
 #themecolor = "" #TODO: remove (unused)
 
-themeOptions = [ "light", "dark" ] #TODO: add other themes if desired
-enableThemeChange = true #TODO: set to false automatically if only 1 theme
 notAllowedTypesInHome = ["about", "contact"] #TODO: adapt!
 notAllowedTypesInHomeSidebar = ["about", "archive"] #TODO: adapt! (contact?)
 # notAllowedTypesInArchive #TODO!

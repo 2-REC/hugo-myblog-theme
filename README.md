@@ -11,8 +11,13 @@ TODO: complete/rewrite/etc.
 
 
 ## Changed Features from original Zzo Theme
-* Default case for 'theme' if current value in local storage is not valid
-    => Remove 'theme' from localStorage if value is not in list of themes 'themeOptions'.
+* Themes
+    * More dynamis theme management.
+        For each theme:
+        - Add entry+infos in "data/theme.toml" (name, chroma, chroma_background, primary_color)
+        - Add scss files ("themes/name.scss" + "themes/chroma_background.scss" + "syntax/chroma.scss")
+    * Default case for 'theme' if current value in local storage is not valid
+        => Remove 'theme' from localStorage if value is not in list of themes (in 'data/theme.toml').
 * Sidebar
   - list to define content of each toolbar (home, single, list, taxonomy)
   - special "-" separator to have "floating" section

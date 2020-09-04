@@ -108,7 +108,7 @@ $viewport_size: {{ .Site.Params.viewportSize | default "normal" }};
 //@import 'components/busuanzi'; //TODO: uncomment if using Busuanzi
 //@import 'components/donation';
 @import 'components/box';
-//@import 'components/modal';
+@import 'components/modal';
 @import 'components/codetab';
 @import 'components/ie';
 @import 'components/tab';
@@ -118,7 +118,7 @@ $viewport_size: {{ .Site.Params.viewportSize | default "normal" }};
 @import 'pages/404';
 @import 'pages/about';
 //@import 'pages/archive';
-//@import 'pages/gallery';
+@import 'pages/gallery';
 @import 'pages/list';
 @import 'pages/single';
 @import 'pages/terms';

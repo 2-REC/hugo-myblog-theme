@@ -23,7 +23,31 @@ TODO: complete/rewrite/etc.
   - special "-" separator to have "floating" section
   - left/right position
   - added taxonomy specific sidebar (different from "list")
-
+* Swiper
+  - Possibility to have no option parameters
+    Use:
+    - Without option:
+    ```
+    {{< swiper >}}
+      {{< swiperItem >}}
+      < SWIPE 1 >
+      {{< /swiperItem >}}
+      {{< swiperItem >}}
+      < SWIPE 2 >
+      {{< /swiperItem >}}
+    {{< /swiper >}}
+    ```
+    - With option:
+    ```
+    {{< swiper option="option1">}}
+      {{< swiperItem >}}
+      < SWIPE 1 >
+      {{< /swiperItem >}}
+      {{< swiperItem >}}
+      < SWIPE 2 >
+      {{< /swiperItem >}}
+    {{< /swiper >}}
+    ```
 
 ## Removed Features from original Zzo Theme
 

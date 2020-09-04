@@ -2,13 +2,31 @@
 
 ## PRIORITIES / CURRENT STATE
 
+!!!!
+- CHECK everything about:
+  - swiper
+    => Especially
+    - "swipehome.js" and "header-slide.html"
+    - shortcodes swiper + swiperItem
+      => keep? (if not, remove associated files)
+  - photswipe
+  - gallery
+
+!!!!
+
 * [x] Remove "publication" stuff
     => Check notes (photo on phone)
     * [x] Reveal lib + use
     * [x] Presentation pages, etc
 
-* [ ] Add required/desired "swipe" stuff
-    => Check notes (photo on phone)
+* [x] Add required/desired "swipe" stuff
+* [ ] Swiper
+    * [ ] Allow more than 1 swipe per page
+        => Problem related to div ID: same for all (?)
+* [ ] Gallery
+    * [ ] Change photos => use mine
+    * [ ] Add another one ("drawings")
+
 
 * [x] Remove "data/lib.toml"
     => Not using any lib
@@ -53,6 +71,14 @@
     * [x] See about "inner", "outer" for sidebar stuff... (nice to have, but a bit buggy)
         => Don't keep (replaced with 'sidedata')
     * [ ] ...
+
+
+* [ ] README
+    * [ ] complete details/infos
+    * [ ] as ZZO, with table of contents
+
+* [ ] themes.toml
+    => update when theme finished (as ZZO)
 
 
 ## EXAMPLE SITE
@@ -177,7 +203,7 @@ LATER:
             * [ ] "body/related"
             * [ ] "pagination/pagination-single"
             * [ ] "comments/comments.html"
-            * [ ] "body/photoswipe"
+            * [x] "body/photoswipe"
     * [ ] taxonomy
         * [ ] continue as in Zzo!
 * [ ] partials

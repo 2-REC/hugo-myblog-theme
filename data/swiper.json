@@ -1,6 +1,9 @@
 {
   "option1": {
-    "loop": true
+    "loop": true,
+    "speed": 1000,
+    "slidesPerView": 1,
+    "autoplay" :  { "delay" : 2000, "disableOnInteraction": false }
   },
   "option2": {
     "loop": false

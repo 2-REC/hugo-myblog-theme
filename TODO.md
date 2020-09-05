@@ -21,6 +21,22 @@
 
 * [x] Add required/desired "swipe" stuff
 * [ ] Swiper
+    * [ ] See if keep or replace (with a carousel or similar from other theme)
+        Related files:
+        - swiper.html + swiperItem.html
+        Used in:
+            - shortcodes.md
+                => Remove "swiper" stuff
+        Using:
+            - swiper.min.css
+                => Can be deleted
+            - swiper.min.js
+                => Can be deleted
+            - _swiper.scss
+                !- also defines "swipe" class!
+                    => Only remove "swiper" stuff
+    * [ ] See if can merge swiper used in "photoswipe" and "header-slide"
+        => Using 2 different versions of "swiper.js"
     * [ ] Allow more than 1 swipe per page
         => Problem related to div ID: same for all (?)
 * [ ] Gallery

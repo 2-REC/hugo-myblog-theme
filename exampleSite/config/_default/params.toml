@@ -28,7 +28,6 @@ showMobileMenuTerms = ["tags", "categories", "series"] #TODO: change "series" to
 
 # body
 enableBreadcrumb = true
-enablePhotoSwipe = true
 enableTocContent = true # TOC in page body
 
 

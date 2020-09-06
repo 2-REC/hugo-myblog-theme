@@ -33,67 +33,57 @@
       });
     });
 
-    enquire.register("screen and (max-width:1200px)", {
+    // 2-REC: Removed first block - buggy? ("screen and (max-width:1200px)") + fixed sizing issues
+    // => Max 4 tiles per row
+    enquire.register("screen and (min-width:901px)", {
       match: function () {
         document.querySelectorAll('.grid-item').forEach(function(elem) {
+          elem.classList.remove('full');
+          elem.classList.remove('half');
+          elem.classList.remove('third');
           elem.classList.add('quarter');
           elem.classList.remove('fifth');
         });
         document.querySelectorAll('.grid-sizer').forEach(function (elem) {
+          elem.classList.remove('full');
+          elem.classList.remove('half');
+          elem.classList.remove('third');
           elem.classList.add('quarter');
           elem.classList.remove('fifth');
         });
       },
-      unmatch: function () {
-        document.querySelectorAll('.grid-item').forEach(function (elem) {
-          elem.classList.add('fifth');
-          elem.classList.remove('quarter');
-        });
-        document.querySelectorAll('.grid-sizer').forEach(function (elem) {
-          elem.classList.add('fifth');
-          elem.classList.remove('quarter');
-        });
-      },
-    }).register("screen and (max-width:900px)", {
+    }).register("screen and (max-width:900px) and (min-width:701px)", {
       match: function () {
         document.querySelectorAll('.grid-item').forEach(function (elem) {
+          elem.classList.remove('full');
+          elem.classList.remove('half');
           elem.classList.add('third');
           elem.classList.remove('quarter');
+          elem.classList.remove('fifth');
         });
         document.querySelectorAll('.grid-sizer').forEach(function (elem) {
+          elem.classList.remove('full');
+          elem.classList.remove('half');
           elem.classList.add('third');
           elem.classList.remove('quarter');
+          elem.classList.remove('fifth');
         });
       },
-      unmatch: function () {
-        document.querySelectorAll('.grid-item').forEach(function (elem) {
-          elem.classList.add('quarter');
-          elem.classList.remove('third');
-        });
-        document.querySelectorAll('.grid-sizer').forEach(function (elem) {
-          elem.classList.add('quarter');
-          elem.classList.remove('third');
-        });
-      },
-    }).register("screen and (max-width:700px)", {
+    }).register("screen and (max-width:700px) and (min-width:501px)", {
       match: function () {
         document.querySelectorAll('.grid-item').forEach(function (elem) {
+          elem.classList.remove('full');
           elem.classList.add('half');
           elem.classList.remove('third');
+          elem.classList.remove('quarter');
+          elem.classList.remove('fifth');
         });
         document.querySelectorAll('.grid-sizer').forEach(function (elem) {
+          elem.classList.remove('full');
           elem.classList.add('half');
           elem.classList.remove('third');
-        });
-      },
-      unmatch: function () {
-        document.querySelectorAll('.grid-item').forEach(function (elem) {
-          elem.classList.add('third');
-          elem.classList.remove('half');
-        });
-        document.querySelectorAll('.grid-sizer').forEach(function (elem) {
-          elem.classList.add('third');
-          elem.classList.remove('half');
+          elem.classList.remove('quarter');
+          elem.classList.remove('fifth');
         });
       },
     }).register("screen and (max-width:500px)", {
@@ -101,20 +91,16 @@
         document.querySelectorAll('.grid-item').forEach(function (elem) {
           elem.classList.add('full');
           elem.classList.remove('half');
+          elem.classList.remove('third');
+          elem.classList.remove('quarter');
+          elem.classList.remove('fifth');
         });
         document.querySelectorAll('.grid-sizer').forEach(function (elem) {
           elem.classList.add('full');
           elem.classList.remove('half');
-        });
-      },
-      unmatch: function () {
-        document.querySelectorAll('.grid-item').forEach(function (elem) {
-          elem.classList.add('half');
-          elem.classList.remove('full');
-        });
-        document.querySelectorAll('.grid-sizer').forEach(function (elem) {
-          elem.classList.add('half');
-          elem.classList.remove('full');
+          elem.classList.remove('third');
+          elem.classList.remove('quarter');
+          elem.classList.remove('fifth');
         });
       },
     });

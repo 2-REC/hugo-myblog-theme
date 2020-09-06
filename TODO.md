@@ -2,26 +2,24 @@
 
 ## PRIORITIES / CURRENT STATE
 
-!!!!
-- CHECK everything about:
-  - swiper
-    => Especially
-    - "swipehome.js" and "header-slide.html"
-    - shortcodes swiper + swiperItem
-      => keep? (if not, remove associated files)
-  - photswipe
-  - gallery
-
-!!!!
-
 * [x] Remove "publication" stuff
     => Check notes (photo on phone)
     * [x] Reveal lib + use
     * [x] Presentation pages, etc
 
-* [x] Add required/desired "swipe" stuff
+X
+* [x] Add "swipe" stuff
+    => REMOVE/REPLACE!
+
+!!!!
+* [x] Gallery: fix bad resizing
 * [ ] Swiper
-    * [ ] See if keep or replace (with a carousel or similar from other theme)
+    => Replace with swipe from "Resto Hugo" theme!
+    - partials/testimonial.html
+        => can be used for "recent posts"
+    - see if can easily adapt to shortcode
+(
+X    * [ ] See if keep or replace (with a carousel or similar from other theme)
         Related files:
         - swiper.html + swiperItem.html
         Used in:
@@ -39,9 +37,11 @@
         => Using 2 different versions of "swiper.js"
     * [ ] Allow more than 1 swipe per page
         => Problem related to div ID: same for all (?)
+)
 * [ ] Gallery
     * [ ] Change photos => use mine
     * [ ] Add another one ("drawings")
+!!!!
 
 
 * [x] Remove "data/lib.toml"

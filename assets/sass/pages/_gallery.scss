@@ -18,9 +18,10 @@
     width: 25%;
   }
 
-  .fifth {
-    width: 20%;
-  }
+  // 2-REC: Removed first block - buggy? ("screen and (max-width:1200px)")
+  //.fifth {
+  //  width: 20%;
+  //}
 }
 
 /* clear fix */

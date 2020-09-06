@@ -8,6 +8,12 @@ TODO: complete/rewrite/etc.
     (+reference Chroma site? - or indicate in )
     - Only keep minimum, add as desired
         => For each language: scss file + entry in "_syntax.scss"
+- Gallery
+    - 3 modes: "one-by-one" (or "one"), "remote" and "at-once" (default)
+        - one-by-one: "cpation" fields will be used for each image
+        - remote: Can additionally specify online images (by providing URL for "image" field)
+        - at-once: The "caption" field will not be used
+    + changed: fixed sizing issues (20% seems buggy, +use of "match"+"unmatch" doesn't work well when quick resize, +no init trigger on page onload)
 
 
 ## Changed Features from original Zzo Theme

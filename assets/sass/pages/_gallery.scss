@@ -1,3 +1,9 @@
+//TODO:
+// - modify 'box-masonry-hover-text-header' case to have CSS applied!
+// - set style for each case (text, titles, etc)
+// - truncate text when description is too long
+
+
 .grid {
   position: relative;
   margin-bottom: 1rem;
@@ -37,31 +43,35 @@
   padding: 0.5rem;
 }
 
+//TODO: keep?
 .grid-sizer,
 .grid-item {
-  width: 33.333%;
+  width: 25%;
 }
 
 .grid-item {
   float: left;
   border-radius: 0.25rem;
-  padding: 0.51rem;
+//  padding: 0.51rem;
 }
 
 .grid-item img {
   display: block;
-  max-width: 100%;
+//  max-width: 100%;
+  width: 100%;
 }
 
 
-.gallery {
+.tile-grid {
   padding: 1rem;
   @include flexbox();
   @include flex-direction(column);
 
+/*
   img {
     border-radius: 0.25rem;
   }
+*/
 
   .grid-item {
     position: relative;
@@ -72,54 +82,256 @@
     @include flexbox();
     @include justify-content(center);
 
-    &__desc {
-      position: absolute;
-      left: 0;
-      top: 0;
-      padding: 0.5rem;
-      width: 100%;
-      height: 100%;
-      border-radius: 0.25rem;
-      z-index: z('gallery-mask');
-      font-family: $title-font;
-      font-weight: 700;
-      cursor: pointer;
-      
-      @include box-shadow(0, 0, 0, 0, rgba(0, 0, 0, 0));
-      @include on-event {
-        @include box-shadow(0, 4px, 4px, 0, rgba(0, 0, 0, 0.4));
-        @include transition(all, 0.25s, ease);
-        @include themify($themes) {
-          color: themed('gallery-mask-color');
-          background-color: themed('gallery-mask-background-color');
-        }
-      }
+  }
+}
 
-      &--text {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        word-wrap: break-word;
-        
-        @include flexbox();
-        @include flex-direction(column);
-        @include align-items(center);
-        @include translate(-50%, -50%);
-        @include themify($themes) {
-          color: themed('link');
-        }
 
-        &::after {
-          content: "➖🔍➖";
-        }
-      }
-    }
+//TODO: rename to 'summary-tile' (?)
+.box-masonry {
+width: 100%;
+height: 100%;
+  background: #fff;
+  //margin-bottom: 30px;
+margin: 0.51rem;
+  position: relative;
+  box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.2);
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.box-masonry h4 {
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.box-masonry h4 a {
+  color: #000;
+  border-bottom: solid 1px transparent;
+}
+.box-masonry h4 a:hover {
+  border-bottom: dotted 1px #ef5285;
+  color: #000;
+  text-decoration: none;
+}
+.box-masonry .box-masonry-text {
+  padding: 15px 20px 15px;
+//? (horrible)
+word-wrap: break-word;
+}
+.box-masonry .box-masonry-text p {
+  color: #999999;
+  font-size: 14px;
+}
+.box-masonry .box-masonry-hover-text-header {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  padding: 15px 20px 15px;
+  opacity: 0;
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+  color: #555555;
+}
+.box-masonry .box-masonry-hover-text-header p {
+  font-size: 14px;
+}
+//TODO: unused?
+.box-masonry .box-masonry-hover-text-header h4 a {
+  color: #555555;
+}
+.box-masonry .box-masonry-hover-center {
+  position: absolute;
+  width: 100%;
+  top: 30%;
+  opacity: 0;
+  padding-left: 20px;
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+  text-align: center;
+}
+.box-masonry .box-masonry-hover-center .see-more-icon {
+  color: #555555;
+  font-size: 50px;
+}
+.box-masonry:hover {
+  box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.4);
+}
+.box-masonry:hover .box-masonry-hover-text-header {
+  opacity: 1;
+}
+.box-masonry:hover .box-masonry-hover-center {
+  opacity: 1;
+}
+.box-masonry:hover .box-masonry-image.with-hover-overlay:before {
+  opacity: 0.8;
+}
+.box-masonry:hover .box-masonry-image.with-hover-icon:after {
+  opacity: 0.7;
+}
+.box-masonry h2:last-child,
+.box-masonry p:last-child {
+  margin-bottom: 0;
+}
+.box-masonry .box-masonry-image {
+  display: block;
+  position: relative;
+  min-height: 100px;
+  background: #ccc;
+}
+.box-masonry .box-masonry-image.with-hover-overlay:before {
+  display: block;
+  position: absolute;
+  content: " ";
+  background: #fff;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
+.box-masonry .box-masonry-image.with-hover-icon:after {
+  display: block;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 50%;
+  -webkit-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+  opacity: 0;
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+  font-family: 'FontAwesome';
+  content: '\f105';
+  text-align: center;
+  font-size: 50px;
+  color: #555555;
+}
+.box-masonry .box-masonry-image:hover {
+  text-decoration: none;
+}
 
+
+
+
+//// NEW
+.gallery-tile {
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    //margin-bottom: 30px;
+margin: 0.51rem;
+    position: relative;
+    //box-shadow: 0 0 5px #ccc;
+    box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.2);
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+//border-radius: 0.25rem;
+
+/*
     @media only screen and (max-width: 600px) {
       img {
-        object-fit: cover;
+        //object-fit: cover;
+        object-fit: contain;
         max-height: 300px;
       }
     }
-  }
+*/
+}
+.gallery-tile:hover .gallery-tile-image.with-hover-overlay:before {
+    opacity: 0.8;
+}
+.gallery-tile .gallery-tile-image {
+    display: block;
+    position: relative;
+    min-height: 100px;
+    //TODO: can remove?
+    background: #ccc;
+}
+.gallery-tile .gallery-tile-image.with-hover-overlay:before {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+
+    opacity: 0;
+    pointer-events: none;
+
+    content: " ";
+
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+
+    @include themify($themes) {
+        color: themed('gallery-mask-color');
+        background-color: themed('gallery-mask-background-color');
+    }
+}
+.gallery-tile .gallery-tile-image:hover {
+    text-decoration: none;
+}
+.gallery-tile .gallery-tile-hover-text-header {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    padding: 15px 20px 15px;
+    opacity: 0;
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+    color: #555555;
+
+pointer-events: none;
+}
+.gallery-tile .gallery-tile-hover-text-header p {
+//    font-size: 14px;
+    font-family: $title-font;
+    font-weight: 700;
+    cursor: pointer;
+
+    //position: absolute;
+    //left: 50%;
+    //top: 50%;
+    word-wrap: break-word;
+
+    @include flexbox();
+    @include flex-direction(column);
+    @include align-items(center);
+    //@include translate(-50%, -50%);
+    @include themify($themes) {
+        color: themed('link');
+    }
+
+    //TODO: keep?
+    &::after {
+      content: "➖🔍➖";
+    }
+}
+.gallery-tile:hover {
+    box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.4);
+}
+.gallery-tile:hover .gallery-tile-hover-text-header {
+    opacity: 1;
+}
+.gallery-tile:hover .gallery-tile-image.with-hover-overlay:before {
+    opacity: 0.8;
 }

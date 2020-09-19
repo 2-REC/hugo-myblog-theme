@@ -37,12 +37,21 @@
       {{.Content}}
     </div>
 
+    {{ $summaryShape := lower ($.Param "summaryShape") }}
+    {{ if $.Param "summaryShapeTaxonomy" }}
+        {{ $summaryShape = lower ($.Param "summaryShapeTaxonomy") }}
+    {{ end }}
+    {{ $pages := .Paginator.Pages.ByWeight }}
+    {{ if not (eq $summaryShape "tiles") }}
     <div class="summary__container" data-display="block">
-      {{ range .Paginator.Pages.ByWeight }}
-        {{ .Render "summary" }}
+      {{ range $pages }}
+        {{ partial "body/summary" (dict "context" . "summaryShape" $summaryShape) }}
       {{ end }}
       {{ partial "pagination/pagination" . }}
     </div>
+    {{ else }}
+    {{ partial "summary/tiles" (dict "pages" $pages) }}
+    {{ end }}
     {{/* 2-REC: removed search */}}
   </div>
 

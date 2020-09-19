@@ -35,7 +35,10 @@ enableTocContent = true # TOC in page body
 #enableSearchHighlight = false
 enableGoToTop = true
 
-summaryShape = "compact" # card, classic, compact
+summaryShape = "compact" # Default for all pages, values: "card", "classic", "compact", "tiles"
+summaryShapeHome = "tiles"
+summaryShapeList = "tiles"
+summaryShapeTaxonomy = "tiles"
 
 
 

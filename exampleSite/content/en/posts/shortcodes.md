@@ -10,8 +10,9 @@ tags:
 series:
 -
 categories:
+- examples
 -
-image: images/feature3/code-file.png
+image: images/code-file.png
 ---
 
 ## Markdownify box

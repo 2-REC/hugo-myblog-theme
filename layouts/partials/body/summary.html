@@ -1,0 +1,10 @@
+{{ $context := .context }}
+{{ if eq .summaryShape "card" }}
+  {{ partial "summary/card" $context }}
+{{ else if eq .summaryShape "classic" }}
+  {{ partial "summary/classic" $context }}
+{{ else if eq .summaryShape "compact" }}
+  {{ partial "summary/compact" $context }}
+{{ else }}
+  {{ printf "Not supported shape %#v. Please edit config param(summaryShape)." .summaryShape }}
+{{ end }}

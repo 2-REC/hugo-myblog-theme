@@ -8,19 +8,36 @@
 
 {{ $root := . }}
 {{ if in (lower .Params.Mode) "one" }}
-<main class="gallery main">
-  <div class="grid gallery__container">
+<main class="tile-grid main">
+  <div class="grid tile-grid__container gallery__container">
     <div class="grid-sizer"></div>
     {{ if .File.Dir }}
       {{ $basename := (replace .File.Dir "\\" "/") }}
       {{ range .Params.Images }}
       <div class="grid-item">
+      {{/* ///////////////////////////////////////////////////////// */}}
+      {{/*
         <img src="{{ $basename | relURL }}{{ .image }}" alt="{{ print .caption }}" />
         <div class="grid-item__desc hide">
           <span class="grid-item__desc--text">
             {{ .caption }}
           </span>
         </div>
+      */}}
+      {{/* ///////////////////////////////////////////////////////// */}}
+<div class="gallery-tile">
+    <div class="gallery-tile-image with-hover-overlay">
+        <img src="{{ $basename | relURL }}{{ .image }}" alt="{{ print .caption }}" />
+    </div>
+    <div class="gallery-tile-hover-text-header">
+        <div class="gallery-tile-description">
+            <p>
+                {{ .caption }}
+            </p>
+        </div>
+    </div>
+</div>
+      {{/* ///////////////////////////////////////////////////////// */}}
       </div>
       {{ end }}
     {{ end }}
@@ -29,17 +46,34 @@
 </main>
 
 {{ else if eq (lower .Params.mode) "remote" }}
-<main class="gallery main">
-  <div class="grid gallery__container">
+<main class="tile-grid main">
+  <div class="grid tile-grid__container gallery__container">
     <div class="grid-sizer"></div>
     {{ range .Params.Images }}
     <div class="grid-item">
+      {{/* ///////////////////////////////////////////////////////// */}}
+      {{/*
       <img src="{{ .image }}" alt="{{ print .caption }}" />
       <div class="grid-item__desc hide">
         <span class="grid-item__desc--text">
           {{ .caption }}
         </span>
       </div>
+      */}}
+      {{/* ///////////////////////////////////////////////////////// */}}
+<div class="gallery-tile">
+    <div class="gallery-tile-image with-hover-overlay">
+        <img src="{{ .image }}" alt="{{ print .caption }}" />
+    </div>
+    <div class="gallery-tile-hover-text-header">
+        <div class="gallery-tile-description">
+            <p>
+                {{ .caption }}
+            </p>
+        </div>
+    </div>
+</div>
+      {{/* ///////////////////////////////////////////////////////// */}}
     </div>
     {{ end }}
   </div>
@@ -47,19 +81,36 @@
 </main>
 
 {{ else }}
-<main class="gallery main">
-  <div class="grid gallery__container">
+<main class="tile-grid main">
+  <div class="grid tile-grid__container gallery__container">
     <div class="grid-sizer"></div>
     {{ if .File.Dir }}
       {{ $basename := (replace .File.Dir "\\" "/") }}
       {{ range (readDir (print "./static/" $basename)) }}
       <div class="grid-item">
+        {{/* ///////////////////////////////////////////////////////// */}}
+        {{/*
         <img src="{{ $basename | relURL }}{{ .Name }}" alt="{{ index (split .Name ".") 0 }}"/>
         <div class="grid-item__desc hide">
           <span class="grid-item__desc--text">
             {{ index (split .Name ".") 0 }}
           </span>
         </div>
+        */}}
+        {{/* ///////////////////////////////////////////////////////// */}}
+<div class="gallery-tile">
+    <div class="gallery-tile-image with-hover-overlay">
+        <img src="{{ $basename | relURL }}{{ .Name }}" alt="{{ index (split .Name ".") 0 }}"/>
+    </div>
+    <div class="gallery-tile-hover-text-header">
+        <div class="gallery-tile-description">
+            <p>
+                {{ index (split .Name ".") 0 }}
+            </p>
+        </div>
+    </div>
+</div>
+        {{/* ///////////////////////////////////////////////////////// */}}
       </div>
       {{ end }}
     {{ end }}
@@ -71,5 +122,5 @@
 
 {{/* 2-REC: removed search */}}
 {{ partial "body/photoswipe" . }}
-{{ partial "script/gallery-script" . }}
+{{ partial "script/tiles-script" . }}
 {{ end }}

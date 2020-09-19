@@ -16,6 +16,7 @@
       msnry.layout();
     });
 
+/*
     document.querySelectorAll('.grid-item').forEach(function(elem) {
       elem.addEventListener('mouseenter', function() {
         elem.querySelector('.grid-item__desc').style.display = 'block';
@@ -32,6 +33,20 @@
         elem.querySelector('.grid-item__desc').style.opacity = 0;
       });
     });
+*/
+/*
+    document.querySelectorAll('.gallery-tile').forEach(function(elem) {
+      elem.addEventListener('mouseenter', function() {
+        elem.querySelector('.gallery-tile-hover-text-header').onclick = function (e) {
+          e.stopPropagation();
+          e.target.parentNode.previousElementSibling.click();
+        }
+        elem.querySelector('.gallery-tile-image').onclick = function(e) {
+          e.target.previousElementSibling.click();
+        }
+      });
+    });
+*/
 
     // 2-REC: Removed first block - buggy? ("screen and (max-width:1200px)") + fixed sizing issues
     // => Max 4 tiles per row

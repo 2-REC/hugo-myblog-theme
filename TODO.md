@@ -12,7 +12,21 @@ X
     => REMOVE/REPLACE!
 
 !!!!
-* [x] Gallery: fix bad resizing
+2020/09/19:
+- [ ] GRID: FIX PROBLEM WITH WRONG QLIGN WHEN LESS TILES THAN COLUMNS
+    => related to no image!
+    PROBLEM RELATED TO: (in _gallery.scss)
+        .grid-sizer,
+        .grid-item {
+          width: 25%;
+        }
+    => width at page load, but need to consider screen width!
+- [ ] FINISH 'showonlyimage' stuff
+- [ ] fix CSS...
+- [ ] UPDATE TODO.MD + README.MD
+
+
+
 * [ ] Swiper
     => Replace with swipe from "Resto Hugo" theme!
     - partials/testimonial.html

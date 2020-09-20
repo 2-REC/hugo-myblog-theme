@@ -1,7 +1,8 @@
 //TODO:
-// - modify 'box-masonry-hover-text-header' case to have CSS applied!
+//?- modify 'box-masonry-hover-text-header' case to have CSS applied!
 // - set style for each case (text, titles, etc)
-// - truncate text when description is too long
+// - truncate text when description is too long (limit height) +word-wrap?
+// - use font awesome?
 
 
 .grid {
@@ -44,11 +45,12 @@
 }
 
 //TODO: keep?
+/*
 .grid-sizer,
 .grid-item {
   width: 25%;
 }
-
+*/
 .grid-item {
   float: left;
   border-radius: 0.25rem;
@@ -212,10 +214,18 @@ word-wrap: break-word;
   -webkit-transition: all 0.2s ease-out;
   -moz-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
+
+//TODO: use font awesome?
+// => and for other icons?
+/*
   font-family: 'FontAwesome';
   content: '\f105';
+*/
+content: "➖🔍➖";
+
   text-align: center;
-  font-size: 50px;
+//  font-size: 50px;
+  font-size: 20px;
   color: #555555;
 }
 .box-masonry .box-masonry-image:hover {

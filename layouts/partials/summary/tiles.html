@@ -4,20 +4,25 @@
         {{ range .pages }}
         <div class="grid-item">
             <div class="box-masonry">
-                {{ if and (isset .Params "image") .Params.image }}
-                  {{ if eq .Params.showonlyimage true }}
+                {{ $image := and (isset .Params "image") .Params.image }}
+                {{ $showonlyimage := false }}
+                {{ if not (eq $image false) }}
+                  {{ $showonlyimage = .Params.showonlyimage }}
+                  {{ if not (isset .Params "showonlyimage") }}
+                    {{ $showonlyimage = .Site.Params.showonlyimage }}
+                  {{ end }}
+                {{ end }}
+                {{ if not (eq $image false) }}
+                  {{ if eq $showonlyimage true }}
                   <a href="{{ .Permalink }}" title="" class="box-masonry-image with-hover-overlay">
                   {{ else }}
                   <a href="{{ .Permalink }}" title="" class="box-masonry-image with-hover-overlay with-hover-icon">
                   {{ end }}
-                      <img src="{{.Params.image | absURL}}" alt="" class="img-responsive">
+                      <img src="{{$image | absURL}}" alt="" class="img-responsive">
                   </a>
                 {{ end }}
                 <a href="{{ .Permalink }}">
-                {{ if eq .Params.showonlyimage true }}
-                {{/*
-                {{ if true }}
-                */}}
+                {{ if eq $showonlyimage true }}
                 <div class="box-masonry-hover-text-header">
                 {{ else }}
                 <div class="box-masonry-text">

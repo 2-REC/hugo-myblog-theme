@@ -39,7 +39,7 @@ summaryShape = "compact" # Default for all pages, values: "card", "classic", "co
 summaryShapeHome = "tiles"
 summaryShapeList = "tiles"
 summaryShapeTaxonomy = "tiles"
-
+showonlyimage = false
 
 
 paginateWindow = 1

@@ -12,9 +12,17 @@
       columnWidth: '.grid-sizer',
       percentPosition: true,
     });
-    imagesLoaded(grid).on('progress', function () {
-      msnry.layout();
-    });
+
+    imgTotalNum = grid.querySelectorAll('img').length;
+    if (imgTotalNum != 0) {
+      imagesLoaded(grid).on('progress', function () {
+        msnry.layout();
+      });
+    } else {
+      imagesLoaded(grid).on('always', function () {
+        msnry.layout();
+      });
+    }
 
 /*
     document.querySelectorAll('.grid-item').forEach(function(elem) {

@@ -1,5 +1,5 @@
 /*!
- * Swipe 2.2.14
+ * Swipe 2.2.15
  *
  * Brad Birdsall
  * Copyright 2013, MIT License
@@ -83,10 +83,6 @@
 
       return throttledFn;
     };
-
-    function getScrollbarWidth() {
-      return root.innerWidth - _document.documentElement.clientWidth;
-    }
 
     // check whether event is cancelable
     var isCancelable = function (event) {
@@ -217,7 +213,7 @@
           element.addEventListener('touchmove', this, browser.passiveEvents ? { passive: false } : false);
           element.addEventListener('touchend', this, false);
         }
-
+        runDragStart(getPos(), slides[index]);
       },
 
       move: function (event) {
@@ -376,7 +372,7 @@
           element.removeEventListener('touchmove', events, browser.passiveEvents ? { passive: false } : false);
           element.removeEventListener('touchend', events, false);
         }
-
+        runDragEnd(getPos(), slides[index]);
       },
 
       transitionEnd: function (event) {
@@ -539,9 +535,10 @@
       slidePos = new Array(slides.length);
 
       // determine width of each slide
-      //width = container.getBoundingClientRect().width || container.offsetWidth;
-      width = root.innerWidth - getScrollbarWidth();
+      width = container.getBoundingClientRect().width || container.offsetWidth;
+
       element.style.width = (slides.length * width * 2) + 'px';
+
       // stack elements
       var pos = slides.length;
       while (pos--) {
@@ -585,6 +582,7 @@
 
     function next() {
       if (disabled) return;
+
       if (options.continuous) {
         slide(index + 1);
       } else if (index < slides.length - 1) {
@@ -601,6 +599,18 @@
     function runTransitionEnd(pos, index) {
       if (options.transitionEnd) {
         options.transitionEnd(pos, index);
+      }
+    }
+
+    function runDragStart(pos, index) {
+      if (options.dragStart) {
+        options.dragStart(pos, index);
+      }
+    }
+
+    function runDragEnd(pos, index) {
+      if (options.dragEnd) {
+        options.dragEnd(pos, index);
       }
     }
 

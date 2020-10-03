@@ -29,40 +29,10 @@ TODO: complete/rewrite/etc.
   - special "-" separator to have "floating" section
   - left/right position
   - added taxonomy specific sidebar (different from "list")
-* Swiper
-  TODO: see if keep or replace (with a carousel or similar from other theme)
-  - Possibility to have no option parameters
-    Use:
-    - Without option:
-    ```
-    {{< swiper >}}
-      {{< swiperItem >}}
-      < SWIPE 1 >
-      {{< /swiperItem >}}
-      {{< swiperItem >}}
-      < SWIPE 2 >
-      {{< /swiperItem >}}
-    {{< /swiper >}}
-    ```
-    - With option:
-    ```
-    {{< swiper option="option1">}}
-      {{< swiperItem >}}
-      < SWIPE 1 >
-      {{< /swiperItem >}}
-      {{< swiperItem >}}
-      < SWIPE 2 >
-      {{< /swiperItem >}}
-    {{< /swiper >}}
-    ```
-    ! - The following warning can appear when using "swiper":
-    ```
-    DevTools failed to load SourceMap: Could not load content for http://localhost:1313/lib/swiper/swiper.min.js.map: HTTP error: status code 404, net::ERR_HTTP_RESPONSE_CODE_FAILURE
-    ```
-    Deleting the following line in "swiper.min.js" will remove it (or deleting the '#' character):
-    ```
-    //# sourceMappingURL=swiper.min.js.map
-    ```
+* Swipe
+  - Removed swipe shortcodes "swiper" and "swiperItem"
+  - Use same "swipe.js" for PhotoSwipe and header (version 2.2.15)
+
 
 ## Removed Features from original Zzo Theme
 

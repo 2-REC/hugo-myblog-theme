@@ -1,4 +1,4 @@
-{{ $swipe := resources.Get "js/swipehome.js" | resources.Minify | resources.Fingerprint }}
+{{ $swipe := resources.Get "js/swipe.js" | resources.Minify | resources.Fingerprint }}
 <script defer src="{{ $swipe.RelPermalink }}"></script>
 
 {{ if $.Params.header }}

@@ -2,48 +2,43 @@
 
 ## PRIORITIES / CURRENT STATE
 
+* [ ] theme+lang selectors
+    * [ ] ...
+    * [ ] delete footer:select-lang.html" + related data (calls to partial + css in footer)
+
 * [x] Remove "publication" stuff
     => Check notes (photo on phone)
     * [x] Reveal lib + use
     * [x] Presentation pages, etc
 
 X
-* [x] Add "swipe" stuff
-    => REMOVE/REPLACE!
+* [ ] "swipe"
+    * [x] swipe.js
+        - assets\js\swipe.js
+        - assets\js\swipehome.js
+        => can merge and use only 1 version?
+    * [ ] Keep "header swipe" or replace with other carousel?
+        => Probably useless if using other carousel
+        (unless want to keep "header" stuff completely separated from rest/posts)
+          - carousel from "Resto Hugo" theme
+            - partials/testimonial.html
+              => can be used for "recent posts"
+          OR
+          - carousel from "Travelify" theme
+            => Nicer, but no swipe
+              (see if can easily add arrows on the sides)
 
 !!!!
 TILES:
+- [ ] change "_gallery.scss" name...
 - [ ] fix/adapt CSS...
 - [ ] update TODO.MD & README.MD
+
+- [ ] replace all svgs by font awesome (get svg files from font awesome)?
+    => Or make my own vectorial icons & convert to SVG (?)
 !!!!
 
 
-
-* [ ] Swiper
-    => Replace with swipe from "Resto Hugo" theme!
-    - partials/testimonial.html
-        => can be used for "recent posts"
-    - see if can easily adapt to shortcode
-(
-X    * [ ] See if keep or replace (with a carousel or similar from other theme)
-        Related files:
-        - swiper.html + swiperItem.html
-        Used in:
-            - shortcodes.md
-                => Remove "swiper" stuff
-        Using:
-            - swiper.min.css
-                => Can be deleted
-            - swiper.min.js
-                => Can be deleted
-            - _swiper.scss
-                !- also defines "swipe" class!
-                    => Only remove "swiper" stuff
-    * [ ] See if can merge swiper used in "photoswipe" and "header-slide"
-        => Using 2 different versions of "swiper.js"
-    * [ ] Allow more than 1 swipe per page
-        => Problem related to div ID: same for all (?)
-)
 * [ ] Gallery
     * [ ] Change photos => use mine
     * [ ] Add another one ("drawings")
@@ -92,6 +87,13 @@ X    * [ ] See if keep or replace (with a carousel or similar from other theme)
         * [ ] +more?
     * [x] See about "inner", "outer" for sidebar stuff... (nice to have, but a bit buggy)
         => Don't keep (replaced with 'sidedata')
+    * [ ] ...
+
+* [ ] Update to latest Zzo sources
+    * [x] typewriter header? => NO
+    * [ ] pinned posts?
+    * [ ] min nb tags?
+    * [ ] utterances?
     * [ ] ...
 
 

@@ -27,17 +27,6 @@ This is **boxmd** shortcode
 This is **box** shortcode
 {{< /box >}}
 
-## Swiper
-
-{{< swiper option="option1">}}
-  {{< swiperItem >}}
-  < SWIPE 1 >
-  {{< /swiperItem >}}
-  {{< swiperItem >}}
-  < SWIPE 2 >
-  {{< /swiperItem >}}
-{{< /swiper >}}
-
 ## Code tabs
 
 Make it easy to switch between different code

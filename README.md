@@ -9,10 +9,10 @@ TODO: complete/rewrite/etc.
     - Only keep minimum, add as desired
         => For each language: scss file + entry in "_syntax.scss"
 - Gallery
-    - 3 modes: "one-by-one" (or "one"), "remote" and "at-once" (default)
-        - one-by-one: "cpation" fields will be used for each image
+    - 3 modes: "one-by-one" (or "one"), "remote" and "at-once"
+        - one-by-one: "caption" field will be used for each image
         - remote: Can additionally specify online images (by providing URL for "image" field)
-        - at-once: The "caption" field will not be used
+        - at-once: The "caption" field will not be used (default)
     + changed: fixed sizing issues (20% seems buggy, +use of "match"+"unmatch" doesn't work well when quick resize, +no init trigger on page onload)
 
 
@@ -29,15 +29,18 @@ TODO: complete/rewrite/etc.
   - special "-" separator to have "floating" section
   - left/right position
   - added taxonomy specific sidebar (different from "list")
-* Swipe
-  - Removed swipe shortcodes "swiper" and "swiperItem"
-  - Use same "swipe.js" for PhotoSwipe and header (version 2.2.15)
-
+* Summary Tiles
+    * Added possibility to have an image, using tiles as in gallery, with CSS similar to "Creative Protfolio" theme
+* Gallery
+    * Use CSS similar to "Creative Protfolio" theme
 
 ## Removed Features from original Zzo Theme
 
-* All themes but "light"
+* All themes but "light" & "dark"
 * Search feature
+* Swipe
+  - Removed swipe shortcodes "swiper" and "swiperItem"
+  - Use same "swipe.js" for PhotoSwipe and header (version 2.2.15)
 * Busuanzi site counter
 * Baidu Analytics
 
@@ -109,6 +112,9 @@ Additionnally, can adapt style+layouts in SCSS files:
 
 
 ## DISCLAIMER
-* Hugo (+dev)
-* Zzo Theme (+dev)
+* Hugo (+developer)
+* Zzo Theme (+developer)
+* Creative Protfolio Theme (+developer)
+    https://themes.gohugo.io/hugo-creative-portfolio-theme
 * others?
+

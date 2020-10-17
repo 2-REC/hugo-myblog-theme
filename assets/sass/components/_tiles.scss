@@ -1,9 +1,11 @@
 //TODO:
-//?- modify 'box-masonry-hover-text-header' case to have CSS applied!
+// - see if use icons or 'content' for magnifier icon...
 // - set style for each case (text, titles, etc)
 // - truncate text when description is too long (limit height) +word-wrap?
 // - use font awesome?
 
+
+/* ---- Grid ---- */
 
 .grid {
   position: relative;
@@ -38,7 +40,8 @@
   clear: both;
 }
 
-/* ---- .grid-item ---- */
+
+/* ---- Grid Item ---- */
 
 .grid-sizer {
   padding: 0.5rem;
@@ -48,7 +51,7 @@
 /*
 .grid-sizer,
 .grid-item {
-  width: 25%;
+  width: 100%;
 }
 */
 .grid-item {
@@ -83,16 +86,23 @@
     
     @include flexbox();
     @include justify-content(center);
-
   }
 }
 
 
-//TODO: rename to 'summary-tile' (?)
+/* ============================================================================================== */
+
+/* ---- Summary Tiles ---- */
+
 .box-masonry {
 width: 100%;
 height: 100%;
-  background: #fff;
+//  background: #fff;
+  @include themify($themes) {
+    color: themed('body-background-color');
+    //color: themed('backdrop-background-color');
+    //color: themed('content-box-background-color');
+  }
   //margin-bottom: 30px;
 margin: 0.51rem;
   position: relative;
@@ -119,15 +129,29 @@ margin: 0.51rem;
   color: #000;
   text-decoration: none;
 }
+
+// Text in tiles
 .box-masonry .box-masonry-text {
   padding: 15px 20px 15px;
 //? (horrible)
 word-wrap: break-word;
 }
-.box-masonry .box-masonry-text p {
-  color: #999999;
-  font-size: 14px;
+/* TODO: use icons or "content"?
+.box-masonry .box-masonry-icon {
+  @include themify($themes) {
+    color: themed('link');
+  }
+  text-align: center;
 }
+*/
+.box-masonry .box-masonry-text p {
+  font-size: 14px;
+  @include themify($themes) {
+    color: themed('body-color');
+  }
+}
+
+// Tiles with text overlay
 .box-masonry .box-masonry-hover-text-header {
   position: absolute;
   left: 0;
@@ -138,15 +162,30 @@ word-wrap: break-word;
   -webkit-transition: all 0.2s ease-out;
   -moz-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
-  color: #555555;
 }
+
+// = 'box-masonry-description'
 .box-masonry .box-masonry-hover-text-header p {
   font-size: 14px;
+  @include themify($themes) {
+    color: themed('body-color');
+  }
 }
+.box-masonry .box-masonry-hover-text-header h4 {
+  @include themify($themes) {
+    color: themed('link');
+  }
+/*
+//TODO: use icons or "content"?
+//TODO: FIX ALIGN!
+&::before {
+  content: "➖🔍➖";
+}
+*/
+}
+
+////////
 //TODO: unused?
-.box-masonry .box-masonry-hover-text-header h4 a {
-  color: #555555;
-}
 .box-masonry .box-masonry-hover-center {
   position: absolute;
   width: 100%;
@@ -162,25 +201,35 @@ word-wrap: break-word;
   color: #555555;
   font-size: 50px;
 }
+////////
+
+
 .box-masonry:hover {
   box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.4);
 }
 .box-masonry:hover .box-masonry-hover-text-header {
   opacity: 1;
 }
+////////
+//TODO: unused?
 .box-masonry:hover .box-masonry-hover-center {
   opacity: 1;
 }
+////////
 .box-masonry:hover .box-masonry-image.with-hover-overlay:before {
   opacity: 0.8;
 }
 .box-masonry:hover .box-masonry-image.with-hover-icon:after {
   opacity: 0.7;
 }
+
 .box-masonry h2:last-child,
 .box-masonry p:last-child {
   margin-bottom: 0;
 }
+
+
+// Images in tiles
 .box-masonry .box-masonry-image {
   display: block;
   position: relative;
@@ -190,16 +239,22 @@ word-wrap: break-word;
 .box-masonry .box-masonry-image.with-hover-overlay:before {
   display: block;
   position: absolute;
-  content: " ";
-  background: #fff;
-  opacity: 0;
   width: 100%;
   height: 100%;
   left: 0;
   top: 0;
+
+  opacity: 0;
+  content: " ";
+
   -webkit-transition: all 0.2s ease-out;
   -moz-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
+
+  @include themify($themes) {
+    color: themed('gallery-mask-color');
+    background-color: themed('gallery-mask-background-color');
+  }
 }
 .box-masonry .box-masonry-image.with-hover-icon:after {
   display: block;
@@ -215,13 +270,16 @@ word-wrap: break-word;
   -moz-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
 
-//TODO: use font awesome?
-// => and for other icons?
+////
+//TODO: use SVG element (from font awesome?)
+// => add in partial file! (remove from here)
 /*
   font-family: 'FontAwesome';
   content: '\f105';
 */
+//TODO: use icons or "content"?
 content: "➖🔍➖";
+////
 
   text-align: center;
 //  font-size: 50px;
@@ -233,9 +291,10 @@ content: "➖🔍➖";
 }
 
 
+/* ============================================================================================== */
 
+/* ---- Gallery Tiles ---- */
 
-//// NEW
 .gallery-tile {
     width: 100%;
     height: 100%;
@@ -282,9 +341,9 @@ margin: 0.51rem;
     top: 0;
 
     opacity: 0;
-    pointer-events: none;
-
     content: " ";
+
+    pointer-events: none;
 
     -webkit-transition: all 0.2s ease-out;
     -moz-transition: all 0.2s ease-out;
@@ -298,6 +357,7 @@ margin: 0.51rem;
 .gallery-tile .gallery-tile-image:hover {
     text-decoration: none;
 }
+
 .gallery-tile .gallery-tile-hover-text-header {
     position: absolute;
     left: 0;
@@ -308,10 +368,12 @@ margin: 0.51rem;
     -webkit-transition: all 0.2s ease-out;
     -moz-transition: all 0.2s ease-out;
     transition: all 0.2s ease-out;
+    //useful?
     color: #555555;
 
 pointer-events: none;
 }
+// = 'gallery-tile-description'
 .gallery-tile .gallery-tile-hover-text-header p {
 //    font-size: 14px;
     font-family: $title-font;
@@ -331,11 +393,21 @@ pointer-events: none;
         color: themed('link');
     }
 
-    //TODO: keep?
+// TODO: use icons or "content"?
+    //TODO: use SVG as for summary tiles
     &::after {
       content: "➖🔍➖";
     }
 }
+/* TODO: use icons or "content"?
+.gallery-tile .gallery-tile-icon {
+    @include themify($themes) {
+        color: themed('link');
+    }
+  text-align: center;
+}
+*/
+
 .gallery-tile:hover {
     box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.4);
 }

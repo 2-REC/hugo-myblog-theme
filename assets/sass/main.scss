@@ -114,11 +114,11 @@ $viewport_size: {{ .Site.Params.viewportSize | default "normal" }};
 @import 'components/tab';
 @import 'components/button';
 //@import 'components/featuredImage';
+@import 'components/tiles';
 
 @import 'pages/404';
 @import 'pages/about';
 //@import 'pages/archive';
-@import 'pages/gallery';
 @import 'pages/list';
 @import 'pages/single';
 @import 'pages/terms';

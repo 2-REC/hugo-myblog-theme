@@ -24,6 +24,11 @@
                 <a href="{{ .Permalink }}">
                 {{ if eq $showonlyimage true }}
                 <div class="box-masonry-hover-text-header">
+                  {{/* TODO: use icons or "content"?
+                  <div class="box-masonry-icon">
+                    {{ partial "svgs/etc/invert-colors.svg" (dict "width" 22 "height" 22) }}
+                  </div>
+                  */}}
                 {{ else }}
                 <div class="box-masonry-text">
                 {{ end }}

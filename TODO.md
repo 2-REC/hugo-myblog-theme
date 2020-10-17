@@ -29,19 +29,31 @@ X
               (see if can easily add arrows on the sides)
 
 !!!!
-TILES:
-- [ ] change "_gallery.scss" name...
-- [ ] fix/adapt CSS...
-- [ ] update TODO.MD & README.MD
-
-- [ ] replace all svgs by font awesome (get svg files from font awesome)?
-    => Or make my own vectorial icons & convert to SVG (?)
+* [ ] Tiles
+    * [ ] fix/adapt/clean CSS
+    * [ ] update TODO.MD & README.MD
+    * [ ] Icons/SVGs:
+        * [ ] Make my own vectorial icons
+        * [ ] Convert to SVG (use Inkscape?)
+        * [ ] Convert to font icon (use Fontella/Icomoon?)
 !!!!
 
 
 * [ ] Gallery
     * [ ] Change photos => use mine
+        * cat
+        * VN food
+        * VN "funny"
+        * AUS landscape
+        * AUS animal
+        * ...
     * [ ] Add another one ("drawings")
+        * VN flowers
+        * AB (?)
+        * "armoured" guy (?)
+        * Gorilla on bike
+        * gears (?)
+        * crazy machines (?)
 !!!!
 
 
@@ -49,7 +61,7 @@ TILES:
     => Not using any lib
 
 * [ ] Themes:
-    * [ ] CHECK EVERYTHIN IS OK!
+    * [ ] CHECK EVERYTHING IS OK!
     * [x] Switch in navbar only if more than 1 entry
 
 
@@ -68,6 +80,10 @@ TILES:
         => specified where/how?
     * [ ] Add subscription/newsletter
         => check with notes (probably will use MailChimmp)
+
+* [ ] Breadcrumb
+    * [ ] Set as optional (use param)
+        => For each (single, list, taxo) or common?
 
 * [x] main-left + main_right
     => Allow side panels, eg adverts or images
@@ -91,7 +107,7 @@ TILES:
 
 * [ ] Update to latest Zzo sources
     * [x] typewriter header? => NO
-    * [ ] pinned posts?
+    * [ ] pinned posts
     * [ ] min nb tags?
     * [ ] utterances?
     * [ ] ...
@@ -104,6 +120,10 @@ TILES:
 * [ ] themes.toml
     => update when theme finished (as ZZO)
 
+
+
+########################
+(TODO: continue/update!)
 
 ## EXAMPLE SITE
 

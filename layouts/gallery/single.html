@@ -15,29 +15,21 @@
       {{ $basename := (replace .File.Dir "\\" "/") }}
       {{ range .Params.Images }}
       <div class="grid-item">
-      {{/* ///////////////////////////////////////////////////////// */}}
-      {{/*
-        <img src="{{ $basename | relURL }}{{ .image }}" alt="{{ print .caption }}" />
-        <div class="grid-item__desc hide">
-          <span class="grid-item__desc--text">
-            {{ .caption }}
-          </span>
-        </div>
-      */}}
-      {{/* ///////////////////////////////////////////////////////// */}}
-<div class="gallery-tile">
-    <div class="gallery-tile-image with-hover-overlay">
-        <img src="{{ $basename | relURL }}{{ .image }}" alt="{{ print .caption }}" />
-    </div>
-    <div class="gallery-tile-hover-text-header">
-        <div class="gallery-tile-description">
-            <p>
-                {{ .caption }}
-            </p>
-        </div>
-    </div>
+        <div class="gallery-tile">
+          <div class="gallery-tile-image with-hover-overlay">
+            <img src="{{ $basename | relURL }}{{ .image }}" alt="{{ print .caption }}" />
+          </div>
+          <div class="gallery-tile-hover-text-header">
+            <div class="gallery-tile-description">
+              <p>{{ .caption }}</p>
+            </div>
+{{/* TODO: use icons or "content"?
+<div class="gallery-tile-icon">
+  {{ partial "svgs/etc/invert-colors.svg" (dict "width" 22 "height" 22) }}
 </div>
-      {{/* ///////////////////////////////////////////////////////// */}}
+*/}}
+          </div>
+        </div>
       </div>
       {{ end }}
     {{ end }}
@@ -51,29 +43,16 @@
     <div class="grid-sizer"></div>
     {{ range .Params.Images }}
     <div class="grid-item">
-      {{/* ///////////////////////////////////////////////////////// */}}
-      {{/*
-      <img src="{{ .image }}" alt="{{ print .caption }}" />
-      <div class="grid-item__desc hide">
-        <span class="grid-item__desc--text">
-          {{ .caption }}
-        </span>
-      </div>
-      */}}
-      {{/* ///////////////////////////////////////////////////////// */}}
-<div class="gallery-tile">
-    <div class="gallery-tile-image with-hover-overlay">
-        <img src="{{ .image }}" alt="{{ print .caption }}" />
-    </div>
-    <div class="gallery-tile-hover-text-header">
-        <div class="gallery-tile-description">
-            <p>
-                {{ .caption }}
-            </p>
+      <div class="gallery-tile">
+        <div class="gallery-tile-image with-hover-overlay">
+          <img src="{{ .image }}" alt="{{ print .caption }}" />
         </div>
-    </div>
-</div>
-      {{/* ///////////////////////////////////////////////////////// */}}
+        <div class="gallery-tile-hover-text-header">
+          <div class="gallery-tile-description">
+            <p>{{ .caption }}</p>
+          </div>
+        </div>
+      </div>
     </div>
     {{ end }}
   </div>
@@ -88,29 +67,16 @@
       {{ $basename := (replace .File.Dir "\\" "/") }}
       {{ range (readDir (print "./static/" $basename)) }}
       <div class="grid-item">
-        {{/* ///////////////////////////////////////////////////////// */}}
-        {{/*
-        <img src="{{ $basename | relURL }}{{ .Name }}" alt="{{ index (split .Name ".") 0 }}"/>
-        <div class="grid-item__desc hide">
-          <span class="grid-item__desc--text">
-            {{ index (split .Name ".") 0 }}
-          </span>
+        <div class="gallery-tile">
+          <div class="gallery-tile-image with-hover-overlay">
+            <img src="{{ $basename | relURL }}{{ .Name }}" alt="{{ index (split .Name ".") 0 }}"/>
+          </div>
+          <div class="gallery-tile-hover-text-header">
+            <div class="gallery-tile-description">
+              <p>{{ index (split .Name ".") 0 }}</p>
+            </div>
+          </div>
         </div>
-        */}}
-        {{/* ///////////////////////////////////////////////////////// */}}
-<div class="gallery-tile">
-    <div class="gallery-tile-image with-hover-overlay">
-        <img src="{{ $basename | relURL }}{{ .Name }}" alt="{{ index (split .Name ".") 0 }}"/>
-    </div>
-    <div class="gallery-tile-hover-text-header">
-        <div class="gallery-tile-description">
-            <p>
-                {{ index (split .Name ".") 0 }}
-            </p>
-        </div>
-    </div>
-</div>
-        {{/* ///////////////////////////////////////////////////////// */}}
       </div>
       {{ end }}
     {{ end }}

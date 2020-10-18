@@ -12,7 +12,7 @@ notAllowedTypesInHomeSidebar = ["about", "archive"] #TODO: adapt! (contact?)
 # notAllowedTypesInArchive #TODO!
 # notAllowedTypesInHomeFeed = ["about", "archive", "contact", "gallery" ] #TODO: IF using 'showFeedLinks' - adapt! (look in original Zzo)
 
-viewportSize = "normal" # widest, wider, wide, normal, narrow
+viewportSize = "wide" # widest, wider, wide, normal, narrow
 enableUiAnimation = true
 hideSingleContentsWhenJSDisabled = false
 

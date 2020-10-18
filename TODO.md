@@ -6,6 +6,17 @@
     * [ ] ...
     * [ ] delete footer:select-lang.html" + related data (calls to partial + css in footer)
 
+* [ ] Navbar
+    * [ ] Mobile
+        * [ ] Theme-select: fix offset problem with dropdown menu (too far left)
+            => should be fixed when adding 'language selector'
+
+* [ ] font-icons
+    * [ ] Redo all icons myself (SVG using Inkscape)
+    * [ ] Generate font with Fontello
+    * [ ] Make sure every icon is correct (eg problem with 'link' from font awesome)
+    * [ ] 'Sync' svgs and font (have same icons available in both) (look at every icon used)
+
 * [x] Remove "publication" stuff
     => Check notes (photo on phone)
     * [x] Reveal lib + use
@@ -27,16 +38,6 @@ X
           - carousel from "Travelify" theme
             => Nicer, but no swipe
               (see if can easily add arrows on the sides)
-
-!!!!
-* [ ] Tiles
-    * [ ] fix/adapt/clean CSS
-    * [ ] update TODO.MD & README.MD
-    * [ ] Icons/SVGs:
-        * [ ] Make my own vectorial icons
-        * [ ] Convert to SVG (use Inkscape?)
-        * [ ] Convert to font icon (use Fontella/Icomoon?)
-!!!!
 
 
 * [ ] Gallery
@@ -80,10 +81,6 @@ X
         => specified where/how?
     * [ ] Add subscription/newsletter
         => check with notes (probably will use MailChimmp)
-
-* [ ] Breadcrumb
-    * [ ] Set as optional (use param)
-        => For each (single, list, taxo) or common?
 
 * [x] main-left + main_right
     => Allow side panels, eg adverts or images

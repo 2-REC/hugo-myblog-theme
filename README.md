@@ -17,6 +17,9 @@ TODO: complete/rewrite/etc.
 
 
 ## Changed Features from original Zzo Theme
+* General
+    * Icons
+        * Use of an 'icon-font' for icons in text (additionally to SVG tags)
 * Themes
     * More dynamis theme management.
         For each theme:
@@ -25,14 +28,13 @@ TODO: complete/rewrite/etc.
     * Default case for 'theme' if current value in local storage is not valid
         => Remove 'theme' from localStorage if value is not in list of themes (in 'data/theme.toml').
 * Sidebar
-  - list to define content of each toolbar (home, single, list, taxonomy)
-  - special "-" separator to have "floating" section
-  - left/right position
-  - added taxonomy specific sidebar (different from "list")
+    * Added taxonomy specific sidebar (different from "list")
+    * Content of each sidebar (home, single, list, taxonomy) defined by list (in "params")
+    * Special "-" separator to specify start of "floating" section
+    * Possibility to have left and right sidebars (as well as both or none)
 * Summary Tiles
     * Added possibility to have an image, using tiles as in gallery, with CSS similar to "Creative Protfolio" theme
-* Gallery
-    * Use CSS similar to "Creative Protfolio" theme
+
 
 ## Removed Features from original Zzo Theme
 

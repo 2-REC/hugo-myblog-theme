@@ -72,6 +72,21 @@
     
     @include flexbox();
     @include justify-content(center);
+
+/*
+background-color: red;
+color:green;
+  @include themify($themes) {
+//    background-color: themed('title-color');
+//    color: themed('title-color');
+    color: themed('link');
+
+    @include on-event {
+//      background-color: themed('link-hover');
+      color: themed('link-hover');
+    }
+  }
+*/
   }
 }
 
@@ -92,11 +107,13 @@ margin: 0.51rem;
 
 //  background: #fff;
 
+/* ?
   @include themify($themes) {
     color: themed('body-background-color');
     //color: themed('backdrop-background-color');
     //color: themed('content-box-background-color');
   }
+*/
 
   box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.2);
 
@@ -159,17 +176,26 @@ margin: 0.51rem;
   }
 }
 
+/*
 .box-masonry .box-masonry-hover-text-header h4 {
   @include themify($themes) {
-    color: themed('link');
+    color: themed('link-hover');
+    text-decoration: underline;
   }
 }
-
+*/
 
 /* Hovering */
 
 .box-masonry:hover {
   box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.4);
+}
+
+.box-masonry:hover h4 {
+  @include themify($themes) {
+    color: themed('link-hover');
+    text-decoration: underline;
+  }
 }
 
 .box-masonry:hover .box-masonry-hover-text-header {
@@ -228,7 +254,7 @@ margin: 0.51rem;
   top: 50%;
 
   opacity: 0;
-  color: #555555;
+//  color: #555555;
 
   text-align: center;
   //TODO: adapt with my icons!
@@ -238,7 +264,8 @@ margin: 0.51rem;
   font-size: 1.5rem;
 
   @include themify($themes) {
-    color: themed('link');
+    color: themed('link-hover');
+  font-weight: 700;
   }
 
   -webkit-transform: translate(0, -50%);
@@ -249,9 +276,11 @@ margin: 0.51rem;
   transition: all 0.2s ease-out;
 }
 
+/* ?
 .box-masonry .box-masonry-image:hover {
   text-decoration: none;
 }
+*/
 
 
 /* ============================================================================================== */
@@ -367,7 +396,8 @@ margin: 0.51rem;
   @include flex-direction(column);
   @include align-items(center);
   @include themify($themes) {
-    color: themed('link');
+//    color: themed('link');
+    color: themed('link-hover');
   }
 
   //TODO: adapt with my icons!

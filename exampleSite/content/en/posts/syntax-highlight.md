@@ -2,6 +2,7 @@
 title: "Syntax highlighting"
 date: 2019-12-18T10:33:41+09:00
 description: "Syntax highlighting test"
+banner: "gallery/photo/beach.jpg"
 draft: false
 enableToc: true
 enableTocContent: false

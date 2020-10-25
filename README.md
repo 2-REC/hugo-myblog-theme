@@ -21,7 +21,7 @@ TODO: complete/rewrite/etc.
     * Icons
         * Use of an 'icon-font' for icons in text (additionally to SVG tags)
 * Themes
-    * More dynamis theme management.
+    * More dynamic theme management.
         For each theme:
         - Add entry+infos in "data/theme.toml" (name, chroma, chroma_background, primary_color)
         - Add scss files ("themes/name.scss" + "themes/chroma_background.scss" + "syntax/chroma.scss")
@@ -34,6 +34,8 @@ TODO: complete/rewrite/etc.
     * Possibility to have left and right sidebars (as well as both or none)
 * Summary Tiles
     * Added possibility to have an image, using tiles as in gallery, with CSS similar to "Creative Protfolio" theme
+* Recent posts
+    * Added carousel from "Travelify" theme
 
 
 ## Removed Features from original Zzo Theme

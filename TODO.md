@@ -2,6 +2,20 @@
 
 ## PRIORITIES / CURRENT STATE
 
+* [ ] Slides: Recent posts / Carousel
+    * [x] Carousel from "Travelify" theme
+    * [ ] Get rid of jquery? (+jquery-cycle)
+    * [ ] (see if can easily add arrows on the sides)
+    * [ ] Clean CSS (as well as for tiles)
+
+* [ ] Tiles
+    * [ ] Fix problem of text underlined when hover
+        => Only want title
+    * [ ] Clean CSS
+* [ ] Tiles + Slides (summary, gallery, carousel)
+    * [ ] Zoom image when hover
+
+
 * [ ] theme+lang selectors
     * [ ] ...
     * [ ] delete footer:select-lang.html" + related data (calls to partial + css in footer)
@@ -22,22 +36,13 @@
     * [x] Reveal lib + use
     * [x] Presentation pages, etc
 
-X
+
 * [ ] "swipe"
     * [x] swipe.js
         - assets\js\swipe.js
         - assets\js\swipehome.js
-        => can merge and use only 1 version?
-    * [ ] Keep "header swipe" or replace with other carousel?
-        => Probably useless if using other carousel
-        (unless want to keep "header" stuff completely separated from rest/posts)
-          - carousel from "Resto Hugo" theme
-            - partials/testimonial.html
-              => can be used for "recent posts"
-          OR
-          - carousel from "Travelify" theme
-            => Nicer, but no swipe
-              (see if can easily add arrows on the sides)
+        => Merge and use only 1 version
+    * [ ] Keep "header swipe" or replace with carousel?
 
 
 * [ ] Gallery
@@ -278,6 +283,6 @@ LATER:
     * [ ] svgs
         * [ ] Rename+change svgs (see what want to keep or change)
 * [ ] index
-    * [ ] Add "recent posts carousel"
+    * [x] Add "recent posts carousel"
 
 

@@ -4,7 +4,6 @@
 
 * [ ] Slides: Recent posts / Carousel
     * [x] Carousel from "Travelify" theme
-    * [ ] Get rid of jquery? (+jquery-cycle)
     * [ ] (see if can easily add arrows on the sides)
     * [ ] Clean CSS (as well as for tiles)
 

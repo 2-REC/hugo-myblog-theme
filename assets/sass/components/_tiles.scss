@@ -223,6 +223,8 @@ margin: 0.51rem;
   position: relative;
   min-height: 100px;
   background: #ccc;
+
+  overflow: hidden;
 }
 
 .box-masonry .box-masonry-image.with-hover-overlay:before {
@@ -276,11 +278,10 @@ margin: 0.51rem;
   transition: all 0.2s ease-out;
 }
 
-/* ?
-.box-masonry .box-masonry-image:hover {
-  text-decoration: none;
+.box-masonry:hover .box-masonry-image img {
+    //TODO: set length as param?
+    @include animation('zoom-in-hover 20s .0s 1 ease both');
 }
-*/
 
 
 /* ============================================================================================== */
@@ -331,6 +332,11 @@ margin: 0.51rem;
 
   //TODO: can remove?
   background: #ccc;
+
+  @include on-event {
+    //TODO: set length as param?
+    @include animation('zoom-in-hover 20s .0s 1 ease both');
+  }
 }
 
 .gallery-tile .gallery-tile-image.with-hover-overlay:before {

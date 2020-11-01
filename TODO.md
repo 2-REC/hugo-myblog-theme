@@ -4,6 +4,7 @@
 
 * [ ] Slides: Recent posts / Carousel
     * [x] Carousel from "Travelify" theme
+    * [ ] Test "manual" stuff
     * [ ] (see if can easily add arrows on the sides)
     * [ ] Clean CSS (as well as for tiles)
 
@@ -11,8 +12,8 @@
     * [ ] Fix problem of text underlined when hover
         => Only want title
     * [ ] Clean CSS
-* [ ] Tiles + Slides (summary, gallery, carousel)
-    * [ ] Zoom image when hover
+* [x] Tiles + Slides (summary, gallery, carousel)
+    * [x] Zoom image when hover
 
 
 * [ ] theme+lang selectors

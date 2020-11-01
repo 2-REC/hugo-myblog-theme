@@ -3,6 +3,7 @@ title: "Shortcodes"
 date: 2020-01-25T06:40:51+09:00
 description: tabs, code-tabs, expand, alert, warning, notice, img, box
 banner: "gallery/photo/beautiful.jpg"
+slide: true
 draft: false
 enableToc: true
 enableTocContent: true

@@ -3,10 +3,18 @@
 ## PRIORITIES / CURRENT STATE
 
 * [ ] Slides: Recent posts / Carousel
+    * [ ] ! - Switch to Cycle2?
+        http://jquery.malsup.com/cycle2/
     * [x] Carousel from "Travelify" theme
-    * [ ] Test "manual" stuff
+    * [x] Test "manual" stuff
+    * [x] Test "data" stuff
+    * [ ] Add "transition effect" as param
+        => Possible values: blindX, blindY, blindZ, cover, curtainX, curtainY, fade, fadeZoom, growX, growY, none, scrollUp, scrollDown, scrollLeft, scrollRight, scrollHorz, scrollVert, shuffle, slideX, slideY, toss, turnUp, turnDown, turnLeft, turnRight, uncover, wipe, zoom
+        * [ ] Document in README
     * [ ] (see if can easily add arrows on the sides)
     * [ ] Clean CSS (as well as for tiles)
+    * [ ] Keep/use jQuery "migrate"?
+        => Have any use for it?
 
 * [ ] Tiles
     * [ ] Fix problem of text underlined when hover

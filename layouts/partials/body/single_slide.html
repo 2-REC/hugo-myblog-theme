@@ -1,24 +1,9 @@
-{{/*
-<figure>
-    <a href="{{ .Permalink }}" title="{{ .Title }}">
-	<img src="{{ .Params.banner  | absURL }}" class="pngfix wp-post-image" alt="{{ .Title }}" title="{{ .Title }}">
-    </a>
-</figure>
-<article class="featured-text">
-    <div class="featured-title">
-	<a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title }}</a>
-    </div><!-- .featured-title -->
-    <div class="featured-content">{{ printf "%s" .Summary | markdownify }}
-    </div><!-- .featured-content -->
-</article><!-- .featured-text -->
-*/}}
 <a class="slide-textbox" href="{{ .Permalink }}" title="{{ .Title }}">
-    <figure>
-        <img src="{{ .Params.banner  | absURL }}" class="pngfix wp-post-image" alt="{{ .Title }}" title="{{ .Title }}">
-    </figure>
-    <article class="featured-text">
-        <h4 class="featured-title">{{ .Title }}</h4><!-- .featured-title -->
-        <div class="featured-content">{{ printf "%s" .Summary | markdownify }}
-        </div><!-- .featured-content -->
-    </article><!-- .featured-text -->
+  <figure>
+    <img src="{{ .Params.banner  | absURL }}" class="pngfix wp-post-image" alt="{{ .Title }}" title="{{ .Title }}">
+  </figure>
+  <article class="featured-text">
+    <h4 class="featured-title">{{ .Title }}</h4>
+    <div class="featured-content">{{ printf "%s" .Summary | markdownify }}</div>
+  </article>
 </a>

@@ -36,6 +36,9 @@ TODO: complete/rewrite/etc.
     * Added possibility to have an image, using tiles as in gallery, with CSS similar to "Creative Protfolio" theme
 * Recent posts
     * Added carousel from "Travelify" theme
+    * Uses "jQuery.cycle" library
+* Gallery + Summary tiles + Recent posts
+    * Added "zooming" when hovering the images
 
 
 ## Removed Features from original Zzo Theme
@@ -120,5 +123,7 @@ Additionnally, can adapt style+layouts in SCSS files:
 * Zzo Theme (+developer)
 * Creative Protfolio Theme (+developer)
     https://themes.gohugo.io/hugo-creative-portfolio-theme
+* jQuery Cycle Plugin (+developer)
+    http://jquery.malsup.com/cycle/
 * others?
 

@@ -1,84 +1,68 @@
 {{ if isset .Site.Params "slider" }}
-{{ if .Site.Params.slider.enable }}
-
-<section class="featured-slider">
-    <div class="slider-cycle">
-	{{ if .Site.Data.slider }}
-	{{ if gt (len .Site.Data.slider) 0 }}
-	{{ range $index, $slide := .Site.Data.slider }}
-	{{ if and (isset $slide "banner") (not (eq .banner "")) }}
-	<div class="slides {{ if eq $index 0 }} displayblock {{ else }} displaynone {{ end }}">
-		    <figure>
-			    <a href="{{ .url }}" title="{{ .Title }}">
-			    <img src="{{ .banner | absURL }}" class="pngfix wp-post-image" alt="{{ .Title }}" title="{{ .Title }}">
-		</a>
-	    </figure>
-		    <article class="featured-text">
-			    <div class="featured-title">
-			    <a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title }}</a>
-		</div><!-- .featured-title -->
-			    <div class="featured-content">{{ printf "%s" .Summary | markdownify }}
-		</div><!-- .featured-content -->
-	    </article><!-- .featured-text -->
-		</div><!-- .slides -->
-	{{ end }}
-	{{ end }}
-	{{ end }}
-	{{ end }}
-{{/*
-	{{ if and (isset .Site.Params.slider "manual") (.Site.Params.slider.manual) }}
-*/}}
-	{{ if and (isset $.Site.Params.slider "manual") ($.Site.Params.slider.manual) }}
-TEST2
-	{{ range $index, $page := .Site.Pages.ByParam "slider" }}
-TEST3
-	{{ if and (isset .Params "banner") (not (eq .Params.banner "")) }}
-TEST4
-	{{ if and (isset .Params "slider") (.Params.slider) }}
-TEST5
-	<div class="slides {{ if eq $index 0 }} displayblock {{ else }} displaynone {{ end }}">
-		    {{ partial "body/single_slide" . }}
-		</div><!-- .slides -->
-	{{ end }}
-	{{ end }}
-	{{ end }}
-	{{ else }}
-	{{ $features := add .Site.Params.slider.num_features 1 }}
-	{{ range $index, $page := first $features (where .Site.Pages "Type" "posts") }}
-	{{ if and (isset .Params "banner") (not (eq .Params.banner "")) }}
-	<div class="slides {{ if eq $index 0 }} displayblock {{ else }} displaynone {{ end }}">
-		    {{ partial "body/single_slide" . }}
-		</div><!-- .slides -->
-	{{ end }}
-	{{ end }}
-	{{ end }}
-    </div>
-    <nav id="controllers" class="clearfix">
-    </nav>
-    <!-- #controllers -->
-</section><!-- .featured-slider -->
-
-<script type='text/javascript'>
- /* <![CDATA[ */
- var travelify_slider_value = {"transition_effect":"fade","transition_delay":"4000","transition_duration":"1000"};
- /* ]]> */
-</script>
-{{/*
-<script type='text/javascript' src="{{ .Site.BaseURL }}js/slider-settings.min.js"></script>
-*/}}
-{{ $jquery := resources.Get "js/jquery.js" | resources.Fingerprint }}
-<script type='text/javascript' src="{{ $jquery.RelPermalink }}"></script>
-{{/*
-<script type='text/javascript' src="{{ .Site.BaseURL }}js/jquery-migrate.min.js"></script>
-*/}}
-{{ $jqueryCycle := resources.Get "js/jquery.cycle.all.min.js" | resources.Fingerprint }}
-<script type='text/javascript' src="{{ $jqueryCycle.RelPermalink }}"></script>
-{{/* 2-REC: Slider size "fix" - MID */}}
-{{ $sliderSizeFix := resources.Get "js/slider-size-fix.js" | resources.Fingerprint }}
-<script type='text/javascript' src="{{ $sliderSizeFix.RelPermalink }}"></script>
-{{/* 2-REC: Slider size "fix" - END */}}
-{{ $slider := resources.Get "js/slider-settings.min.js" | resources.Fingerprint }}
-<script type='text/javascript' src="{{ $slider.RelPermalink }}"></script>
-
-{{ end }}
+  {{ if .Site.Params.slider.enable }}
+    <section class="featured-slider">
+      <div class="slider-cycle">
+        {{ if .Site.Data.slider }}
+          {{ if gt (len .Site.Data.slider) 0 }}
+            {{ range $index, $slide := .Site.Data.slider }}
+              {{ if and (isset $slide "banner") (not (eq .banner "")) }}
+                <div class="slides {{ if eq $index 0 }} displayblock {{ else }} displaynone {{ end }}">
+                  <figure>
+                    <a href="{{ .url }}" title="{{ .Title }}">
+                      <img src="{{ .banner | absURL }}" class="pngfix wp-post-image" alt="{{ .Title }}" title="{{ .Title }}">
+                    </a>
+    	          </figure>
+                  <article class="featured-text">
+                    <div class="featured-title">
+                      <a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title }}</a>
+                    </div>
+                    <div class="featured-content">{{ printf "%s" .Summary | markdownify }}</div>
+                  </article>
+                </div>
+              {{ end }}
+            {{ end }}
+          {{ end }}
+        {{ end }}
+        {{ if and (isset $.Site.Params.slider "manual") ($.Site.Params.slider.manual) }}
+          {{ range $index, $page := .Site.Pages.ByParam "slide" }}
+            {{ if and (isset .Params "banner") (not (eq .Params.banner "")) }}
+              {{ if and (isset .Params "slide") (.Params.slide) }}
+                <div class="slides {{ if eq $index 0 }} displayblock {{ else }} displaynone {{ end }}">
+                  {{ partial "body/single_slide" . }}
+                </div>
+              {{ end }}
+            {{ end }}
+          {{ end }}
+        {{ else }}
+          {{ $features := add .Site.Params.slider.num_features 1 }}
+          {{ range $index, $page := first $features (where .Site.Pages "Type" "posts") }}
+            {{ if and (isset .Params "banner") (not (eq .Params.banner "")) }}
+              <div class="slides {{ if eq $index 0 }} displayblock {{ else }} displaynone {{ end }}">
+                {{ partial "body/single_slide" . }}
+              </div>
+            {{ end }}
+          {{ end }}
+        {{ end }}
+      </div>
+      <nav id="controllers" class="clearfix"></nav>
+    </section>
+    <script type='text/javascript'>
+      /* <![CDATA[ */
+      var slider_value = {"transition_effect":"fade","transition_delay":"4000","transition_duration":"1000"};
+      /* ]]> */
+    </script>
+    {{ $jquery := resources.Get "js/jquery.js" | resources.Fingerprint }}
+    <script type='text/javascript' src="{{ $jquery.RelPermalink }}"></script>
+    {{/* TODO: want to keep/use?
+    <script type='text/javascript' src="{{ .Site.BaseURL }}js/jquery-migrate.min.js"></script>
+    */}}
+    {{ $jqueryCycle := resources.Get "js/jquery.cycle.all.min.js" | resources.Fingerprint }}
+    <script type='text/javascript' src="{{ $jqueryCycle.RelPermalink }}"></script>
+    {{/* 2-REC: Slider size "fix" - MID */}}
+    {{ $sliderSizeFix := resources.Get "js/slider-size-fix.js" | resources.Fingerprint }}
+    <script type='text/javascript' src="{{ $sliderSizeFix.RelPermalink }}"></script>
+    {{/* 2-REC: Slider size "fix" - END */}}
+    {{ $slider := resources.Get "js/slider-settings.min.js" | resources.Fingerprint }}
+    <script type='text/javascript' src="{{ $slider.RelPermalink }}"></script>
+  {{ end }}
 {{ end }}

@@ -8,9 +8,7 @@
     * [x] Carousel from "Travelify" theme
     * [x] Test "manual" stuff
     * [x] Test "data" stuff
-    * [ ] Add "transition effect" as param
-        => Possible values: blindX, blindY, blindZ, cover, curtainX, curtainY, fade, fadeZoom, growX, growY, none, scrollUp, scrollDown, scrollLeft, scrollRight, scrollHorz, scrollVert, shuffle, slideX, slideY, toss, turnUp, turnDown, turnLeft, turnRight, uncover, wipe, zoom
-        * [ ] Document in README
+    * [x] Add "transition effect" as param (+delay and duration)
     * [ ] (see if can easily add arrows on the sides)
     * [ ] Clean CSS (as well as for tiles)
     * [ ] Keep/use jQuery "migrate"?

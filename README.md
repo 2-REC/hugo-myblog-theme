@@ -35,8 +35,8 @@ TODO: complete/rewrite/etc.
 * Summary Tiles
     * Added possibility to have an image, using tiles as in gallery, with CSS similar to "Creative Protfolio" theme
 * Recent posts
-    * Added carousel from "Travelify" theme
-    * Uses "jQuery.cycle" library
+    * Added carousel from "Travelify" theme (uses "jQuery.cycle" library)
+    * Added parameters for the slides transitions (transition effect, delay and duration)
 * Gallery + Summary tiles + Recent posts
     * Added "zooming" when hovering the images
 

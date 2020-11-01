@@ -47,9 +47,22 @@
       <nav id="controllers" class="clearfix"></nav>
     </section>
     <script type='text/javascript'>
-      /* <![CDATA[ */
-      var slider_value = {"transition_effect":"fade","transition_delay":"4000","transition_duration":"1000"};
-      /* ]]> */
+      {{ $transition_effect := "fade" }}
+      {{ if isset $.Site.Params.slider "transition_effect" }}
+        {{ $transition_effect = $.Site.Params.slider.transition_effect }}
+      {{ end }}
+      {{ $transition_delay := 4000 }}
+      {{ if isset $.Site.Params.slider "transition_delay" }}
+        {{ $transition_delay = $.Site.Params.slider.transition_delay }}
+      {{ end }}
+      {{ $transition_duration := 1000 }}
+      {{ if isset $.Site.Params.slider "transition_duration" }}
+        {{ $transition_duration = $.Site.Params.slider.transition_duration }}
+      {{ end }}
+      var transition_effect = {{ $transition_effect }};
+      var transition_delay = "{{ $transition_delay }}";
+      var transition_duration = "{{ $transition_duration }}";
+      var slider_value = { "transition_effect": transition_effect, "transition_delay": transition_delay, "transition_duration": transition_duration };
     </script>
     {{ $jquery := resources.Get "js/jquery.js" | resources.Fingerprint }}
     <script type='text/javascript' src="{{ $jquery.RelPermalink }}"></script>

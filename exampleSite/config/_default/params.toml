@@ -220,3 +220,6 @@ enableBusuanzi = false
   enable = true
   manual = false # Setting manual to true renders the slide selection to only those where the post has a slide=true option enabled
   num_features = 6 # The slider picks up the banner images from the N most recent posts, where num_features is N.
+  transition_effect = "fade" # Possible values: blindX, blindY, blindZ, cover, curtainX, curtainY, fade, fadeZoom, growX, growY, none, scrollUp, scrollDown, scrollLeft, scrollRight, scrollHorz, scrollVert, shuffle, slideX, slideY, toss, turnUp, turnDown, turnLeft, turnRight, uncover, wipe, zoom
+  transition_delay = 4000 # ms
+  transition_duration = 1000 # ms

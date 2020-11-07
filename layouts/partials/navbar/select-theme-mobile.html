@@ -1,8 +1,15 @@
+{{ if $.Param "enableThemeChange" }}
 {{ if gt (len .Site.Data.theme.themes) 1 }}
+{{/*
 <div class="theme theme-mobile" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}">
+*/}}
+<div class="navbar-selector navbar-theme-selector-mobile" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}">
   <div class="dropdown">
-    <button class="dropdown-trigger navbar__slide-down" aria-label="Select Theme Button" style="{{ if $.Param "enableSearch" }}{{ else }}position: absolute; top: 0;{{ end }}" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}">
+    <button class="dropdown-trigger navbar__slide-down" aria-label="Select Theme Button" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}">
+      {{/*
       {{ partial "svgs/etc/invert-colors.svg" (dict "width" 22 "height" 22) }}      
+      */}}
+      {{ partial "svgs/etc/palette-solid.svg" }}
     </button>
     <div class="dropdown-content select-theme">
       {{ if .Site.Data.theme.themes }}
@@ -19,4 +26,5 @@
     </div>
   </div>
 </div>
+{{ end }}
 {{ end }}

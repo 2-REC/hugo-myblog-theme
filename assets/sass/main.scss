@@ -80,6 +80,14 @@ $viewport_size: {{ .Site.Params.viewportSize | default "normal" }};
 @import 'base/typography';
 @import 'base/animation';
 
+////////
+/*
+$length: {{ if .Site.Params.themeOptions }}{{ len .Site.Params.themeOptions }}{{ else }}0{{ end }};
+*/
+//$lang_switch: {{ len .Site.Languages }}
+$navm_theme_right_offset: {{ if and .Site.Params.enableLangChange (gt (len .Site.Languages) 1) }}2.25{{ else }}1{{ end }};
+////////
+
 @import 'layout/navigation';
 @import 'layout/grid';
 @import 'layout/header';

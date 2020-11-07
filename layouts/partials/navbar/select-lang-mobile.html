@@ -1,0 +1,38 @@
+{{ if $.Param "enableLangChange" }}
+{{ if $.Param "enableLangChange" }}
+{{ $siteLanguages := .Site.Languages }}
+{{ $pageLang := .Page.Lang }}
+{{ $label := $pageLang }}
+{{ range $siteLanguages }}
+  {{ if eq $pageLang .Lang }}
+    {{ if .Params.languageShort }}
+      {{ $label = .Params.languageShort }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+<div class="navbar-selector navbar-lang-selector-mobile" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}">
+  <div class="dropdown">
+    <button class="dropdown-trigger navbar__slide-down" aria-label="Select Language Button" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}">
+      <div class="navbar__menu-item">{{ partial "svgs/etc/globe.svg" }}{{ $label }}</div>
+    </button>
+    <div class="dropdown-content">
+      {{ $linkClass := "dropdown-item" }}
+      {{ range .Page.AllTranslations }}
+        {{ $translation := . }}
+        {{ range $siteLanguages }}
+          {{ if eq $translation.Lang .Lang }}
+            {{ if .LanguageName }}
+              {{ $activeLinkClass := "" }}
+              {{ if eq $pageLang .Lang }}
+                {{ $activeLinkClass = " is-active" }}
+              {{ end }}
+              <a href="{{ $translation.Permalink }}" data-lang="{{ .Lang }}" class={{ print $linkClass $activeLinkClass }}>{{ .LanguageName }}</a>
+            {{ end }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+    </div>
+  </div>
+</div>
+{{ end }}
+{{ end }}

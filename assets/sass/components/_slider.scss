@@ -100,6 +100,8 @@ overflow: hidden;
   @include themify($themes) {
     background-color: themed('gallery-mask-background-color');
   }
+
+//  pointer-events: none;
 }
 /*
 .featured-text .featured-title {

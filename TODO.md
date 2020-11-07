@@ -23,8 +23,13 @@
 
 
 * [ ] theme+lang selectors
-    * [ ] ...
-    * [ ] delete footer:select-lang.html" + related data (calls to partial + css in footer)
+    * [x] add navbar selector
+    * [x] adapt CSS
+    * [x] change icons
+    * [x] delete footer:select-lang.html" + related data (calls to partial + css in footer)
+    * [x] ...
+    * [ ] check everything is ok!
+    * [ ] ADD FRENCH STUFF (posts, data, etc)!
 
 * [ ] Navbar
     * [ ] Mobile

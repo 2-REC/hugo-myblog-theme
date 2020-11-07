@@ -20,6 +20,10 @@ hideSingleContentsWhenJSDisabled = false
 #enableSideDataLeft = true # Default: false
 #enableSideDataRight = true # Default: false
 
+# navbar
+enableThemeChange = true
+enableLangChange = true
+
 # header
 homeHeaderType = "slide" # text, img, slide
 
@@ -89,7 +93,6 @@ itemsPerCategory = 5 #TODO: set 1 for each component? (recent, top, etc.)
 showPoweredBy = true
 showFeedLinks = false
 showSocialLinks = true
-enableLangChange = false
 
 # service
 googleTagManager = "" # GTM-XXXXXX #TODO: can comment line if not used?

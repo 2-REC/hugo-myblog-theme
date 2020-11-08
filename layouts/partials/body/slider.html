@@ -7,17 +7,15 @@
             {{ range $index, $slide := .Site.Data.slider }}
               {{ if and (isset $slide "banner") (not (eq .banner "")) }}
                 <div class="slides {{ if eq $index 0 }} displayblock {{ else }} displaynone {{ end }}">
-                  <figure>
-                    <a href="{{ .url }}" title="{{ .Title }}">
-                      <img src="{{ .banner | absURL }}" class="pngfix wp-post-image" alt="{{ .Title }}" title="{{ .Title }}">
-                    </a>
-    	          </figure>
-                  <article class="featured-text">
-                    <div class="featured-title">
-                      <a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title }}</a>
-                    </div>
-                    <div class="featured-content">{{ printf "%s" .Summary | markdownify }}</div>
-                  </article>
+                <a class="slide-textbox" href="{{ .url }}" title="{{ .Title }}">
+                    <figure>
+                      <img src="{{ .banner  | absURL }}" class="pngfix wp-post-image" alt="{{ .Title }}" title="{{ .Title }}">
+                    </figure>
+                    <article class="featured-text">
+                      <h4 class="featured-title">{{ .Title }}</h4>
+                      <div class="featured-content">{{ printf "%s" .Summary | markdownify }}</div>
+                    </article>
+                  </a>
                 </div>
               {{ end }}
             {{ end }}

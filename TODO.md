@@ -3,19 +3,22 @@
 ## PRIORITIES / CURRENT STATE
 
 * [ ] Slides: Recent posts / Carousel
+    * [x] Adapt "data slides" to be as other slides (html+css)
+    * [x] Carousel from "Travelify" theme
+    * [x] Add "transition effect" as param (+delay and duration)
     * [ ] ! - Switch to Cycle2?
         http://jquery.malsup.com/cycle2/
-    * [x] Carousel from "Travelify" theme
-    * [x] Test "manual" stuff
-    * [x] Test "data" stuff
-    * [x] Add "transition effect" as param (+delay and duration)
-    * [ ] (see if can easily add arrows on the sides)
     * [ ] Clean CSS (as well as for tiles)
     * [ ] Keep/use jQuery "migrate"?
         => Have any use for it?
+    * [ ] (see if can easily add arrows on the sides)
+    * [ ] Test everything
+        * [x] Test "data" stuff
+        * [x] Test "manual" stuff
+        * [ ] ...
 
 * [ ] Tiles
-    * [ ] Fix problem of text underlined when hover
+    * [x] Fix problem of text underlined when hover
         => Only want title
     * [ ] Clean CSS
 * [x] Tiles + Slides (summary, gallery, carousel)
@@ -27,14 +30,8 @@
     * [x] adapt CSS
     * [x] change icons
     * [x] delete footer:select-lang.html" + related data (calls to partial + css in footer)
-    * [x] ...
     * [ ] check everything is ok!
-    * [ ] ADD FRENCH STUFF (posts, data, etc)!
-
-* [ ] Navbar
-    * [ ] Mobile
-        * [ ] Theme-select: fix offset problem with dropdown menu (too far left)
-            => should be fixed when adding 'language selector'
+    * [ ] add French content (posts, data, etc)
 
 * [ ] font-icons
     * [ ] Redo all icons myself (SVG using Inkscape)

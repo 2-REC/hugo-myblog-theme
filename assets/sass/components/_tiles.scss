@@ -192,6 +192,12 @@ margin: 0.51rem;
   box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.4);
 }
 
+.box-masonry a {
+  @include on-event {
+    text-decoration: none;
+  }
+}
+
 .box-masonry:hover h4 {
   @include themify($themes) {
     color: themed('link-hover');

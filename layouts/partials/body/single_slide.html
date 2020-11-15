@@ -1,9 +1,10 @@
+{{ $image := index ($.Resources.Match .Params.banner) 0 }}
 <a class="slide-textbox" href="{{ .Permalink }}" title="{{ .Title }}">
   <figure>
-    <img src="{{ .Params.banner  | absURL }}" class="pngfix wp-post-image" alt="{{ .Title }}" title="{{ .Title }}">
+    <img src="{{ $image.Permalink }}" class="pngfix wp-post-image" alt="{{ .Title }}" title="{{ .Title }}">
   </figure>
   <article class="featured-text">
     <h4 class="featured-title">{{ .Title }}</h4>
-    <div class="featured-content">{{ printf "%s" .Summary | markdownify }}</div>
+    <div class="featured-content">{{ printf "%s" .Description | markdownify }}</div>
   </article>
 </a>

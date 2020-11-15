@@ -2,7 +2,7 @@
 title: Markdown Syntax Guide
 date: 2019-12-20T12:00:06+09:00
 description: Sample article showcasing basic Markdown syntax and formatting for HTML elements.
-banner: "images/markdown.png"
+banner: "images/banner/hugo.png"
 slide: true
 draft: false
 enableToc: true
@@ -21,7 +21,6 @@ categories:
 series:
 - Themes Guide
 image: images/markdown.png
-showonlyimage: true
 ---
 
 This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.

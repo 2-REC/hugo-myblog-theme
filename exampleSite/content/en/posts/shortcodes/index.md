@@ -2,7 +2,7 @@
 title: "Shortcodes"
 date: 2020-01-25T06:40:51+09:00
 description: tabs, code-tabs, expand, alert, warning, notice, img, box
-banner: "gallery/photo/beautiful.jpg"
+banner: "images/shortcodes.jpg"
 slide: true
 draft: false
 enableToc: true
@@ -14,7 +14,7 @@ series:
 categories:
 - examples
 -
-image: images/code-file.png
+image: images/shortcodes.jpg
 ---
 
 ## Markdownify box

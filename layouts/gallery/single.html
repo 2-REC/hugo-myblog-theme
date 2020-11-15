@@ -11,13 +11,12 @@
 <main class="tile-grid main">
   <div class="grid tile-grid__container gallery__container">
     <div class="grid-sizer"></div>
-    {{ if .File.Dir }}
-      {{ $basename := (replace .File.Dir "\\" "/") }}
-      {{ range .Params.Images }}
+    {{ range .Params.Images }}
+      {{ $image := index ($root.Resources.Match .image) 0 }}
       <div class="grid-item">
         <div class="gallery-tile">
           <div class="gallery-tile-image with-hover-overlay">
-            <img src="{{ $basename | relURL }}{{ .image }}" alt="{{ print .caption }}" />
+            <img src="{{ $image.Permalink }}" alt="{{ print .caption }}" />
           </div>
           <div class="gallery-tile-hover-text-header">
             <div class="gallery-tile-description">
@@ -26,7 +25,6 @@
           </div>
         </div>
       </div>
-      {{ end }}
     {{ end }}
   </div>
   {{ partial "pagination/pagination-single" . }}
@@ -58,21 +56,23 @@
 <main class="tile-grid main">
   <div class="grid tile-grid__container gallery__container">
     <div class="grid-sizer"></div>
-    {{ if .File.Dir }}
-      {{ $basename := (replace .File.Dir "\\" "/") }}
-      {{ range (readDir (print "./static/" $basename)) }}
-      <div class="grid-item">
-        <div class="gallery-tile">
-          <div class="gallery-tile-image with-hover-overlay">
-            <img src="{{ $basename | relURL }}{{ .Name }}" alt="{{ index (split .Name ".") 0 }}"/>
-          </div>
-          <div class="gallery-tile-hover-text-header">
-            <div class="gallery-tile-description">
-              <p>{{ index (split .Name ".") 0 }}</p>
+    {{ $images := .Resources.Match "*" }}
+    {{ if gt (len $images) 0 }}
+      {{ range $images }}
+        {{ if eq .ResourceType "image" }}
+          <div class="grid-item">
+            <div class="gallery-tile">
+              <div class="gallery-tile-image with-hover-overlay">
+                <img src="{{ .Permalink }}" alt="{{ index (split .Name ".") 0 }}" />
+              </div>
+              <div class="gallery-tile-hover-text-header">
+                <div class="gallery-tile-description">
+                  <p>{{ index (split .Name ".") 0 }}</p>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
+        {{ end }}
       {{ end }}
     {{ end }}
   </div>

@@ -13,7 +13,12 @@ TODO: complete/rewrite/etc.
         - one-by-one: "caption" field will be used for each image
         - remote: Can additionally specify online images (by providing URL for "image" field)
         - at-once: The "caption" field will not be used (default)
-    + changed: fixed sizing issues (20% seems buggy, +use of "match"+"unmatch" doesn't work well when quick resize, +no init trigger on page onload)
+* Recent posts
+    * Added carousel from "Travelify" theme (uses "jQuery.cycle" library)
+    * Added parameters for the slides transitions (transition effect, delay and duration)
+    * Banner image files:
+        * if defined in "data": images are taken from "static" directory
+        * for posts, image is in the post resources (need a page bundle)
 
 
 ## Changed Features from original Zzo Theme
@@ -34,11 +39,10 @@ TODO: complete/rewrite/etc.
     * Possibility to have left and right sidebars (as well as both or none)
 * Summary Tiles
     * Added possibility to have an image, using tiles as in gallery, with CSS similar to "Creative Protfolio" theme
-* Recent posts
-    * Added carousel from "Travelify" theme (uses "jQuery.cycle" library)
-    * Added parameters for the slides transitions (transition effect, delay and duration)
 * Gallery + Summary tiles + Recent posts
     * Added "zooming" when hovering the images
+    * Fixed sizing issues (20% seems buggy, +use of "match"+"unmatch" doesn't work well when quick resize, +no init trigger on page onload)
+    * Image files need to be located in the post directory (eg: "content\en\gallery\photos") instead of in "static" directory
 
 
 ## Removed Features from original Zzo Theme
@@ -50,6 +54,7 @@ TODO: complete/rewrite/etc.
   - Use same "swipe.js" for PhotoSwipe and header (version 2.2.15)
 * Busuanzi site counter
 * Baidu Analytics
+* Publications
 
 
 (TODO: keep this here? => too general, should be in tips blog...)

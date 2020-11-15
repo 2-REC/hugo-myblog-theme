@@ -18,7 +18,8 @@
                   {{ else }}
                   <a href="{{ .Permalink }}" title="" class="box-masonry-image with-hover-overlay with-hover-icon">
                   {{ end }}
-                      <img src="{{$image | absURL}}" alt="" class="img-responsive">
+                      {{ $image_obj := index (.Resources.Match $image) 0 }}
+                      <img src="{{ $image_obj.Permalink }}" alt="" class="img-responsive">
                   </a>
                 {{ end }}
                 <a href="{{ .Permalink }}">

@@ -2,7 +2,7 @@
 title: "Syntax highlighting"
 date: 2019-12-18T10:33:41+09:00
 description: "Syntax highlighting test"
-banner: "gallery/photo/beach.jpg"
+banner: "syntax-highlight.png"
 draft: false
 enableToc: true
 enableTocContent: false
@@ -14,8 +14,8 @@ series:
 -
 categories:
 - hugo
-#image: images/feature2/color-palette.png #TODO: see about images
-image: images/code-file.png
+image: syntax-highlight.png
+showonlyimage: true
 ---
 
 ## Code Syntax Highlighting

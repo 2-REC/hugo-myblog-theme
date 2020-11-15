@@ -2,6 +2,10 @@
 
 ## PRIORITIES / CURRENT STATE
 
+* [ ] Header: adapt css/colors...
+
+* [x] Replace posts images (my images, related to posts, and some "carousel" header images)
+
 * [ ] Slides: Recent posts / Carousel
     * [x] Adapt "data slides" to be as other slides (html+css)
     * [x] Carousel from "Travelify" theme
@@ -20,6 +24,7 @@
 * [ ] Tiles
     * [x] Fix problem of text underlined when hover
         => Only want title
+    * [x] Use the "description" field instead of putting the text
     * [ ] Clean CSS
 * [x] Tiles + Slides (summary, gallery, carousel)
     * [x] Zoom image when hover
@@ -39,11 +44,6 @@
     * [ ] Make sure every icon is correct (eg problem with 'link' from font awesome)
     * [ ] 'Sync' svgs and font (have same icons available in both) (look at every icon used)
 
-* [x] Remove "publication" stuff
-    => Check notes (photo on phone)
-    * [x] Reveal lib + use
-    * [x] Presentation pages, etc
-
 
 * [ ] "swipe"
     * [x] swipe.js
@@ -54,13 +54,9 @@
 
 
 * [ ] Gallery
-    * [ ] Change photos => use mine
-        * cat
-        * VN food
-        * VN "funny"
-        * AUS landscape
-        * AUS animal
-        * ...
+    * [x] Get gallery images to post folder instead of "static"
+    * [ ] Add copyright label (as in portfolio theme)?
+    * [x] Change photos => use mine
     * [ ] Add another one ("drawings")
         * VN flowers
         * AB (?)

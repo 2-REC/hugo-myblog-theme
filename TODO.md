@@ -2,7 +2,7 @@
 
 ## PRIORITIES / CURRENT STATE
 
-* [ ] Header: adapt css/colors...
+* [x] Header: adapt css/colors...
 
 * [x] Replace posts images (my images, related to posts, and some "carousel" header images)
 

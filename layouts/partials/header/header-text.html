@@ -15,7 +15,7 @@
         {{ end }}
         {{ if .subtitle }}
           {{ range .subtitle }} 
-          <div class="site-header__subtitle" style="font-size: {{ $header.subtitleFontSize }}px; {{ with $header.subtitleColor }}color:{{ . }}{{ end }}" data-cursive="{{ with $header.subtitleCursive }}{{ . }}{{ end }}">
+          <div class="site-header__subtitle {{ if $header.subtitleShadow }}site-header__subtitle--shadow{{ end }}" style="font-size: {{ $header.subtitleFontSize }}px; {{ with $header.subtitleColor }}color:{{ . }}{{ end }}" data-cursive="{{ with $header.subtitleCursive }}{{ . }}{{ end }}">
             {{ . }}
           </div>
           {{ end }}      

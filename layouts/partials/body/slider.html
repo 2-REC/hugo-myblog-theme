@@ -65,9 +65,6 @@
     </script>
     {{ $jquery := resources.Get "js/jquery.js" | resources.Fingerprint }}
     <script type='text/javascript' src="{{ $jquery.RelPermalink }}"></script>
-    {{/* TODO: want to keep/use?
-    <script type='text/javascript' src="{{ .Site.BaseURL }}js/jquery-migrate.min.js"></script>
-    */}}
     {{ $jqueryCycle := resources.Get "js/jquery.cycle.all.min.js" | resources.Fingerprint }}
     <script type='text/javascript' src="{{ $jqueryCycle.RelPermalink }}"></script>
     {{/* 2-REC: Slider size "fix" - MID */}}

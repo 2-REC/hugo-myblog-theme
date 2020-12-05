@@ -13,8 +13,7 @@
     * [ ] ! - Switch to Cycle2?
         http://jquery.malsup.com/cycle2/
     * [ ] Clean CSS (as well as for tiles)
-    * [ ] Keep/use jQuery "migrate"?
-        => Have any use for it?
+    * [x] Remove jQuery "migrate"?
     * [ ] (see if can easily add arrows on the sides)
     * [ ] Test everything
         * [x] Test "data" stuff

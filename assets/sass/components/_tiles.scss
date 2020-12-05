@@ -74,8 +74,6 @@
     @include justify-content(center);
 
 /*
-background-color: red;
-color:green;
   @include themify($themes) {
 //    background-color: themed('title-color');
 //    color: themed('title-color');
@@ -158,6 +156,7 @@ margin: 0.51rem;
   left: 0;
   right: 0;
   top: 0;
+  bottom:0;
   padding: 15px 20px 15px;
 
   opacity: 0;
@@ -166,6 +165,9 @@ margin: 0.51rem;
   -moz-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
 
+  @include themify($themes) {
+      background-color: themed('gallery-mask-background-color');
+  }
 }
 
 // = 'box-masonry-description'
@@ -232,6 +234,7 @@ margin: 0.51rem;
   background: #ccc;
 
   overflow: hidden;
+
 }
 
 .box-masonry .box-masonry-image.with-hover-overlay:before {
@@ -248,11 +251,6 @@ margin: 0.51rem;
   -webkit-transition: all 0.2s ease-out;
   -moz-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
-
-  @include themify($themes) {
-    color: themed('gallery-mask-color');
-    background-color: themed('gallery-mask-background-color');
-  }
 }
 
 .box-masonry .box-masonry-image.with-hover-icon:after {

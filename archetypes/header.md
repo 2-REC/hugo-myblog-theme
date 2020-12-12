@@ -42,13 +42,10 @@ header:
   - type: slide
     height: 235
     options:
-        startSlide: 0
-        auto: 5000
-        draggable: true
-        autoRestart: true
-        continuous: true
-        disableScroll: true
-        stopPropagation: true
+    options:
+        transition_effect: scrollHorz
+        transition_delay: 5000
+        transition_duration: 1000
     slide:
       - paddingX: 50
         paddingY: 0

@@ -15,7 +15,8 @@
   }
 
   &__title {
-    line-height: 1.1;
+//    line-height: 1.1;
+line-height: 1em;
     font-weight: 700;
     font-family: $title-font;
 
@@ -33,7 +34,8 @@
   }
 
   &__subtitle {
-    line-height: 1.2;
+//    line-height: 1.2;
+line-height: 1em;
     &[data-cursive="true"] {
       font-family: $cursive-font; 
     }
@@ -51,14 +53,17 @@
   }
 
   &__align-left {
-    @include align-items(flex-start);
+//    @include align-items(flex-start);
+text-align: left;
   }
 
   &__align-center {
-    @include align-items(center);
+//    @include align-items(center);
+text-align: center;
   }
 
   &__align-right {
-    @include align-items(flex-end);
+//    @include align-items(flex-end);
+text-align: right;
   }
 }

@@ -2,30 +2,33 @@
 header:
   - type: text
     height: 200
+    alignX: center
+    alignY: center
     paddingX: 50
     paddingY: 0
-    align: center
     title:
       - HUGO
     subtitle:
-      - The world’s fastest framework for building websites
+      - Le framework de construction de sites web le plus rapide au monde
     titleColor: 
     titleShadow: true
     titleFontSize: 44
     subtitleColor: 
+    subtitleShadow: true
     subtitleCursive: true
     subtitleFontSize: 18
     spaceBetweenTitleSubtitle: 16
   
   - type: img
+    height: 235
+    alignX: center
+    alignY: center
+    paddingX: 50
+    paddingY: 0
     imageSrc: images/header/background.jpg
     imageSize: cover
     imageRepeat: no-repeat
     imagePosition: center
-    height: 235
-    paddingX: 50
-    paddingY: 0
-    align: center
     title:
       -
     subtitle:
@@ -34,6 +37,7 @@ header:
     titleShadow: false
     titleFontSize: 44
     subtitleColor:
+    subtitleShadow: false
     subtitleCursive: false
     subtitleFontSize: 16
     spaceBetweenTitleSubtitle: 20
@@ -41,56 +45,78 @@ header:
   - type: slide
     height: 235
     options:
-        startSlide: 0
-        auto: 5000
-        draggable: true
-        autoRestart: true
-        continuous: true
-        disableScroll: true
-        stopPropagation: true
+        transition_effect: fade
+        transition_delay: 5000
+        transition_duration: 1000
     slide:
-      - paddingX: 50
+      - alignX: left
+        alignY: top
+        paddingX: 50px
         paddingY: 0
-        align: left
         imageSrc: images/header/background.jpg
         imageSize: cover
         imageRepeat: no-repeat
         imagePosition: center
         title:
-          - header title1
+          - Titre 1
         subtitle:
-          - header subtitle1
-        titleFontSize: 44
-        subtitleFontSize: 16
-        spaceBetweenTitleSubtitle: 20
+          - Sous-titre 1-1
+          - Sous-titre 1-2
+        titleColor:
+        titleShadow: true
+        titleFontSize: 44px
+        subtitleColor:
+        subtitleShadow: true
+        subtitleCursive: true
+        subtitleFontSize: 16px
+        titlePaddingY: 10%
+        subtitlePaddingY: 5px
+        spaceBetweenTitleSubtitle: 10px
 
-      - paddingX: 50
+      - alignX: center
+        alignY: center
+        paddingX: -50%
         paddingY: 0
-        align: center
         imageSrc: images/header/background.jpg
         imageSize: cover
         imageRepeat: no-repeat
         imagePosition: center
         title:
-          - header title2
+          - Titre 2-1
+          - Titre 2-2
         subtitle:
-          - header subtitle2
-        titleFontSize: 44
-        subtitleFontSize: 16
-        spaceBetweenTitleSubtitle: 20
+          - Sous-titre 2
+        titleColor:
+        titleShadow: true
+        titleFontSize: 16px
+        subtitleColor:
+        subtitleShadow: true
+        subtitleCursive: true
+        subtitleFontSize: 16px
+        titlePaddingY: 0
+        subtitlePaddingY: 2px
+        spaceBetweenTitleSubtitle: 10%
 
-      - paddingX: 50
-        paddingY: 0
-        align: right
+      - alignX: right
+        alignY: bottom
+        paddingX: 0
+        paddingY: 50px
         imageSrc: images/header/background.jpg
         imageSize: cover
         imageRepeat: no-repeat
         imagePosition: center
         title:
-          - header title3
+          - Titre 3
         subtitle:
-          - header subtitle3
-        titleFontSize: 44
-        subtitleFontSize: 16
-        spaceBetweenTitleSubtitle: 20
+          - Sous-titre 3
+        titleColor:
+        titleShadow: true
+        titleFontSize: 44px
+        subtitleColor:
+        subtitleShadow: true
+        subtitleCursive: true
+        subtitleFontSize: 16px
+        titlePaddingY: 5px
+        subtitlePaddingY: 5%
+        spaceBetweenTitleSubtitle: 0
 ---

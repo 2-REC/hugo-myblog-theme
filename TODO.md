@@ -2,6 +2,10 @@
 
 ## PRIORITIES / CURRENT STATE
 
+!!!!
+LOOK IN "layouts/partials/header/header-slide.html"!!!!
+!!!!
+
 * [x] Header: adapt css/colors...
 
 * [x] Replace posts images (my images, related to posts, and some "carousel" header images)

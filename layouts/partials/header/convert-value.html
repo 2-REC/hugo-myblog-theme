@@ -1,0 +1,15 @@
+{{ $heightPercent := 0 }}
+{{ $heightPixel := 0 }}
+{{ if ne . 0 }}
+  {{ $lastIndex := sub (len (string .)) 1 }}
+  {{ if eq (substr . $lastIndex) "%" }}
+    {{ $percent := substr . 0 $lastIndex }}
+    {{ $heightPercent = add $heightPercent (int $percent) }}
+  {{ else if eq (substr . $lastIndex) "x" }}
+    {{ $pixel := substr . 0 (sub $lastIndex 1) }}
+    {{ $heightPixel = add $heightPixel (int $pixel) }}
+  {{ else }}
+    {{ printf "Only '%v' and 'px' units are handled" "%" }}
+  {{ end }}
+{{ end }}
+{{ return slice $heightPercent $heightPixel }}

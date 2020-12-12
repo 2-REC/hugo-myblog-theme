@@ -25,7 +25,7 @@ enableThemeChange = true
 enableLangChange = true
 
 # header
-homeHeaderType = "slide" # text, img, slide
+homeHeaderType = "multi" # single, multi, custom
 
 # menu
 showMobileMenuTerms = ["tags", "categories", "series"] #TODO: change "series" to "types"

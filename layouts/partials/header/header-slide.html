@@ -1,37 +1,17 @@
-
 {{ $context := .context }}
 {{ $type := .type }}
-
 {{ if $context.Params.header }}
   <section class="featured-slider">
     <div class="slider-cycle-header">
-
-TODO:
-- change header types to single/multi (instead of text/img/slides)
-  => multi has fields slides+options (as-is), single is same as img (can have image or not)
-- adapt _index.md (en+fr)
-- adapt header archetype
-- delete header-text.html
-- delete header-img.html
-- clean site-header.html
-
-{{/*
-      {{ range $.Params.header }}
-        {{ if eq .type "slide" }}
-          {{ $height := .height }}
-          {{ range .slide }}
-*/}}
       {{ range $context.Params.header }}
         {{ if eq .type $type }}
           {{ $height := .height }}
           {{ $slides := slice . }}
-          {{ if eq .type "slide" }}
-            {{ $slides = .slide }}
+          {{ if eq .type "multi" }}
+            {{ $slides = .slides }}
           {{ end }}
           {{ range $slides }}
-
-
-            <div class="site-header__align-{{ .alignX }}" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}" style="{{ if .imageSrc }}background-image: url('{{ .imageSrc | relURL }}'); background-size: {{ .imageSize }}; background-repeat: {{ .imageRepeat }}; background-position: {{ .imagePosition }};{{ end }} height: {{ $height }}px;">
+            <div class="site-header__align-{{ .alignX }}" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}" style="{{ if .image }}background-image: url('{{ .image.src | relURL }}'); background-size: {{ .image.size }}; background-repeat: {{ .image.repeat }}; background-position: {{ .image.position }};{{ end }} height: {{ $height }}px;">
               {{ $header := . }}
 
               {{/* X Padding */}}
@@ -184,43 +164,43 @@ TODO:
       {{ end }}
     </div>
   </section>
-{{ if eq $type "slide" }}
-  <script type='text/javascript'>
-    {{ $header := $context.Params.header }}
-    var options = null;
-    var header = JSON.parse({{ $header | jsonify }});
-    var slide = header.filter(function(h) {
-      return h.type === 'slide';
-    });
+  {{ if eq $type "multi" }}
+    <script type='text/javascript'>
+      {{ $header := $context.Params.header }}
+      var options = null;
+      var header = JSON.parse({{ $header | jsonify }});
+      var multi = header.filter(function(h) {
+        return h.type === 'multi';
+      });
 
-    var transition_effect = "fade";
-    var transition_delay = 4000;
-    var transition_duration = 1000;
+      var transition_effect = "fade";
+      var transition_delay = 4000;
+      var transition_duration = 1000;
 
-    if (slide.length > 0) {
-      options = slide[0].options;
-      if (options.hasOwnProperty('transition_effect')) {
-        transition_effect = options.transition_effect;
+      if (multi.length > 0) {
+        options = multi[0].options;
+        if (options.hasOwnProperty('transition_effect')) {
+          transition_effect = options.transition_effect;
+        }
+        if (options.hasOwnProperty('transition_delay')) {
+          transition_delay = options.transition_delay;
+        }
+        if (options.hasOwnProperty('transition_duration')) {
+          transition_duration = options.transition_duration;
+        }
       }
-      if (options.hasOwnProperty('transition_delay')) {
-        transition_delay = options.transition_delay;
-      }
-      if (options.hasOwnProperty('transition_duration')) {
-        transition_duration = options.transition_duration;
-      }
-    }
 
-    var slider_value_header = { "transition_effect": transition_effect, "transition_delay": transition_delay, "transition_duration": transition_duration };
-  </script>
-  {{ $jquery := resources.Get "js/jquery.js" | resources.Fingerprint }}
-  <script type='text/javascript' src="{{ $jquery.RelPermalink }}"></script>
-  {{ $jqueryCycle := resources.Get "js/jquery.cycle.all.min.js" | resources.Fingerprint }}
-  <script type='text/javascript' src="{{ $jqueryCycle.RelPermalink }}"></script>
-  {{/* 2-REC: Slider size "fix" - MID */}}
-  {{ $sliderSizeFix := resources.Get "js/slider-size-fix.js" | resources.Fingerprint }}
-  <script type='text/javascript' src="{{ $sliderSizeFix.RelPermalink }}"></script>
-  {{/* 2-REC: Slider size "fix" - END */}}
-  {{ $slider := resources.Get "js/slider-header-settings.min.js" | resources.Fingerprint }}
-  <script type='text/javascript' src="{{ $slider.RelPermalink }}"></script>
-{{ end }}
+      var slider_value_header = { "transition_effect": transition_effect, "transition_delay": transition_delay, "transition_duration": transition_duration };
+    </script>
+    {{ $jquery := resources.Get "js/jquery.js" | resources.Fingerprint }}
+    <script type='text/javascript' src="{{ $jquery.RelPermalink }}"></script>
+    {{ $jqueryCycle := resources.Get "js/jquery.cycle.all.min.js" | resources.Fingerprint }}
+    <script type='text/javascript' src="{{ $jqueryCycle.RelPermalink }}"></script>
+    {{/* 2-REC: Slider size "fix" - MID */}}
+    {{ $sliderSizeFix := resources.Get "js/slider-size-fix.js" | resources.Fingerprint }}
+    <script type='text/javascript' src="{{ $sliderSizeFix.RelPermalink }}"></script>
+    {{/* 2-REC: Slider size "fix" - END */}}
+    {{ $slider := resources.Get "js/slider-header-settings.min.js" | resources.Fingerprint }}
+    <script type='text/javascript' src="{{ $slider.RelPermalink }}"></script>
+  {{ end }}
 {{ end }}

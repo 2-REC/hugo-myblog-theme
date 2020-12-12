@@ -1,62 +1,45 @@
 ---
 header:
-  - type: text
-    height: 200
-    alignX: center
-    alignY: center
-    paddingX: 0
-    paddingY: 0%
-    title:
-      - HUGO
-    subtitle:
-      - The world’s fastest framework for building websites
-    titleColor: 
-    titleShadow: false
-    titleFontSize: 44px
-    subtitleColor: 
-    subtitleShadow: true
-    subtitleCursive: true
-    subtitleFontSize: 18px
-    spaceBetweenTitleSubtitle: 16px
-  
-  - type: img
+  - type: single
     height: 235
+    image:
+        src: images/header/background.jpg
+        size: cover
+        repeat: no-repeat
+        position: center
     alignX: center
     alignY: center
     paddingX: 0
     paddingY: 0
-    imageSrc: images/header/background.jpg
-    imageSize: cover
-    imageRepeat: no-repeat
-    imagePosition: center
     title:
-      - 
+      - HUGO
     subtitle:
-      - 
+      - The world’s fastest framework for building websites
     titleColor:
     titleShadow: true
     titleFontSize: 44px
     subtitleColor:
-    subtitleShadow: false
-    subtitleCursive: false
-    subtitleFontSize: 16px
-    spaceBetweenTitleSubtitle: 20px
+    subtitleShadow: true
+    subtitleCursive: true
+    subtitleFontSize: 18px
+    spaceBetweenTitleSubtitle: 16px
 
-  - type: slide
+  - type: multi
     height: 235
     options:
         transition_effect: fade
         transition_delay: 5000
         transition_duration: 1000
-    slide:
-      - alignX: left
+    slides:
+      - image:
+            src: images/header/background.jpg
+            size: cover
+            repeat: no-repeat
+            position: center
+        alignX: left
         alignY: top
         paddingX: 50px
         paddingY: 0
-        imageSrc: images/header/background.jpg
-        imageSize: cover
-        imageRepeat: no-repeat
-        imagePosition: center
         title:
           - header title 1
         subtitle:
@@ -73,14 +56,15 @@ header:
         subtitlePaddingY: 5px
         spaceBetweenTitleSubtitle: 10px
 
-      - alignX: center
+      - image:
+            src: images/header/background.jpg
+            size: cover
+            repeat: no-repeat
+            position: center
+        alignX: center
         alignY: center
         paddingX: -50%
         paddingY: 0
-        imageSrc: images/header/background.jpg
-        imageSize: cover
-        imageRepeat: no-repeat
-        imagePosition: center
         title:
           - header title 2-1
           - header title 2-2
@@ -97,14 +81,15 @@ header:
         subtitlePaddingY: 2px
         spaceBetweenTitleSubtitle: 10%
 
-      - alignX: right
+      - image:
+            src: images/header/background.jpg
+            size: cover
+            repeat: no-repeat
+            position: center
+        alignX: right
         alignY: bottom
         paddingX: 0
         paddingY: 50px
-        imageSrc: images/header/background.jpg
-        imageSize: cover
-        imageRepeat: no-repeat
-        imagePosition: center
         title:
           - header title 3
         subtitle:

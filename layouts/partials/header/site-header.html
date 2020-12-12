@@ -1,22 +1,12 @@
 {{ if .IsHome }}
-<header class="header">
-{{/*
-    {{ if and ($.Param "homeHeaderType") (eq ($.Param "homeHeaderType") "slide") }}
-        {{ partial "header/header-slide" . }}
-    {{ else if and ($.Param "homeHeaderType") (eq ($.Param "homeHeaderType") "img") }}
-        {{ partial "header/header-img" . }}
-    {{ else if and ($.Param "homeHeaderType") (eq ($.Param "homeHeaderType") "text") }}
-        {{ partial "header/header-text" . }}
-    {{ else }}
-        {{ partial "header/custom-header" . }}
-    {{ end }}
-*/}}
-    {{ if $.Param "homeHeaderType" }}
-        {{ if eq ($.Param "homeHeaderType") "custom" }}
-            {{ partial "header/custom-header" . }}
-        {{ else }}
-            {{ partial "header/header-slide" (dict "context" . "type" ($.Param "homeHeaderType")) }}
-        {{ end }}
-    {{ end }}
-</header>
+  {{ $context := . }}
+  {{ with $.Param "homeHeaderType" }}
+    <header class="header">
+      {{ if eq . "custom" }}
+        {{ partial "header/custom-header" $context }}
+      {{ else }}
+        {{ partial "header/header-slide" (dict "context" $context "type" .) }}
+      {{ end }}
+    </header>
+  {{ end }}
 {{ end }}

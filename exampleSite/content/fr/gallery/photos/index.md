@@ -6,29 +6,29 @@ type: gallery
 mode: one-by-one
 images:
   - image: images/bridge.jpg
-    caption: Ninh Binh bridge
+    caption: Ninh Binh
   - image: images/coast.jpg
-    caption: Porto coast
+    caption: Porto
   - image: images/boat.jpg
     caption: Porto
   - image: images/dragon.jpg
-    caption: Hoi An lantern dragon
+    caption: Hoi An
   - image: images/forest.jpg
-    caption: Hallerbos bluebells
+    caption: Hallerbos
   - image: images/nature.jpg
-    caption: old ruins in nature
+    caption: Cambodge
   - image: images/birdhouse.jpg
-    caption: birdhouse
+    caption: maison
   - image: images/pagoda.jpg
-    caption: Hanoi pagoda
+    caption: Hanoi
   - image: images/pyramid.jpg
-    caption: Siem Reap pyramid temple
+    caption: Siem Reap
   - image: images/street.jpg
-    caption: Monschau street
+    caption: Monschau
   - image: images/temple.jpg
-    caption: Siem Reap temple
+    caption: Siem Reap
   - image: images/xmas.jpg
-    caption: Köln Xmas market
+    caption: Köln
 image: gallery.jpg
 ---
 

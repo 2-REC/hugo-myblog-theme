@@ -5,7 +5,14 @@
     <div class="slider-cycle-header">
       {{ range $context.Params.header }}
         {{ if eq .type $type }}
-          {{ $height := .height }}
+          {{ $array := partial "header/convert-value.html" .height }}
+          {{ $heightPercent := index $array 0 }}
+          {{ $heightPixel := index $array 1 }}
+          {{ if eq $heightPixel 0 }}
+            <div>{{ printf "Use 'px' unit for 'height' field (other units not handled)" }}</div>
+          {{ end }}
+          {{ $height := $heightPixel }}
+
           {{ $slides := slice . }}
           {{ if eq .type "multi" }}
             {{ $slides = .slides }}
@@ -28,6 +35,40 @@
                 {{ end }}
               {{ end }}
 
+              {{/* Title Font Size */}}
+              {{ $titleFontSize := "1em" }}
+              {{ $titleFontSizePercent := 0 }}
+              {{ $titleFontSizePixel := 0 }}
+              {{ if .title }}
+                {{ with $header.titleFontSize }}
+                  {{ $array := partial "header/convert-value.html" . }}
+                  {{ $titleFontSizePercent = index $array 0 }}
+                  {{ $titleFontSizePixel = index $array 1 }}
+                  {{ if ne $titleFontSizePercent 0 }}
+                    {{ $titleFontSize = printf "%#vpx" (int (mul $height (div $titleFontSizePercent 100.0))) }}
+                  {{ else }}
+                    {{ $titleFontSize = printf "%#vpx" $titleFontSizePixel }}
+                  {{ end }}
+                {{ end }}
+              {{ end }}
+
+              {{/* Subtitle Font Size */}}
+              {{ $subtitleFontSize := "1em" }}
+              {{ $subtitleFontSizePercent := 0 }}
+              {{ $subtitleFontSizePixel := 0 }}
+              {{ if .subtitle }}
+                {{ with $header.subtitleFontSize }}
+                  {{ $array := partial "header/convert-value.html" . }}
+                  {{ $subtitleFontSizePercent = index $array 0 }}
+                  {{ $subtitleFontSizePixel = index $array 1 }}
+                  {{ if ne $subtitleFontSizePercent 0 }}
+                    {{ $subtitleFontSize = printf "%#vpx" (int (mul $height (div $subtitleFontSizePercent 100.0))) }}
+                  {{ else }}
+                    {{ $subtitleFontSize = printf "%#vpx" $subtitleFontSizePixel }}
+                  {{ end }}
+                {{ end }}
+              {{ end }}
+
               {{/* Y Align/Padding */}}
               {{ if eq $header.alignY "top" }}
                 {{ if ne $header.paddingY 0 }}
@@ -36,51 +77,45 @@
               {{ else }}
                 {{ $heightPercent := 0 }}
                 {{ $heightPixel := 0 }}
+
                 {{ if .title }}
+                  {{ $paddingYPercent := 0 }}
+                  {{ $paddingYPixel := 0 }}
+                  {{ with $header.titlePaddingY }}
+                    {{ $array := partial "header/convert-value.html" . }}
+                    {{ $paddingYPercent = index $array 0 }}
+                    {{ $paddingYPixel = index $array 1 }}
+                  {{ end }}
                   {{ range .title }}
-                    {{ with $header.titleFontSize }}
-                      {{ $array := partial "header/convert-value.html" . }}
-                      {{ $heightPercent = add $heightPercent (index $array 0) }}
-                      {{ $heightPixel = add $heightPixel (index $array 1) }}
-                      {{/* TODO: remove when bug fixed */}}
-                      {{ if ne (index $array 0) 0 }}
-                        {{ printf "'%v' unit for font-size incorrectly handled -> Use 'px' instead" "%" }}
-                      {{ end }}
-                    {{ end }}
-                    {{ with $header.titlePaddingY }}
-                      {{ $array := partial "header/convert-value.html" . }}
-                      {{ $heightPercent = add $heightPercent (index $array 0) }}
-                      {{ $heightPercent = add $heightPercent (index $array 0) }}
-                      {{ $heightPixel = add $heightPixel (index $array 1) }}
-                      {{ $heightPixel = add $heightPixel (index $array 1) }}
-                    {{ end }}
+                    {{ $heightPercent = add $heightPercent $titleFontSizePercent }}
+                    {{ $heightPixel = add $heightPixel $titleFontSizePixel }}
+                    {{ $heightPercent = add $heightPercent (mul $paddingYPercent 2) }}
+                    {{ $heightPixel = add $heightPixel (mul $paddingYPixel 2) }}
                   {{ end }}
                 {{ end }}
+
                 {{ with .spaceBetweenTitleSubtitle }}
                   {{ $array := partial "header/convert-value.html" . }}
                   {{ $heightPercent = add $heightPercent (index $array 0) }}
                   {{ $heightPixel = add $heightPixel (index $array 1) }}
                 {{ end }}
+
                 {{ if .subtitle }}
+                  {{ $paddingYPercent := 0 }}
+                  {{ $paddingYPixel := 0 }}
+                  {{ with $header.subtitlePaddingY }}
+                    {{ $array := partial "header/convert-value.html" . }}
+                    {{ $paddingYPercent = index $array 0 }}
+                    {{ $paddingYPixel = index $array 1 }}
+                  {{ end }}
                   {{ range .subtitle }}
-                    {{ with $header.subtitleFontSize }}
-                      {{ $array := partial "header/convert-value.html" . }}
-                      {{ $heightPercent = add $heightPercent (index $array 0) }}
-                      {{ $heightPixel = add $heightPixel (index $array 1) }}
-                      {{/* TODO: remove when bug fixed */}}
-                      {{ if ne (index $array 0) 0 }}
-                        {{ printf "'%v' unit for font-size incorrectly handled -> Use 'px' instead" "%" }}
-                      {{ end }}
-                    {{ end }}
-                    {{ with $header.subtitlePaddingY }}
-                      {{ $array := partial "header/convert-value.html" . }}
-                      {{ $heightPercent = add $heightPercent (index $array 0) }}
-                      {{ $heightPercent = add $heightPercent (index $array 0) }}
-                      {{ $heightPixel = add $heightPixel (index $array 1) }}
-                      {{ $heightPixel = add $heightPixel (index $array 1) }}
-                    {{ end }}
+                    {{ $heightPercent = add $heightPercent $subtitleFontSizePercent }}
+                    {{ $heightPixel = add $heightPixel $subtitleFontSizePixel }}
+                    {{ $heightPercent = add $heightPercent (mul $paddingYPercent 2) }}
+                    {{ $heightPixel = add $heightPixel (mul $paddingYPixel 2) }}
                   {{ end }}
                 {{ end }}
+
                 {{ $paddingPercent := 0 }}
                 {{ $paddingPixel := 0 }}
                 {{ with $header.paddingY }}
@@ -88,6 +123,7 @@
                   {{ $paddingPercent = (index $array 0) }}
                   {{ $paddingPixel = (index $array 1) }}
                 {{ end }}
+
                 {{ if eq $header.alignY "bottom" }}
                   {{ $heightPercent = add $heightPercent $paddingPercent }}
                   {{ $heightPixel = add $heightPixel $paddingPixel }}
@@ -112,9 +148,9 @@
                 {{ end }}
                 {{ range .title }}
                   {{ if $percentPadY }}
-                    <div class="site-header__title {{ if $header.titleShadow }}site-header__title--shadow{{ end }}" style="font-size: {{ $header.titleFontSize }}; {{ with $header.titleColor }}color:{{ . }}{{ end }}; padding: calc({{ $height }}px * ({{ $percentPadY }} / 100)) 0;">
+                    <div class="site-header__title {{ if $header.titleShadow }}site-header__title--shadow{{ end }}" style="font-size: {{ $titleFontSize }}; {{ with $header.titleColor }}color:{{ . }}{{ end }}; padding: calc({{ $height }}px * ({{ $percentPadY }} / 100)) 0;">
                   {{ else }}
-                    <div class="site-header__title {{ if $header.titleShadow }}site-header__title--shadow{{ end }}" style="font-size: {{ $header.titleFontSize }}; {{ with $header.titleColor }}color:{{ . }}{{ end }}; padding: {{ $header.titlePaddingY }} 0;">
+                    <div class="site-header__title {{ if $header.titleShadow }}site-header__title--shadow{{ end }}" style="font-size: {{ $titleFontSize }}; {{ with $header.titleColor }}color:{{ . }}{{ end }}; padding: {{ $header.titlePaddingY }} 0;">
                   {{ end }}
                       {{ . }}
                     </div>
@@ -149,9 +185,9 @@
                 {{ end }}
                 {{ range .subtitle }} 
                   {{ if $percentPadY }}
-                    <div class="site-header__subtitle {{ if $header.subtitleShadow }}site-header__subtitle--shadow{{ end }}" style="font-size: {{ $header.subtitleFontSize }}; {{ with $header.subtitleColor }}color:{{ . }}{{ end }}; padding: calc({{ $height }}px * ({{ $percentPadY }} / 100)) 0;" data-cursive="{{ with $header.subtitleCursive }}{{ . }}{{ end }}">
+                    <div class="site-header__subtitle {{ if $header.subtitleShadow }}site-header__subtitle--shadow{{ end }}" style="font-size: {{ $subtitleFontSize }}; {{ with $header.subtitleColor }}color:{{ . }}{{ end }}; padding: calc({{ $height }}px * ({{ $percentPadY }} / 100)) 0;" data-cursive="{{ with $header.subtitleCursive }}{{ . }}{{ end }}">
                   {{ else }}
-                    <div class="site-header__subtitle {{ if $header.subtitleShadow }}site-header__subtitle--shadow{{ end }}" style="font-size: {{ $header.subtitleFontSize }}; {{ with $header.subtitleColor }}color:{{ . }}{{ end }}; padding: {{ $header.subtitlePaddingY }} 0;" data-cursive="{{ with $header.subtitleCursive }}{{ . }}{{ end }}">
+                    <div class="site-header__subtitle {{ if $header.subtitleShadow }}site-header__subtitle--shadow{{ end }}" style="font-size: {{ $subtitleFontSize }}; {{ with $header.subtitleColor }}color:{{ . }}{{ end }}; padding: {{ $header.subtitlePaddingY }} 0;" data-cursive="{{ with $header.subtitleCursive }}{{ . }}{{ end }}">
                   {{ end }}
                       {{ . }}
                     </div>

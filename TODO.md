@@ -11,9 +11,9 @@ HEADER
   * Single: Single header
   * Multi: Slides
   * Custom: Defined in "custom-header.html"
-  * None: no entry in "params" => No header
+  * None: No entry in "params" => No header
 * Image: Optional
-* Titles+Subtitles
+* Titles + Subtitles
   * Align:
     * Horizontal: left|center|right
     * Vertical: top|center|bottom
@@ -23,40 +23,15 @@ HEADER
     * Vertical for each title (top+bottom)
     * Vertical for each subtitle (top+bottom)
     * Vertical between title and subtitle blocks
-  ! - Allow units ('%' and 'px'), but buggy with 'font-size' as doesn't consider the element size
+  * Units: '%' or 'px'
+    ! - Except for header 'height', must be 'px'
 
-- handle colors! (what about shadow colors? => should get 'opposite' of object)
+- handle shadow colors? => should get 'opposite' of object
 - changed "options" data to Cycle params
 - clean "_header.scss"
 - remove "swipe-home" from "_swiper.scss"
-- change names to plural (?)
-    - "slide" -> "slides"
-    - "title" -> "titles"
-    - "subtitle" -> "subtitles"
-- handle paddingX
-  - depending on alignX
-    left:
-      padding-left: {{ .paddingX }};
-    center: (?)
-      padding-left: {{ .paddingX }};
-      => if paddingX negative, switch to padding-right?
-    right:
-      padding-right: {{ .paddingX }};
-- handle paddingY
-  - determine height if title, spacebetween, subtitle
-  - depending on alignY
-    top:
-      <div style="height: calc(0% + {{ $header.paddingY }});"></div>
-    center:
-      {{ $h := div (add (add $header.titleFontSize $header.spaceBetweenTitleSubtitle) $header.subtitleFontSize) 2.0 }}
-      <div style="height: calc(50% - {{ $h }}px + {{ $header.paddingY }});"></div>
-    bottom:
-      {{ $h := add (add $header.titleFontSize $header.spaceBetweenTitleSubtitle) $header.subtitleFontSize }}
-      <div style="height: calc(100% - {{ $h }}px - {{ $header.paddingY }});"></div>
-      => +or- paddingY? (- is more logical, + more consistent)
 - adapt _index.md in content
 - adapt (delete?) header.md in archetypes
-
 +++++++++++
 
 

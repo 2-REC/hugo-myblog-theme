@@ -1,7 +1,7 @@
 ---
 header:
   - type: single
-    height: 235
+    height: 235px
     image:
         src: images/header/background.jpg
         size: cover
@@ -17,15 +17,15 @@ header:
       - The world’s fastest framework for building websites
     titleColor:
     titleShadow: true
-    titleFontSize: 44px
+    titleFontSize: 50%
     subtitleColor:
     subtitleShadow: true
     subtitleCursive: true
-    subtitleFontSize: 18px
-    spaceBetweenTitleSubtitle: 16px
+    subtitleFontSize: 10%
+    spaceBetweenTitleSubtitle: 10%
 
   - type: multi
-    height: 235
+    height: 235px
     options:
         transition_effect: fade
         transition_delay: 5000
@@ -47,7 +47,7 @@ header:
           - header subtitle 1-2
         titleColor:
         titleShadow: true
-        titleFontSize: 44px
+        titleFontSize: 50%
         subtitleColor:
         subtitleShadow: true
         subtitleCursive: true
@@ -72,11 +72,11 @@ header:
           - header subtitle 2
         titleColor:
         titleShadow: true
-        titleFontSize: 16px
+        titleFontSize: 25%
         subtitleColor:
         subtitleShadow: true
         subtitleCursive: true
-        subtitleFontSize: 16px
+        subtitleFontSize: 25%
         titlePaddingY: 0
         subtitlePaddingY: 2px
         spaceBetweenTitleSubtitle: 10%
@@ -88,7 +88,7 @@ header:
             position: center
         alignX: right
         alignY: bottom
-        paddingX: 0
+        paddingX: 25px
         paddingY: 50px
         title:
           - header title 3

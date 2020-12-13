@@ -70,12 +70,12 @@ header:
           - header title 2-2
         subtitle:
           - header subtitle 2
-        titleColor:
-        titleShadow: true
+        titleColor: rgba(0, 0, 128, 0.5)
+        titleShadow: false
         titleFontSize: 25%
-        subtitleColor:
+        subtitleColor: rgb(255, 128, 128)
         subtitleShadow: true
-        subtitleCursive: true
+        subtitleCursive: false
         subtitleFontSize: 25%
         titlePaddingY: 0
         subtitlePaddingY: 2px

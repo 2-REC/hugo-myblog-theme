@@ -1,0 +1,29 @@
+{{ $colorR := 0 }}
+{{ $colorG := 0 }}
+{{ $colorB := 0 }}
+{{ $colorA := 1 }}
+{{ if eq (substr . 0 5) "rgba(" }}
+  {{ $length := sub (len .) 6 }}
+  {{ $value := substr . 5 $length }}
+  {{ $fields := split $value "," }}
+  {{ if ne (len $fields) 4 }}
+    {{ printf "ERROR: Wrong number of values for rgba color!" }}
+  {{ else }}
+    {{ $colorR = index $fields 0 }}
+    {{ $colorG = index $fields 1 }}
+    {{ $colorB = index $fields 2 }}
+    {{ $colorA = index $fields 3 }}
+  {{ end }}
+{{ else if eq (substr . 0 4) "rgb(" }}
+  {{ $length := sub (len .) 5 }}
+  {{ $value := substr . 4 $length }}
+  {{ $fields := split $value "," }}
+  {{ if ne (len $fields) 3 }}
+    {{ printf "ERROR: Wrong number of values for rgb color!" }}
+  {{ else }}
+    {{ $colorR = index $fields 0 }}
+    {{ $colorG = index $fields 1 }}
+    {{ $colorB = index $fields 2 }}
+  {{ end }}
+{{ end }}
+{{ return slice $colorR $colorG $colorB $colorA }}

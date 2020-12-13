@@ -12,6 +12,10 @@ HEADER
   * Multi: Slides
   * Custom: Defined in "custom-header.html"
   * None: No entry in "params" => No header
+* Slides:
+  * When "multi", uses "Cycle" library for slideshow
+    ! - Removed "swipe" feature as in Zzo
+  * Slider settings specified in "options" field
 * Image: Optional
 * Titles + Subtitles
   * Align:
@@ -25,19 +29,21 @@ HEADER
     * Vertical between title and subtitle blocks
   * Units: '%' or 'px'
     ! - Except for header 'height', must be 'px'
-
-- handle shadow colors? => should get 'opposite' of object
-- changed "options" data to Cycle params
-- clean "_header.scss"
-- remove "swipe-home" from "_swiper.scss"
-- adapt _index.md in content
-- adapt (delete?) header.md in archetypes
+  * Color:
+    * RGB or RGBA format
+    * Default:
+      * Title: "terms-title-color"
+      * Subtitle: "terms-title-shadow-color"
+      ! - TODO: Handle shadow colors? => should get 'opposite' of object
 +++++++++++
 
 
 * [ ] Header
     * [ ] Adapt css/colors
+      * [x] Remove "swipe-home" from "_swiper.scss"
     * [ ] Check if "archetypes\header.md" is used/required
+      => Delete?
+    * [ ] Update README (see above)
 
 * [x] Replace posts images (my images, related to posts, and some "carousel" header images)
 

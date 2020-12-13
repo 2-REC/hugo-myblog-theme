@@ -137,6 +137,7 @@
 
               {{/* Title */}}
               {{ if .title }}
+                {{/* Y Padding */}}
                 {{ $percentPadY := 0 }}
                 {{ with .titlePaddingY }}
                   {{ if ne . 0 }}
@@ -146,11 +147,25 @@
                     {{ end }}
                   {{ end }}
                 {{ end }}
+
+                {{/* Color */}}
+                {{ $colorR := 0 }}
+                {{ $colorG := 0 }}
+                {{ $colorB := 0 }}
+                {{ $colorA := 1 }}
+                {{ with $header.titleColor }}
+                  {{ $array := partial "header/convert-color.html" . }}
+                  {{ $colorR = index $array 0 }}
+                  {{ $colorG = index $array 1 }}
+                  {{ $colorB = index $array 2 }}
+                  {{ $colorA = index $array 3 }}
+                {{ end }}
+
                 {{ range .title }}
                   {{ if $percentPadY }}
-                    <div class="site-header__title {{ if $header.titleShadow }}site-header__title--shadow{{ end }}" style="font-size: {{ $titleFontSize }}; {{ with $header.titleColor }}color:{{ . }}{{ end }}; padding: calc({{ $height }}px * ({{ $percentPadY }} / 100)) 0;">
+                    <div class="site-header__title {{ if $header.titleShadow }}site-header__title--shadow{{ end }}" style="font-size: {{ $titleFontSize }}; {{ with $header.titleColor }}color: rgba({{ $colorR }},{{ $colorG }},{{ $colorB }},{{ $colorA }});{{ end }} padding: calc({{ $height }}px * ({{ $percentPadY }} / 100)) 0;">
                   {{ else }}
-                    <div class="site-header__title {{ if $header.titleShadow }}site-header__title--shadow{{ end }}" style="font-size: {{ $titleFontSize }}; {{ with $header.titleColor }}color:{{ . }}{{ end }}; padding: {{ $header.titlePaddingY }} 0;">
+                    <div class="site-header__title {{ if $header.titleShadow }}site-header__title--shadow{{ end }}" style="font-size: {{ $titleFontSize }}; {{ with $header.titleColor }}color: rgba({{ $colorR }},{{ $colorG }},{{ $colorB }},{{ $colorA }});{{ end }} padding: {{ $header.titlePaddingY }} 0;">
                   {{ end }}
                       {{ . }}
                     </div>
@@ -176,6 +191,7 @@
 
               {{/* Subtitle */}}
               {{ if .subtitle }}
+                {{/* Y Padding */}}
                 {{ $percentPadY := 0 }}
                 {{ with .subtitlePaddingY }}
                   {{ $lastIndex := sub (len .) 1 }}
@@ -183,11 +199,25 @@
                     {{ $percentPadY = substr . 0 $lastIndex }}
                   {{ end }}
                 {{ end }}
+
+                {{/* Color */}}
+                {{ $colorR := 0 }}
+                {{ $colorG := 0 }}
+                {{ $colorB := 0 }}
+                {{ $colorA := 1 }}
+                {{ with $header.subtitleColor }}
+                  {{ $array := partial "header/convert-color.html" . }}
+                  {{ $colorR = index $array 0 }}
+                  {{ $colorG = index $array 1 }}
+                  {{ $colorB = index $array 2 }}
+                  {{ $colorA = index $array 3 }}
+                {{ end }}
+
                 {{ range .subtitle }} 
                   {{ if $percentPadY }}
-                    <div class="site-header__subtitle {{ if $header.subtitleShadow }}site-header__subtitle--shadow{{ end }}" style="font-size: {{ $subtitleFontSize }}; {{ with $header.subtitleColor }}color:{{ . }}{{ end }}; padding: calc({{ $height }}px * ({{ $percentPadY }} / 100)) 0;" data-cursive="{{ with $header.subtitleCursive }}{{ . }}{{ end }}">
+                    <div class="site-header__subtitle {{ if $header.subtitleShadow }}site-header__subtitle--shadow{{ end }}" style="font-size: {{ $subtitleFontSize }}; {{ with $header.subtitleColor }}color: rgba({{ $colorR }},{{ $colorG }},{{ $colorB }},{{ $colorA }});{{ end }} padding: calc({{ $height }}px * ({{ $percentPadY }} / 100)) 0;" data-cursive="{{ with $header.subtitleCursive }}{{ . }}{{ end }}">
                   {{ else }}
-                    <div class="site-header__subtitle {{ if $header.subtitleShadow }}site-header__subtitle--shadow{{ end }}" style="font-size: {{ $subtitleFontSize }}; {{ with $header.subtitleColor }}color:{{ . }}{{ end }}; padding: {{ $header.subtitlePaddingY }} 0;" data-cursive="{{ with $header.subtitleCursive }}{{ . }}{{ end }}">
+                    <div class="site-header__subtitle {{ if $header.subtitleShadow }}site-header__subtitle--shadow{{ end }}" style="font-size: {{ $subtitleFontSize }}; {{ with $header.subtitleColor }}color: rgba({{ $colorR }},{{ $colorG }},{{ $colorB }},{{ $colorA }});{{ end }} padding: {{ $header.subtitlePaddingY }} 0;" data-cursive="{{ with $header.subtitleCursive }}{{ . }}{{ end }}">
                   {{ end }}
                       {{ . }}
                     </div>

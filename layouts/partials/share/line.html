@@ -1,0 +1,8 @@
+{{ $ctx := .ctx }}
+{{ $share := .share }}
+<a class="action__item" data-type="share" target="_blank" rel="noreferrer"
+    href="https://social-plugins.line.me/lineit/share?url={{ $ctx.Permalink | absLangURL }}"
+    title="Line"
+    aria-label="Line Share Button">
+  <i aria-hidden="true">{{ partial "svgs/action/line.svg" (dict "width" 35 "height" 35) }}</i>
+</a>

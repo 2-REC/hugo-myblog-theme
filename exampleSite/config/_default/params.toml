@@ -203,7 +203,20 @@ enableBusuanzi = false
 
 
 
-
+# Included: douban, facebook, line, linkedin, reddit, telegram, tumblr, twitter, weibo
+[[share]]
+  name = "facebook"
+[[share]]
+  name = "linkedin"
+[[share]]
+  name = "reddit"
+[[share]]
+  name = "tumblr"
+[[share]]
+  name = "twitter"
+  username = "twitter_user"
+[[share]]
+  name = "whatsapp"
 
 [[footerLinks]]
   name = ""

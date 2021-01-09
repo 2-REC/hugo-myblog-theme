@@ -1,0 +1,8 @@
+{{ $ctx := .ctx }}
+{{ $share := .share }}
+<a class="action__item" data-type="share" target="_blank" rel="noreferrer"
+    href="https://www.linkedin.com/shareArticle?mini=true&url={{ $ctx.Permalink | absLangURL }}&title={{ $ctx.Title }} &summary={{ $ctx.Description }}&source={{ $.Params.Description }}"
+    title="LinkedIn"
+    aria-label="LinkedIn Share Button">
+  <i aria-hidden="true">{{ partial "svgs/action/linkedin.svg" (dict "width" 35 "height" 35) }}</i>
+</a>

@@ -52,10 +52,10 @@ other = "What's on this Page"
 #
 #[donate-message]
 #other = "Support the author with"
-#
-#[share-message]
-#other = "Share on"
-#
+
+[share-message]
+other = "Share on"
+
 #[contact-name]
 #other = "Name"
 #

@@ -109,17 +109,58 @@
 * [ ] busuanzi
     => Keep? (as now: not enabled, but code still present)
 
+* [ ] taxonomies
+    * [ ] SET PAGE'S TAXONOMIES IN "single" SIDEBAR (NOT GLOBAL!)
+
+
+* [ ] Donation options
+    * [ ] Rename "donation" class in CSS to "action"
+    * [ ] Allow to specify if using QR code or not
+        => Don't check on name, but add an "qr" option/flag (so any platform can be added)
+    * [ ] Move to sidebar (any)
+    * [ ] Remove from "single" body
+    * [ ] Add in "contact" page body
+    * [ ] Mention changes in README
+
+* [ ] Share options
+    * [x] Instead of hardcoded list, include partials depending on params list
+        => Allow dynamic addition of other platforms
+    * [ ] update README
+    * [ ] check for each if provided info is enough
+    * [ ] add details on use in each partial ... (list params)
+    * [ ] douban
+        * [ ] check if ok => seems weird (blocked)
+    * [ ] weibo
+        * [ ] check if ok => seems weird (blocked)
+    * [ ] Tumblr
+        * [ ] limit "summary" length!
+            => how long?
+    * [ ] Twitter
+        * [ ] limit "summary" length!
+            => how long?
+    * [ ] Whatsapp
+        * [ ] find better icon (good size)
+    * [ ] Mention changes in README
+    * [ ] Add option to "gallery" pages?
+        => Possible?
+    * [ ] TEST EACH PLATFORM!
+
+* [ ] i18n
+    * [ ] complete/clean
+    * [ ] add other language(s)
+        * [ ] French
+
 * [ ] "Archives" page (?)
-* [ ] Finish taxonomies
 * [ ] "single"
     * [ ] Body
         * [ ] Add "share" options
-            => called "donation" in Zzo (?)
         * [ ] Add "whoami" at bottom of page (NOT bio!)
             * [ ] Only show when in "mobile" mode?
         * [ ] Add navigation (prev+next links) at bottom
     * [ ] Sidebar
-        * [ ] replace "bio" with "whoami"
+        * [ ] add "whoami" (in addition to "bio")
+            * [ ] Only in "single" sidebar
+            * [ ] Rename it to "author"?
         * [ ] donation?
         * [ ] subscribe?
         * [ ] +more?

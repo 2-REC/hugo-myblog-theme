@@ -1,0 +1,8 @@
+{{ $ctx := .ctx }}
+{{ $share := .share }}
+<a class="action__item" data-type="share" target="_blank" rel="noreferrer"
+    href="javascript:void(function(){var d=document,e=encodeURIComponent,s1=window.getSelection,s2=d.getSelection,s3=d.selection,s=s1?s1():s2?s2():s3?s3.createRange().text:'',r='http://service.weibo.com/share/share.php?url='+e(d.location.href)+'&title='+e(d.title),x=function(){if(!window.open(r,'weibo','toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330'))location.href=r+'&r=1'};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})()"
+    title="{{ i18n "weibo" | default "Weibo" }}"
+    aria-label="Weibo Share Button">
+  <i aria-hidden="true">{{ partial "svgs/action/weibo.svg" (dict "width" 35 "height" 35) }}</i>
+</a>

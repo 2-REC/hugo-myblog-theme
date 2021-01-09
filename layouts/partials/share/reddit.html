@@ -1,0 +1,9 @@
+{{ $ctx := .ctx }}
+{{ $share := .share }}
+<a class="action__item" data-type="share" target="_blank" rel="noreferrer"
+    href="https://www.reddit.com/submit?url={{ $ctx.Permalink | absLangURL }}&amp;title={{ $ctx.Title }}"
+    title="Reddit"
+    aria-label="Reddit Share Button"
+    onclick="window.open('http://www.reddit.com/submit?url=' + encodeURIComponent(document.URL) + '&amp;title=' +  encodeURIComponent(document.title)); return false;">
+  <i aria-hidden="true">{{ partial "svgs/action/reddit.svg" (dict "width" 35 "height" 35) }}</i>
+</a>

@@ -1,0 +1,8 @@
+{{ $ctx := .ctx }}
+{{ $share := .share }}
+<a class="action__item" data-type="share" target="_blank" rel="noreferrer"
+    href="http://tumblr.com/widgets/share/tool?canonicalUrl={{ $ctx.Permalink | absLangURL }}&data-title={{ $ctx.Title }}&data-content={{ $ctx.Description }}"
+    title="Tumblr"
+    aria-label="Tumblr Share Button">
+  <i aria-hidden="true">{{ partial "svgs/action/tumblr.svg" (dict "width" 35 "height" 35) }}</i>
+</a>

@@ -19,6 +19,38 @@ TODO: complete/rewrite/etc.
     * Banner image files:
         * if defined in "data": images are taken from "static" directory
         * for posts, image is in the post resources (need a page bundle)
+* Header
+  * Example in "archetypes/header.md"
+  * Types:
+    * Single: Single header
+    * Multi: Slides
+    * Custom: Defined in "custom-header.html"
+    * None: No entry in "params" => No header
+  * Slides:
+    * When "multi", uses "Cycle" library for slideshow
+      ! - Removed "swipe" feature as in Zzo
+    * Slider settings specified in "options" field
+  * Image: Optional
+  * Titles + Subtitles
+    * Align:
+      * Horizontal: left|center|right
+      * Vertical: top|center|bottom
+    * Padding:
+      * Horizontal and vertical for "title block" in each slide
+        => According to alignments
+      * Vertical for each title (top+bottom)
+      * Vertical for each subtitle (top+bottom)
+      * Vertical between title and subtitle blocks
+    * Units: '%' or 'px'
+      ! - Except for header 'height', must be 'px'
+      * Must be specified
+        * No unit => error
+        * Except if '0'
+    * Color:
+      * RGB or RGBA format
+      * Default:
+        * Title: "terms-title-color"
+        * Subtitle: "terms-title-shadow-color"
 
 
 ## Changed Features from original Zzo Theme
@@ -43,6 +75,10 @@ TODO: complete/rewrite/etc.
     * Added "zooming" when hovering the images
     * Fixed sizing issues (20% seems buggy, +use of "match"+"unmatch" doesn't work well when quick resize, +no init trigger on page onload)
     * Image files need to be located in the post directory (eg: "content\en\gallery\photos") instead of in "static" directory
+* Header
+  * Changed "swiper" to "slider" (uses "jQuery.cycle" library)
+  * Added more alignment possibilities
+  * Removed "typewriter" type
 
 
 ## Removed Features from original Zzo Theme
@@ -51,7 +87,7 @@ TODO: complete/rewrite/etc.
 * Search feature
 * Swipe
   - Removed swipe shortcodes "swiper" and "swiperItem"
-  - Use same "swipe.js" for PhotoSwipe and header (version 2.2.15)
+  - Removed swipe from header (using slider from "jQuery.cycle" library)
 * Busuanzi site counter
 * Baidu Analytics
 * Publications

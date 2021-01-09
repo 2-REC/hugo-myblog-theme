@@ -41,10 +41,10 @@ header:
         paddingX: 50px
         paddingY: 0
         title:
-          - Titre 1
+          - HUGO
         subtitle:
-          - Sous-titre 1-1
-          - Sous-titre 1-2
+          - Alignement haut-gauche
+          - Avec 2 sous-titres
         titleColor:
         titleShadow: true
         titleFontSize: 50%
@@ -66,17 +66,17 @@ header:
         paddingX: -50%
         paddingY: 0
         title:
-          - Titre 2-1
-          - Titre 2-2
+          - HUGO
+          - Coloré
         subtitle:
-          - Sous-titre 2
+          - Centré + décalage horizontal
         titleColor: rgba(0, 0, 128, 0.5)
         titleShadow: false
         titleFontSize: 25%
         subtitleColor: rgb(255, 128, 128)
         subtitleShadow: true
         subtitleCursive: false
-        subtitleFontSize: 25%
+        subtitleFontSize: 10%
         titlePaddingY: 0
         subtitlePaddingY: 2px
         spaceBetweenTitleSubtitle: 10%
@@ -91,9 +91,9 @@ header:
         paddingX: 25px
         paddingY: 50px
         title:
-          - Titre 3
+          - HUGO
         subtitle:
-          - Sous-titre 3
+          - Alignement bas-droite (avec décalage X+Y)
         titleColor:
         titleShadow: true
         titleFontSize: 44px

@@ -3,49 +3,18 @@
 ## PRIORITIES / CURRENT STATE
 
 
-+++++++++++
-CONTINUE HEADER:
-UPDATE README:
-HEADER
-* Types:
-  * Single: Single header
-  * Multi: Slides
-  * Custom: Defined in "custom-header.html"
-  * None: No entry in "params" => No header
-* Slides:
-  * When "multi", uses "Cycle" library for slideshow
-    ! - Removed "swipe" feature as in Zzo
-  * Slider settings specified in "options" field
-* Image: Optional
-* Titles + Subtitles
-  * Align:
-    * Horizontal: left|center|right
-    * Vertical: top|center|bottom
-  * Padding:
-    * Horizontal and vertical for "title block" in each slide
-      => According to alignments
-    * Vertical for each title (top+bottom)
-    * Vertical for each subtitle (top+bottom)
-    * Vertical between title and subtitle blocks
-  * Units: '%' or 'px'
-    ! - Except for header 'height', must be 'px'
-  * Color:
-    * RGB or RGBA format
-    * Default:
-      * Title: "terms-title-color"
-      * Subtitle: "terms-title-shadow-color"
-      ! - TODO: Handle shadow colors? => should get 'opposite' of object
-+++++++++++
-
-
 * [ ] Header
+    * [ ] Colored titles: Handle shadow colors => should get 'opposite' of object
     * [ ] Adapt css/colors
-      * [x] Remove "swipe-home" from "_swiper.scss"
     * [ ] Check if "archetypes\header.md" is used/required
-      => Delete?
-    * [ ] Update README (see above)
+      => Delete? (or keep as example?)
+    * [ ] ! - Switch to Cycle2?
+        http://jquery.malsup.com/cycle2/
 
-* [x] Replace posts images (my images, related to posts, and some "carousel" header images)
+* [ ] Replace images
+    * [ ] Header images
+    * [ ] posts images (images related to posts)
+    * [ ] "carousel" images
 
 * [ ] Slides: Recent posts / Carousel
     * [x] Adapt "data slides" to be as other slides (html+css)
@@ -55,7 +24,8 @@ HEADER
         http://jquery.malsup.com/cycle2/
     * [ ] Clean CSS (as well as for tiles)
     * [x] Remove jQuery "migrate"?
-    * [ ] (see if can easily add arrows on the sides)
+    * [ ] Add arrows on the sides
+        => See if can be done easily
     * [ ] Test everything
         * [x] Test "data" stuff
         * [x] Test "manual" stuff
@@ -70,7 +40,7 @@ HEADER
     * [x] Zoom image when hover
 
 
-* [ ] theme+lang selectors
+* [ ] Theme + language selectors
     * [x] add navbar selector
     * [x] adapt CSS
     * [x] change icons
@@ -90,7 +60,8 @@ HEADER
         - assets\js\swipe.js
         - assets\js\swipehome.js
         => Merge and use only 1 version
-    * [ ] Keep "header swipe" or replace with carousel?
+    * [x] Keep "header swipe" or replace with carousel?
+        => Replaced by Cycle (carousel without interactions)
 
 
 * [ ] Gallery
@@ -104,26 +75,24 @@ HEADER
         * Gorilla on bike
         * gears (?)
         * crazy machines (?)
-!!!!
 
 
 * [x] Remove "data/lib.toml"
     => Not using any lib
 
 * [ ] Themes:
-    * [ ] CHECK EVERYTHING IS OK!
     * [x] Switch in navbar only if more than 1 entry
+    * [ ] CHECK EVERYTHING IS OK!
 
 
 * [ ] set codeblock-script optional in single-script
   => config param
 * [ ] implement/finish "summary" stuff
-* [ ] make sure "archetypes/header" is only as example
 
 * [ ] Sidebars
     * [ ] TOC in sidebar
-        => SET CSS/CLASS SIMILAR TO TAGS, etc (shouldn't use "bio" class)
-    * [ ] Set individual components
+        * [ ] SET CSS/CLASS SIMILAR TO TAGS, etc (shouldn't use "bio" class)
+    * [x] Set individual components
         => Adapt/create each partial, +handle specific parameters
     * [ ] See how to make sidebars code more generic (instead of copied for every type)
     * [ ] See how taxonomies are ordered
@@ -142,8 +111,15 @@ HEADER
 
 * [ ] "Archives" page (?)
 * [ ] Finish taxonomies
-* [ ] Continue "single" layout
+* [ ] "single"
+    * [ ] Body
+        * [ ] Add "share" options
+            => called "donation" in Zzo (?)
+        * [ ] Add "whoami" at bottom of page (NOT bio!)
+            * [ ] Only show when in "mobile" mode?
+        * [ ] Add navigation (prev+next links) at bottom
     * [ ] Sidebar
+        * [ ] replace "bio" with "whoami"
         * [ ] donation?
         * [ ] subscribe?
         * [ ] +more?

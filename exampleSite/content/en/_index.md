@@ -41,18 +41,18 @@ header:
         paddingX: 50px
         paddingY: 0
         title:
-          - header title 1
+          - HUGO
         subtitle:
-          - header subtitle 1-1
-          - header subtitle 1-2
+          - Top-left align example
+          - With 2 subtitles
         titleColor:
         titleShadow: true
         titleFontSize: 50%
         subtitleColor:
         subtitleShadow: true
         subtitleCursive: true
-        subtitleFontSize: 16px
-        titlePaddingY: 10%
+        subtitleFontSize: 24px
+        titlePaddingY: 5%
         subtitlePaddingY: 5px
         spaceBetweenTitleSubtitle: 10px
 
@@ -63,20 +63,20 @@ header:
             position: center
         alignX: center
         alignY: center
-        paddingX: -50%
+        paddingX: -25%
         paddingY: 0
         title:
-          - header title 2-1
-          - header title 2-2
+          - HUGO
+          - Colored
         subtitle:
-          - header subtitle 2
-        titleColor: rgba(0, 0, 128, 0.5)
+          - Centered align example (with X offset)
+        titleColor: rgb(0, 0, 128)
         titleShadow: false
         titleFontSize: 25%
-        subtitleColor: rgb(255, 128, 128)
+        subtitleColor: rgba(255, 128, 128, 0.5)
         subtitleShadow: true
         subtitleCursive: false
-        subtitleFontSize: 25%
+        subtitleFontSize: 10%
         titlePaddingY: 0
         subtitlePaddingY: 2px
         spaceBetweenTitleSubtitle: 10%
@@ -91,9 +91,9 @@ header:
         paddingX: 25px
         paddingY: 50px
         title:
-          - header title 3
+          - HUGO
         subtitle:
-          - header subtitle 3
+          - Bottom-right align example (with X+Y offsets)
         titleColor:
         titleShadow: true
         titleFontSize: 44px

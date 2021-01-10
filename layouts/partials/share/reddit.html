@@ -5,5 +5,5 @@
     title="Reddit"
     aria-label="Reddit Share Button"
     onclick="window.open('http://www.reddit.com/submit?url=' + encodeURIComponent(document.URL) + '&amp;title=' +  encodeURIComponent(document.title)); return false;">
-  <i aria-hidden="true">{{ partial "svgs/action/reddit.svg" (dict "width" 35 "height" 35) }}</i>
+  <i aria-hidden="true" class="share--reddit">{{ partial "svgs/share/reddit.svg" (dict "width" 35 "height" 35) }}</i>
 </a>

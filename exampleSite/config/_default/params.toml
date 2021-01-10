@@ -206,17 +206,23 @@ enableBusuanzi = false
 # Included: douban, facebook, line, linkedin, reddit, telegram, tumblr, twitter, weibo
 [[share]]
   name = "facebook"
+  color = "#1877F2"
 [[share]]
   name = "linkedin"
+  color = "#0077B5"
 [[share]]
   name = "reddit"
+  color = "#FF4500"
 [[share]]
   name = "tumblr"
+  color = "#36465D"
 [[share]]
   name = "twitter"
+  color = "#1DA1F2"
   username = "twitter_user"
 [[share]]
   name = "whatsapp"
+  color = "#25D366"
 
 [[footerLinks]]
   name = ""

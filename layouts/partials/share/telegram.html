@@ -5,5 +5,5 @@
     title="Telegram"
     aria-label="Telegram Share Button"
     onclick="window.open(&apos;https://telegram.me/share/url?url=&apos;+encodeURIComponent(location.href)+&apos;&amp;bodytext=&amp;tags=&amp;text=&apos;+encodeURIComponent(document.title));return false;">
-  <i aria-hidden="true">{{ partial "svgs/action/telegram.svg" (dict "width" 35 "height" 35) }}</i>
+  <i aria-hidden="true" class="share--telegram">{{ partial "svgs/share/telegram.svg" (dict "width" 35 "height" 35) }}</i>
 </a>

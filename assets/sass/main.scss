@@ -115,7 +115,14 @@ $navm_theme_right_offset: {{ if and .Site.Params.enableLangChange (gt (len .Site
 @import 'components/tooltip';
 //@import 'components/whoami';
 //@import 'components/busuanzi'; //TODO: uncomment if using Busuanzi
+
+$colors: (
+{{ range .Site.Params.share }}
+  {{ .name }}: {{ .color }},
+{{ end }}
+);
 @import 'components/action';
+
 @import 'components/box';
 @import 'components/modal';
 @import 'components/codetab';

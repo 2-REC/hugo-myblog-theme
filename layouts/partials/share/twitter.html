@@ -4,5 +4,5 @@
     href="https://twitter.com/intent/tweet?text={{ $ctx.Title }}&url={{ $ctx.Permalink | absLangURL }}{{ with $ctx.Params.tags }}&hashtags={{ delimit . "," }}{{ end }}&via={{ $share.username | default $ctx.Params.author }}"
     title="Twitter"
     aria-label="Twitter Share Button">
-  <i aria-hidden="true">{{ partial "svgs/action/twitter.svg" (dict "width" 35 "height" 35) }}</i>
+  <i aria-hidden="true" class="share--twitter">{{ partial "svgs/share/twitter.svg" (dict "width" 35 "height" 35) }}</i>
 </a>

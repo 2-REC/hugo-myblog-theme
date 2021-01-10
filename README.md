@@ -82,8 +82,15 @@ TODO: complete/rewrite/etc.
 * Share options
   * Separate partial for each platform, so can easily add new ones without modifying the code
     => To add a new platform
-    * Add a partial in "layouts/partials/share" (should be based on an existing one)
-    * Add a [[share]] entry  in "params" file, with additional required parameters (if any used in the "share" partial)
+    * Add a [[share]] entry in "params" file, with the following fields:
+      * name: name of the share platform
+      * color: color code for the icon when hovered
+      * additional required parameters (if any used in the "share" partial)
+      Example:
+        [[share]]
+          name = "facebook"
+          color = "#1877F2"
+    * Add a partial in "layouts/partials/share" with the same name as in "params" (should be based on an existing one)
     * Add a partial in "layouts/partials/svgs/share" if referenced in the "share" partial
   * Included platforms: facebook,twitter, reddit, linkedin, tumblr, weibo, douban, line, whatsapp, telegram
 

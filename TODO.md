@@ -2,6 +2,8 @@
 
 ## PRIORITIES / CURRENT STATE
 
+* [ ] taxonomies
+    * [ ] SET PAGE'S TAXONOMIES IN "single" SIDEBAR (NOT GLOBAL!)
 
 * [ ] Header
     * [ ] Colored titles: Handle shadow colors => should get 'opposite' of object
@@ -109,13 +111,10 @@
 * [ ] busuanzi
     => Keep? (as now: not enabled, but code still present)
 
-* [ ] taxonomies
-    * [ ] SET PAGE'S TAXONOMIES IN "single" SIDEBAR (NOT GLOBAL!)
-
 
 * [ ] Donation options
-    * [ ] Rename "donation" class in CSS to "action"
-    * [ ] Allow to specify if using QR code or not
+    * [x] Rename "donation" class in CSS to "action"
+    * [x] Allow to specify if using QR code or not
         => Don't check on name, but add an "qr" option/flag (so any platform can be added)
     * [ ] Move to sidebar (any)
     * [ ] Remove from "single" body
@@ -125,7 +124,6 @@
 * [ ] Share options
     * [x] Instead of hardcoded list, include partials depending on params list
         => Allow dynamic addition of other platforms
-    * [ ] update README
     * [ ] check for each if provided info is enough
     * [ ] add details on use in each partial ... (list params)
     * [ ] douban
@@ -140,7 +138,7 @@
             => how long?
     * [ ] Whatsapp
         * [ ] find better icon (good size)
-    * [ ] Mention changes in README
+    * [x] Mention changes in README
     * [ ] Add option to "gallery" pages?
         => Possible?
     * [ ] TEST EACH PLATFORM!

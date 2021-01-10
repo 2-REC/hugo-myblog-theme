@@ -49,9 +49,9 @@ other = "What's on this Page"
 #
 #[counter-page-pv]
 #other = "views"
-#
-#[donate-message]
-#other = "Support the author with"
+
+[donate-message]
+other = "Support the author with"
 
 [share-message]
 other = "Share on"

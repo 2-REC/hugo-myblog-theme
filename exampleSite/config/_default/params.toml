@@ -224,6 +224,19 @@ enableBusuanzi = false
   name = "whatsapp"
   color = "#25D366"
 
+# Included: alipay, bitcoin, patreon, paypal, wechat
+[[donation]]
+  name = "paypal"
+  url = ""
+[[donation]]
+  name = "patreon"
+  url = ""
+[[donation]]
+  name = "wechat"
+  url = ""
+  qr = true
+
+
 [[footerLinks]]
   name = ""
   link = ""

@@ -2,53 +2,35 @@
 
 ## PRIORITIES / CURRENT STATE
 
+* [ ] Global
+    * [ ] test/check everything
+    * [ ] add French content (posts, data, etc)
+
 * [ ] taxonomies
     * [ ] SET PAGE'S TAXONOMIES IN "single" SIDEBAR (NOT GLOBAL!)
 
 * [ ] Header
     * [ ] Colored titles: Handle shadow colors => should get 'opposite' of object
-    * [ ] Adapt css/colors
     * [ ] Check if "archetypes\header.md" is used/required
       => Delete? (or keep as example?)
-    * [ ] ! - Switch to Cycle2?
+    * [ ] Switch to Cycle2
         http://jquery.malsup.com/cycle2/
+    * [ ] Change css/colors
 
 * [ ] Replace images
     * [ ] Header images
-    * [ ] posts images (images related to posts)
-    * [ ] "carousel" images
+    * [ ] Posts images (images related to posts)
+    * [ ] "Carousel" images
 
 * [ ] Slides: Recent posts / Carousel
-    * [x] Adapt "data slides" to be as other slides (html+css)
-    * [x] Carousel from "Travelify" theme
-    * [x] Add "transition effect" as param (+delay and duration)
-    * [ ] ! - Switch to Cycle2?
+    * [ ] Switch to Cycle2
         http://jquery.malsup.com/cycle2/
     * [ ] Clean CSS (as well as for tiles)
-    * [x] Remove jQuery "migrate"?
     * [ ] Add arrows on the sides
         => See if can be done easily
-    * [ ] Test everything
-        * [x] Test "data" stuff
-        * [x] Test "manual" stuff
-        * [ ] ...
 
 * [ ] Tiles
-    * [x] Fix problem of text underlined when hover
-        => Only want title
-    * [x] Use the "description" field instead of putting the text
     * [ ] Clean CSS
-* [x] Tiles + Slides (summary, gallery, carousel)
-    * [x] Zoom image when hover
-
-
-* [ ] Theme + language selectors
-    * [x] add navbar selector
-    * [x] adapt CSS
-    * [x] change icons
-    * [x] delete footer:select-lang.html" + related data (calls to partial + css in footer)
-    * [ ] check everything is ok!
-    * [ ] add French content (posts, data, etc)
 
 * [ ] font-icons
     * [ ] Redo all icons myself (SVG using Inkscape)
@@ -57,34 +39,16 @@
     * [ ] 'Sync' svgs and font (have same icons available in both) (look at every icon used)
 
 
-* [ ] "swipe"
-    * [x] swipe.js
-        - assets\js\swipe.js
-        - assets\js\swipehome.js
-        => Merge and use only 1 version
-    * [x] Keep "header swipe" or replace with carousel?
-        => Replaced by Cycle (carousel without interactions)
-
-
 * [ ] Gallery
-    * [x] Get gallery images to post folder instead of "static"
-    * [ ] Add copyright label (as in portfolio theme)?
-    * [x] Change photos => use mine
-    * [ ] Add another one ("drawings")
+    * [ ] Add copyright label?
+        => as in portfolio theme
+    * [ ] Add another gallery ("drawings")
         * VN flowers
         * AB (?)
         * "armoured" guy (?)
         * Gorilla on bike
         * gears (?)
         * crazy machines (?)
-
-
-* [x] Remove "data/lib.toml"
-    => Not using any lib
-
-* [ ] Themes:
-    * [x] Switch in navbar only if more than 1 entry
-    * [ ] CHECK EVERYTHING IS OK!
 
 
 * [ ] set codeblock-script optional in single-script
@@ -94,36 +58,23 @@
 * [ ] Sidebars
     * [ ] TOC in sidebar
         * [ ] SET CSS/CLASS SIMILAR TO TAGS, etc (shouldn't use "bio" class)
-    * [x] Set individual components
-        => Adapt/create each partial, +handle specific parameters
     * [ ] See how to make sidebars code more generic (instead of copied for every type)
     * [ ] See how taxonomies are ordered
         => specified where/how?
     * [ ] Add subscription/newsletter
         => check with notes (probably will use MailChimmp)
 
-* [x] main-left + main_right
-    => Allow side panels, eg adverts or images
-    * [x] Replace 'enableSidebarMenu' with 'enableSideDataLeft' & 'enableSideDataRight'
-    * [x] Replace 'sidebar/sidebar-menu' with 'body/sidedata-left' & 'body/sidedata-right'
-
-
 * [ ] busuanzi
     => Keep? (as now: not enabled, but code still present)
 
 
 * [ ] Donation options
-    * [x] Rename "donation" class in CSS to "action"
-    * [x] Allow to specify if using QR code or not
-        => Don't check on name, but add an "qr" option/flag (so any platform can be added)
     * [ ] Move to sidebar (any)
     * [ ] Remove from "single" body
     * [ ] Add in "contact" page body
     * [ ] Mention changes in README
 
 * [ ] Share options
-    * [x] Instead of hardcoded list, include partials depending on params list
-        => Allow dynamic addition of other platforms
     * [ ] check for each if provided info is enough
     * [ ] add details on use in each partial ... (list params)
     * [ ] douban
@@ -138,7 +89,6 @@
             => how long?
     * [ ] Whatsapp
         * [ ] find better icon (good size)
-    * [x] Mention changes in README
     * [ ] Add option to "gallery" pages?
         => Possible?
     * [ ] TEST EACH PLATFORM!
@@ -162,8 +112,6 @@
         * [ ] donation?
         * [ ] subscribe?
         * [ ] +more?
-    * [x] See about "inner", "outer" for sidebar stuff... (nice to have, but a bit buggy)
-        => Don't keep (replaced with 'sidedata')
     * [ ] ...
 
 * [ ] Update to latest Zzo sources

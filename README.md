@@ -69,6 +69,7 @@ TODO: complete/rewrite/etc.
     * Content of each sidebar (home, single, list, taxonomy) defined by list (in "params")
     * Special "-" separator to specify start of "floating" section
     * Possibility to have left and right sidebars (as well as both or none)
+    * Changed "inner" and "outer" by using "sidedata" for left/right sidebars
 * Summary Tiles
     * Added possibility to have an image, using tiles as in gallery, with CSS similar to "Creative Protfolio" theme
 * Gallery + Summary tiles + Recent posts

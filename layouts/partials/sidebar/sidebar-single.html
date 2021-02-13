@@ -26,11 +26,11 @@
         {{ else if eq $value "recent" }}
             {{ partial "sidebar/list/recent" $context.Page }}
         {{ else if eq $value "tags" }}
-            {{ partial "taxonomy/taxonomy-tags" $context.Page }}
+            {{ partial "taxonomy/taxonomy-tags-single" $context.Page }}
         {{ else if eq $value "categories" }}
-            {{ partial "taxonomy/taxonomy-categories" $context.Page }}
+            {{ partial "taxonomy/taxonomy-categories-single" $context.Page }}
         {{ else if eq $value "series" }}
-            {{ partial "taxonomy/taxonomy-series" $context.Page }}
+            {{ partial "taxonomy/taxonomy-series-single" $context.Page }}
         {{ else }}
             <script>
             var value = JSON.parse({{ $value | jsonify }});

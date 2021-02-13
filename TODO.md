@@ -2,12 +2,16 @@
 
 ## PRIORITIES / CURRENT STATE
 
+* [ ] README
+    * [ ] don't detail things in "changed features"
+      * [ ] list changes
+      * [ ] detail new/changed features 1-by-1
+    * [ ] complete details/infos
+    * [ ] as ZZO, with table of contents
+
 * [ ] Global
     * [ ] test/check everything
     * [ ] add French content (posts, data, etc)
-
-* [ ] taxonomies
-    * [ ] SET PAGE'S TAXONOMIES IN "single" SIDEBAR (NOT GLOBAL!)
 
 * [ ] Header
     * [ ] Colored titles: Handle shadow colors => should get 'opposite' of object
@@ -121,10 +125,6 @@
     * [ ] utterances?
     * [ ] ...
 
-
-* [ ] README
-    * [ ] complete details/infos
-    * [ ] as ZZO, with table of contents
 
 * [ ] themes.toml
     => update when theme finished (as ZZO)

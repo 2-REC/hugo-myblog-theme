@@ -68,6 +68,7 @@ sidebarHomeRight = [ "bio", "top", "recent", "-", "tags", "categories", "series"
 sidebarSingleLeft = [ "-", "toc" ] #TODO
 #sidebarSingleRight = [ "toc", "tags", "categories", "series" ] #TODO
 sidebarSingleRight = [ "-", "tags", "categories", "series" ] #TODO
+singleTaxonomies = true # default: false
 #sidebarListLeft = [ ... ] #TODO
 sidebarListRight = [ "recent", "-", "tags", "categories", "series" ] #TODO
 #sidebarTaxonomyLeft = [ "-", "bio" ] #TODO

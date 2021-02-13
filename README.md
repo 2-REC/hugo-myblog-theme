@@ -56,16 +56,19 @@ TODO: complete/rewrite/etc.
 ## Changed Features from original Zzo Theme
 * General
     * Icons
-        * Use of an 'icon-font' for icons in text (additionally to SVG tags)
+      * Use of an 'icon-font' for icons in text (additionally to SVG tags)
 * Themes
     * More dynamic theme management.
-        For each theme:
-        - Add entry+infos in "data/theme.toml" (name, chroma, chroma_background, primary_color)
-        - Add scss files ("themes/name.scss" + "themes/chroma_background.scss" + "syntax/chroma.scss")
+      For each theme:
+      - Add entry+infos in "data/theme.toml" (name, chroma, chroma_background, primary_color)
+      - Add scss files ("themes/name.scss" + "themes/chroma_background.scss" + "syntax/chroma.scss")
     * Default case for 'theme' if current value in local storage is not valid
-        => Remove 'theme' from localStorage if value is not in list of themes (in 'data/theme.toml').
+      => Remove 'theme' from localStorage if value is not in list of themes (in 'data/theme.toml').
 * Sidebar
     * Added taxonomy specific sidebar (different from "list")
+      * For "single" pages, can specify if want all taxonomy terms, or only those in page (all by default)
+          => In "params":
+            singleTaxonomies = true
     * Content of each sidebar (home, single, list, taxonomy) defined by list (in "params")
     * Special "-" separator to specify start of "floating" section
     * Possibility to have left and right sidebars (as well as both or none)

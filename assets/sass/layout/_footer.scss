@@ -43,6 +43,8 @@
     margin: 0.25rem 0.5rem 0;
   }
 
+//TODO: not used anymore (was for language selector)
+/*
   .dropdown {
     position: absolute;
     left: 0.5rem;
@@ -133,7 +135,10 @@
       }
     }
   }
+*/
 
+//TODO: unused
+/*
   .select-theme {    
     &__label {      
       color: inherit;
@@ -144,13 +149,17 @@
       text-transform: capitalize;
     }
   }
+*/
 
+//TODO: not used anymore (was for language selector)
+/*
   .select-lang {
     &__label {
       color: inherit;
       text-transform: capitalize;
     }
   }
+*/
 
   .social {
     margin: 0.25rem;
@@ -166,9 +175,12 @@
     }
   }
 
+//TODO: not used anymore (was for language selector)
+/*
   .dropdown:hover .dropdown-content {
     display: block;
   }
+*/
 
   hr {
     @include themify($themes) {

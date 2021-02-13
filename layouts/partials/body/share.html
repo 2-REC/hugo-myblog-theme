@@ -1,0 +1,14 @@
+{{ if $.Param "share" }}
+<div class="action">
+  <div class="action__message">
+    {{ i18n "share-message" }}
+  </div>
+  <div class="action__icons">
+    {{ $ctx := . }}
+    {{ $site := .Site }}
+    {{ range $.Param "share" }}
+      {{ partial (print "share/" (lower .name) ".html") (dict "ctx" $ctx "share" .) }}
+    {{ end }}
+  </div>
+</div>
+{{ end }}

@@ -1,88 +1,107 @@
 ---
 header:
-  - type: text
-    height: 235
-    paddingX: 50
+  - type: single
+    height: 235px
+    image:
+        src: images/header/background.jpg
+        size: cover
+        repeat: no-repeat
+        position: center
+    alignX: center
+    alignY: center
+    paddingX: 0
     paddingY: 0
-    align: left
     title:
-      - header title1
-      - header title2
+      - HUGO
     subtitle:
-      - header subtitle1
-      - header subtitle2
-    titleColor: 
-    titleShadow: false
-    titleFontSize: 44
+      - The world’s fastest framework for building websites
+    titleColor:
+    titleShadow: true
+    titleFontSize: 50%
     subtitleColor:
-    subtitleCursive: false
-    subtitleFontSize: 16
-    spaceBetweenTitleSubtitle: 20
-  
-  - type: img
-    image: images/header/background.png
-    height: 235
-    paddingX: 50
-    paddingY: 0
-    align: center
-    title:
-      - header title1
-      - header title2
-    subtitle:
-      - header subtitle1
-      - header subtitle2
-    titleColor: 
-    titleShadow: false
-    titleFontSize: 44
-    subtitleColor: 
-    subtitleCursive: false
-    subtitleFontSize: 16
-    spaceBetweenTitleSubtitle: 20
+    subtitleShadow: true
+    subtitleCursive: true
+    subtitleFontSize: 10%
+    spaceBetweenTitleSubtitle: 10%
 
-  - type: slide
-    height: 235
+  - type: multi
+    height: 235px
     options:
-        startSlide: 0
-        auto: 5000
-        draggable: true
-        autoRestart: true
-        continuous: true
-        disableScroll: true
-        stopPropagation: true
-    slide:
-      - paddingX: 50
+        transition_effect: fade
+        transition_delay: 5000
+        transition_duration: 1000
+    slides:
+      - image:
+            src: images/header/background.jpg
+            size: cover
+            repeat: no-repeat
+            position: center
+        alignX: left
+        alignY: top
+        paddingX: 50px
         paddingY: 0
-        align: left
-        image: images/header/background.png
         title:
-          - header title1
+          - header title 1
         subtitle:
-          - header subtitle1
-        titleFontSize: 44
-        subtitleFontSize: 16
-        spaceBetweenTitleSubtitle: 20
+          - header subtitle 1-1
+          - header subtitle 1-2
+        titleColor:
+        titleShadow: true
+        titleFontSize: 50%
+        subtitleColor:
+        subtitleShadow: true
+        subtitleCursive: true
+        subtitleFontSize: 16px
+        titlePaddingY: 10%
+        subtitlePaddingY: 5px
+        spaceBetweenTitleSubtitle: 10px
 
-      - paddingX: 50
+      - image:
+            src: images/header/background.jpg
+            size: cover
+            repeat: no-repeat
+            position: center
+        alignX: center
+        alignY: center
+        paddingX: -50%
         paddingY: 0
-        align: center
-        image: images/header/background.png
         title:
-          - header title2
+          - header title 2-1
+          - header title 2-2
         subtitle:
-          - header subtitle2
-        titleFontSize: 44
-        subtitleFontSize: 16
-        spaceBetweenTitleSubtitle: 20
+          - header subtitle 2
+        titleColor: rgba(0, 0, 128, 0.5)
+        titleShadow: false
+        titleFontSize: 25%
+        subtitleColor: rgb(255, 128, 128)
+        subtitleShadow: true
+        subtitleCursive: false
+        subtitleFontSize: 25%
+        titlePaddingY: 0
+        subtitlePaddingY: 2px
+        spaceBetweenTitleSubtitle: 10%
 
-      - paddingX: 50
-        paddingY: 0
-        align: right
-        image: images/header/background.png
+      - image:
+            src: images/header/background.jpg
+            size: cover
+            repeat: no-repeat
+            position: center
+        alignX: right
+        alignY: bottom
+        paddingX: 25px
+        paddingY: 50px
         title:
-          - header title3
+          - header title 3
         subtitle:
-          - header subtitle3
-        titleFontSize: 44
-        subtitleFontSize: 16
-        spaceBetweenTitleSubtitle: 20
+          - header subtitle 3
+        titleColor:
+        titleShadow: true
+        titleFontSize: 44px
+        subtitleColor:
+        subtitleShadow: true
+        subtitleCursive: true
+        subtitleFontSize: 16px
+        titlePaddingY: 5px
+        subtitlePaddingY: 5%
+        spaceBetweenTitleSubtitle: 0
 ---

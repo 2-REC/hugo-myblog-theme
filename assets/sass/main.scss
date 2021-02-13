@@ -75,9 +75,18 @@ $viewport_size: {{ .Site.Params.viewportSize | default "normal" }};
 
 @import 'base/reset';
 @import 'base/fonts';
+@import 'base/icon-font';
 @import 'base/helpers';
 @import 'base/typography';
 @import 'base/animation';
+
+////////
+/*
+$length: {{ if .Site.Params.themeOptions }}{{ len .Site.Params.themeOptions }}{{ else }}0{{ end }};
+*/
+//$lang_switch: {{ len .Site.Languages }}
+$navm_theme_right_offset: {{ if and .Site.Params.enableLangChange (gt (len .Site.Languages) 1) }}2.25{{ else }}1{{ end }};
+////////
 
 @import 'layout/navigation';
 @import 'layout/grid';
@@ -106,7 +115,14 @@ $viewport_size: {{ .Site.Params.viewportSize | default "normal" }};
 @import 'components/tooltip';
 //@import 'components/whoami';
 //@import 'components/busuanzi'; //TODO: uncomment if using Busuanzi
-//@import 'components/donation';
+
+$colors: (
+{{ range .Site.Params.share }}
+  {{ .name }}: {{ .color }},
+{{ end }}
+);
+@import 'components/action';
+
 @import 'components/box';
 @import 'components/modal';
 @import 'components/codetab';
@@ -114,11 +130,12 @@ $viewport_size: {{ .Site.Params.viewportSize | default "normal" }};
 @import 'components/tab';
 @import 'components/button';
 //@import 'components/featuredImage';
+@import 'components/slider';
+@import 'components/tiles';
 
 @import 'pages/404';
 @import 'pages/about';
 //@import 'pages/archive';
-@import 'pages/gallery';
 @import 'pages/list';
 @import 'pages/single';
 @import 'pages/terms';

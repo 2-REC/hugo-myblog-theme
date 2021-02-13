@@ -1,0 +1,15 @@
+{{ $valuePercent := 0 }}
+{{ $valuePixel := 0 }}
+{{ if ne . 0 }}
+  {{ $lastIndex := sub (len (string .)) 1 }}
+  {{ if eq (substr . $lastIndex) "%" }}
+    {{ $percent := substr . 0 $lastIndex }}
+    {{ $valuePercent = int $percent }}
+  {{ else if eq (substr . $lastIndex) "x" }}
+    {{ $pixel := substr . 0 (sub $lastIndex 1) }}
+    {{ $valuePixel = int $pixel }}
+  {{ else }}
+    {{ printf "Only '%v' and 'px' units are handled" "%" }}
+  {{ end }}
+{{ end }}
+{{ return slice $valuePercent $valuePixel }}

@@ -37,7 +37,10 @@
   {{ if $.Param "organization" }}
   <div class="bio__info">
     <div class="bio__info--icon">
+{{/*
       {{ partial "svgs/etc/people.svg" (dict "width" 20 "height" 20) }}
+*/}}
+      <span class="icon-user"></span>
     </div>
     {{ $.Param "organization" }}
   </div>
@@ -46,7 +49,10 @@
   {{ if $.Param "location" }}
   <div class="bio__info">
     <div class="bio__info--icon">
+{{/*
       {{ partial "svgs/etc/location.svg" (dict "width" 20 "height" 20) }}
+*/}}
+      <span class="icon-location"></span>
     </div>
     {{ $.Param "location" }}
   </div>
@@ -55,7 +61,10 @@
   {{ if $.Param "email" }}
   <div class="bio__info">
     <div class="bio__info--icon">      
+{{/*
       {{ partial "svgs/social/email.svg" (dict "width" 20 "height" 20) }}
+*/}}
+      <span class="icon-mail-alt"></span>
     </div>
     <a href="mailto:{{ $.Param "email" }}">{{ $.Param "email" }}</a>    
   </div>
@@ -64,7 +73,11 @@
   {{ if $.Param "link" }}
   <div class="bio__info">
     <div class="bio__info--icon">
+{{/*
       {{ partial "svgs/etc/link.svg" (dict "width" 20 "height" 20) }}
+*/}}
+      {{/* TODO: FIX 'link' ICON!? */}}
+      <span class="icon-link"></span>
     </div>
     <a href="{{ $.Param "link" }}" target="_blank" rel="noreferrer">{{ $.Param "link" }}</a>    
   </div>

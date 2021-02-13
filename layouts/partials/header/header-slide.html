@@ -1,65 +1,272 @@
-{{ $swipe := resources.Get "js/swipehome.js" | resources.Minify | resources.Fingerprint }}
-<script defer src="{{ $swipe.RelPermalink }}"></script>
+{{ $context := .context }}
+{{ $type := .type }}
+{{ if $context.Params.header }}
+  <section class="featured-slider">
+    <div class="slider-cycle-header">
+      {{ range $context.Params.header }}
+        {{ if eq .type $type }}
+          {{ $array := partial "header/convert-value.html" .height }}
+          {{ $heightPercent := index $array 0 }}
+          {{ $heightPixel := index $array 1 }}
+          {{ if eq $heightPixel 0 }}
+            <div>{{ printf "Use 'px' unit for 'height' field (other units not handled)" }}</div>
+          {{ end }}
+          {{ $height := $heightPixel }}
 
-{{ if $.Params.header }}
-  <div id="headerSwipe" class="swipe">
-    <div class="swipe-home">
-      {{ range $.Params.header }}
-      {{ if eq .type "slide" }}
-        {{ $height := .height }}
-        {{ range .slide }}
-          <div class="site-header__align-{{ .align }}" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}" style="background-image: url('{{ .imageSrc | relURL }}'); background-size: {{ .imageSize }}; background-repeat: {{ .imageRepeat }}; background-position: {{ .imagePosition }}; height: {{ $height }}px;">
-            {{ $header := . }}
-            {{ if .title }}            
-              {{ range .title }}
-              <div class="site-header__title" style="font-size: {{ $header.titleFontSize }}px; padding: {{ $header.paddingY }}px {{ $header.paddingX }}px;">
-                {{ . }}
-              </div>
-              {{ end }}      
-            {{ end }}
-            {{ if .spaceBetweenTitleSubtitle }}
-              <div style="height: {{ .spaceBetweenTitleSubtitle }}px"></div>
-            {{ end }}
-            {{ if .subtitle }}
-              {{ range .subtitle }} 
-              <div class="site-header__subtitle" style="font-size: {{ $header.subtitleFontSize }}px; padding: {{ $header.paddingY }}px {{ $header.paddingX }}px;">
-                {{ . }}
-              </div>
+          {{ $slides := slice . }}
+          {{ if eq .type "multi" }}
+            {{ $slides = .slides }}
+          {{ end }}
+          {{ range $slides }}
+            <div class="site-header__align-{{ .alignX }}" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}" style="{{ if .image }}background-image: url('{{ .image.src | relURL }}'); background-size: {{ .image.size }}; background-repeat: {{ .image.repeat }}; background-position: {{ .image.position }};{{ end }} height: {{ $height }}px;">
+              {{ $header := . }}
+
+              {{/* X Padding */}}
+              {{ if eq $header.alignX "left" }}
+                <div style="padding-left: {{ $header.paddingX }}; height: 100%;">
+              {{ else if eq .alignX "right" }}
+                <div style="padding-right: {{ $header.paddingX }}; height: 100%;">
+              {{ else }}
+                {{ $sign := substr $header.paddingX 0 1 }}
+                {{ if eq $sign "-" }}
+                  <div style="padding-right: {{ substr $header.paddingX 1 }}; height: 100%;">
+                {{ else }}
+                  <div style="padding-left: {{ $header.paddingX }}; height: 100%;">
+                {{ end }}
               {{ end }}
-            {{ end }}
-          </div>
+
+              {{/* Title Font Size */}}
+              {{ $titleFontSize := "1em" }}
+              {{ $titleFontSizePercent := 0 }}
+              {{ $titleFontSizePixel := 0 }}
+              {{ if .title }}
+                {{ with $header.titleFontSize }}
+                  {{ $array := partial "header/convert-value.html" . }}
+                  {{ $titleFontSizePercent = index $array 0 }}
+                  {{ $titleFontSizePixel = index $array 1 }}
+                  {{ if ne $titleFontSizePercent 0 }}
+                    {{ $titleFontSize = printf "%#vpx" (int (mul $height (div $titleFontSizePercent 100.0))) }}
+                  {{ else }}
+                    {{ $titleFontSize = printf "%#vpx" $titleFontSizePixel }}
+                  {{ end }}
+                {{ end }}
+              {{ end }}
+
+              {{/* Subtitle Font Size */}}
+              {{ $subtitleFontSize := "1em" }}
+              {{ $subtitleFontSizePercent := 0 }}
+              {{ $subtitleFontSizePixel := 0 }}
+              {{ if .subtitle }}
+                {{ with $header.subtitleFontSize }}
+                  {{ $array := partial "header/convert-value.html" . }}
+                  {{ $subtitleFontSizePercent = index $array 0 }}
+                  {{ $subtitleFontSizePixel = index $array 1 }}
+                  {{ if ne $subtitleFontSizePercent 0 }}
+                    {{ $subtitleFontSize = printf "%#vpx" (int (mul $height (div $subtitleFontSizePercent 100.0))) }}
+                  {{ else }}
+                    {{ $subtitleFontSize = printf "%#vpx" $subtitleFontSizePixel }}
+                  {{ end }}
+                {{ end }}
+              {{ end }}
+
+              {{/* Y Align/Padding */}}
+              {{ if eq $header.alignY "top" }}
+                {{ if ne $header.paddingY 0 }}
+                  <div style="height: {{ $header.paddingY }}; opacity: 0;">-</div>
+                {{ end }}
+              {{ else }}
+                {{ $heightPercent := 0 }}
+                {{ $heightPixel := 0 }}
+
+                {{ if .title }}
+                  {{ $paddingYPercent := 0 }}
+                  {{ $paddingYPixel := 0 }}
+                  {{ with $header.titlePaddingY }}
+                    {{ $array := partial "header/convert-value.html" . }}
+                    {{ $paddingYPercent = index $array 0 }}
+                    {{ $paddingYPixel = index $array 1 }}
+                  {{ end }}
+                  {{ range .title }}
+                    {{ $heightPercent = add $heightPercent $titleFontSizePercent }}
+                    {{ $heightPixel = add $heightPixel $titleFontSizePixel }}
+                    {{ $heightPercent = add $heightPercent (mul $paddingYPercent 2) }}
+                    {{ $heightPixel = add $heightPixel (mul $paddingYPixel 2) }}
+                  {{ end }}
+                {{ end }}
+
+                {{ with .spaceBetweenTitleSubtitle }}
+                  {{ $array := partial "header/convert-value.html" . }}
+                  {{ $heightPercent = add $heightPercent (index $array 0) }}
+                  {{ $heightPixel = add $heightPixel (index $array 1) }}
+                {{ end }}
+
+                {{ if .subtitle }}
+                  {{ $paddingYPercent := 0 }}
+                  {{ $paddingYPixel := 0 }}
+                  {{ with $header.subtitlePaddingY }}
+                    {{ $array := partial "header/convert-value.html" . }}
+                    {{ $paddingYPercent = index $array 0 }}
+                    {{ $paddingYPixel = index $array 1 }}
+                  {{ end }}
+                  {{ range .subtitle }}
+                    {{ $heightPercent = add $heightPercent $subtitleFontSizePercent }}
+                    {{ $heightPixel = add $heightPixel $subtitleFontSizePixel }}
+                    {{ $heightPercent = add $heightPercent (mul $paddingYPercent 2) }}
+                    {{ $heightPixel = add $heightPixel (mul $paddingYPixel 2) }}
+                  {{ end }}
+                {{ end }}
+
+                {{ $paddingPercent := 0 }}
+                {{ $paddingPixel := 0 }}
+                {{ with $header.paddingY }}
+                  {{ $array := partial "header/convert-value.html" . }}
+                  {{ $paddingPercent = (index $array 0) }}
+                  {{ $paddingPixel = (index $array 1) }}
+                {{ end }}
+
+                {{ if eq $header.alignY "bottom" }}
+                  {{ $heightPercent = add $heightPercent $paddingPercent }}
+                  {{ $heightPixel = add $heightPixel $paddingPixel }}
+                  <div style="height: calc(100% - {{ $heightPercent }}% - {{ $heightPixel }}px); opacity: 0;">-</div>
+                {{ else }}
+                  {{ $heightPercent = sub (div $heightPercent 2) $paddingPercent }}
+                  {{ $heightPixel = sub (div $heightPixel 2) $paddingPixel }}
+                  <div style="height: calc(50% - {{ $heightPercent }}% - {{ $heightPixel }}px); opacity: 0;">-</div>
+                {{ end }}
+              {{ end }}
+
+              {{/* Title */}}
+              {{ if .title }}
+                {{/* Y Padding */}}
+                {{ $percentPadY := 0 }}
+                {{ with .titlePaddingY }}
+                  {{ if ne . 0 }}
+                    {{ $lastIndex := sub (len .) 1 }}
+                    {{ if eq (substr . $lastIndex) "%" }}
+                      {{ $percentPadY = substr . 0 $lastIndex }}
+                    {{ end }}
+                  {{ end }}
+                {{ end }}
+
+                {{/* Color */}}
+                {{ $colorR := 0 }}
+                {{ $colorG := 0 }}
+                {{ $colorB := 0 }}
+                {{ $colorA := 1 }}
+                {{ with $header.titleColor }}
+                  {{ $array := partial "header/convert-color.html" . }}
+                  {{ $colorR = index $array 0 }}
+                  {{ $colorG = index $array 1 }}
+                  {{ $colorB = index $array 2 }}
+                  {{ $colorA = index $array 3 }}
+                {{ end }}
+
+                {{ range .title }}
+                  {{ if $percentPadY }}
+                    <div class="site-header__title {{ if $header.titleShadow }}site-header__title--shadow{{ end }}" style="font-size: {{ $titleFontSize }}; {{ with $header.titleColor }}color: rgba({{ $colorR }},{{ $colorG }},{{ $colorB }},{{ $colorA }});{{ end }} padding: calc({{ $height }}px * ({{ $percentPadY }} / 100)) 0;">
+                  {{ else }}
+                    <div class="site-header__title {{ if $header.titleShadow }}site-header__title--shadow{{ end }}" style="font-size: {{ $titleFontSize }}; {{ with $header.titleColor }}color: rgba({{ $colorR }},{{ $colorG }},{{ $colorB }},{{ $colorA }});{{ end }} padding: {{ $header.titlePaddingY }} 0;">
+                  {{ end }}
+                      {{ . }}
+                    </div>
+                {{ end }}
+              {{ end }}
+
+              {{/* Space */}}
+              {{ with .spaceBetweenTitleSubtitle }}
+                {{ if ne . 0 }}
+                  {{ $val := string . }}
+                  {{ $percentSpace := 0 }}
+                  {{ $lastIndex := sub (len $val) 1 }}
+                  {{ if eq (substr . $lastIndex) "%" }}
+                    {{ $percentSpace = substr . 0 $lastIndex }}
+                  {{ end }}
+                  {{ if $percentSpace }}
+                    <div style="height: calc({{ $height }}px * ({{ $percentSpace }} / 100)); opacity: 0;">-</div>
+                  {{ else }}
+                    <div style="height: {{ . }}; opacity: 0;">-</div>
+                  {{ end }}
+                {{ end }}
+              {{ end }}
+
+              {{/* Subtitle */}}
+              {{ if .subtitle }}
+                {{/* Y Padding */}}
+                {{ $percentPadY := 0 }}
+                {{ with .subtitlePaddingY }}
+                  {{ $lastIndex := sub (len .) 1 }}
+                  {{ if eq (substr . $lastIndex) "%" }}
+                    {{ $percentPadY = substr . 0 $lastIndex }}
+                  {{ end }}
+                {{ end }}
+
+                {{/* Color */}}
+                {{ $colorR := 0 }}
+                {{ $colorG := 0 }}
+                {{ $colorB := 0 }}
+                {{ $colorA := 1 }}
+                {{ with $header.subtitleColor }}
+                  {{ $array := partial "header/convert-color.html" . }}
+                  {{ $colorR = index $array 0 }}
+                  {{ $colorG = index $array 1 }}
+                  {{ $colorB = index $array 2 }}
+                  {{ $colorA = index $array 3 }}
+                {{ end }}
+
+                {{ range .subtitle }} 
+                  {{ if $percentPadY }}
+                    <div class="site-header__subtitle {{ if $header.subtitleShadow }}site-header__subtitle--shadow{{ end }}" style="font-size: {{ $subtitleFontSize }}; {{ with $header.subtitleColor }}color: rgba({{ $colorR }},{{ $colorG }},{{ $colorB }},{{ $colorA }});{{ end }} padding: calc({{ $height }}px * ({{ $percentPadY }} / 100)) 0;" data-cursive="{{ with $header.subtitleCursive }}{{ . }}{{ end }}">
+                  {{ else }}
+                    <div class="site-header__subtitle {{ if $header.subtitleShadow }}site-header__subtitle--shadow{{ end }}" style="font-size: {{ $subtitleFontSize }}; {{ with $header.subtitleColor }}color: rgba({{ $colorR }},{{ $colorG }},{{ $colorB }},{{ $colorA }});{{ end }} padding: {{ $header.subtitlePaddingY }} 0;" data-cursive="{{ with $header.subtitleCursive }}{{ . }}{{ end }}">
+                  {{ end }}
+                      {{ . }}
+                    </div>
+                  {{ end }}
+                {{ end }}
+              </div>
+            </div>
+          {{ end }}
         {{ end }}
       {{ end }}
-      {{ end }}
     </div>
-  </div>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      {{ $header := $.Params.header }}
+  </section>
+  {{ if eq $type "multi" }}
+    <script type='text/javascript'>
+      {{ $header := $context.Params.header }}
       var options = null;
       var header = JSON.parse({{ $header | jsonify }});
-      var slide = header.filter(function(h) {
-        return h.type === 'slide';
+      var multi = header.filter(function(h) {
+        return h.type === 'multi';
       });
-      
-      if (slide.length > 0) {
-        options = slide[0].options;
+
+      var transition_effect = "fade";
+      var transition_delay = 4000;
+      var transition_duration = 1000;
+
+      if (multi.length > 0) {
+        options = multi[0].options;
+        if (options.hasOwnProperty('transition_effect')) {
+          transition_effect = options.transition_effect;
+        }
+        if (options.hasOwnProperty('transition_delay')) {
+          transition_delay = options.transition_delay;
+        }
+        if (options.hasOwnProperty('transition_duration')) {
+          transition_duration = options.transition_duration;
+        }
       }
-      
-      var headerSwipeElem = document.getElementById('headerSwipe');
-      var headerSwipe = new Swipe(headerSwipeElem,
-        options ? 
-        options : {
-          startSlide: 0,
-          auto: 7000,
-          draggable: true,
-          autoRestart: true,
-          continuous: true,
-          disableScroll: true,
-          stopPropagation: true,
-          callback: function (index, element) { },
-          transitionEnd: function (index, element) { }
-        });
-    });
-  </script>
+
+      var slider_value_header = { "transition_effect": transition_effect, "transition_delay": transition_delay, "transition_duration": transition_duration };
+    </script>
+    {{ $jquery := resources.Get "js/jquery.js" | resources.Fingerprint }}
+    <script type='text/javascript' src="{{ $jquery.RelPermalink }}"></script>
+    {{ $jqueryCycle := resources.Get "js/jquery.cycle.all.min.js" | resources.Fingerprint }}
+    <script type='text/javascript' src="{{ $jqueryCycle.RelPermalink }}"></script>
+    {{/* 2-REC: Slider size "fix" - MID */}}
+    {{ $sliderSizeFix := resources.Get "js/slider-size-fix.js" | resources.Fingerprint }}
+    <script type='text/javascript' src="{{ $sliderSizeFix.RelPermalink }}"></script>
+    {{/* 2-REC: Slider size "fix" - END */}}
+    {{ $slider := resources.Get "js/slider-header-settings.min.js" | resources.Fingerprint }}
+    <script type='text/javascript' src="{{ $slider.RelPermalink }}"></script>
+  {{ end }}
 {{ end }}

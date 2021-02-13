@@ -12,7 +12,7 @@ notAllowedTypesInHomeSidebar = ["about", "archive"] #TODO: adapt! (contact?)
 # notAllowedTypesInArchive #TODO!
 # notAllowedTypesInHomeFeed = ["about", "archive", "contact", "gallery" ] #TODO: IF using 'showFeedLinks' - adapt! (look in original Zzo)
 
-viewportSize = "normal" # widest, wider, wide, normal, narrow
+viewportSize = "wide" # widest, wider, wide, normal, narrow
 enableUiAnimation = true
 hideSingleContentsWhenJSDisabled = false
 
@@ -20,8 +20,12 @@ hideSingleContentsWhenJSDisabled = false
 #enableSideDataLeft = true # Default: false
 #enableSideDataRight = true # Default: false
 
+# navbar
+enableThemeChange = true
+enableLangChange = true
+
 # header
-homeHeaderType = "slide" # text, img, slide
+homeHeaderType = "multi" # single, multi, custom
 
 # menu
 showMobileMenuTerms = ["tags", "categories", "series"] #TODO: change "series" to "types"
@@ -35,8 +39,11 @@ enableTocContent = true # TOC in page body
 #enableSearchHighlight = false
 enableGoToTop = true
 
-summaryShape = "compact" # card, classic, compact
-
+summaryShape = "compact" # Default for all pages, values: "card", "classic", "compact", "tiles"
+summaryShapeHome = "tiles"
+summaryShapeList = "tiles"
+summaryShapeTaxonomy = "tiles"
+showonlyimage = false
 
 
 paginateWindow = 1
@@ -60,7 +67,7 @@ link = "https://somesite.org"
 sidebarHomeRight = [ "bio", "top", "recent", "-", "tags", "categories", "series" ] #TODO
 sidebarSingleLeft = [ "-", "toc" ] #TODO
 #sidebarSingleRight = [ "toc", "tags", "categories", "series" ] #TODO
-sidebarSingleRight = [ "bio", "-", "tags", "categories", "series" ] #TODO
+sidebarSingleRight = [ "-", "tags", "categories", "series" ] #TODO
 #sidebarListLeft = [ ... ] #TODO
 sidebarListRight = [ "recent", "-", "tags", "categories", "series" ] #TODO
 #sidebarTaxonomyLeft = [ "-", "bio" ] #TODO
@@ -86,7 +93,6 @@ itemsPerCategory = 5 #TODO: set 1 for each component? (recent, top, etc.)
 showPoweredBy = true
 showFeedLinks = false
 showSocialLinks = true
-enableLangChange = false
 
 # service
 googleTagManager = "" # GTM-XXXXXX #TODO: can comment line if not used?
@@ -197,6 +203,38 @@ enableBusuanzi = false
 
 
 
+# Included: douban, facebook, line, linkedin, reddit, telegram, tumblr, twitter, weibo
+[[share]]
+  name = "facebook"
+  color = "#1877F2"
+[[share]]
+  name = "linkedin"
+  color = "#0077B5"
+[[share]]
+  name = "reddit"
+  color = "#FF4500"
+[[share]]
+  name = "tumblr"
+  color = "#36465D"
+[[share]]
+  name = "twitter"
+  color = "#1DA1F2"
+  username = "twitter_user"
+[[share]]
+  name = "whatsapp"
+  color = "#25D366"
+
+# Included: alipay, bitcoin, patreon, paypal, wechat
+[[donation]]
+  name = "paypal"
+  url = ""
+[[donation]]
+  name = "patreon"
+  url = ""
+[[donation]]
+  name = "wechat"
+  url = ""
+  qr = true
 
 
 [[footerLinks]]
@@ -212,3 +250,11 @@ enableBusuanzi = false
   copyrightLink = ""
   copyrightLinkImage = ""
   copyrightLinkText = ""
+
+[slider]
+  enable = true
+  manual = false # Setting manual to true renders the slide selection to only those where the post has a slide=true option enabled
+  num_features = 6 # The slider picks up the banner images from the N most recent posts, where num_features is N.
+  transition_effect = "fade" # Possible values: blindX, blindY, blindZ, cover, curtainX, curtainY, fade, fadeZoom, growX, growY, none, scrollUp, scrollDown, scrollLeft, scrollRight, scrollHorz, scrollVert, shuffle, slideX, slideY, toss, turnUp, turnDown, turnLeft, turnRight, uncover, wipe, zoom
+  transition_delay = 4000 # ms
+  transition_duration = 1000 # ms

@@ -1,0 +1,77 @@
+{{ if isset .Site.Params "slider" }}
+  {{ if .Site.Params.slider.enable }}
+    <section class="featured-slider">
+      <div class="slider-cycle">
+        {{ if .Site.Data.slider }}
+          {{ if gt (len .Site.Data.slider) 0 }}
+            {{ range $index, $slide := .Site.Data.slider }}
+              {{ if and (isset $slide "banner") (not (eq .banner "")) }}
+                <div class="slides {{ if eq $index 0 }} displayblock {{ else }} displaynone {{ end }}">
+                {{/* TODO: set "_blank" as option? ("isExternalLink") */}}
+                <a class="slide-textbox" href="{{ .url }}" title="{{ .Title }}" target="_blank">
+                    <figure>
+                      <img src="{{ .banner  | absURL }}" class="pngfix wp-post-image" alt="{{ .Title }}" title="{{ .Title }}">
+                    </figure>
+                    <article class="featured-text">
+                      <h4 class="featured-title">{{ .Title }}</h4>
+                      <div class="featured-content">{{ printf "%s" .Summary | markdownify }}</div>
+                    </article>
+                  </a>
+                </div>
+              {{ end }}
+            {{ end }}
+          {{ end }}
+        {{ end }}
+        {{ if and (isset $.Site.Params.slider "manual") ($.Site.Params.slider.manual) }}
+          {{ range $index, $page := .Site.Pages.ByParam "slide" }}
+            {{ if and (isset .Params "banner") (not (eq .Params.banner "")) }}
+              {{ if and (isset .Params "slide") (.Params.slide) }}
+                <div class="slides {{ if eq $index 0 }} displayblock {{ else }} displaynone {{ end }}">
+                  {{ partial "body/single_slide" . }}
+                </div>
+              {{ end }}
+            {{ end }}
+          {{ end }}
+        {{ else }}
+          {{ $features := add .Site.Params.slider.num_features 1 }}
+          {{ range $index, $page := first $features (where .Site.Pages "Type" "posts") }}
+            {{ if and (isset .Params "banner") (not (eq .Params.banner "")) }}
+              <div class="slides {{ if eq $index 0 }} displayblock {{ else }} displaynone {{ end }}">
+                {{ partial "body/single_slide" . }}
+              </div>
+            {{ end }}
+          {{ end }}
+        {{ end }}
+      </div>
+      <nav id="controllers" class="clearfix"></nav>
+    </section>
+    <script type='text/javascript'>
+      {{ $transition_effect := "fade" }}
+      {{ if isset $.Site.Params.slider "transition_effect" }}
+        {{ $transition_effect = $.Site.Params.slider.transition_effect }}
+      {{ end }}
+      {{ $transition_delay := 4000 }}
+      {{ if isset $.Site.Params.slider "transition_delay" }}
+        {{ $transition_delay = $.Site.Params.slider.transition_delay }}
+      {{ end }}
+      {{ $transition_duration := 1000 }}
+      {{ if isset $.Site.Params.slider "transition_duration" }}
+        {{ $transition_duration = $.Site.Params.slider.transition_duration }}
+      {{ end }}
+      var transition_effect = {{ $transition_effect }};
+      var transition_delay = "{{ $transition_delay }}";
+      var transition_duration = "{{ $transition_duration }}";
+      var slider_value = { "transition_effect": transition_effect, "transition_delay": transition_delay, "transition_duration": transition_duration };
+    </script>
+    {{ $jquery := resources.Get "js/jquery.js" | resources.Fingerprint }}
+    <script type='text/javascript' src="{{ $jquery.RelPermalink }}"></script>
+    {{ $jqueryCycle := resources.Get "js/jquery.cycle.all.min.js" | resources.Fingerprint }}
+    <script type='text/javascript' src="{{ $jqueryCycle.RelPermalink }}"></script>
+    {{/* 2-REC: Slider size "fix" - MID */}}
+    {{ $sliderSizeFix := resources.Get "js/slider-size-fix.js" | resources.Fingerprint }}
+    <script type='text/javascript' src="{{ $sliderSizeFix.RelPermalink }}"></script>
+    {{/* 2-REC: Slider size "fix" - END */}}
+    {{ $slider := resources.Get "js/slider-settings.min.js" | resources.Fingerprint }}
+    <script type='text/javascript' src="{{ $slider.RelPermalink }}"></script>
+  {{ end }}
+{{ end }}

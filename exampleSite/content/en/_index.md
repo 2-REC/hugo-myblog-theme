@@ -1,96 +1,107 @@
 ---
 header:
-  - type: text
-    height: 200
-    paddingX: 50
+  - type: single
+    height: 235px
+    image:
+        src: images/header/background.jpg
+        size: cover
+        repeat: no-repeat
+        position: center
+    alignX: center
+    alignY: center
+    paddingX: 0
     paddingY: 0
-    align: center
     title:
       - HUGO
     subtitle:
       - The world’s fastest framework for building websites
-    titleColor: 
-    titleShadow: true
-    titleFontSize: 44
-    subtitleColor: 
-    subtitleCursive: true
-    subtitleFontSize: 18
-    spaceBetweenTitleSubtitle: 16
-  
-  - type: img
-    imageSrc: images/header/background.jpg
-    imageSize: cover
-    imageRepeat: no-repeat
-    imagePosition: center
-    height: 235
-    paddingX: 50
-    paddingY: 0
-    align: center
-    title:
-      -
-    subtitle:
-      -
     titleColor:
-    titleShadow: false
-    titleFontSize: 44
+    titleShadow: true
+    titleFontSize: 50%
     subtitleColor:
-    subtitleCursive: false
-    subtitleFontSize: 16
-    spaceBetweenTitleSubtitle: 20
+    subtitleShadow: true
+    subtitleCursive: true
+    subtitleFontSize: 10%
+    spaceBetweenTitleSubtitle: 10%
 
-  - type: slide
-    height: 235
+  - type: multi
+    height: 235px
     options:
-        startSlide: 0
-        auto: 5000
-        draggable: true
-        autoRestart: true
-        continuous: true
-        disableScroll: true
-        stopPropagation: true
-    slide:
-      - paddingX: 50
+        transition_effect: fade
+        transition_delay: 5000
+        transition_duration: 1000
+    slides:
+      - image:
+            src: images/header/background.jpg
+            size: cover
+            repeat: no-repeat
+            position: center
+        alignX: left
+        alignY: top
+        paddingX: 50px
         paddingY: 0
-        align: left
-        imageSrc: images/header/background.jpg
-        imageSize: cover
-        imageRepeat: no-repeat
-        imagePosition: center
         title:
-          - header title1
+          - HUGO
         subtitle:
-          - header subtitle1
-        titleFontSize: 44
-        subtitleFontSize: 16
-        spaceBetweenTitleSubtitle: 20
+          - Top-left align example
+          - With 2 subtitles
+        titleColor:
+        titleShadow: true
+        titleFontSize: 50%
+        subtitleColor:
+        subtitleShadow: true
+        subtitleCursive: true
+        subtitleFontSize: 24px
+        titlePaddingY: 5%
+        subtitlePaddingY: 5px
+        spaceBetweenTitleSubtitle: 10px
 
-      - paddingX: 50
+      - image:
+            src: images/header/background.jpg
+            size: cover
+            repeat: no-repeat
+            position: center
+        alignX: center
+        alignY: center
+        paddingX: -25%
         paddingY: 0
-        align: center
-        imageSrc: images/header/background.jpg
-        imageSize: cover
-        imageRepeat: no-repeat
-        imagePosition: center
         title:
-          - header title2
+          - HUGO
+          - Colored
         subtitle:
-          - header subtitle2
-        titleFontSize: 44
-        subtitleFontSize: 16
-        spaceBetweenTitleSubtitle: 20
+          - Centered align example (with X offset)
+        titleColor: rgb(0, 0, 128)
+        titleShadow: false
+        titleFontSize: 25%
+        subtitleColor: rgba(255, 128, 128, 0.5)
+        subtitleShadow: true
+        subtitleCursive: false
+        subtitleFontSize: 10%
+        titlePaddingY: 0
+        subtitlePaddingY: 2px
+        spaceBetweenTitleSubtitle: 10%
 
-      - paddingX: 50
-        paddingY: 0
-        align: right
-        imageSrc: images/header/background.jpg
-        imageSize: cover
-        imageRepeat: no-repeat
-        imagePosition: center
+      - image:
+            src: images/header/background.jpg
+            size: cover
+            repeat: no-repeat
+            position: center
+        alignX: right
+        alignY: bottom
+        paddingX: 25px
+        paddingY: 50px
         title:
-          - header title3
+          - HUGO
         subtitle:
-          - header subtitle3
-        titleFontSize: 44
-        subtitleFontSize: 16
-        spaceBetweenTitleSubtitle: 20
+          - Bottom-right align example (with X+Y offsets)
+        titleColor:
+        titleShadow: true
+        titleFontSize: 44px
+        subtitleColor:
+        subtitleShadow: true
+        subtitleCursive: true
+        subtitleFontSize: 16px
+        titlePaddingY: 5px
+        subtitlePaddingY: 5%
+        spaceBetweenTitleSubtitle: 0
 ---

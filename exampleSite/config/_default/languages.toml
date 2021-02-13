@@ -1,6 +1,15 @@
 [en]
   title = "MyBlog Theme"
   languageName = "English"
+  languageShort = "EN"
   weight = 1
   languagedir = "ltr"
   contentdir = "content/en"
+
+[fr]
+  title = "Theme MyBlog"
+  languageName = "Français"
+  languageShort = "FR"
+  weight = 2
+  languagedir = "ltr"
+  contentdir = "content/fr"

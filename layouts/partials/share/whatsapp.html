@@ -1,0 +1,9 @@
+{{ $ctx := .ctx }}
+{{ $share := .share }}
+<a class="action__item" data-type="share" target="_blank" rel="noreferrer"
+    href="https://web.whatsapp.com/send?text={{ $ctx.Title }} - {{ $ctx.Permalink | absLangURL }}"
+    title="WhatsApp"
+    aria-label="WhatsApp Share Button"
+    data-href="{{ $ctx.Permalink | absLangURL }}">
+  <i aria-hidden="true" class="share--whatsapp">{{ partial "svgs/share/whatsapp.svg" (dict "width" 35 "height" 35) }}</i>
+</a>

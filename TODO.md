@@ -2,90 +2,123 @@
 
 ## PRIORITIES / CURRENT STATE
 
-* [x] Remove "publication" stuff
-    => Check notes (photo on phone)
-    * [x] Reveal lib + use
-    * [x] Presentation pages, etc
+* [ ] Global
+    * [ ] test/check everything
+    * [ ] add French content (posts, data, etc)
 
-X
-* [x] Add "swipe" stuff
-    => REMOVE/REPLACE!
+* [ ] taxonomies
+    * [ ] SET PAGE'S TAXONOMIES IN "single" SIDEBAR (NOT GLOBAL!)
 
-!!!!
-* [x] Gallery: fix bad resizing
-* [ ] Swiper
-    => Replace with swipe from "Resto Hugo" theme!
-    - partials/testimonial.html
-        => can be used for "recent posts"
-    - see if can easily adapt to shortcode
-(
-X    * [ ] See if keep or replace (with a carousel or similar from other theme)
-        Related files:
-        - swiper.html + swiperItem.html
-        Used in:
-            - shortcodes.md
-                => Remove "swiper" stuff
-        Using:
-            - swiper.min.css
-                => Can be deleted
-            - swiper.min.js
-                => Can be deleted
-            - _swiper.scss
-                !- also defines "swipe" class!
-                    => Only remove "swiper" stuff
-    * [ ] See if can merge swiper used in "photoswipe" and "header-slide"
-        => Using 2 different versions of "swiper.js"
-    * [ ] Allow more than 1 swipe per page
-        => Problem related to div ID: same for all (?)
-)
+* [ ] Header
+    * [ ] Colored titles: Handle shadow colors => should get 'opposite' of object
+    * [ ] Check if "archetypes\header.md" is used/required
+      => Delete? (or keep as example?)
+    * [ ] Switch to Cycle2
+        http://jquery.malsup.com/cycle2/
+    * [ ] Change css/colors
+
+* [ ] Replace images
+    * [ ] Header images
+    * [ ] Posts images (images related to posts)
+    * [ ] "Carousel" images
+
+* [ ] Slides: Recent posts / Carousel
+    * [ ] Switch to Cycle2
+        http://jquery.malsup.com/cycle2/
+    * [ ] Clean CSS (as well as for tiles)
+    * [ ] Add arrows on the sides
+        => See if can be done easily
+
+* [ ] Tiles
+    * [ ] Clean CSS
+
+* [ ] font-icons
+    * [ ] Redo all icons myself (SVG using Inkscape)
+    * [ ] Generate font with Fontello
+    * [ ] Make sure every icon is correct (eg problem with 'link' from font awesome)
+    * [ ] 'Sync' svgs and font (have same icons available in both) (look at every icon used)
+
+
 * [ ] Gallery
-    * [ ] Change photos => use mine
-    * [ ] Add another one ("drawings")
-!!!!
-
-
-* [x] Remove "data/lib.toml"
-    => Not using any lib
-
-* [ ] Themes:
-    * [ ] CHECK EVERYTHIN IS OK!
-    * [x] Switch in navbar only if more than 1 entry
+    * [ ] Add copyright label?
+        => as in portfolio theme
+    * [ ] Add another gallery ("drawings")
+        * VN flowers
+        * AB (?)
+        * "armoured" guy (?)
+        * Gorilla on bike
+        * gears (?)
+        * crazy machines (?)
 
 
 * [ ] set codeblock-script optional in single-script
   => config param
 * [ ] implement/finish "summary" stuff
-* [ ] make sure "archetypes/header" is only as example
 
 * [ ] Sidebars
     * [ ] TOC in sidebar
-        => SET CSS/CLASS SIMILAR TO TAGS, etc (shouldn't use "bio" class)
-    * [ ] Set individual components
-        => Adapt/create each partial, +handle specific parameters
+        * [ ] SET CSS/CLASS SIMILAR TO TAGS, etc (shouldn't use "bio" class)
     * [ ] See how to make sidebars code more generic (instead of copied for every type)
     * [ ] See how taxonomies are ordered
         => specified where/how?
     * [ ] Add subscription/newsletter
         => check with notes (probably will use MailChimmp)
 
-* [x] main-left + main_right
-    => Allow side panels, eg adverts or images
-    * [x] Replace 'enableSidebarMenu' with 'enableSideDataLeft' & 'enableSideDataRight'
-    * [x] Replace 'sidebar/sidebar-menu' with 'body/sidedata-left' & 'body/sidedata-right'
-
-
 * [ ] busuanzi
     => Keep? (as now: not enabled, but code still present)
 
+
+* [ ] Donation options
+    * [ ] Move to sidebar (any)
+    * [ ] Remove from "single" body
+    * [ ] Add in "contact" page body
+    * [ ] Mention changes in README
+
+* [ ] Share options
+    * [ ] check for each if provided info is enough
+    * [ ] add details on use in each partial ... (list params)
+    * [ ] douban
+        * [ ] check if ok => seems weird (blocked)
+    * [ ] weibo
+        * [ ] check if ok => seems weird (blocked)
+    * [ ] Tumblr
+        * [ ] limit "summary" length!
+            => how long?
+    * [ ] Twitter
+        * [ ] limit "summary" length!
+            => how long?
+    * [ ] Whatsapp
+        * [ ] find better icon (good size)
+    * [ ] Add option to "gallery" pages?
+        => Possible?
+    * [ ] TEST EACH PLATFORM!
+
+* [ ] i18n
+    * [ ] complete/clean
+    * [ ] add other language(s)
+        * [ ] French
+
 * [ ] "Archives" page (?)
-* [ ] Finish taxonomies
-* [ ] Continue "single" layout
+* [ ] "single"
+    * [ ] Body
+        * [ ] Add "share" options
+        * [ ] Add "whoami" at bottom of page (NOT bio!)
+            * [ ] Only show when in "mobile" mode?
+        * [ ] Add navigation (prev+next links) at bottom
     * [ ] Sidebar
+        * [ ] add "whoami" (in addition to "bio")
+            * [ ] Only in "single" sidebar
+            * [ ] Rename it to "author"?
         * [ ] donation?
         * [ ] subscribe?
         * [ ] +more?
-    * [x] See about "inner", "outer" for sidebar stuff... (nice to have, but a bit buggy)
-        => Don't keep (replaced with 'sidedata')
+    * [ ] ...
+
+* [ ] Update to latest Zzo sources
+    * [x] typewriter header? => NO
+    * [ ] pinned posts
+    * [ ] min nb tags?
+    * [ ] utterances?
     * [ ] ...
 
 
@@ -96,6 +129,10 @@ X    * [ ] See if keep or replace (with a carousel or similar from other theme)
 * [ ] themes.toml
     => update when theme finished (as ZZO)
 
+
+
+########################
+(TODO: continue/update!)
 
 ## EXAMPLE SITE
 
@@ -253,6 +290,6 @@ LATER:
     * [ ] svgs
         * [ ] Rename+change svgs (see what want to keep or change)
 * [ ] index
-    * [ ] Add "recent posts carousel"
+    * [x] Add "recent posts carousel"
 
 

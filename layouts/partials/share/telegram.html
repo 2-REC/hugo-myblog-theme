@@ -1,0 +1,9 @@
+{{ $ctx := .ctx }}
+{{ $share := .share }}
+<a class="action__item" data-type="share" target="_blank" rel="noreferrer"
+    href="https://telegram.me/share/url?url={{ $ctx.Permalink | absLangURL }}"
+    title="Telegram"
+    aria-label="Telegram Share Button"
+    onclick="window.open(&apos;https://telegram.me/share/url?url=&apos;+encodeURIComponent(location.href)+&apos;&amp;bodytext=&amp;tags=&amp;text=&apos;+encodeURIComponent(document.title));return false;">
+  <i aria-hidden="true" class="share--telegram">{{ partial "svgs/share/telegram.svg" (dict "width" 35 "height" 35) }}</i>
+</a>

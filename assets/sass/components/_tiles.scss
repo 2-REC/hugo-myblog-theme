@@ -1,0 +1,432 @@
+/* ---- Grid ---- */
+
+.grid {
+  position: relative;
+  margin-bottom: 1rem;
+
+  .full {
+    width: 100%;
+  }
+
+  .half {
+    width: 50%;
+  }
+
+  .third {
+    width: 33.3%;
+  }
+
+  .quarter {
+    width: 25%;
+  }
+
+  // 2-REC: Removed first block - buggy? ("screen and (max-width:1200px)")
+  //.fifth {
+  //  width: 20%;
+  //}
+}
+
+/* clear fix */
+.grid:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+
+/* ---- Grid Item ---- */
+
+.grid-sizer {
+  padding: 0.5rem;
+}
+
+.grid-item {
+  float: left;
+  border-radius: 0.25rem;
+//  padding: 0.51rem;
+}
+
+.grid-item img {
+  display: block;
+//  max-width: 100%;
+  width: 100%;
+}
+
+
+.tile-grid {
+  padding: 1rem;
+  @include flexbox();
+  @include flex-direction(column);
+
+/*
+  img {
+    border-radius: 0.25rem;
+  }
+*/
+
+  .grid-item {
+    position: relative;
+    opacity: 1;
+    height: auto;
+    cursor: pointer;
+    
+    @include flexbox();
+    @include justify-content(center);
+
+/*
+  @include themify($themes) {
+//    background-color: themed('title-color');
+//    color: themed('title-color');
+    color: themed('link');
+
+    @include on-event {
+//      background-color: themed('link-hover');
+      color: themed('link-hover');
+    }
+  }
+*/
+  }
+}
+
+
+/* ============================================================================================== */
+
+/* ---- Summary Tiles ---- */
+
+.box-masonry {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  //margin-bottom: 30px;
+margin: 0.51rem;
+
+  // If have long descriptions
+  //max-height: 400px;
+
+//  background: #fff;
+
+/* ?
+  @include themify($themes) {
+    color: themed('body-background-color');
+    //color: themed('backdrop-background-color');
+    //color: themed('content-box-background-color');
+  }
+*/
+
+  box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.2);
+
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.box-masonry h4 {
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+
+/* Text in tiles */
+
+.box-masonry .box-masonry-text {
+  padding: 15px 20px 15px;
+
+  // If have very long words (should avoid if possible, horrible result)
+  word-wrap: break-word;
+}
+
+.box-masonry .box-masonry-text p {
+  font-size: 14px;
+  @include themify($themes) {
+    color: themed('body-color');
+  }
+}
+
+
+/* Tiles with text overlay */
+
+.box-masonry .box-masonry-hover-text-header {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom:0;
+  padding: 15px 20px 15px;
+
+  opacity: 0;
+
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+
+  @include themify($themes) {
+      background-color: themed('gallery-mask-background-color');
+  }
+}
+
+// = 'box-masonry-description'
+.box-masonry .box-masonry-hover-text-header p {
+  font-size: 14px;
+
+  @include themify($themes) {
+    color: themed('body-color');
+  }
+}
+
+/*
+.box-masonry .box-masonry-hover-text-header h4 {
+  @include themify($themes) {
+    color: themed('link-hover');
+    text-decoration: underline;
+  }
+}
+*/
+
+/* Hovering */
+
+.box-masonry:hover {
+  box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.4);
+}
+
+.box-masonry a {
+  @include on-event {
+    text-decoration: none;
+  }
+}
+
+.box-masonry:hover h4 {
+  @include themify($themes) {
+    color: themed('link-hover');
+    text-decoration: underline;
+  }
+}
+
+.box-masonry:hover .box-masonry-hover-text-header {
+  opacity: 1;
+}
+
+.box-masonry:hover .box-masonry-image.with-hover-overlay:before {
+  opacity: 0.8;
+}
+
+.box-masonry:hover .box-masonry-image.with-hover-icon:after {
+  opacity: 0.7;
+}
+
+.box-masonry h2:last-child,
+.box-masonry p:last-child {
+  margin-bottom: 0;
+}
+
+
+/* Images in tiles */
+
+.box-masonry .box-masonry-image {
+  display: block;
+  position: relative;
+  min-height: 100px;
+  background: #ccc;
+
+  overflow: hidden;
+
+}
+
+.box-masonry .box-masonry-image.with-hover-overlay:before {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+
+  opacity: 0;
+  content: " ";
+
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
+
+.box-masonry .box-masonry-image.with-hover-icon:after {
+  display: block;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 50%;
+
+  opacity: 0;
+//  color: #555555;
+
+  text-align: center;
+  //TODO: adapt with my icons!
+  font-family: 'icon-font';
+  content: "\1f50d";
+//  font-size: 20px;
+  font-size: 1.5rem;
+
+  @include themify($themes) {
+    color: themed('link-hover');
+  font-weight: 700;
+  }
+
+  -webkit-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
+
+.box-masonry:hover .box-masonry-image img {
+    //TODO: set length as param?
+    @include animation('zoom-in-hover 20s .0s 1 ease both');
+}
+
+
+/* ============================================================================================== */
+
+/* ---- Gallery Tiles ---- */
+
+.gallery-tile {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  //margin-bottom: 30px;
+margin: 0.51rem;
+
+  background: #fff;
+
+  //box-shadow: 0 0 5px #ccc;
+  box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.2);
+
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+//border-radius: 0.25rem;
+
+  // If want maximum image height
+/*
+  @media only screen and (max-width: 600px) {
+    img {
+      //object-fit: cover;
+      object-fit: contain;
+      max-height: 300px;
+    }
+  }
+*/
+}
+
+.gallery-tile:hover .gallery-tile-image.with-hover-overlay:before {
+  opacity: 0.8;
+}
+
+.gallery-tile .gallery-tile-image {
+  display: block;
+  position: relative;
+
+  min-height: 100px;
+
+  //TODO: can remove?
+  background: #ccc;
+
+  @include on-event {
+    //TODO: set length as param?
+    @include animation('zoom-in-hover 20s .0s 1 ease both');
+  }
+}
+
+.gallery-tile .gallery-tile-image.with-hover-overlay:before {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+
+  opacity: 0;
+  content: " ";
+
+  pointer-events: none;
+
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+
+  @include themify($themes) {
+    color: themed('gallery-mask-color');
+    background-color: themed('gallery-mask-background-color');
+  }
+}
+
+.gallery-tile .gallery-tile-image:hover {
+  text-decoration: none;
+}
+
+.gallery-tile .gallery-tile-hover-text-header {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  padding: 15px 20px 15px;
+
+  opacity: 0;
+  //useful?
+  //color: #555555;
+
+  pointer-events: none;
+
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
+
+// ~ 'gallery-tile-description'
+.gallery-tile .gallery-tile-hover-text-header p {
+  //position: absolute;
+  //left: 50%;
+  //top: 50%;
+
+  text-align:center;
+//  font-size: 14px;
+  font-family: $title-font;
+  font-weight: 700;
+  word-wrap: break-word;
+
+  cursor: pointer;
+
+  @include flexbox();
+  @include flex-direction(column);
+  @include align-items(center);
+  @include themify($themes) {
+//    color: themed('link');
+    color: themed('link-hover');
+  }
+
+  //TODO: adapt with my icons!
+  &::after {
+    font-family: 'icon-font';
+    content: "\1f50d";
+    font-size: 1.5rem;
+  }
+}
+
+.gallery-tile:hover {
+  box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.4);
+}
+
+.gallery-tile:hover .gallery-tile-hover-text-header {
+  opacity: 1;
+}
+
+.gallery-tile:hover .gallery-tile-image.with-hover-overlay:before {
+  opacity: 0.8;
+}

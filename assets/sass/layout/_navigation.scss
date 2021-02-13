@@ -40,9 +40,17 @@
   }
 
   &__slide-down {
-    svg {
-      margin: auto;
-      display: block;
+
+    // 'hack' for labels in dropdown (to avoid double padding)
+    div.navbar__menu-item {
+      // 'hack' to fix height (had issues on some machines...?)
+      height: auto;
+      padding: 0;
+border: 0;
+
+      @include themify($themes) {
+        border: 0;
+      }
     }
 
     @include themify($themes) {
@@ -83,7 +91,9 @@
       cursor: pointer;
       margin-left: auto;
       height: $grid_navbar_height;    
-      width: 35px;
+//      width: 35px;
+//width: calc(#{$grid_navbar_height * 0.75});
+width: $grid_navbar_height;
       position: absolute;
       right: 0;
 
@@ -225,9 +235,13 @@
           text-decoration: none;
           border-bottom: 1px solid themed('navbar-border-bottom-color');
         }
+//TODO: OK?
+// => To avoid language button 'raising' when hover
+/*
         @media only screen and (max-width: 769px) {
           border-bottom: none;
         }
+*/
         &.active {
           color: themed('navbar-title-active-color') !important;
         }
@@ -332,7 +346,7 @@
   display: block;
 }
 
-.theme {
+.navbar-selector {
   @include flexbox();
   @include align-items(center);
   @include justify-content(flex-end);
@@ -361,15 +375,19 @@
     }
 
     &-trigger {
+@include flexbox();
+@include align-items(center);
+@include justify-content(center);    
       padding: 0.5rem;
       cursor: pointer;
       border: none;
       outline: none;
-      width: $grid_navbar_height;
+//      width: $grid_navbar_height;
       height: $grid_navbar_height - 2px;
 
       @include themify($themes) {
-        color: themed('burger-menu-color');
+//        color: themed('burger-menu-color');
+color: themed('navbar-title-color');
         @include on-event {
           color: themed('navbar-title-hover-color');
         }
@@ -379,7 +397,7 @@
     @media only screen and (max-width: 769px) {
       &-trigger {
         padding: 0.25rem;
-        width: 35px;
+//        width: 35px;
       }
     }
 
@@ -405,7 +423,9 @@
 
       .is-active {
         @include themify($themes) {
-          background-color: themed("dropdown-item-active-background-color");
+          color: themed('navbar-title-active-color');
+          background-color: themed("dropdown-item-hover-background-color");
+          font-weight: bold;
         }
       }
     }
@@ -420,9 +440,11 @@
       @include no-select;
       @include themify($themes) {
         color: themed("dropdown-item-color");
+        background-color: themed("navbar-background-color");
+
         @include on-event {
-          color: themed("dropdown-item-hover-color");
-          background-color: themed("dropdown-item-hover-background-color");
+          color: themed("navbar-dropdown-item-hover-color");
+          background-color: themed("navbar-menu-hover-background-color");
           text-decoration: none;
 
           &:last-child {
@@ -439,14 +461,14 @@
   }
 }
 
-.theme-mobile {
+.navbar-theme-selector-mobile, .navbar-lang-selector-mobile {
   display: none;
   outline: none;
   position: absolute;
   top: 0;
-  right: 35px * 2;
-  width: 35px;
+
   height: $grid_navbar_height;
+
   cursor: pointer;
   z-index: z('modal');
 
@@ -462,6 +484,16 @@
     display: block;
   }
 }
+
+.navbar-theme-selector-mobile {
+  right: calc(#{$grid_navbar_height * $navm_theme_right_offset});
+  width: $grid_navbar_height;
+}
+.navbar-lang-selector-mobile {
+  right: $grid_navbar_height;
+  width: calc(#{$grid_navbar_height * 1.25});
+}
+
 
 .navbarm {
   padding: 0 0.75rem;
@@ -549,4 +581,37 @@
       }
     }
   }
+}
+
+/*
+.select-theme {
+//TODO: unused
+//  &__label {
+//    color: inherit;
+//    text-transform: capitalize;
+//  }
+
+  &__item {
+    text-transform: capitalize;
+  }
+}
+*/
+
+.select-lang {
+  &__item {
+    text-transform: capitalize;
+  }
+}
+
+.dropdown-trigger > svg {
+  width: 18px;
+  height: 18px;
+}
+
+.navbar__menu-item svg {
+  //margin-left: 0.25rem;
+  margin-right: 0.25rem;
+
+width: 18px;
+height: 18px;
 }

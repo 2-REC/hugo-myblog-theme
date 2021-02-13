@@ -1,0 +1,52 @@
+<div class="tile-grid">
+    <div class="grid tile-grid__container">
+        <div class="grid-sizer"></div>
+        {{ range .pages }}
+        <div class="grid-item">
+            <div class="box-masonry">
+                {{ $image := and (isset .Params "image") .Params.image }}
+                {{ $showonlyimage := false }}
+                {{ if not (eq $image false) }}
+                  {{ $showonlyimage = .Params.showonlyimage }}
+                  {{ if not (isset .Params "showonlyimage") }}
+                    {{ $showonlyimage = .Site.Params.showonlyimage }}
+                  {{ end }}
+                {{ end }}
+                {{ if not (eq $image false) }}
+                  {{ if eq $showonlyimage true }}
+                  <a href="{{ .Permalink }}" title="" class="box-masonry-image with-hover-overlay">
+                  {{ else }}
+                  <a href="{{ .Permalink }}" title="" class="box-masonry-image with-hover-overlay with-hover-icon">
+                  {{ end }}
+                      {{ $image_obj := index (.Resources.Match $image) 0 }}
+                      <img src="{{ $image_obj.Permalink }}" alt="" class="img-responsive">
+                  </a>
+                {{ end }}
+                <a href="{{ .Permalink }}">
+                {{ if eq $showonlyimage true }}
+                <div class="box-masonry-hover-text-header">
+                {{ else }}
+                <div class="box-masonry-text">
+                {{ end }}
+                    {{/*
+                    <h4><a href="{{ .Permalink }}">{{ .Title }}</a></h4>
+                    */}}
+                    <h4>{{ .Title }}</h4>
+                    <div class="box-masonry-description">
+                      <p>
+                          {{ if .Description }}
+                            {{ .Description }}
+                          {{ else }}
+                            {{ .Summary }}
+                          {{ end }}
+                      </p>
+                    </div>
+                </div>
+                </a>
+            </div>
+        </div>
+        {{ end }}
+    </div>
+    {{ partial "pagination/pagination" . }}
+</div>
+{{ partial "script/tiles-script" . }}

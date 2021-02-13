@@ -27,18 +27,27 @@
         {{ end }}
     {{ end }}
     <div class="list__main {{ if $enableSidebar }}{{ if eq $sidebarPosition "both" }}m{{ else if eq $sidebarPosition "left" }}mr{{ else }}lm{{ end }}{{ else }}lmr{{ end }}">
-        {{/* TODO: Add "recent posts carousel" */}}
+        {{ partial "body/slider" . }}
+        {{ $filteredPages := .Site.RegularPages }}
+        {{ range $.Param "notAllowedTypesInHome" }}
+            {{ $filteredPages = (where $filteredPages "Type" "!=" (lower .)) }}
+        {{ end }}
+        {{ $summaryShape := lower ($.Param "summaryShape") }}
+        {{ if $.Param "summaryShapeHome" }}
+            {{ $summaryShape = lower ($.Param "summaryShapeHome") }}
+        {{ end }}
+        {{ $paginator := .Paginate $filteredPages }}
+        {{ $pages := $paginator.Pages }}
+        {{ if not (eq $summaryShape "tiles") }}
         <div class="summary__container" data-display="block">
-            {{ $filteredPages := .Site.RegularPages }}
-            {{ range $.Param "notAllowedTypesInHome" }}
-                {{ $filteredPages = (where $filteredPages "Type" "!=" (lower .)) }}
-            {{ end }}
-            {{ $paginator := .Paginate $filteredPages }}
-            {{ range $paginator.Pages }}
-                {{ .Render "summary" }}
+            {{ range $pages }}
+                {{ partial "body/summary" (dict "context" . "summaryShape" $summaryShape) }}
             {{ end }}
             {{ partial "pagination/pagination" . }}
         </div>
+        {{ else }}
+        {{ partial "summary/tiles" (dict "pages" $pages) }}
+        {{ end }}
         {{/* 2-REC: removed search */}}
     </div>
 

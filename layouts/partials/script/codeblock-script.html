@@ -37,6 +37,9 @@
     }) : null;
   })();
 
+{{/* 2-REC - MID */}}
+{{/* 2-REC: optional code "copy-to-clipboard" */}}
+{{ if .Site.Params.clipboardCode }}
   var langCodeElem = document.querySelectorAll('.language-code');
   langCodeElem ? langCodeElem.forEach(function (elem) {
     var newElem = document.createElement('span');
@@ -44,5 +47,7 @@
     newElem.setAttribute('title', 'Copy to clipboard');
     elem.append(newElem);
   }) : null;
+{{ end }}
+{{/* 2-REC - END */}}
   // =================================================================
 </script>

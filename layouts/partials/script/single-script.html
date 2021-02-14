@@ -276,6 +276,9 @@
     // =================================================================
 
 
+    {{/* 2-REC - MID */}}
+    {{/* 2-REC: optional title "copy-to-clipboard" */}}
+    {{ if .Site.Params.titleClipboard }}
     // ==================== add links in all titles ====================
     var text, clip = new ClipboardJS('.anchor');
     var headers = singleContentsElem.querySelectorAll("h1, h2, h3, h4");
@@ -333,8 +336,13 @@
       e.trigger.classList.add('tooltipped-s');
     });
     // =================================================================
+    {{ end }}
+    {{/* 2-REC - END */}}
 
 
+    {{/* 2-REC - MID */}}
+    {{/* 2-REC: optional code "copy-to-clipboard" */}}
+    {{ if .Site.Params.codeClipboard }}
     // =========================== clipboard ===========================
     var clipInit = false;
     var preChromaElem = document.querySelectorAll('pre.chroma');
@@ -470,6 +478,8 @@
       }) : null;
     }) : null;
     // =================================================================
+    {{ end }}
+    {{/* 2-REC - END */}}
 
 
     {{/* 2-REC: Removed libs

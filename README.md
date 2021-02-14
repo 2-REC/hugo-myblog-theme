@@ -105,6 +105,18 @@ TODO: complete/rewrite/etc.
         name = "wechat"
         url = "images/donation/alipay-qrcode.png" (put the file at "root/static/images/donation/")
         qr = true
+* Single page
+  * "copy-to-clipboard" optional for title
+    => param "titleClipboard" (default: false)
+  * Code
+    * "copy-to-clipboard" optional for code
+      => param "codeClipboard" (default: false)
+    (NOT HERE!
+    * Specify if want line numbers in code tables in "config" (default: true)
+      [markup.highlight]
+        lineNos = true
+        lineNumbersInTable = true
+    )
 
 
 ## Removed Features from original Zzo Theme

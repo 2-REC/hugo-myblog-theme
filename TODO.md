@@ -10,16 +10,18 @@
     * [ ] as ZZO, with table of contents
 
 * [ ] Global
-    * [ ] test/check everything
+    * [ ] make new themes (colours, fonts, etc.)
     * [ ] add French content (posts, data, etc)
+    * [ ] test/check everything
 
 * [ ] Header
-    * [ ] Colored titles: Handle shadow colors => should get 'opposite' of object
+    * [ ] Coloured titles: Handle shadow colours
+      => should get 'opposite' of object
     * [ ] Check if "archetypes\header.md" is used/required
       => Delete? (or keep as example?)
     * [ ] Switch to Cycle2
         http://jquery.malsup.com/cycle2/
-    * [ ] Change css/colors
+    * [ ] Change css/colours
 
 * [ ] Replace images
     * [ ] Header images
@@ -55,8 +57,6 @@
         * crazy machines (?)
 
 
-* [ ] set codeblock-script optional in single-script
-  => config param
 * [ ] implement/finish "summary" stuff
 
 * [ ] Sidebars

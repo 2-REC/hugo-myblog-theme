@@ -1,4 +1,30 @@
 {{ if and ($.Param "enableSidebarSeries") (ne (len .Site.Taxonomies.series) 0) }}
+
+{{ $page := . }}
+{{ $series := 0 }}
+{{ range $index, $element := .Site.Taxonomies.series }}
+    {{ if $index }}
+        {{ if $.Param "singleTaxonomies" }}
+            {{ range ($page.GetTerms "series") }}
+                {{ if eq .LinkTitle $element.Page.Title }}
+                    {{ if eq $series 0 }}
+                        {{ $series = slice $element }}
+                    {{ else }}
+                        {{ $series = $series | append (slice $element )}}
+                    {{ end }}
+                {{ end }}
+            {{ end }}
+        {{ else }}
+            {{ if eq $series 0 }}
+                {{ $series = slice $element }}
+            {{ else }}
+                {{ $series = $series | append (slice $element )}}
+            {{ end }}
+        {{ end }}
+    {{ end }}
+{{ end }}
+
+{{ if ne $series 0 }}
 <div class="taxo">
     <section>
         <span class="title p2">
@@ -6,35 +32,22 @@
                 {{ i18n "series" }}
             </a>
         </span>
-        {{ $page := . }}
-        {{ range $index, $element := .Site.Taxonomies.series }}
-        {{ if $index }}
-            {{ $display := true }}
-            {{ if $.Param "singleTaxonomies" }}
-                {{ $display = false }}
-                {{ range ($page.GetTerms "series") }}
-                    {{ if eq .LinkTitle $element.Page.Title }}
-                        {{ $display = true }}
-                    {{ end }}
-                {{ end }}
-            {{ end }}
-            {{ if eq $display true }}
-            <span class="tag">
-                <a href="{{ $element.Page.RelPermalink }}" class="is-series taxo__link" data-dir="{{ if ne ($.Param "languagedir") "rtl" }}ltr{{ else }}rtl{{ end }}">
-                    <span class="taxo__text">
-                        {{ $element.Page.Title }}
-                    </span>
-                    <span class="taxo__num" dir="auto">
-                        {{ printf "%#v" (len $element) }}
-                    </span>
-                </a>
-            </span>
-            {{ end }}
-        {{ end }}
+        {{ range $element := $series }}
+        <span class="tag">
+            <a href="{{ $element.Page.RelPermalink }}" class="is-series taxo__link" data-dir="{{ if ne ($.Param "languagedir") "rtl" }}ltr{{ else }}rtl{{ end }}">
+                <span class="taxo__text">
+                    {{ $element.Page.Title }}
+                </span>
+                <span class="taxo__num" dir="auto">
+                    {{ printf "%#v" (len $element) }}
+                </span>
+            </a>
+        </span>
         {{ end }}
     </section>
 </div>
 {{ if $.Param "enableSidebarSeparator" }}
 <hr class="hr-fade sidebar-hr"/>
+{{ end }}
 {{ end }}
 {{ end }}

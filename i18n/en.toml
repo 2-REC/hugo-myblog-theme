@@ -1,12 +1,12 @@
 #TODO: see what is used, and adapt
 #[search-placeholder]
 #other = "Search"
-#
-#[summary-dateformat]
-#other = "Jan 2, 2006"
-#
-#[reading-time]
-#other = "min read"
+
+[summary-dateformat]
+other = "Jan 2, 2006"
+
+[reading-time]
+other = "min read"
 
 [tags]
 other = "Tags"
@@ -22,10 +22,10 @@ other = "Series"
 #
 #[talks-dateformat]
 #other = "Jan 2"
-#
-#[single-dateformat]
-#other = "Jan 2, 2006"
-#
+
+[single-dateformat]
+other = "Jan 2, 2006"
+
 #[pub-dateformat]
 #other = "2006-01-02"
 #
@@ -34,9 +34,6 @@ other = "Series"
 #
 #[single-related]
 #other = "See Also"
-#
-#[single-writtenBy]
-#other = "WRITTEN BY"
 
 [toc-label]
 other = "What's on this Page"
@@ -46,9 +43,9 @@ other = "What's on this Page"
 #
 #[counter-site-uv]
 #other = "Total visitors"
-#
-#[counter-page-pv]
-#other = "views"
+
+[counter-page-pv]
+other = "views"
 
 [donate-message]
 other = "Support the author with"
@@ -80,15 +77,20 @@ other = "Share on"
 [tooltip-home]
 other = "Home"
 
-#[tooltip-written]
-#other = "Written At"
-#
-#[tooltip-modified]
-#other = "Modified At"
-#
-#[tooltip-reading-time]
-#other = "Reading Time"
-#
+#2-REC: renamed from "single-writtenBy"
+[tooltip-author]
+other = "Author"
+
+#2-REC: renamed from "tooltip-written"
+[tooltip-date]
+other = "Post Date"
+
+[tooltip-modified]
+other = "Modified Date"
+
+[tooltip-reading-time]
+other = "Reading Time"
+
 #[showcase-overview]
 #other = "Overview"
 #

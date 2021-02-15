@@ -5,8 +5,6 @@ description: Sample article showcasing basic Markdown syntax and formatting for 
 banner: "images/banner/hugo.png"
 slide: true
 draft: false
-enableToc: true
-enableTocContent: true
 author: Choi
 authorEmoji: 🤖
 tags:

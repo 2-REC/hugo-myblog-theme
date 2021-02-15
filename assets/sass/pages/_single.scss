@@ -131,6 +131,15 @@
   &__info {
     word-break: keep-all;
     padding: 0 0.125rem;
+
+    /*
+    //2-REC: if using "svg" instead of "font-icon"
+    svg {
+      margin-bottom: -0.125rem;
+      //width: 0.8rem;
+      height: 0.8rem;
+    }
+    */
   }
 
   &__nojs {

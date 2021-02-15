@@ -2,6 +2,36 @@
 
 ## PRIORITIES / CURRENT STATE
 
+* [ ] List pages (list+taxo)
+    * [ ] implement/finish "summary" stuff
+* [ ] single page
+    * [ ] Add infos as in Zzo (author, tags, etc)
+      * [x] date
+      * [x] modified
+      * [x] reading time
+      * [x] author
+      * [ ] tags (in new line!)
+      * [ ] add additional info (categories, series, etc?)
+        => optionals?
+        * [ ] categories (in new line!)
+        * [ ] series (in new line!)
+    * [ ] Make each info optional (?)
+      => Or only "all" or "nothing"?
+    * [ ] Use icons in "single infos"
+      * [ ] "calendar"
+      * [ ] "modified"
+      * [ ] "clock"
+      * [ ] "views"
+      * [ ] "tags", etc.
+* [ ] Add icons to font-icon
+  * [ ] "calendar"
+  * [ ] "modified"
+  * [ ] "clock"
+  * [ ] "views"
+* [ ] Allow colour icons?
+  => Need to use svg instead of font-icon (?)
+
+
 * [ ] README
     * [ ] don't detail things in "changed features"
       * [ ] list changes
@@ -56,8 +86,7 @@
         * gears (?)
         * crazy machines (?)
 
-
-* [ ] implement/finish "summary" stuff
+* [ ] Delete unused icons/svg
 
 * [ ] Sidebars
     * [ ] TOC in sidebar

@@ -1,0 +1,17 @@
+{{ $params := .Params }}
+<div class="single__infos">
+  {{/* TODO: add+use "calendar" font icon */}}
+  <time class="single__info" title="{{ i18n "tooltip-date" }}"><span class="icon-user"></span>{{ .Date.Format (i18n "single-dateformat") }}</time>
+  {{ if ne (.Date.Format (i18n "summary-dateformat")) (.Lastmod.Format (i18n "summary-dateformat")) }}
+  {{/* TODO: add+use "modified" font icon (?) */}}
+  &nbsp;&middot;<time class="single__info" title="{{ i18n "tooltip-modified" }}"><span class="icon-user"></span>{{ .Lastmod.Format (i18n "single-dateformat") }}</time>
+  {{ end }}
+  {{/* TODO: add+use "clock" font icon */}}
+  &nbsp;&middot;<span class="single__info" title="{{ i18n "tooltip-reading-time" }}"><span class="icon-user"></span>{{ .ReadingTime }}&nbsp;{{ i18n "reading-time" }}</span>
+  {{ with .Params.Author }}
+  &nbsp;&middot;<span class="single__info" title="{{ i18n "tooltip-author" }}"><span class="icon-user"></span>{{ . }}</span>{{ end }}
+  <span class="single__info">
+    {{/* TODO: add+use "views" font icon */}}
+    {{ if (and .Site.Params.enableBusuanzi .Site.Params.busuanziPagePV) }}&middot;<span class="icon-user"></span><span id="busuanzi_value_page_pv">...</span>&nbsp;{{ i18n "counter-page-pv" }}{{ end }}
+  </span>
+</div>

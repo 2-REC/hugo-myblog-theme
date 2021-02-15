@@ -47,7 +47,12 @@
             <div class="single__nojs">{{ i18n "nojs-message" }}</div>
             <script>document.querySelector('.single').classList.remove('hide'); document.querySelector('.single__nojs').classList.add('hide');</script>
             <h2 class="single__title" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}">{{ .Title }}</h2>
-            {{/* TODO: add meta */}}
+            <div class="single__meta">
+                {{ partial "body/infos" . }}
+                {{/*
+                {{ partial "body/tags" . }}
+                */}}
+            </div>
             <article class="single__contents" data-dir="{{ if ne ($.Param "languagedir") "rtl" }}ltr{{ else }}rtl{{ end }}" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}">
                 {{ partial "body/toc" . }}
                 {{ .Content }}

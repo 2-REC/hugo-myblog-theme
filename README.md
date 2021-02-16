@@ -106,6 +106,11 @@ TODO: complete/rewrite/etc.
         url = "images/donation/alipay-qrcode.png" (put the file at "root/static/images/donation/")
         qr = true
 * Single page
+  * Meta
+    * Optional "modified" and "reading time" info fields
+      => Respectively "metaInfoEdit" and "metaInfoReadingTime" (default: false)
+    * Optional "tags" field
+      => ""metaTags" (default: false)
   * "copy-to-clipboard" optional for title
     => param "titleClipboard" (default: false)
   * Code

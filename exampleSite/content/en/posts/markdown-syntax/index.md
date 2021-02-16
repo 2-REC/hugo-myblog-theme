@@ -6,7 +6,6 @@ banner: "images/banner/hugo.png"
 slide: true
 draft: false
 author: Choi
-authorEmoji: 🤖
 tags:
 - markdown
 - css

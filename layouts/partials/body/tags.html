@@ -1,0 +1,10 @@
+{{ if .Site.Params.metaTags }}
+<ul class="single__tags caption">
+  {{ if .Params.tags }}
+  <span class="icon-tags"></span>
+  {{ end }}
+  {{ range (.GetTerms "tags") }}
+  <li><a href="{{ .Permalink }}" class="single__tag" title="{{ .LinkTitle }}">#{{ .LinkTitle }}</a></li>
+  {{ end }}
+</ul>
+{{ end }}

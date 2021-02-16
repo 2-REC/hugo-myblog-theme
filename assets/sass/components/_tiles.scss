@@ -266,9 +266,10 @@ margin: 0.51rem;
   text-align: center;
   //TODO: adapt with my icons!
   font-family: 'icon-font';
-  content: "\1f50d";
+  content: "\e800";
 //  font-size: 20px;
   font-size: 1.5rem;
+text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
 
   @include themify($themes) {
     color: themed('link-hover');
@@ -399,6 +400,8 @@ margin: 0.51rem;
 //  font-size: 14px;
   font-family: $title-font;
   font-weight: 700;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
+
   word-wrap: break-word;
 
   cursor: pointer;
@@ -414,7 +417,7 @@ margin: 0.51rem;
   //TODO: adapt with my icons!
   &::after {
     font-family: 'icon-font';
-    content: "\1f50d";
+    content: "\e800";
     font-size: 1.5rem;
   }
 }

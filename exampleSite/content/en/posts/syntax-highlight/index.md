@@ -7,7 +7,6 @@ draft: false
 enableToc: true
 enableTocContent: false
 author: Jeus
-authorEmoji: 🎅
 tags:
 - hugo
 series:

@@ -10,24 +10,25 @@
       * [x] modified
       * [x] reading time
       * [x] author
-      * [ ] tags (in new line!)
+      * [x] tags (in new line)
       * [ ] add additional info (categories, series, etc?)
         => optionals?
         * [ ] categories (in new line!)
         * [ ] series (in new line!)
-    * [ ] Make each info optional (?)
+    * [x] Make each info optional (?)
       => Or only "all" or "nothing"?
     * [ ] Use icons in "single infos"
-      * [ ] "calendar"
-      * [ ] "modified"
-      * [ ] "clock"
-      * [ ] "views"
-      * [ ] "tags", etc.
-* [ ] Add icons to font-icon
-  * [ ] "calendar"
-  * [ ] "modified"
-  * [ ] "clock"
-  * [ ] "views"
+      * [x] "calendar"
+      * [x] "modified"
+      * [x] "clock"
+      * [x] "views"
+      * [x] "tags"
+      * [ ] others?
+* [x] Add icons to font-icon
+  * [x] "calendar"
+  * [x] "modified"
+  * [x] "clock"
+  * [x] "views"
 * [ ] Allow colour icons?
   => Need to use svg instead of font-icon (?)
 
@@ -85,6 +86,7 @@
         * Gorilla on bike
         * gears (?)
         * crazy machines (?)
+
 
 * [ ] Delete unused icons/svg
 

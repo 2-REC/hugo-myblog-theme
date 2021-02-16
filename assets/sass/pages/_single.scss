@@ -124,6 +124,9 @@
   &__infos {
     margin-right: 0.5rem;
 
+    //2-REC: To force new line for following elem (tags)
+    width: 100%;
+
     @include flexbox();
     @include flex-wrap(wrap);
   }
@@ -520,6 +523,8 @@
     @include align-items(center);
     @include flex-wrap(wrap);
     @include flex-grow(1);
+
+    margin-top: 0.25rem;
   }
 
   &__tag {

@@ -32,7 +32,13 @@ showMobileMenuTerms = ["tags", "categories", "series"] #TODO: change "series" to
 
 # body
 enableBreadcrumb = true
+# single
+metaInfoEdit = true
+metaInfoReadingTime = true
+metaTags = true
 enableTocContent = false # TOC in page body
+#titleClipboard = true # Default false
+codeClipboard = true # Default false
 
 
 #enableSearch = false #2-REC: renoved search
@@ -69,8 +75,6 @@ sidebarSingleLeft = [ "-", "toc" ] #TODO
 #sidebarSingleRight = [ "toc", "tags", "categories", "series" ] #TODO
 sidebarSingleRight = [ "-", "tags", "categories", "series" ] #TODO
 singleTaxonomies = true # default: false
-#titleClipboard = true # Default false
-codeClipboard = true # Default false
 #sidebarListLeft = [ ... ] #TODO
 sidebarListRight = [ "recent", "-", "tags", "categories", "series" ] #TODO
 #sidebarTaxonomyLeft = [ "-", "bio" ] #TODO
@@ -103,7 +107,7 @@ baiduAnalytics = ""
 enableBusuanzi = false
 #busuanziSiteUV = true #TODO: uncomment if using Busuanzi
 #busuanziSitePV = true #TODO: uncomment if using Busuanzi
-
+#busuanziPagePV = true #TODO: uncomment if using Busuanzi
 
 
 
@@ -165,8 +169,8 @@ enableBusuanzi = false
 [socialOptions]
   email = "mailto:your@email.com"
   phone = ""
-  facebook = "http://example.org/"
-  twitter = "http://example.org/"
+  facebook = "http://facebook.com/"
+  twitter = "http://twitter.com/"
   github = "https://github.com/2-REC/hugo-myblog-theme"
   #stack-overflow = ""
   instagram = ""

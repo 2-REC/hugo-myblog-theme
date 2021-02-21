@@ -30,6 +30,7 @@ images:
   - image: images/xmas.jpg
     caption: Köln Xmas market
 image: gallery.jpg
+summaryImagePosition: right
 ---
 
 Random photos by <a href="https://derekseverin.netlify.app/" target="_blank">Derek Severin</a>

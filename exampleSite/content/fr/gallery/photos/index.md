@@ -30,6 +30,7 @@ images:
   - image: images/xmas.jpg
     caption: Köln
 image: gallery.jpg
+summaryImagePosition: left
 ---
 
 Photos de <a href="https://derekseverin.netlify.app/" target="_blank">Derek Severin</a>

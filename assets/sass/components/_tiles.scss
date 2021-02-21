@@ -113,7 +113,7 @@ margin: 0.51rem;
   }
 */
 
-  box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2);
 
   -webkit-transition: all 0.2s ease-out;
   -moz-transition: all 0.2s ease-out;
@@ -191,7 +191,7 @@ margin: 0.51rem;
 /* Hovering */
 
 .box-masonry:hover {
-  box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.4);
 }
 
 .box-masonry a {
@@ -269,7 +269,7 @@ margin: 0.51rem;
   content: "\e800";
 //  font-size: 20px;
   font-size: 1.5rem;
-text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
+text-shadow: 0 0 1px 2px rgba(0, 0, 0, 0.6);
 
   @include themify($themes) {
     color: themed('link-hover');
@@ -400,7 +400,7 @@ margin: 0.51rem;
 //  font-size: 14px;
   font-family: $title-font;
   font-weight: 700;
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.6);
 
   word-wrap: break-word;
 
@@ -423,7 +423,7 @@ margin: 0.51rem;
 }
 
 .gallery-tile:hover {
-  box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.4);
 }
 
 .gallery-tile:hover .gallery-tile-hover-text-header {

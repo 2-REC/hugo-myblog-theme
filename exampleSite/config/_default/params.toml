@@ -40,16 +40,16 @@ enableTocContent = false # TOC in page body
 #titleClipboard = true # Default false
 codeClipboard = true # Default false
 
-
 #enableSearch = false #2-REC: renoved search
 #enableSearchHighlight = false
 enableGoToTop = true
 
-summaryShape = "compact" # Default for all pages, values: "card", "classic", "compact", "tiles"
-summaryShapeHome = "tiles"
+summaryShape = "classic" # Default for all pages, values: "card", "classic", "compact", "tiles"
+#summaryShapeHome = "tiles"
 summaryShapeList = "tiles"
 summaryShapeTaxonomy = "tiles"
 showonlyimage = false
+#summaryImagePosition = "left"
 
 
 paginateWindow = 1

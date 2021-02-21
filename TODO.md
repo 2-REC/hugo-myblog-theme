@@ -3,8 +3,23 @@
 ## PRIORITIES / CURRENT STATE
 
 * [ ] List pages (list+taxo)
-    * [ ] implement/finish "summary" stuff
+    * [ ] summary
+      * [ ] meta infos
+        * [x] classic
+        * [ ] card
+        * [ ] compact
+        * [ ] tiles!
+      * [ ] css + hover, etc
+        * [ ] classic
+        * [ ] card
+        * [ ] compact
+        * [x] tiles
+      * [ ] clean/adapt "summary.scss"
 * [ ] single page
+    * [ ] set sections as optional
+      * [ ] donations
+      * [ ] share
+      * [ ] ... (?)
     * [ ] Add infos as in Zzo (author, tags, etc)
       * [x] date
       * [x] modified
@@ -41,6 +56,9 @@
     * [ ] as ZZO, with table of contents
 
 * [ ] Global
+    * [ ] FIX "RTL" LAYOUTS!
+      * [ ] navbar (lg selector+dropdown, etc)
+      * [ ] ...
     * [ ] make new themes (colours, fonts, etc.)
     * [ ] add French content (posts, data, etc)
     * [ ] test/check everything

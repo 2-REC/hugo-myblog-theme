@@ -4,11 +4,13 @@
 
 * [ ] List pages (list+taxo)
     * [ ] summary
+      * [ ] remove "card"?
+      * [ ] remove "compact"?
       * [ ] meta infos
         * [x] classic
         * [ ] card
         * [ ] compact
-        * [ ] tiles!
+        * [x] tiles!
       * [ ] css + hover, etc
         * [ ] classic
         * [ ] card

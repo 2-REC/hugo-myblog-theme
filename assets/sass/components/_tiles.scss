@@ -105,6 +105,8 @@ margin: 0.51rem;
 
 //  background: #fff;
 
+font-size: 14px;
+
 /* ?
   @include themify($themes) {
     color: themed('body-background-color');
@@ -123,7 +125,8 @@ margin: 0.51rem;
   text-overflow: ellipsis;
 }
 
-.box-masonry h4 {
+.box-masonry h1 {
+  padding-bottom: 0.125em;
   font-size: 16px;
   line-height: 1.5;
   font-weight: 700;
@@ -141,8 +144,24 @@ margin: 0.51rem;
   word-wrap: break-word;
 }
 
+////
+.subtitle {
+  display: block;
+  padding-bottom: 0.5em;
+  font-size: 12px;
+
+  @include themify($themes) {
+    color: themed('meta-color');
+  }
+
+  * {
+    display:inline-block;
+    padding-bottom: 0.125em;
+  }
+}
+////
+
 .box-masonry .box-masonry-text p {
-  font-size: 14px;
   @include themify($themes) {
     color: themed('body-color');
   }
@@ -200,10 +219,11 @@ margin: 0.51rem;
   }
 }
 
-.box-masonry:hover h4 {
+.box-masonry:hover h1 {
   @include themify($themes) {
     color: themed('link-hover');
-    text-decoration: underline;
+    // If 'underline' here => same in 'slider.css' for '.slide-textbox:hover .featured-text .featured-title'
+    //text-decoration: underline;
   }
 }
 
@@ -219,7 +239,7 @@ margin: 0.51rem;
   opacity: 0.7;
 }
 
-.box-masonry h2:last-child,
+//.box-masonry h2:last-child,
 .box-masonry p:last-child {
   margin-bottom: 0;
 }

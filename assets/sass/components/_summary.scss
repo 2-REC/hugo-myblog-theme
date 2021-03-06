@@ -93,21 +93,22 @@
     @include animation('slide-in-down .2s .3s 1 ease-in both');
   }
 
-  .title {
-    font-size: 24px;
+  a {
+    // If have very long words (should avoid if possible, horrible result)
+    word-break:break-word;
 
-    a {
-      font-family: $title-font;
-      font-weight: 700;
-      word-break:break-word;
-
-      @include themify($themes) {
-          color: themed('title-color');
-          @include on-event {
-            color: themed('link-hover');
-          }
-      }
+    @include on-event {
+      text-decoration: none;
     }
+  }
+
+  .title {
+    padding-bottom: 0.25em;
+    font-size: 16px;
+    line-height: 1.25;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
   }
 
   .subtitle {
@@ -128,26 +129,25 @@
   }
 
   &__container {
-//background-color: blue;
     @include flexbox();
     @include flex-direction(row);
 //?    @include justify-content(flex-start);
 
-@media only screen and (max-width: 500px) {
-//  width: 100%;
-  @include flexbox();
-  @include flex-direction(column);
-  @include justify-content(flex-start);
-}
+    @media only screen and (max-width: 500px) {
+//      width: 100%;
+      @include flexbox();
+      @include flex-direction(column);
+      @include justify-content(flex-start);
+    }
 
-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2);
 
--webkit-transition: all 0.2s ease-out;
--moz-transition: all 0.2s ease-out;
-transition: all 0.2s ease-out;
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
 
-overflow: hidden;
-text-overflow: ellipsis;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
     width: 100%;
 
@@ -203,13 +203,13 @@ margin-top: 0;
   &__text {
 //    margin-top: 1rem;
     line-height: 1.7rem;
+
+@include themify($themes) {
+  color: themed('body-color');
+}
   }
 
   &__image {
-    &[data-ani="true"] {
-      @include animation('slide-in-left .2s .6s 1 ease-in both');
-    }
-
     &-wrapper {
       max-width: 130px;
       min-width: 130px;
@@ -258,6 +258,11 @@ margin-top: 0;
   }
 */
 }
+.summary-classic__container:hover .summary-classic__image-wrapper img {
+    //TODO: set length as param?
+    @include animation('zoom-in-hover 20s .0s 1 ease both');
+}
+
 
 .summary-compact {
   padding: 0 1rem;

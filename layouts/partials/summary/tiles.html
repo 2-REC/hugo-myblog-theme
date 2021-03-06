@@ -1,71 +1,72 @@
 <div class="tile-grid">
-    <div class="grid tile-grid__container">
-        <div class="grid-sizer"></div>
-        {{ range .pages }}
-        <div class="grid-item">
-            <div class="box-masonry">
-                {{ $image := and (isset .Params "image") .Params.image }}
-                {{ $showonlyimage := false }}
-                {{ if not (eq $image false) }}
-                  {{ $showonlyimage = .Params.showonlyimage }}
-                  {{ if not (isset .Params "showonlyimage") }}
-                    {{ $showonlyimage = .Site.Params.showonlyimage }}
+  <div class="grid tile-grid__container">
+    <div class="grid-sizer"></div>
+    {{ range .pages }}
+      <div class="grid-item">
+        <div class="box-masonry">
+          {{ $image := and (isset .Params "image") .Params.image }}
+          {{ $showonlyimage := false }}
+          {{ if not (eq $image false) }}
+            {{ $showonlyimage = .Params.showonlyimage }}
+            {{ if not (isset .Params "showonlyimage") }}
+              {{ $showonlyimage = .Site.Params.showonlyimage }}
+            {{ end }}
+          {{ end }}
+          {{ if not (eq $image false) }}
+            {{ if eq $showonlyimage true }}
+            <a href="{{ .Permalink }}" title="" class="box-masonry-image with-hover-overlay">
+            {{ else }}
+            <a href="{{ .Permalink }}" title="" class="box-masonry-image with-hover-overlay with-hover-icon">
+            {{ end }}
+            {{ $image_obj := index (.Resources.Match $image) 0 }}
+              <img src="{{ $image_obj.Permalink }}" alt="" class="img-responsive">
+            </a>
+          {{ end }}
+            <a href="{{ .Permalink }}">
+              {{ if eq $showonlyimage true }}
+              <div class="box-masonry-hover-text-header">
+              {{ else }}
+              <div class="box-masonry-text">
+              {{ end }}
+                {{/*
+                <h5><a href="{{ .Permalink }}">{{ .Title }}</a></h5>
+                */}}
+                <h1>{{ .Title }}</h1>
+                {{/* TODO: make this optional */}}
+                {{/* TODO: change to a 'partial' (shared with summaries) */}}
+                <h2 class="subtitle caption">
+                  {{ $dir := "ltr" }}
+                  {{ if eq (.Param "languagedir") "rtl" }}
+                    {{ $dir = "rtl" }}
                   {{ end }}
-                {{ end }}
-                {{ if not (eq $image false) }}
-                  {{ if eq $showonlyimage true }}
-                  <a href="{{ .Permalink }}" title="" class="box-masonry-image with-hover-overlay">
-                  {{ else }}
-                  <a href="{{ .Permalink }}" title="" class="box-masonry-image with-hover-overlay with-hover-icon">
+                  <time title="{{ i18n "tooltip-date" }}" dir="{{ $dir }}"><span class="icon-calendar"></span>{{ .Date.Format (i18n "summary-dateformat") }}&nbsp;</time>
+                  {{ if .Site.Params.metaInfoEdit }}
+                  {{ if ne (.Date.Format (i18n "summary-dateformat")) (.Lastmod.Format (i18n "summary-dateformat")) }}
+                  <time title="{{ i18n "tooltip-modified" }}" dir="{{ $dir }}"><span class="icon-edit"></span>{{ .Lastmod.Format (i18n "summary-dateformat") }}&nbsp;</time>
                   {{ end }}
-                      {{ $image_obj := index (.Resources.Match $image) 0 }}
-                      <img src="{{ $image_obj.Permalink }}" alt="" class="img-responsive">
-                  </a>
-                {{ end }}
-                <a href="{{ .Permalink }}">
-                {{ if eq $showonlyimage true }}
-                <div class="box-masonry-hover-text-header">
-                {{ else }}
-                <div class="box-masonry-text">
-                {{ end }}
-                    {{/*
-                    <h5><a href="{{ .Permalink }}">{{ .Title }}</a></h5>
-                    */}}
-                    <h1>{{ .Title }}</h1>
-          {{/* TODO: make this optional+indent */}}
-          <h2 class="subtitle caption">
-            {{ $dir := "ltr" }}
-            {{ if eq (.Param "languagedir") "rtl" }}
-              {{ $dir = "rtl" }}
-            {{ end }}
-            <time title="{{ i18n "tooltip-date" }}" dir="{{ $dir }}"><span class="icon-calendar"></span>{{ .Date.Format (i18n "summary-dateformat") }}&nbsp;</time>
-            {{ if .Site.Params.metaInfoEdit }}
-            {{ if ne (.Date.Format (i18n "summary-dateformat")) (.Lastmod.Format (i18n "summary-dateformat")) }}
-            <time title="{{ i18n "tooltip-modified" }}" dir="{{ $dir }}"><span class="icon-edit"></span>{{ .Lastmod.Format (i18n "summary-dateformat") }}&nbsp;</time>
-            {{ end }}
-            {{ end }}
-            {{ if .Site.Params.metaInfoReadingTime }}
-            <span title="{{ i18n "tooltip-reading-time" }}" dir="{{ $dir }}"><span class="icon-clock"></span>{{ .ReadingTime }}&nbsp;{{ i18n "reading-time" }}&nbsp;</span>
-            {{ end }}
-            {{ with .Param "author" }}
-            <span title="{{ i18n "tooltip-author" }}" dir="{{ $dir }}"><span class="icon-user"></span>{{ . }}</span>
-            {{ end }}
-          </h2>
-                    <div class="box-masonry-description">
-                      <p>
-                          {{ if .Description }}
-                            {{ .Description }}
-                          {{ else }}
-                            {{ .Summary }}
-                          {{ end }}
-                      </p>
-                    </div>
+                  {{ end }}
+                  {{ if .Site.Params.metaInfoReadingTime }}
+                  <span title="{{ i18n "tooltip-reading-time" }}" dir="{{ $dir }}"><span class="icon-clock"></span>{{ .ReadingTime }}&nbsp;{{ i18n "reading-time" }}&nbsp;</span>
+                  {{ end }}
+                  {{ with .Param "author" }}
+                  <span title="{{ i18n "tooltip-author" }}" dir="{{ $dir }}"><span class="icon-user"></span>{{ . }}</span>
+                  {{ end }}
+                </h2>
+                <div class="box-masonry-description">
+                  <p>
+                    {{ if .Description }}
+                      {{ .Description }}
+                    {{ else }}
+                      {{ .Summary }}
+                    {{ end }}
+                  </p>
                 </div>
-                </a>
-            </div>
+              </div>
+            </a>
         </div>
-        {{ end }}
-    </div>
-    {{ partial "pagination/pagination" . }}
+      </div>
+    {{ end }}
+  </div>
+  {{ partial "pagination/pagination" . }}
 </div>
 {{ partial "script/tiles-script" . }}

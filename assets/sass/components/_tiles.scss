@@ -126,9 +126,9 @@ font-size: 14px;
 }
 
 .box-masonry h1 {
-  padding-bottom: 0.125em;
+  padding-bottom: 0.25em;
   font-size: 16px;
-  line-height: 1.5;
+  line-height: 1.25;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -286,7 +286,8 @@ font-size: 14px;
   text-align: center;
   //TODO: adapt with my icons!
   font-family: 'icon-font';
-  content: "\e800";
+  //TODO: want 'magnifier' icon?
+  //content: "\e800";
 //  font-size: 20px;
   font-size: 1.5rem;
 text-shadow: 0 0 1px 2px rgba(0, 0, 0, 0.6);

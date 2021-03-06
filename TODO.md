@@ -8,14 +8,20 @@
       * [ ] remove "compact"?
       * [ ] meta infos
         * [x] classic
-        * [ ] card
-        * [ ] compact
         * [x] tiles!
+        * [ ] keep?
+          * [ ] card
+          * [ ] compact
       * [ ] css + hover, etc
         * [ ] classic
-        * [ ] card
-        * [ ] compact
-        * [x] tiles
+          * [x] adapt
+          * [ ] clean
+        * [ ] tiles
+          * [x] adapt
+          * [ ] clean
+        * [ ] keep?
+          * [ ] card
+          * [ ] compact
       * [ ] clean/adapt "summary.scss"
 * [ ] single page
     * [ ] set sections as optional

@@ -19,7 +19,8 @@
             <a href="{{ .Permalink }}" title="" class="box-masonry-image with-hover-overlay with-hover-icon">
             {{ end }}
             {{ $image_obj := index (.Resources.Match $image) 0 }}
-              <img src="{{ $image_obj.Permalink }}" alt="" class="img-responsive">
+              <img src="{{ $image_obj.Permalink }}" alt=""
+                  class="img-responsive {{ if .Site.Params.tileInitZoom }}initzoom{{ end }} {{ if .Site.Params.tileZoom }}zoom{{ end }}">
             </a>
           {{ end }}
             <a href="{{ .Permalink }}">
@@ -34,7 +35,7 @@
                 <h1>{{ .Title }}</h1>
                 {{/* TODO: make this optional */}}
                 {{/* TODO: change to a 'partial' (shared with summaries) */}}
-                <h2 class="subtitle caption">
+                <div class="summary__infos caption">
                   {{ $dir := "ltr" }}
                   {{ if eq (.Param "languagedir") "rtl" }}
                     {{ $dir = "rtl" }}
@@ -51,7 +52,7 @@
                   {{ with .Param "author" }}
                   <span title="{{ i18n "tooltip-author" }}" dir="{{ $dir }}"><span class="icon-user"></span>{{ . }}</span>
                   {{ end }}
-                </h2>
+                </div>
                 <div class="box-masonry-description">
                   <p>
                     {{ if .Description }}

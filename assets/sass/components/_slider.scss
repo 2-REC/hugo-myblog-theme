@@ -22,8 +22,17 @@ display: block;
   height: 100%;
 }
 
+/*
 .slides:hover figure img {
     @include animation('zoom-in 20s .0s 1 ease both');
+}
+*/
+.slides:hover .initzoom {
+    transform: scale(1.01);
+}
+.slides:hover .zoom {
+    //TODO: set length as param?
+    @include animation('zoom-in-hover 40s .0s 1 ease both');
 }
 
 

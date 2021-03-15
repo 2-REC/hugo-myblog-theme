@@ -68,10 +68,6 @@
 }
 
 @include keyframes(zoom-in-hover) {
-  0% {
-    transform: scale(1.01);
-  }
-
   100% {
     transform: scale(1.5);
   }

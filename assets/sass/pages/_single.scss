@@ -122,27 +122,28 @@
   }
 
   &__infos {
-    margin-right: 0.5rem;
+    @include flexbox();
+    @include flex-wrap(wrap);
 
     //2-REC: To force new line for following elem (tags)
     width: 100%;
 
-    @include flexbox();
-    @include flex-wrap(wrap);
-  }
-
-  &__info {
-    word-break: keep-all;
-    padding: 0 0.125rem;
-
-    /*
-    //2-REC: if using "svg" instead of "font-icon"
-    svg {
-      margin-bottom: -0.125rem;
-      //width: 0.8rem;
-      height: 0.8rem;
+    @include themify($themes) {
+      color: themed('meta-color');
     }
-    */
+
+    * {
+      word-break: keep-all;
+
+      /*
+      //2-REC: if using "svg" instead of "font-icon"
+      svg {
+        margin-bottom: -0.125rem;
+        //width: 0.8rem;
+        height: 0.8rem;
+      }
+      */
+    }
   }
 
   &__nojs {

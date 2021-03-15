@@ -1,5 +1,5 @@
 <article class="summary-classic" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}">
-  <div class="summary-classic__flex-box">
+  <div class="summary-classic__flexbox">
     <a href="{{ .Permalink }}" class="summary-classic__container">
       {{ $imagePosition := "before" }}
       {{ if or (and (eq ($.Param "languagedir") "rtl") (eq ($.Param "summaryImagePosition") "left")) (and (eq ($.Param "languagedir") "ltr") (eq ($.Param "summaryImagePosition") "right")) }}
@@ -10,7 +10,7 @@
           <div class="summary-classic__image-wrapper">
             <img src="{{ $image_obj := index (.Resources.Match $.Params.image) 0 }}{{ $image_obj.Permalink }}"
                 alt=""
-                class="lazyload summary-classic__image"
+                class="lazyload summary-classic__image {{ if .Site.Params.summaryInitZoom }}initzoom{{ end }} {{ if .Site.Params.summaryZoom }}zoom{{ end }}"
                 data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}"/>
           </div>
         {{ end }}
@@ -21,7 +21,7 @@
           <h1 class="title">{{ .Title }}</h1>
           {{/* TODO: make this optional */}}
           {{/* TODO: change to a 'partial' (shared with tiles) */}}
-          <h2 class="subtitle caption">
+          <div class="summary__infos caption">
             {{ $dir := "ltr" }}
             {{ if eq (.Param "languagedir") "rtl" }}
               {{ $dir = "rtl" }}
@@ -36,9 +36,9 @@
             <span title="{{ i18n "tooltip-reading-time" }}" dir="{{ $dir }}"><span class="icon-clock"></span>{{ .ReadingTime }}&nbsp;{{ i18n "reading-time" }}&nbsp;</span>
             {{ end }}
             {{ with .Param "author" }}
-            <span title="{{ i18n "tooltip-author" }}" dir="{{ $dir }}"><span class="icon-user"></span>{{ . }}</span>
+            <span title="{{ i18n "tooltip-author" }}" dir="{{ $dir }}"><span class="icon-user"></span>{{ . }}&nbsp;</span>
             {{ end }}
-          </h2>
+          </div>
         </header>
         <div>
           <div class="summary-classic__text p2">
@@ -55,7 +55,7 @@
           <div class="summary-classic__image-wrapper">
             <img src="{{ $image_obj := index (.Resources.Match $.Params.image) 0 }}{{ $image_obj.Permalink }}"
                 alt=""
-                class="lazyload summary-classic__image"
+                class="lazyload summary-classic__image {{ if .Site.Params.summaryInitZoom }}initzoom{{ end }} {{ if .Site.Params.summaryZoom }}zoom{{ end }}"
                 data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}"/>
           </div>
         {{ end }}

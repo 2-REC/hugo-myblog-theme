@@ -4,14 +4,11 @@
 
 * [ ] List pages (list+taxo)
     * [ ] summary
-      * [ ] remove "card"?
-      * [ ] remove "compact"?
       * [ ] meta infos
         * [x] classic
         * [x] tiles!
-        * [ ] keep?
-          * [ ] card
-          * [ ] compact
+        * [x] card
+        * [ ] compact
       * [ ] css + hover, etc
         * [ ] classic
           * [x] adapt
@@ -19,9 +16,12 @@
         * [ ] tiles
           * [x] adapt
           * [ ] clean
-        * [ ] keep?
-          * [ ] card
-          * [ ] compact
+        * [ ] card
+          * [x] adapt
+          * [ ] clean
+        * [ ] compact
+          * [ ] adapt
+          * [ ] clean
       * [ ] clean/adapt "summary.scss"
 * [ ] single page
     * [ ] set sections as optional

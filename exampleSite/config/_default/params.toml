@@ -13,7 +13,7 @@ notAllowedTypesInHomeSidebar = ["about", "archive"] #TODO: adapt! (contact?)
 # notAllowedTypesInHomeFeed = ["about", "archive", "contact", "gallery" ] #TODO: IF using 'showFeedLinks' - adapt! (look in original Zzo)
 
 viewportSize = "wide" # widest, wider, wide, normal, narrow
-enableUiAnimation = true
+enableUiAnimation = true #TODO: keep? used?
 hideSingleContentsWhenJSDisabled = false
 
 #TODO: here?
@@ -44,7 +44,7 @@ codeClipboard = true # Default false
 #enableSearchHighlight = false
 enableGoToTop = true
 
-summaryShape = "classic" # Default for all pages, values: "card", "classic", "compact", "tiles"
+summaryShape = "tiles" # Default for all pages, values: "card", "classic", "compact", "tiles"
 #summaryShapeHome = "tiles"
 summaryShapeList = "tiles"
 summaryShapeTaxonomy = "tiles"
@@ -54,10 +54,19 @@ showonlyimage = false
 
 paginateWindow = 1
 
+# thumbnails zoom
+#sliderInitZoom = false
+sliderZoom = true
+tileInitZoom = true
+tileZoom = true
+summaryInitZoom = true
+summaryZoom = false
+galleryInitZoom = true
+galleryZoom = true
 
 
 
-# whoami #TODO: renme all params to "bio..." (+propagate impacts)
+# whoami #TODO: rename all params to "bio..." (+propagate impacts)
 myname = "Someone"
 email = "someone@email.com" #TODO: use same as in "socialOptions"
 whoami = "Blogger"

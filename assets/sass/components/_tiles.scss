@@ -123,6 +123,12 @@ font-size: 14px;
 
   overflow: hidden;
   text-overflow: ellipsis;
+
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -o-crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  -ms-interpolation-mode: nearest-neighbor;
 }
 
 .box-masonry h1 {
@@ -138,14 +144,17 @@ font-size: 14px;
 /* Text in tiles */
 
 .box-masonry .box-masonry-text {
-  padding: 15px 20px 15px;
+//  padding: 15px 20px 15px;
+  padding: 10px;
 
   // If have very long words (should avoid if possible, horrible result)
   word-wrap: break-word;
 }
 
 ////
-.subtitle {
+/*
+//.subtitle {
+.summary__infos {
   display: block;
   padding-bottom: 0.5em;
   font-size: 12px;
@@ -159,6 +168,7 @@ font-size: 14px;
     padding-bottom: 0.125em;
   }
 }
+*/
 ////
 
 .box-masonry .box-masonry-text p {
@@ -218,7 +228,7 @@ font-size: 14px;
     text-decoration: none;
   }
 }
-
+/*
 .box-masonry:hover h1 {
   @include themify($themes) {
     color: themed('link-hover');
@@ -226,7 +236,7 @@ font-size: 14px;
     //text-decoration: underline;
   }
 }
-
+*/
 .box-masonry:hover .box-masonry-hover-text-header {
   opacity: 1;
 }
@@ -250,7 +260,7 @@ font-size: 14px;
 .box-masonry .box-masonry-image {
   display: block;
   position: relative;
-  min-height: 100px;
+//  min-height: 100px;
   background: #ccc;
 
   overflow: hidden;
@@ -305,7 +315,10 @@ text-shadow: 0 0 1px 2px rgba(0, 0, 0, 0.6);
   transition: all 0.2s ease-out;
 }
 
-.box-masonry:hover .box-masonry-image img {
+.box-masonry:hover .box-masonry-image .initzoom {
+    transform: scale(1.01);
+}
+.box-masonry:hover .box-masonry-image .zoom {
     //TODO: set length as param?
     @include animation('zoom-in-hover 20s .0s 1 ease both');
 }
@@ -345,6 +358,12 @@ margin: 0.51rem;
     }
   }
 */
+
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -o-crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  -ms-interpolation-mode: nearest-neighbor;
 }
 
 .gallery-tile:hover .gallery-tile-image.with-hover-overlay:before {
@@ -359,12 +378,18 @@ margin: 0.51rem;
 
   //TODO: can remove?
   background: #ccc;
+}
 
-  @include on-event {
+.gallery-tile:hover {
+  .initzoom {
+    transform: scale(1.01);
+  }
+  .zoom {
     //TODO: set length as param?
     @include animation('zoom-in-hover 20s .0s 1 ease both');
   }
 }
+
 
 .gallery-tile .gallery-tile-image.with-hover-overlay:before {
   display: block;

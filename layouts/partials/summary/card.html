@@ -1,10 +1,31 @@
 <article class="summary-card" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}">
-  <header>
-    <h5 class="title h5"><a href='{{ .Permalink }}'> {{ .Title }}</a> </h5>
-  </header>
+  <a href="{{ .Permalink }}" class="summary-card__container">
+
   <div class="summary-card__content">
+  <header>
+    <h1 class="title">{{ .Title }}</h1>
+    {{/* TODO: make this optional */}}
+    {{/* TODO: change to a 'partial' (shared with tiles) */}}
+    <div class="summary__infos caption">
+      {{ $dir := "ltr" }}
+      {{ if eq (.Param "languagedir") "rtl" }}
+        {{ $dir = "rtl" }}
+      {{ end }}
+      <time title="{{ i18n "tooltip-date" }}" dir="{{ $dir }}"><span class="icon-calendar"></span>{{ .Date.Format (i18n "summary-dateformat") }}&nbsp;</time>
+      {{ if .Site.Params.metaInfoEdit }}
+      {{ if ne (.Date.Format (i18n "summary-dateformat")) (.Lastmod.Format (i18n "summary-dateformat")) }}
+      <time title="{{ i18n "tooltip-modified" }}" dir="{{ $dir }}"><span class="icon-edit"></span>{{ .Lastmod.Format (i18n "summary-dateformat") }}&nbsp;</time>
+      {{ end }}
+      {{ end }}
+      {{ if .Site.Params.metaInfoReadingTime }}
+      <span title="{{ i18n "tooltip-reading-time" }}" dir="{{ $dir }}"><span class="icon-clock"></span>{{ .ReadingTime }}&nbsp;{{ i18n "reading-time" }}&nbsp;</span>
+      {{ end }}
+      {{ with .Param "author" }}
+      <span title="{{ i18n "tooltip-author" }}" dir="{{ $dir }}"><span class="icon-user"></span>{{ . }}&nbsp;</span>
+      {{ end }}
+    </div>
+  </header>
     <div class="summary-card__text p2">
-      <div>TODO: SUMMARY-CARD</div>
       {{ with .Params.description }}
       {{ . }}
       {{ else }}
@@ -12,5 +33,40 @@
       {{ end }}
     </div>
   </div>
-  <hr />
+
+{{/*
+    {{ if $.Param "featured_image" }}
+    <div class="summary-card__image-wrapper">
+      <a href="{{ .Permalink }}">
+        <img data-src="{{ (print "images/" ($.Param "featured_image")) | relURL }}" alt="{{ print ($.Param "featured_image") }}" src="data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='none' d='M0 0h24v24H0V0z'/%3E%3Cpath fill='%23aaa' d='M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-1 16H6c-.55 0-1-.45-1-1V6c0-.55.45-1 1-1h12c.55 0 1 .45 1 1v12c0 .55-.45 1-1 1zm-4.44-6.19l-2.35 3.02-1.56-1.88c-.2-.25-.58-.24-.78.01l-1.74 2.23c-.26.33-.02.81.39.81h8.98c.41 0 .65-.47.4-.8l-2.55-3.39c-.19-.26-.59-.26-.79 0z'/%3E%3C/svg%3E" class="lazyload summary-card__image" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}"/>
+      </a>
+    </div>
+    {{ else if $.Param "image" }}
+    <div class="summary-card__image-wrapper">
+      <a href="{{ .Permalink }}">
+        <img data-src="{{ $.Param "image" | relURL }}" alt="{{ $.Param "image" }}" src="data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='none' d='M0 0h24v24H0V0z'/%3E%3Cpath fill='%23aaa' d='M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-1 16H6c-.55 0-1-.45-1-1V6c0-.55.45-1 1-1h12c.55 0 1 .45 1 1v12c0 .55-.45 1-1 1zm-4.44-6.19l-2.35 3.02-1.56-1.88c-.2-.25-.58-.24-.78.01l-1.74 2.23c-.26.33-.02.81.39.81h8.98c.41 0 .65-.47.4-.8l-2.55-3.39c-.19-.26-.59-.26-.79 0z'/%3E%3C/svg%3E" class="lazyload summary-card__image" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}"/>
+      </a>
+    </div>
+    {{ else if $.Param "featured_video" }}
+    {{ with print ("videos/poster/" | relURL) ($.Param "featured_video_poster") }}
+    <div class="summary-card__video-wrapper">
+      <video class="summary-card__video" controls preload='none' poster='{{ . | relURL }}' data-setup='{"fluid": true}'>
+        {{ with print ("videos/" | relURL) ($.Param "featured_video") }}
+          <source src="{{ . | relURL }}" type='video/mp4'>
+        {{ end }}
+      </video>
+    </div>
+    {{ end }}
+    {{ end }}
+*/}}
+    {{ if $.Param "image" }}
+      <div class="summary-card__image-wrapper">
+        <img src="{{ $image_obj := index (.Resources.Match $.Params.image) 0 }}{{ $image_obj.Permalink }}"
+            alt=""
+            class="lazyload summary-card__image {{ if $.Site.Params.summaryInitZoom }}initzoom{{ end }} {{ if $.Site.Params.summaryZoom }}zoom{{ end }}"
+            data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}"/>
+      </div>
+    {{ end }}
+
+  </a>
 </article>

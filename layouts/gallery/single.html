@@ -15,7 +15,7 @@
       {{ $image := index ($root.Resources.Match .image) 0 }}
       <div class="grid-item">
         <div class="gallery-tile">
-          <div class="gallery-tile-image with-hover-overlay">
+          <div class="gallery-tile-image with-hover-overlay {{ if $.Site.Params.galleryInitZoom }}initzoom{{ end }} {{ if $.Site.Params.galleryZoom }}zoom{{ end }}">
             <img src="{{ $image.Permalink }}" alt="{{ print .caption }}" />
           </div>
           <div class="gallery-tile-hover-text-header">
@@ -37,7 +37,7 @@
     {{ range .Params.Images }}
     <div class="grid-item">
       <div class="gallery-tile">
-        <div class="gallery-tile-image with-hover-overlay">
+        <div class="gallery-tile-image with-hover-overlay {{ if $.Site.Params.galleryInitZoom }}initzoom{{ end }} {{ if $.Site.Params.galleryZoom }}zoom{{ end }}">
           <img src="{{ .image }}" alt="{{ print .caption }}" />
         </div>
         <div class="gallery-tile-hover-text-header">
@@ -62,7 +62,7 @@
         {{ if eq .ResourceType "image" }}
           <div class="grid-item">
             <div class="gallery-tile">
-              <div class="gallery-tile-image with-hover-overlay">
+              <div class="gallery-tile-image with-hover-overlay {{ if .Site.Params.galleryInitZoom }}initzoom{{ end }} {{ if .Site.Params.galleryZoom }}zoom{{ end }}">
                 <img src="{{ .Permalink }}" alt="{{ index (split .Name ".") 0 }}" />
               </div>
               <div class="gallery-tile-hover-text-header">

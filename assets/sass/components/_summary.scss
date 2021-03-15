@@ -1,60 +1,121 @@
 //TODO: ADAPT!
+
+.summary__infos {
+  display: block;
+  padding-bottom: 0.5em;
+  font-size: 12px;
+
+  @include themify($themes) {
+    color: themed('meta-color');
+  }
+
+  * {
+    display:inline-block;
+    padding-bottom: 0.125em;
+  }
+}
+
+/**************************************************************************************************/
+
 .summary-card {
+  @include flexbox();
+  @include flex-direction(column);
   padding: 1rem;
-  
+  padding-bottom: 0;
+
+image-rendering: -moz-crisp-edges;
+image-rendering: -o-crisp-edges;
+image-rendering: -webkit-optimize-contrast;
+image-rendering: crisp-edges;
+-ms-interpolation-mode: nearest-neighbor;
+
   &[data-ani="true"] {
     @include animation('slide-in-down .2s .3s 1 ease-in both');
   }
 
-  .title {
-    a {
-      font-family: $title-font;
-      font-weight: 700;
-      word-break: break-word;
+  &__container {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+//    border-radius: 0.25rem;
+//    padding: 0.25rem;
+    padding: 5px;
 
-      @include themify($themes) {
-          color: themed('title-color');
-          @include on-event {
-            color: themed('link-hover');
-          }
-      }
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2);
+
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+
+    @include transition(all, 0.2s, ease-out);
+    @include on-event {
+      @include box-shadow(0, 0, 5px, 1px, rgba(0, 0, 0, 0.4));
+//      background-color: rgba(125, 125, 125, 0.1);
     }
   }
 
+  a {
+    // If have very long words (should avoid if possible, horrible result)
+    word-break: break-word;
+
+    @include on-event {
+      text-decoration: none;
+    }
+  }
+
+  .title {
+    padding-bottom: 0.25em;
+    font-size: 16px;
+    line-height: 1.25;
+    font-weight: 700;
+    //TODO: want?
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+/*
   .subtitle {
     @include themify($themes) {
       color: themed('meta-color');
     }
   }
+*/
 
   &__content {
-    @include flexbox();
-    @include flex-direction(column);
-    @include justify-content(center);
+    padding: 5px;
   }
 
   &__text {
-    margin-top: 1rem;
-    line-height: 1.7rem;
+    line-height: 1.25;
+
+    padding-bottom: 1em;
+
+    @include themify($themes) {
+      color: themed('body-color');
+    }
   }
 
   &__image {
     width: 100%;
     height: 100%;
-
+/*
     &[data-ani="true"] {
       @include animation('slide-in-left .2s .6s 1 ease-in both');
     }
-    
+*/
     &-wrapper {
-      height: 100%;
-      width: auto;
-      margin: 0 auto;
-      padding: 1rem;
+//?      height: 100%;
+//?      width: auto;
+
+//      margin: 0 auto;
+//      padding: 1rem;
+      padding: 5px;
+      //TODO: why is it needed?!
       padding-bottom: 0;
+
+      overflow: hidden;
     }
   }
-
+/*
   &__video {
     width: 100%;
     max-height: 500px;
@@ -65,7 +126,8 @@
       padding-bottom: 0;
     }
   }
-
+*/
+/*
   hr {
     margin-top: 1.5rem;
     @include themify($themes) {
@@ -82,44 +144,45 @@
       margin-bottom: 2rem;
     }
   }
+*/
+  &:last-child {
+      margin-bottom: 1rem;
+  }
 }
+
+.summary-card__container:hover .initzoom {
+  transform: scale(1.01);
+/*
+  @media only screen and (max-width: 500px) {
+    transform: scale(1.025);
+  }
+*/
+}
+.summary-card__container:hover .zoom {
+  //TODO: set length as param?
+  @include animation('zoom-in-hover 40s .0s 1 ease both');
+}
+
+/**************************************************************************************************/
 
 .summary-classic {
   padding: 0 1rem;
   @include flexbox();
   @include flex-direction(column);
 
+image-rendering: -moz-crisp-edges;
+image-rendering: -o-crisp-edges;
+image-rendering: -webkit-optimize-contrast;
+image-rendering: crisp-edges;
+-ms-interpolation-mode: nearest-neighbor;
+
   &[data-ani="true"] {
     @include animation('slide-in-down .2s .3s 1 ease-in both');
   }
 
-  a {
-    // If have very long words (should avoid if possible, horrible result)
-    word-break:break-word;
-
-    @include on-event {
-      text-decoration: none;
-    }
-  }
-
-  .title {
-    padding-bottom: 0.25em;
-    font-size: 16px;
-    line-height: 1.25;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-  }
-
-  .subtitle {
-    @include themify($themes) {
-      color: themed('meta-color');
-    }
-  }
-
-  &__flex-box {
+  &__flexbox {
     @include flexbox();
-    
+
     margin-top: 1rem;
 //    margin-bottom: 1rem;
 
@@ -129,6 +192,15 @@
   }
 
   &__container {
+    width: 100%;
+//    border-radius: 0.25rem;
+//    padding: 0.25rem;
+    padding: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2);
+
     @include flexbox();
     @include flex-direction(row);
 //?    @include justify-content(flex-start);
@@ -140,19 +212,9 @@
       @include justify-content(flex-start);
     }
 
-    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2);
-
     -webkit-transition: all 0.2s ease-out;
     -moz-transition: all 0.2s ease-out;
     transition: all 0.2s ease-out;
-
-    overflow: hidden;
-    text-overflow: ellipsis;
-
-    width: 100%;
-
-//    border-radius: 0.25rem;
-    padding: 0.25rem;
 
 /*
     &[data-hwm="true"] {
@@ -177,10 +239,31 @@
     }
   }
 
+  a {
+    // If have very long words (should avoid if possible, horrible result)
+    word-break: break-word;
+
+    @include on-event {
+      text-decoration: none;
+    }
+  }
+
+  .title {
+    padding-bottom: 0.25em;
+    font-size: 16px;
+    line-height: 1.25;
+    //TODO: useful?
+    font-weight: 700;
+    //TODO: want?
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
   &__content {
 //background-color: red;
 //    width: 100%;
-    padding: 0 0.5rem;
+//    padding: 0 0.5rem;
+    padding: 5px;
     
 //    @include flexbox();
 //    @include flex-direction(column);
@@ -201,12 +284,11 @@ margin-top: 0;
   }
 
   &__text {
-//    margin-top: 1rem;
-    line-height: 1.7rem;
+    line-height: 1.25;
 
-@include themify($themes) {
-  color: themed('body-color');
-}
+    @include themify($themes) {
+      color: themed('body-color');
+    }
   }
 
   &__image {
@@ -217,6 +299,12 @@ margin-top: 0;
 //      min-height: 130px;
 //height: 100%;
 //display: block;
+
+      padding: 5px;
+      //TODO: why is it needed?!
+      padding-bottom: 0;
+
+
       overflow: hidden;
 
 //      @include align-self(center);
@@ -257,13 +345,25 @@ margin-top: 0;
     }
   }
 */
+
 }
-.summary-classic__container:hover .summary-classic__image-wrapper img {
-    //TODO: set length as param?
-    @include animation('zoom-in-hover 20s .0s 1 ease both');
+
+.summary-classic__container:hover .initzoom {
+  transform: scale(1.1);
+
+  @media only screen and (max-width: 500px) {
+    transform: scale(1.025);
+  }
+}
+.summary-classic__container:hover .zoom {
+  //TODO: set length as param?
+  @include animation('zoom-in-hover 30s .0s 1 ease both');
 }
 
 
+/**************************************************************************************************/
+
+//TODO
 .summary-compact {
   padding: 0 1rem;
 

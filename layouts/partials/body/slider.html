@@ -10,7 +10,10 @@
                 {{/* TODO: set "_blank" as option? ("isExternalLink") */}}
                 <a class="slide-textbox" href="{{ .url }}" title="{{ .Title }}" target="_blank">
                     <figure>
-                      <img src="{{ .banner  | absURL }}" class="pngfix wp-post-image" alt="{{ .Title }}" title="{{ .Title }}">
+                      <img src="{{ .banner  | absURL }}"
+                          class="pngfix wp-post-image {{ if $.Site.Params.sliderInitZoom }}initzoom{{ end }} {{ if $.Site.Params.sliderZoom }}zoom{{ end }}"
+                          alt="{{ .Title }}"
+                          title="{{ .Title }}">
                     </figure>
                     <article class="featured-text">
                       <h4 class="featured-title">{{ .Title }}</h4>

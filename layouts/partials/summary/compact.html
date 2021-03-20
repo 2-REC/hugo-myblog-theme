@@ -1,21 +1,49 @@
 <article class="summary-compact" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}">
-  <div class="summary-compact__flex-box">
-    {{ $params := .Params }}
-    <div class="summary-compact__meta">
-      <header>
-        <h5 class="title h6"><a href='{{ .Permalink }}'> {{ .Title }}</a> </h5>
-      </header>
-      <div class="summary-compact__tag--wrapper">
-        <div>TODO: SUMMARY-COMPACT</div>
-        {{ range $params.tags }}
-          {{ if . }}
-            <a href="{{ "tags/" | relLangURL }}{{ . | urlize }}" class="summary-compact__tag">
-              {{ . }}
-            </a>
-          {{ end }}
+  <div class="summary-compact__flexbox">
+    <a href="{{ .Permalink }}" class="summary-compact__container">
+      {{ $params := .Params }}
+      <div class="summary-compact__content">
+        <header>
+          <h1 class="title">{{ .Title }}</h1>
+          {{/* TODO: make this optional */}}
+          {{/* TODO: change to a 'partial' (shared with tiles) */}}
+          <div class="summary__infos caption">
+            {{ $dir := "ltr" }}
+            {{ if eq (.Param "languagedir") "rtl" }}
+              {{ $dir = "rtl" }}
+            {{ end }}
+            <time title="{{ i18n "tooltip-date" }}" dir="{{ $dir }}"><span class="icon-calendar"></span>{{ .Date.Format (i18n "summary-dateformat") }}&nbsp;</time>
+            {{ if .Site.Params.metaInfoEdit }}
+            {{ if ne (.Date.Format (i18n "summary-dateformat")) (.Lastmod.Format (i18n "summary-dateformat")) }}
+            <time title="{{ i18n "tooltip-modified" }}" dir="{{ $dir }}"><span class="icon-edit"></span>{{ .Lastmod.Format (i18n "summary-dateformat") }}&nbsp;</time>
+            {{ end }}
+            {{ end }}
+            {{ if .Site.Params.metaInfoReadingTime }}
+            <span title="{{ i18n "tooltip-reading-time" }}" dir="{{ $dir }}"><span class="icon-clock"></span>{{ .ReadingTime }}&nbsp;{{ i18n "reading-time" }}&nbsp;</span>
+            {{ end }}
+            {{ with .Param "author" }}
+            <span title="{{ i18n "tooltip-author" }}" dir="{{ $dir }}"><span class="icon-user"></span>{{ . }}&nbsp;</span>
+            {{ end }}
+          </div>
+        </header>
+        {{ if $params.tags }}
+          <div class="summary-compact__tag--wrapper">
+            {{ range $params.tags }}
+              {{ if . }}
+{{/* TODO: want to keep tags? And set as links? */}}
+{{/*
+                <a href="{{ "tags/" | relLangURL }}{{ . | urlize }}" class="summary-compact__tag">
+                  {{ . }}
+                </a>
+*/}}
+                <div class="summary-compact__tag">
+                  {{ . }}
+                </div>
+              {{ end }}
+            {{ end }}
+          </div>
         {{ end }}
       </div>
+</a>
     </div>
-  </div>
-  <hr />
-</article>
+  </article>

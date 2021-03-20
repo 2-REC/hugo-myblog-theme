@@ -23,11 +23,14 @@
   padding: 1rem;
   padding-bottom: 0;
 
-image-rendering: -moz-crisp-edges;
-image-rendering: -o-crisp-edges;
-image-rendering: -webkit-optimize-contrast;
-image-rendering: crisp-edges;
--ms-interpolation-mode: nearest-neighbor;
+  // If have very long words (should avoid if possible, horrible result)
+  word-break: break-word;
+
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -o-crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  -ms-interpolation-mode: nearest-neighbor;
 
   &[data-ani="true"] {
     @include animation('slide-in-down .2s .3s 1 ease-in both');
@@ -54,15 +57,6 @@ image-rendering: crisp-edges;
     }
   }
 
-  a {
-    // If have very long words (should avoid if possible, horrible result)
-    word-break: break-word;
-
-    @include on-event {
-      text-decoration: none;
-    }
-  }
-
   .title {
     padding-bottom: 0.25em;
     font-size: 16px;
@@ -72,13 +66,6 @@ image-rendering: crisp-edges;
     text-transform: uppercase;
     letter-spacing: 0.1em;
   }
-/*
-  .subtitle {
-    @include themify($themes) {
-      color: themed('meta-color');
-    }
-  }
-*/
 
   &__content {
     padding: 5px;
@@ -148,6 +135,12 @@ image-rendering: crisp-edges;
   &:last-child {
       margin-bottom: 1rem;
   }
+
+  a {
+    @include on-event {
+      text-decoration: none;
+    }
+  }
 }
 
 .summary-card__container:hover .initzoom {
@@ -170,11 +163,14 @@ image-rendering: crisp-edges;
   @include flexbox();
   @include flex-direction(column);
 
-image-rendering: -moz-crisp-edges;
-image-rendering: -o-crisp-edges;
-image-rendering: -webkit-optimize-contrast;
-image-rendering: crisp-edges;
--ms-interpolation-mode: nearest-neighbor;
+  // If have very long words (should avoid if possible, horrible result)
+  word-break: break-word;
+
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -o-crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  -ms-interpolation-mode: nearest-neighbor;
 
   &[data-ani="true"] {
     @include animation('slide-in-down .2s .3s 1 ease-in both');
@@ -236,15 +232,6 @@ image-rendering: crisp-edges;
     @include on-event {
       @include box-shadow(0, 0, 5px, 1px, rgba(0, 0, 0, 0.4));
 //      background-color: rgba(125, 125, 125, 0.1);
-    }
-  }
-
-  a {
-    // If have very long words (should avoid if possible, horrible result)
-    word-break: break-word;
-
-    @include on-event {
-      text-decoration: none;
     }
   }
 
@@ -326,30 +313,20 @@ margin-top: 0;
     }
 */
   }
-/*
-  hr {
-    @include themify($themes) {
-        border-top: 1px solid themed('hr-color');
-    }
-  }
-
-  &:not(:last-child) {
-    hr {
-      margin-bottom: 1.5rem;      
-    }
-  }
 
   &:last-child {
-    hr {
-      display: none;
+      margin-bottom: 1rem;
+  }
+
+  a {
+    @include on-event {
+      text-decoration: none;
     }
   }
-*/
-
 }
 
 .summary-classic__container:hover .initzoom {
-  transform: scale(1.1);
+  transform: scale(1.05);
 
   @media only screen and (max-width: 500px) {
     transform: scale(1.025);
@@ -366,37 +343,87 @@ margin-top: 0;
 //TODO
 .summary-compact {
   padding: 0 1rem;
+  @include flexbox();
+  @include flex-direction(column);
+
+  // If have very long words (should avoid if possible, horrible result)
+  word-break: break-word;
+
 
   &[data-ani="true"] {
     @include animation('slide-in-down .2s .3s 1 ease-in both');
   }
 
-  .title {
-    a {
-      @include themify($themes) {
-        color: themed('title-color');
-        @include on-event {
-          color: themed('link-hover');
-        }
-      }
-    }
-  }
-
-  .subtitle {
-    @include themify($themes) {
-      color: themed('meta-color');
-    }
-  }
-  
   &__flexbox {
     @include flexbox();
     margin-top: 1rem;
-    margin-bottom: 1rem;
+//    margin-bottom: 1rem;
+
   }
 
-  &__meta {
-    padding: 1rem 0;
-    overflow-wrap: break-word;
+  &__container {
+    width: 100%;
+//    border-radius: 0.25rem;
+//    padding: 0.25rem;
+    padding: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2);
+
+    @include flexbox();
+    @include flex-direction(row);
+//?    @include justify-content(flex-start);
+
+    @media only screen and (max-width: 500px) {
+//      width: 100%;
+      @include flexbox();
+      @include flex-direction(column);
+      @include justify-content(flex-start);
+    }
+
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+
+    @include transition(all, 0.2s, ease-out);
+    @include on-event {
+      @include box-shadow(0, 0, 5px, 1px, rgba(0, 0, 0, 0.4));
+//      background-color: rgba(125, 125, 125, 0.1);
+    }
+  }
+
+
+  .title {
+    padding-bottom: 0.25em;
+    font-size: 16px;
+    line-height: 1.25;
+    //TODO: useful?
+    font-weight: 700;
+    //TODO: want?
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  &__content {
+//background-color: red;
+    width: 100%;
+//    padding: 1rem 0;
+    padding: 5px;
+
+//? margin: auto;
+margin-top: 0;
+//margin-left: 0;
+//margin-right: 0;
+
+&[data-dir="ltr"] {
+  margin-left: 0;
+}
+&[data-dir="rtl"] {
+  margin-right: 0;
+}
+
+//    overflow-wrap: break-word;
   }
 
   &__tag {
@@ -406,8 +433,7 @@ margin-top: 0;
     margin: 0 0.25rem;
     border: none;
     border-radius: 0.2rem;
-    text-transform: capitalize;
-    cursor: pointer;
+//    cursor: pointer;
 
     @include themify($themes) {
       color: themed('body-color');
@@ -415,15 +441,21 @@ margin-top: 0;
     }
 
     &--wrapper {
-      margin-top: 0.75rem;
+//      margin-top: 0.75rem;
+//    padding: 5px;
 
       @include flexbox();
     }
   }
 
-  hr {
-    @include themify($themes) {
-        border-top: 1px solid themed('hr-color');
+  &:last-child {
+      margin-bottom: 1rem;
+  }
+
+  a {
+    @include on-event {
+      text-decoration: none;
     }
   }
+
 }

@@ -8,7 +8,7 @@
         * [x] classic
         * [x] tiles!
         * [x] card
-        * [ ] compact
+        * [x] compact
       * [ ] css + hover, etc
         * [ ] classic
           * [x] adapt
@@ -21,6 +21,7 @@
           * [ ] clean
         * [ ] compact
           * [ ] adapt
+            * [ ] keep tags? If yes, set as links?
           * [ ] clean
       * [ ] clean/adapt "summary.scss"
 * [ ] single page
@@ -167,6 +168,8 @@
             * [ ] Only show when in "mobile" mode?
         * [ ] Add navigation (prev+next links) at bottom
     * [ ] Sidebar
+        * [ ] bio
+            * [ ] smaller padding?
         * [ ] add "whoami" (in addition to "bio")
             * [ ] Only in "single" sidebar
             * [ ] Rename it to "author"?

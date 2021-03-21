@@ -47,7 +47,7 @@ enableGoToTop = true
 summaryShape = "tiles" # Default for all pages, values: "card", "classic", "compact", "tiles"
 #summaryShapeHome = "tiles"
 summaryShapeList = "tiles"
-summaryShapeTaxonomy = "tiles"
+summaryShapeTaxonomy = "classic"
 showonlyimage = false
 #summaryImagePosition = "left"
 

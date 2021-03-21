@@ -51,9 +51,8 @@
             {{ partial "pagination/pagination" . }}
         </div>
         {{ else }}
-        {{ partial "summary/tiles" (dict "pages" $pages) }}
+        {{ partial "summary/tiles" (dict "context" . "pages" $pages) }}
         {{ end }}
-        {{/* 2-REC: removed search */}}
     </div>    
 
     {{ if $enableSidebar }}

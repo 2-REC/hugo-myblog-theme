@@ -201,7 +201,7 @@
     => Adapt...
     * [ ] outputs
         => Use/purpose? (remove "SearchIndex")
-    * [ ] taxonomies => Change "series" to "types"?
+    * [ ] taxonomies => Change "series" to "types"
 * [ ] menus.en.toml
     * [ ] Adapt entries (+order)
 * [ ] params.toml

@@ -1,18 +1,18 @@
-baseURL = "https://example.com/"
+baseURL = "https://example.com"
 title = "MyBlog Theme"
 theme = "hugo-myblog-theme"
 
 defaultContentLanguage = "en"
 defaultContentLanguageInSubdir = true
-hasCJKLanguage = false
+hasCJKLanguage = false # Set to 'true' if want to use Chinese/Japanese/Korean
 
-
-
+summaryLength = 70
+#buildFuture = true # Debug purpose
 
 copyright = "&copy;{year}, All Rights Reserved" #TODO: can adapt: copyright = "&copy;{} {year}, All Rights Reserved"
+#timeout = 10000 # Default: 10000 (10s)
 
-
-paginate = 13 #TODO: used? use?
+paginate = 10 # Default 10
 
 
 

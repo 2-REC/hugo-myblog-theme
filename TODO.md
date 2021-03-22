@@ -2,6 +2,14 @@
 
 ## PRIORITIES / CURRENT STATE
 
+* [ ]Make specific csss type +theme colors for each page title?
+  * [ ] about
+  * [ ] contact
+  * [ ] galleries (+each gallery)
+  * [ ] terms (already there)
+  => use a generic "list"?
+  ! - IF NOT, UNIFORMISE ALL TITLES!
+
 * [ ] List pages (list+taxo)
     * [ ] summary
       * [ ] meta infos
@@ -281,6 +289,8 @@ LATER:
         * [ ] grid
             => check if need to adapt
     * [ ] pages
+        * [ ] themes
+            ? => Add specific colors for lists (additionally to 'list-header-title-color', eg: shadow), and use instead of 'term' colors in every list page (also taxo)
         * [ ] _terms.scss
             => Adapt (titles, links, tags, etc.)
     * [ ] syntax

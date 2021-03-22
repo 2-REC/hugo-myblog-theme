@@ -11,12 +11,12 @@ summaryLength = 70
 
 copyright = "&copy;{year}, All Rights Reserved" #TODO: can adapt: copyright = "&copy;{} {year}, All Rights Reserved"
 #timeout = 10000 # Default: 10000 (10s)
-
+enableEmoji = true
 paginate = 10 # Default 10
 
-
-
-googleAnalytics = ""
+#pluralizeListTitles = false
+#enableGitInfo = false # Default: false
+#googleAnalytics = "" # Default: ""
 
 [markup]
   [markup.goldmark]

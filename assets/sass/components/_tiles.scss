@@ -1,3 +1,4 @@
+//TODO: move to '_grid.scss'
 /* ---- Grid ---- */
 
 .grid {
@@ -195,7 +196,7 @@ font-size: 14px;
   transition: all 0.2s ease-out;
 
   @include themify($themes) {
-      background-color: themed('gallery-mask-background-color');
+      background-color: themed('tiles-mask-background-color');
   }
 }
 
@@ -326,6 +327,24 @@ text-shadow: 0 0 1px 2px rgba(0, 0, 0, 0.6);
 
 /* ============================================================================================== */
 
+/* ---- Gallery ---- */
+.gallery {
+  &__title {
+    margin: 2rem 0;
+    //TODO: allow specific font for each page title?
+    font-family: $title-font;
+
+    @include themify($themes) {
+      color: themed('gallery-title-color');
+      text-shadow: 1.2px 1.2px 0 themed('gallery-title-color'),
+        2.4px 2.4px 0 lighten(themed('gallery-title-shadow-color'), 4%),
+        3.6px 3.6px 0 lighten(themed('gallery-title-shadow-color'), 8%),
+        4.8px 4.8px 0 lighten(themed('gallery-title-shadow-color'), 12%);
+    }    
+  }
+}
+
+
 /* ---- Gallery Tiles ---- */
 
 .gallery-tile {
@@ -409,7 +428,8 @@ margin: 0.51rem;
   transition: all 0.2s ease-out;
 
   @include themify($themes) {
-    color: themed('gallery-mask-color');
+//TODO: useless?
+//    color: themed('gallery-mask-color');
     background-color: themed('gallery-mask-background-color');
   }
 }

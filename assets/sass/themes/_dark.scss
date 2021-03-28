@@ -1,3 +1,4 @@
+//TODO: adapt/change!
 $dark: (
     footer-background-color: #403E41,
     footer-color: #bdbdbd, 
@@ -37,7 +38,7 @@ $dark: (
     breadcrumb-item-color: #82aaff,
     breadcrumb-background-color: #212121,
     breadcrumb-item-active-color: #bdbdbd,
-    list-header-title-color: #FCFCFA,
+//    list-header-title-color: #FCFCFA,
     figcaption-color: #bdbdbd,
     figcaption-strong-color: #FCFCFA,
     single-hr-background-color: #595B5C,
@@ -56,12 +57,14 @@ $dark: (
     pagination-background-color: #212121,
     pagination-disabled-color: #757575,
     pagination-number-color: #FCFCFA,
+
     terms-title-color: #ddd,
     terms-title-shadow-color: #403E41,
     terms-tags-color: #78DCE8,
     terms-categories-color: #AB9DF2,
     terms-series-color: #EA9C77,
     terms-len-color: #727072,
+
     toc-label-color: #727072,
     toc-title-color: #90a4ae,
     toc-vertical-line: #727072,
@@ -69,6 +72,7 @@ $dark: (
     toc-header-background-color: #403E41,
     toc-header-background-color-hover: #424242,
     toc-body-background-color: #403E41,
+/*
     search-placeholder-color: #727072,
     search-color: #FCFCFA,
     search-icon-color: #727072,
@@ -80,8 +84,12 @@ $dark: (
     search-content-background-color: lighten(#403E41, 5%),
     search-hover-background-color: #403E41,
     search-highlight-color: #FF6188,
+*/
     selection-color: #FCFCFA,
     selection-background-color: #FF6188,
+
+    //TODO: move below (before "about"?)
+    //TODO: add 'archive-title-color' and 'archive-title-shadow-color'?
     archive-key-color: #FCFCFA,
     archive-type-color: #82aaff,
     archive-meta-color: #aed581,
@@ -95,11 +103,24 @@ $dark: (
     switch-background-color: #403E41,
     switch-button-color: #FCFCFA,
     switch-active-color: #FF6188,
-    gallery-mask-color: #FCFCFA,
+
+    gallery-title-color: #FCFCFA,
+    gallery-title-shadow-color: lighten(#403E41, 5%),
+//TODO: unused?
+//    gallery-mask-color: #FCFCFA,
     gallery-mask-background-color: rgba(0, 0, 0, 0.7),
+
+    tiles-mask-background-color: rgba(0, 0, 0, 0.7),
+
+    about-title-color: #FCFCFA,
+    about-title-shadow-color: lighten(#403E41, 5%),
+
+    contact-title-color: #FCFCFA,
+    contact-title-shadow-color: lighten(#403E41, 5%),
     contact-input-color: #FCFCFA,
     contact-input-background-color: lighten(#403E41, 5%),
     contact-button-background-color: lighten(#403E41, 5%),
+
     custom-scrollbar-foreground-color: #888,
     custom-scrollbar-background-color: #eee,
     share-color: #dbdbdb,

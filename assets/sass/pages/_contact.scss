@@ -8,6 +8,19 @@
   @include align-items(center);
   @include flex-direction(column);
 
+  &__title {
+    margin: 2rem 0;
+    font-family: $title-font;
+    
+    @include themify($themes) {
+      color: themed('contact-title-color');
+      text-shadow: 1.2px 1.2px 0 themed('contact-title-color'),
+        2.4px 2.4px 0 lighten(themed('contact-title-shadow-color'), 4%),
+        3.6px 3.6px 0 lighten(themed('contact-title-shadow-color'), 8%),
+        4.8px 4.8px 0 lighten(themed('contact-title-shadow-color'), 12%);
+    }    
+  }
+
   &__input {
     height: 35px;
     font-size: 14px;

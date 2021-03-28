@@ -6,4 +6,18 @@
   @media only screen and (max-width:768px) {
     padding: 1rem;
   }
+
+  &__title {
+    margin: 2rem 0;
+    //TODO: allow specific font for each page title?
+    font-family: $title-font;
+
+    @include themify($themes) {
+      color: themed('about-title-color');
+      text-shadow: 1.2px 1.2px 0 themed('about-title-color'),
+        2.4px 2.4px 0 lighten(themed('about-title-shadow-color'), 4%),
+        3.6px 3.6px 0 lighten(themed('about-title-shadow-color'), 8%),
+        4.8px 4.8px 0 lighten(themed('about-title-shadow-color'), 12%);
+    }    
+  }
 }

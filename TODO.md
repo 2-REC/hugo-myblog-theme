@@ -2,13 +2,17 @@
 
 ## PRIORITIES / CURRENT STATE
 
-* [ ]Make specific csss type +theme colors for each page title?
-  * [ ] about
-  * [ ] contact
-  * [ ] galleries (+each gallery)
-  * [ ] terms (already there)
-  => use a generic "list"?
-  ! - IF NOT, UNIFORMISE ALL TITLES!
+* [ ] Make specific css type +theme colors for each page title?
+  * [x] about
+  * [x] contact
+  * [x] galleries
+    ! for individual gallery, not same as 'galleries' page
+  * [x] terms (already there)
+    ! for individual term, not same as each 'terms' page (tags, categories, series)
+  * [ ] list (used by list, taxo, galleries)
+    => use a generic "list"?
+    ! - IF NOT, UNIFORMISE ALL TITLES!
++ add other specific params for each page? (font, etc)
 
 * [ ] List pages (list+taxo)
     * [ ] summary
@@ -133,6 +137,8 @@
         => specified where/how?
     * [ ] Add subscription/newsletter
         => check with notes (probably will use MailChimmp)
+    * [ ] Add "chronologic posts view"
+        => posts by years and months (like most blogs)
 
 * [ ] busuanzi
     => Keep? (as now: not enabled, but code still present)

@@ -24,6 +24,12 @@ $light: (
     navbar-title-active-color: lighten(#607d8b, 5%),
     navbar-menu-hover-background-color: lighten(#eeeeee, 3%),
     navbar-dropdown-item-hover-color: #607d8b,
+
+    header-title-color-default: #607d8b,
+    header-title-shadow-color-default: #eee,
+    header-subtitle-color-default: #607d8b,
+    header-subtitle-shadow-color-default: #eee,
+
     sidebar-title-color: #607d8b,
     sidebar-li-color: #424242,
     taxo-title-color: #607d8b,
@@ -38,7 +44,7 @@ $light: (
     breadcrumb-item-color: #728fcb,
     breadcrumb-background-color: #eee,
     breadcrumb-item-active-color: #aaa,
-//    list-header-title-color: #424242,
+
     figcaption-color: #bdbdbd,
     figcaption-strong-color: #424242,
     single-hr-background-color: #bdbdbd,
@@ -57,6 +63,9 @@ $light: (
     pagination-background-color: #eee,
     pagination-disabled-color: #bdbdbd,
     pagination-number-color: #757575,
+
+    list-title-color: #607d8b,
+    list-title-shadow-color: #eee,
 
     terms-title-color: #607d8b,
     terms-title-shadow-color: #eee,
@@ -106,7 +115,7 @@ $light: (
 
     gallery-title-color: #424242,
     gallery-title-shadow-color: #eee,
-//TODO: unused?
+//TODO: unused - to remove
 //    gallery-mask-color: #424242,
     gallery-mask-background-color: rgba(236, 239, 241, 0.85),
 

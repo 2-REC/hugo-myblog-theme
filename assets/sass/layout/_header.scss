@@ -20,14 +20,14 @@
     font-family: $title-font;
 
     @include themify($themes) {
-      color: themed('terms-title-color');
+      color: themed('header-title-color-default');
     }
 
     &--shadow {
       @include themify($themes) {
-        text-shadow: 0px 0px 2px themed('terms-title-shadow-color'),
-                     0px 0px 2px themed('terms-title-shadow-color'),
-                     0px 0px 2px themed('terms-title-shadow-color');
+        text-shadow: 0px 0px 2px themed('header-title-shadow-color-default'),
+                     0px 0px 2px themed('header-title-shadow-color-default'),
+                     0px 0px 2px themed('header-title-shadow-color-default');
       }
     }
   }
@@ -40,14 +40,14 @@
     }
 
     @include themify($themes) {
-      color: themed('terms-title-color');
+      color: themed('header-subtitle-color-default');
     }
 
     &--shadow {
       @include themify($themes) {
-        text-shadow: 0px 0px 2px themed('terms-title-shadow-color'),
-                     0px 0px 2px themed('terms-title-shadow-color'),
-                     0px 0px 2px themed('terms-title-shadow-color');
+        text-shadow: 0px 0px 2px themed('header-subtitle-shadow-color-default'),
+                     0px 0px 2px themed('header-subtitle-shadow-color-default'),
+                     0px 0px 2px themed('header-subtitle-shadow-color-default');
       }
     }
   }

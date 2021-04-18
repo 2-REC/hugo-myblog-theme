@@ -49,8 +49,8 @@ TODO: complete/rewrite/etc.
     * Color:
       * RGB or RGBA format
       * Default:
-        * Title: "terms-title-color"
-        * Subtitle: "terms-title-shadow-color"
+        * Title: "header-title-color-default"
+        * Subtitle: "header-subtitle-color-default"
 
 
 ## Changed Features from original Zzo Theme

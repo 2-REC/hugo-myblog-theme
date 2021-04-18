@@ -24,6 +24,12 @@ $dark: (
     navbar-title-active-color: #FF6188,
     navbar-menu-hover-background-color: lighten(#403E41, 5%),
     navbar-dropdown-item-hover-color: #FFD866,
+
+    header-title-color-default: #607d8b,
+    header-title-shadow-color-default: #eee,
+    header-subtitle-color-default: #607d8b,
+    header-subtitle-shadow-color-default: #eee,
+
     sidebar-title-color: #aed581,
     sidebar-li-color: #FCFCFA,
     taxo-title-color: #bdbdbd,
@@ -38,7 +44,7 @@ $dark: (
     breadcrumb-item-color: #82aaff,
     breadcrumb-background-color: #212121,
     breadcrumb-item-active-color: #bdbdbd,
-//    list-header-title-color: #FCFCFA,
+
     figcaption-color: #bdbdbd,
     figcaption-strong-color: #FCFCFA,
     single-hr-background-color: #595B5C,
@@ -57,6 +63,9 @@ $dark: (
     pagination-background-color: #212121,
     pagination-disabled-color: #757575,
     pagination-number-color: #FCFCFA,
+
+    list-title-color: #ddd,
+    list-title-shadow-color: #403E41,
 
     terms-title-color: #ddd,
     terms-title-shadow-color: #403E41,

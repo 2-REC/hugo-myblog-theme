@@ -428,7 +428,7 @@ margin: 0.51rem;
   transition: all 0.2s ease-out;
 
   @include themify($themes) {
-//TODO: useless?
+//TODO: useless - to remove
 //    color: themed('gallery-mask-color');
     background-color: themed('gallery-mask-background-color');
   }

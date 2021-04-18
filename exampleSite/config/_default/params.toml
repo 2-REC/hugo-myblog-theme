@@ -13,12 +13,12 @@ notAllowedTypesInHomeSidebar = ["about", "archive"] #TODO: adapt! (contact?)
 # notAllowedTypesInHomeFeed = ["about", "archive", "contact", "gallery" ] #TODO: IF using 'showFeedLinks' - adapt! (look in original Zzo)
 
 viewportSize = "wide" # widest, wider, wide, normal, narrow
+#enableSideDataLeft = true # Default: false
+#enableSideDataRight = true # Default: false
+
 enableUiAnimation = true #TODO: keep? used?
 hideSingleContentsWhenJSDisabled = false
 
-#TODO: here?
-#enableSideDataLeft = true # Default: false
-#enableSideDataRight = true # Default: false
 
 # navbar
 enableThemeChange = true
@@ -45,7 +45,7 @@ codeClipboard = true # Default false
 enableGoToTop = true
 
 summaryShape = "tiles" # Default for all pages, values: "card", "classic", "compact", "tiles"
-#summaryShapeHome = "tiles"
+summaryShapeHome = "tiles"
 summaryShapeList = "tiles"
 summaryShapeTaxonomy = "classic"
 showonlyimage = false

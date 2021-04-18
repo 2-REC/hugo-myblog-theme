@@ -19,4 +19,10 @@ Basic post example.
 
 ## Title
 
-Content...
+TODO: MAKE PROPER POST 'post with images'
+
+dgsdgsdg
+<img src="images/avatar.jpg" />
+rgsdgsdg
+<img src="images/logo.png" />
+sdgsdgsg

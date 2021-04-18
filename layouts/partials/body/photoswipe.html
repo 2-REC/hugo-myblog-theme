@@ -162,12 +162,40 @@ document.addEventListener('DOMContentLoaded', function () {
     wrapper.style.width = '100%';
     wrapper.style.height = '100vh';
     wrapper.setAttribute('data-micromodal-close', '');
+//// BEGIN
+/*
     wrapper.onclick = function () {
       if (mySwipe) {
         mySwipe.kill();
         mySwipe = null;
       }
+      //2-REC: quit fullscreen when leaving modal mode
+      closeFullscreen();
+      MicroModal.close('modal');
     }
+*/
+//// MID
+    //2-REC: don't close swiper when swiping outside of image
+    wrapper.onclick = function (e) {
+      e.stopPropagation()
+    }
+    var posX;
+    wrapper.onmousedown = function (e) {
+      posX = e.pageX;
+    }
+    wrapper.onmouseup = function (e) {
+      //TODO: allow small offset/move?
+      if (posX == e.pageX) {
+        if (mySwipe) {
+          mySwipe.kill();
+          mySwipe = null;
+        }
+        //2-REC: quit fullscreen when leaving modal mode
+        closeFullscreen();
+        MicroModal.close('modal');
+      }
+    }
+//// END
     wrapper.onmouseenter = function () {
       clearTimeout(myFadeTimeout);
       fadeIn(itemsElem, 200);
@@ -182,6 +210,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     wrapper.append(clonedElem);
     swipeWrapElem.append(wrapper);
+    //2-REC: width fix (when sum of images width < screen width)
+    swipeWrapElem.style.minWidth = '100vw';
 
     elem.addEventListener('click', async function (e) {
       MicroModal.show('modal');

@@ -7,18 +7,17 @@
   * [x] contact
   * [x] galleries
     ! for individual gallery, not same as 'galleries' page
-  * [x] terms (already there)
-    ! for individual term, not same as each 'terms' page (tags, categories, series)
-  * [ ] list (used by list, taxo, galleries)
-    => use a generic "list"?
-    ! - IF NOT, UNIFORMISE ALL TITLES!
-+ add other specific params for each page? (font, etc)
+  * [x] terms
+    ! for each 'terms' page (tags, categories, series), not same as for individual term
+  * [x] list (used by list, taxo, galleries)
+  * [ ] LATER:
+    * [ ] Add other specific params for each page? (font, etc)
 
 * [ ] List pages (list+taxo)
     * [ ] summary
       * [ ] meta infos
         * [x] classic
-        * [x] tiles!
+        * [x] tiles
         * [x] card
         * [x] compact
       * [ ] css + hover, etc
@@ -296,7 +295,7 @@ LATER:
             => check if need to adapt
     * [ ] pages
         * [ ] themes
-            ? => Add specific colors for lists (additionally to 'list-header-title-color', eg: shadow), and use instead of 'term' colors in every list page (also taxo)
+            * [x] Add specific colors for lists (additionally to 'list-header-title-color', eg: shadow), and use instead of 'term' colors in every list page (also taxo)
         * [ ] _terms.scss
             => Adapt (titles, links, tags, etc.)
     * [ ] syntax

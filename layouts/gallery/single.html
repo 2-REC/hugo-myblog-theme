@@ -5,18 +5,24 @@
     {{ .Content }}
   </div>
 </header>
-
 {{ $root := . }}
+{{ $imagesCopyright := .Params.ImagesCopyright }}
 {{ if in (lower .Params.Mode) "one" }}
 <main class="tile-grid main">
   <div class="grid tile-grid__container gallery__container">
     <div class="grid-sizer"></div>
     {{ range .Params.Images }}
       {{ $image := index ($root.Resources.Match .image) 0 }}
+      {{ $copyright := $imagesCopyright }}
+      {{ with .copyright }}
+        {{ $copyright = . }}
+      {{ end }}
       <div class="grid-item">
         <div class="gallery-tile">
           <div class="gallery-tile-image with-hover-overlay {{ if $.Site.Params.galleryInitZoom }}initzoom{{ end }} {{ if $.Site.Params.galleryZoom }}zoom{{ end }}">
-            <img src="{{ $image.Permalink }}" alt="{{ print .caption }}" />
+            <img src="{{ $image.Permalink }}"
+                alt="{{ print .caption }}"
+                data-caption="{{ if .caption }}{{ print .caption }}{{ with $copyright }}&nbsp;&hyphen;&nbsp;&copy;&nbsp;{{ . }}{{ end }}{{ else }}{{ with $copyright }}&copy;&nbsp;{{ . }}{{ end }}{{ end }}" />
           </div>
           <div class="gallery-tile-hover-text-header">
             <div class="gallery-tile-description">
@@ -35,39 +41,47 @@
   <div class="grid tile-grid__container gallery__container">
     <div class="grid-sizer"></div>
     {{ range .Params.Images }}
-    <div class="grid-item">
-      <div class="gallery-tile">
-        <div class="gallery-tile-image with-hover-overlay {{ if $.Site.Params.galleryInitZoom }}initzoom{{ end }} {{ if $.Site.Params.galleryZoom }}zoom{{ end }}">
-          <img src="{{ .image }}" alt="{{ print .caption }}" />
-        </div>
-        <div class="gallery-tile-hover-text-header">
-          <div class="gallery-tile-description">
-            <p>{{ .caption }}</p>
+      {{ $copyright := $imagesCopyright }}
+      {{ with .copyright }}
+        {{ $copyright = . }}
+      {{ end }}
+      <div class="grid-item">
+        <div class="gallery-tile">
+          <div class="gallery-tile-image with-hover-overlay {{ if $.Site.Params.galleryInitZoom }}initzoom{{ end }} {{ if $.Site.Params.galleryZoom }}zoom{{ end }}">
+            <img src="{{ .image }}" alt="{{ print .caption }}"
+                  data-caption="{{ if .caption }}{{ print .caption }}{{ with $copyright }}&nbsp;&hyphen;&nbsp;&copy;&nbsp;{{ . }}{{ end }}{{ else }}{{ with $copyright }}&copy;&nbsp;{{ . }}{{ end }}{{ end }}" />
+          </div>
+          <div class="gallery-tile-hover-text-header">
+            <div class="gallery-tile-description">
+              <p>{{ .caption }}</p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
     {{ end }}
   </div>
   {{ partial "pagination/pagination-single" . }}
 </main>
 
 {{ else }}
+{{ $copyright := $imagesCopyright }}
 <main class="tile-grid main">
   <div class="grid tile-grid__container gallery__container">
     <div class="grid-sizer"></div>
-    {{ $images := .Resources.Match "*" }}
+    {{ $images := .Resources.Match "images/*" }}
     {{ if gt (len $images) 0 }}
       {{ range $images }}
         {{ if eq .ResourceType "image" }}
+          {{ $caption := index (split (index (split .Name "/") (sub (len (split .Name "/")) 1)) ".") 0 }}
           <div class="grid-item">
             <div class="gallery-tile">
-              <div class="gallery-tile-image with-hover-overlay {{ if .Site.Params.galleryInitZoom }}initzoom{{ end }} {{ if .Site.Params.galleryZoom }}zoom{{ end }}">
-                <img src="{{ .Permalink }}" alt="{{ index (split .Name ".") 0 }}" />
+              <div class="gallery-tile-image with-hover-overlay {{ if $.Site.Params.galleryInitZoom }}initzoom{{ end }} {{ if $.Site.Params.galleryZoom }}zoom{{ end }}">
+                <img src="{{ .Permalink }}" alt="{{ index (split .Name ".") 0 }}"
+                    data-caption="{{ print $caption }}{{ with $copyright }}&nbsp;&hyphen;&nbsp;&copy;&nbsp;{{ . }}{{ end }}" />
               </div>
               <div class="gallery-tile-hover-text-header">
                 <div class="gallery-tile-description">
-                  <p>{{ index (split .Name ".") 0 }}</p>
+                  <p>{{ $caption }}</p>
                 </div>
               </div>
             </div>

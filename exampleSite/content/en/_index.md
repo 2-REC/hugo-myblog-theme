@@ -36,6 +36,7 @@ header:
             size: cover
             repeat: no-repeat
             position: center
+        copyright: "internet image"
         alignX: left
         alignY: top
         paddingX: 50px

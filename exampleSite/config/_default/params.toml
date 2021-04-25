@@ -45,11 +45,15 @@ codeClipboard = true # Default false
 enableGoToTop = true
 
 summaryShape = "tiles" # Default for all pages, values: "card", "classic", "compact", "tiles"
-summaryShapeHome = "tiles"
-summaryShapeList = "tiles"
-summaryShapeTaxonomy = "classic"
+#summaryShapeHome = "tiles" # Default as "summaryShape"
+#summaryShapeList = "tiles" # Default as "summaryShape"
+#summaryShapeTaxonomy = "classic" # Default as "summaryShape"
 showonlyimage = false
-#summaryImagePosition = "left"
+summaryMeta = true # Default false
+#summaryImagePosition = "left" # Default "left"
+#summaryMetaInfoEdit = true # Default false
+summaryMetaInfoReadingTime = true # Default false
+summaryMetaTags = true # Default false
 
 
 paginateWindow = 1

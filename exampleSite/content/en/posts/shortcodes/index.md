@@ -3,6 +3,7 @@ title: "Shortcodes"
 date: 2020-01-25T06:40:51+09:00
 description: tabs, code-tabs, expand, alert, warning, notice, img, box
 banner: "images/shortcodes.jpg"
+copyright: "Hugo"
 slide: true
 draft: false
 enableToc: true

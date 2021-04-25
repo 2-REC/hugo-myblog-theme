@@ -2,39 +2,6 @@
 
 ## PRIORITIES / CURRENT STATE
 
-* [ ] Make specific css type +theme colors for each page title?
-  * [x] about
-  * [x] contact
-  * [x] galleries
-    ! for individual gallery, not same as 'galleries' page
-  * [x] terms
-    ! for each 'terms' page (tags, categories, series), not same as for individual term
-  * [x] list (used by list, taxo, galleries)
-  * [ ] LATER:
-    * [ ] Add other specific params for each page? (font, etc)
-
-* [ ] List pages (list+taxo)
-    * [ ] summary
-      * [ ] meta infos
-        * [x] classic
-        * [x] tiles
-        * [x] card
-        * [x] compact
-      * [ ] css + hover, etc
-        * [ ] classic
-          * [x] adapt
-          * [ ] clean
-        * [ ] tiles
-          * [x] adapt
-          * [ ] clean
-        * [ ] card
-          * [x] adapt
-          * [ ] clean
-        * [ ] compact
-          * [ ] adapt
-            * [ ] keep tags? If yes, set as links?
-          * [ ] clean
-      * [ ] clean/adapt "summary.scss"
 * [ ] single page
     * [ ] set sections as optional
       * [ ] donations
@@ -115,7 +82,7 @@
 
 
 * [ ] Gallery
-    * [ ] Add copyright label?
+    * [x] Add copyright label
         => as in portfolio theme
     * [ ] Add another gallery ("drawings")
         * VN flowers
@@ -285,6 +252,8 @@ LATER:
             * [ ] keep "-main" and "-side" stuff? => CHECK IF USED! (header, footer, nav, ...)
         * [ ] _hr.scss
           => change? keep all?
+        * [ ] _summary.scss
+          => Clean/adapt
         * [ ] _taxonomy.scss
             * [ ] Adapt
             * [ ] Keep all?
@@ -359,12 +328,20 @@ LATER:
         * [ ] See what to keep... (+associated in "params.toml")
         * [ ] See if want to change icons
     * [ ] summary
-        * [ ] card: TODO!
-        * [ ] classic: TODO!
-        * [ ] compact: TODO!
+        * [ ] Make partial for "meta" block
+          => Used by all summaries (+tiles)
+        * [ ] Keep tags? If yes, set as links?
+          => Problematic as already inside a link block 'a'
     * [ ] svgs
         * [ ] Rename+change svgs (see what want to keep or change)
 * [ ] index
     * [x] Add "recent posts carousel"
 
+
+## LATER
+
+* [ ] Make specific css type +theme colors for each page type
+  => Add other specific params for each page (font, etc)
+  * [ ] about, contact, gallery, terms
+  * [ ] list (used by list, taxo, galleries)
 

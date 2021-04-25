@@ -14,6 +14,9 @@
                           class="pngfix wp-post-image {{ if $.Site.Params.sliderInitZoom }}initzoom{{ end }} {{ if $.Site.Params.sliderZoom }}zoom{{ end }}"
                           alt="{{ .Title }}"
                           title="{{ .Title }}">
+                        {{ with .copyright }}
+                        <p class="image__copyright">{{ . | markdownify }}</p>
+                        {{ end }}
                     </figure>
                     <article class="featured-text">
                       <h4 class="featured-title">{{ .Title }}</h4>

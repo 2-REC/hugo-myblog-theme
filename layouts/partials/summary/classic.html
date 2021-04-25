@@ -19,26 +19,46 @@
           data-dir="{{ if ne ($.Param "languagedir") "rtl" }}ltr{{ else }}rtl{{ end }}">
         <header>
           <h1 class="title">{{ .Title }}</h1>
-          {{/* TODO: make this optional */}}
-          {{/* TODO: change to a 'partial' (shared with tiles) */}}
-          <div class="summary__infos caption">
-            {{ $dir := "ltr" }}
-            {{ if eq (.Param "languagedir") "rtl" }}
-              {{ $dir = "rtl" }}
+          {{ if .Site.Params.summaryMeta }}
+            {{/* TODO: change to a 'partial' (shared with tiles and other summaries) */}}
+            <div class="summary__infos caption">
+              {{ $dir := "ltr" }}
+              {{ if eq (.Param "languagedir") "rtl" }}
+                {{ $dir = "rtl" }}
+              {{ end }}
+              <time title="{{ i18n "tooltip-date" }}" dir="{{ $dir }}"><span class="icon-calendar"></span>{{ .Date.Format (i18n "summary-dateformat") }}&nbsp;</time>
+              {{ if .Site.Params.summaryMetaInfoEdit }}
+              {{ if ne (.Date.Format (i18n "summary-dateformat")) (.Lastmod.Format (i18n "summary-dateformat")) }}
+              <time title="{{ i18n "tooltip-modified" }}" dir="{{ $dir }}"><span class="icon-edit"></span>{{ .Lastmod.Format (i18n "summary-dateformat") }}&nbsp;</time>
+              {{ end }}
+              {{ end }}
+              {{ if .Site.Params.summaryMetaInfoReadingTime }}
+              <span title="{{ i18n "tooltip-reading-time" }}" dir="{{ $dir }}"><span class="icon-clock"></span>{{ .ReadingTime }}&nbsp;{{ i18n "reading-time" }}&nbsp;</span>
+              {{ end }}
+              {{ with .Param "author" }}
+              <span title="{{ i18n "tooltip-author" }}" dir="{{ $dir }}"><span class="icon-user"></span>{{ . }}&nbsp;</span>
+              {{ end }}
+            </div>
+            {{ if .Site.Params.summaryMetaTags }}
+              {{ if .Params.tags }}
+              <ul class="summary__tag--wrapper">
+                {{ range .Params.tags }}
+                  {{ if . }}
+                    {{/* TODO: want to set as links? - problems as already inside a link*/}}
+                    {{/*
+                    <a href="{{ "tags/" | relLangURL }}{{ . | urlize }}" class="summary__tag">
+                      {{ . }}
+                    </a>
+                    */}}
+                    <li class="summary__tag">
+                      {{ . }}
+                    </li>
+                  {{ end }}
+                {{ end }}
+              </ul>
+              {{ end }}
             {{ end }}
-            <time title="{{ i18n "tooltip-date" }}" dir="{{ $dir }}"><span class="icon-calendar"></span>{{ .Date.Format (i18n "summary-dateformat") }}&nbsp;</time>
-            {{ if .Site.Params.metaInfoEdit }}
-            {{ if ne (.Date.Format (i18n "summary-dateformat")) (.Lastmod.Format (i18n "summary-dateformat")) }}
-            <time title="{{ i18n "tooltip-modified" }}" dir="{{ $dir }}"><span class="icon-edit"></span>{{ .Lastmod.Format (i18n "summary-dateformat") }}&nbsp;</time>
-            {{ end }}
-            {{ end }}
-            {{ if .Site.Params.metaInfoReadingTime }}
-            <span title="{{ i18n "tooltip-reading-time" }}" dir="{{ $dir }}"><span class="icon-clock"></span>{{ .ReadingTime }}&nbsp;{{ i18n "reading-time" }}&nbsp;</span>
-            {{ end }}
-            {{ with .Param "author" }}
-            <span title="{{ i18n "tooltip-author" }}" dir="{{ $dir }}"><span class="icon-user"></span>{{ . }}&nbsp;</span>
-            {{ end }}
-          </div>
+          {{ end }}
         </header>
         <div>
           <div class="summary-classic__text p2">

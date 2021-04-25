@@ -52,33 +52,51 @@ TODO: complete/rewrite/etc.
         * Title: "header-title-color-default"
         * Subtitle: "header-subtitle-color-default"
 
+* Images
+  * Copyright
+    * Field "copyright" to add a small label in bottom right of image mentioning the copyright
+      * Header
+      * Slider/carousel
+      * Gallery: Per image or global
+
+
 
 ## Changed Features from original Zzo Theme
 * General
-    * Icons
-      * Use of an 'icon-font' for icons in text (additionally to SVG tags)
+  * Icons
+    * Use of an 'icon-font' for icons in text (additionally to SVG tags)
 * Themes
-    * More dynamic theme management.
-      For each theme:
-      - Add entry+infos in "data/theme.toml" (name, chroma, chroma_background, primary_color)
-      - Add scss files ("themes/name.scss" + "themes/chroma_background.scss" + "syntax/chroma.scss")
-    * Default case for 'theme' if current value in local storage is not valid
-      => Remove 'theme' from localStorage if value is not in list of themes (in 'data/theme.toml').
+  * More dynamic theme management.
+    For each theme:
+    - Add entry+infos in "data/theme.toml" (name, chroma, chroma_background, primary_color)
+    - Add scss files ("themes/name.scss" + "themes/chroma_background.scss" + "syntax/chroma.scss")
+  * Default case for 'theme' if current value in local storage is not valid
+    => Remove 'theme' from localStorage if value is not in list of themes (in 'data/theme.toml').
 * Sidebar
-    * Added taxonomy specific sidebar (different from "list")
-      * For "single" pages, can specify if want all taxonomy terms, or only those in page (all by default)
-          => In "params":
-            singleTaxonomies = true
-    * Content of each sidebar (home, single, list, taxonomy) defined by list (in "params")
-    * Special "-" separator to specify start of "floating" section
-    * Possibility to have left and right sidebars (as well as both or none)
-    * Changed "inner" and "outer" by using "sidedata" for left/right sidebars
+  * Added taxonomy specific sidebar (different from "list")
+    * For "single" pages, can specify if want all taxonomy terms, or only those in page (all by default)
+      => In "params":
+        singleTaxonomies = true
+  * Content of each sidebar (home, single, list, taxonomy) defined by list (in "params")
+  * Special "-" separator to specify start of "floating" section
+  * Possibility to have left and right sidebars (as well as both or none)
+  * Changed "inner" and "outer" by using "sidedata" for left/right sidebars
+* Summary
+  * Optional metadata block
+  * Optional meta fields
+    * Edit
+    * Reading time
+    * Tags
 * Summary Tiles
-    * Added possibility to have an image, using tiles as in gallery, with CSS similar to "Creative Protfolio" theme
+  * Added possibility to have an image, using tiles as in gallery, with CSS similar to "Creative Protfolio" theme
 * Gallery + Summary tiles + Recent posts
-    * Added "zooming" when hovering the images
-    * Fixed sizing issues (20% seems buggy, +use of "match"+"unmatch" doesn't work well when quick resize, +no init trigger on page onload)
-    * Image files need to be located in the post directory (eg: "content\en\gallery\photos") instead of in "static" directory
+  * Added "zooming" when hovering the images
+  * Fixed sizing issues (20% seems buggy, +use of "match"+"unmatch" doesn't work well when quick resize, +no init trigger on page onload)
+  * Image files need to be located in the post directory (eg: "content\en\gallery\photos") instead of in "static" directory
+* Photoswipe (galleries and posts images)
+  * View not closing when swiping outside of an image
+  * View closing when clicking (even if on image - TODO: should fix that?)
+  * Exit fullscreen mode when leaving view
 * Header
   * Changed "swiper" to "slider" (uses "jQuery.cycle" library)
   * Added more alignment possibilities
@@ -110,7 +128,7 @@ TODO: complete/rewrite/etc.
     * Optional "modified" and "reading time" info fields
       => Respectively "metaInfoEdit" and "metaInfoReadingTime" (default: false)
     * Optional "tags" field
-      => ""metaTags" (default: false)
+      => "metaTags" (default: false)
   * "copy-to-clipboard" optional for title
     => param "titleClipboard" (default: false)
   * Code

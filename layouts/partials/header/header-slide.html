@@ -18,7 +18,12 @@
             {{ $slides = .slides }}
           {{ end }}
           {{ range $slides }}
-            <div class="site-header__align-{{ .alignX }}" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}" style="{{ if .image }}background-image: url('{{ .image.src | relURL }}'); background-size: {{ .image.size }}; background-repeat: {{ .image.repeat }}; background-position: {{ .image.position }};{{ end }} height: {{ $height }}px;">
+            <div class="site-header__align-{{ .alignX }}"
+                data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}"
+                style="{{ if .image }}background-image: url('{{ .image.src | relURL }}'); background-size: {{ .image.size }}; background-repeat: {{ .image.repeat }}; background-position: {{ .image.position }};{{ end }} height: {{ $height }}px;">
+              {{ with .copyright }}
+              <p class="image__copyright">{{ . | markdownify }}</p>
+              {{ end }}
               {{ $header := . }}
 
               {{/* X Padding */}}

@@ -1,0 +1,238 @@
+{{ $context := .context }}
+{{ if $context.Params.header }}
+  <section class="featured-slider">
+    <div class="slider-cycle-header">
+      {{ with $context.Params.header }}
+
+          {{ $array := partial "header/convert-value.html" .height }}
+          {{ $heightPercent := index $array 0 }}
+          {{ $heightPixel := index $array 1 }}
+          {{ if eq $heightPixel 0 }}
+            <div>{{ printf "Use 'px' unit for 'height' field (other units not handled)" }}</div>
+          {{ end }}
+          {{ $height := $heightPixel }}
+
+            <div class="site-header__align-{{ .alignX }}"
+                data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}"
+                style="{{ if .image }}
+                         {{ $image := index ($context.Resources.Match .image) 0 }}
+                         background-image: url('{{ $image }}');
+                         background-size: cover;
+                         background-repeat: no-repeat;
+                         background-position: center;
+                       {{ end }}
+                       height: {{ $height }}px;">
+              {{ with .copyright }}
+              <p class="image__copyright">{{ . | markdownify }}</p>
+              {{ end }}
+              {{ $header := . }}
+
+              {{/* X Padding */}}
+              {{ if eq $header.alignX "left" }}
+                <div style="padding-left: {{ $header.paddingX }}; height: 100%;">
+              {{ else if eq .alignX "right" }}
+                <div style="padding-right: {{ $header.paddingX }}; height: 100%;">
+              {{ else }}
+                {{ $sign := substr $header.paddingX 0 1 }}
+                {{ if eq $sign "-" }}
+                  <div style="padding-right: {{ substr $header.paddingX 1 }}; height: 100%;">
+                {{ else }}
+                  <div style="padding-left: {{ $header.paddingX }}; height: 100%;">
+                {{ end }}
+              {{ end }}
+
+              {{/* Title Font Size */}}
+              {{ $titleFontSize := "1em" }}
+              {{ $titleFontSizePercent := 0 }}
+              {{ $titleFontSizePixel := 0 }}
+              {{ with $header.title }}
+                {{ with .titleFontSize }}
+                  {{ $array := partial "header/convert-value.html" . }}
+                  {{ $titleFontSizePercent = index $array 0 }}
+                  {{ $titleFontSizePixel = index $array 1 }}
+                  {{ if ne $titleFontSizePercent 0 }}
+                    {{ $titleFontSize = printf "%#vpx" (int (mul $height (div $titleFontSizePercent 100.0))) }}
+                  {{ else }}
+                    {{ $titleFontSize = printf "%#vpx" $titleFontSizePixel }}
+                  {{ end }}
+                {{ end }}
+              {{ end }}
+
+              {{/* Description Font Size */}}
+              {{ $descriptionFontSize := "1em" }}
+              {{ $descriptionFontSizePercent := 0 }}
+              {{ $descriptionFontSizePixel := 0 }}
+              {{ with $header.description }}
+                {{ with .descriptionFontSize }}
+                  {{ $array := partial "header/convert-value.html" . }}
+                  {{ $descriptionFontSizePercent = index $array 0 }}
+                  {{ $descriptionFontSizePixel = index $array 1 }}
+                  {{ if ne $descriptionFontSizePercent 0 }}
+                    {{ $descriptionFontSize = printf "%#vpx" (int (mul $height (div $descriptionFontSizePercent 100.0))) }}
+                  {{ else }}
+                    {{ $descriptionFontSize = printf "%#vpx" $descriptionFontSizePixel }}
+                  {{ end }}
+                {{ end }}
+              {{ end }}
+
+              {{/* Y Align/Padding */}}
+              {{ if eq $header.alignY "top" }}
+                {{ if ne $header.paddingY 0 }}
+                  <div style="height: {{ $header.paddingY }}; opacity: 0;">-</div>
+                {{ end }}
+              {{ else }}
+                {{ $heightPercent := 0 }}
+                {{ $heightPixel := 0 }}
+
+                {{ with $header.title }}
+                  {{ $paddingYPercent := 0 }}
+                  {{ $paddingYPixel := 0 }}
+                  {{ with .titlePaddingY }}
+                    {{ $array := partial "header/convert-value.html" . }}
+                    {{ $paddingYPercent = index $array 0 }}
+                    {{ $paddingYPixel = index $array 1 }}
+                  {{ end }}
+                  {{ if $context.Params.title }}
+                    {{ $heightPercent = add $heightPercent $titleFontSizePercent }}
+                    {{ $heightPixel = add $heightPixel $titleFontSizePixel }}
+                    {{ $heightPercent = add $heightPercent (mul $paddingYPercent 2) }}
+                    {{ $heightPixel = add $heightPixel (mul $paddingYPixel 2) }}
+                  {{ end }}
+                {{ end }}
+
+                {{ with .spaceBetweenTitleDescription }}
+                  {{ $array := partial "header/convert-value.html" . }}
+                  {{ $heightPercent = add $heightPercent (index $array 0) }}
+                  {{ $heightPixel = add $heightPixel (index $array 1) }}
+                {{ end }}
+
+                {{ with $header.description }}
+                  {{ $paddingYPercent := 0 }}
+                  {{ $paddingYPixel := 0 }}
+                  {{ with .descriptionPaddingY }}
+                    {{ $array := partial "header/convert-value.html" . }}
+                    {{ $paddingYPercent = index $array 0 }}
+                    {{ $paddingYPixel = index $array 1 }}
+                  {{ end }}
+                  {{ if $context.Params.description }}
+                    {{ $heightPercent = add $heightPercent $descriptionFontSizePercent }}
+                    {{ $heightPixel = add $heightPixel $descriptionFontSizePixel }}
+                    {{ $heightPercent = add $heightPercent (mul $paddingYPercent 2) }}
+                    {{ $heightPixel = add $heightPixel (mul $paddingYPixel 2) }}
+                  {{ end }}
+                {{ end }}
+
+                {{ $paddingPercent := 0 }}
+                {{ $paddingPixel := 0 }}
+                {{ with $header.paddingY }}
+                  {{ $array := partial "header/convert-value.html" . }}
+                  {{ $paddingPercent = (index $array 0) }}
+                  {{ $paddingPixel = (index $array 1) }}
+                {{ end }}
+
+                {{ if eq $header.alignY "bottom" }}
+                  {{ $heightPercent = add $heightPercent $paddingPercent }}
+                  {{ $heightPixel = add $heightPixel $paddingPixel }}
+                  <div style="height: calc(100% - {{ $heightPercent }}% - {{ $heightPixel }}px); opacity: 0;">-</div>
+                {{ else }}
+                  {{ $heightPercent = sub (div $heightPercent 2) $paddingPercent }}
+                  {{ $heightPixel = sub (div $heightPixel 2) $paddingPixel }}
+                  <div style="height: calc(50% - {{ $heightPercent }}% - {{ $heightPixel }}px); opacity: 0;">-</div>
+                {{ end }}
+              {{ end }}
+
+              {{/* Title */}}
+              {{ with $header.title }}
+                {{/* Y Padding */}}
+                {{ $percentPadY := 0 }}
+                {{ with .titlePaddingY }}
+                  {{ if ne . 0 }}
+                    {{ $lastIndex := sub (len .) 1 }}
+                    {{ if eq (substr . $lastIndex) "%" }}
+                      {{ $percentPadY = substr . 0 $lastIndex }}
+                    {{ end }}
+                  {{ end }}
+                {{ end }}
+
+                {{/* Color */}}
+                {{ $colorR := 0 }}
+                {{ $colorG := 0 }}
+                {{ $colorB := 0 }}
+                {{ $colorA := 1 }}
+                {{ with .titleColor }}
+                  {{ $array := partial "header/convert-color.html" . }}
+                  {{ $colorR = index $array 0 }}
+                  {{ $colorG = index $array 1 }}
+                  {{ $colorB = index $array 2 }}
+                  {{ $colorA = index $array 3 }}
+                {{ end }}
+
+                {{ with $header.title }}
+                  {{ if $percentPadY }}
+                    <div class="site-header__title {{ if .titleShadow }}site-header__title--shadow{{ end }}" style="font-size: {{ $titleFontSize }}; {{ with .titleColor }}color: rgba({{ $colorR }},{{ $colorG }},{{ $colorB }},{{ $colorA }});{{ end }} padding: calc({{ $height }}px * ({{ $percentPadY }} / 100)) 0;">
+                  {{ else }}
+                    <div class="site-header__title {{ if .titleShadow }}site-header__title--shadow{{ end }}" style="font-size: {{ $titleFontSize }}; {{ with .titleColor }}color: rgba({{ $colorR }},{{ $colorG }},{{ $colorB }},{{ $colorA }});{{ end }} padding: {{ .titlePaddingY }} 0;">
+                  {{ end }}
+                      {{ $context.Params.title }}
+                    </div>
+                {{ end }}
+              {{ end }}
+
+              {{/* Space */}}
+              {{ with .spaceBetweenTitleDescription }}
+                {{ if ne . 0 }}
+                  {{ $val := string . }}
+                  {{ $percentSpace := 0 }}
+                  {{ $lastIndex := sub (len $val) 1 }}
+                  {{ if eq (substr . $lastIndex) "%" }}
+                    {{ $percentSpace = substr . 0 $lastIndex }}
+                  {{ end }}
+                  {{ if $percentSpace }}
+                    <div style="height: calc({{ $height }}px * ({{ $percentSpace }} / 100)); opacity: 0;">-</div>
+                  {{ else }}
+                    <div style="height: {{ . }}; opacity: 0;">-</div>
+                  {{ end }}
+                {{ end }}
+              {{ end }}
+
+              {{/* Description */}}
+              {{ with $header.description }}
+                {{/* Y Padding */}}
+                {{ $percentPadY := 0 }}
+                {{ with .descriptionPaddingY }}
+                  {{ $lastIndex := sub (len .) 1 }}
+                  {{ if eq (substr . $lastIndex) "%" }}
+                    {{ $percentPadY = substr . 0 $lastIndex }}
+                  {{ end }}
+                {{ end }}
+
+                {{/* Color */}}
+                {{ $colorR := 0 }}
+                {{ $colorG := 0 }}
+                {{ $colorB := 0 }}
+                {{ $colorA := 1 }}
+                {{ with .descriptionColor }}
+                  {{ $array := partial "header/convert-color.html" . }}
+                  {{ $colorR = index $array 0 }}
+                  {{ $colorG = index $array 1 }}
+                  {{ $colorB = index $array 2 }}
+                  {{ $colorA = index $array 3 }}
+                {{ end }}
+
+                {{ with $header.description }} 
+                  {{ if $percentPadY }}
+                    <div class="site-header__subtitle {{ if .descriptionShadow }}site-header__subtitle--shadow{{ end }}" style="font-size: {{ $descriptionFontSize }}; {{ with .descriptionColor }}color: rgba({{ $colorR }},{{ $colorG }},{{ $colorB }},{{ $colorA }});{{ end }} padding: calc({{ $height }}px * ({{ $percentPadY }} / 100)) 0;" data-cursive="{{ with .descriptionCursive }}{{ . }}{{ end }}">
+                  {{ else }}
+                    <div class="site-header__subtitle {{ if .descriptionShadow }}site-header__subtitle--shadow{{ end }}" style="font-size: {{ $descriptionFontSize }}; {{ with .descriptionColor }}color: rgba({{ $colorR }},{{ $colorG }},{{ $colorB }},{{ $colorA }});{{ end }} padding: {{ .descriptionPaddingY }} 0;" data-cursive="{{ with .descriptionCursive }}{{ . }}{{ end }}">
+                  {{ end }}
+                      {{ $context.Params.description }}
+                    </div>
+                  {{ end }}
+                {{ end }}
+              </div>
+            </div>
+
+      {{ end }}
+    </div>
+  </section>
+{{ end }}

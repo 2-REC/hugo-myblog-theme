@@ -39,7 +39,7 @@
         {{ partial "body/main-left" . }}
         <div class="wrapper" data-type="{{ .Type }}" data-kind="{{ .Kind }}">
             {{ partial "navbar/site-nav" . }}
-            {{ partial "header/site-header" . }}
+            {{ partial "header/main-header" . }}
             {{ block "main" . }}{{ end }}
             {{ partial "body/custom-body" . }}
             {{ partial "footer/site-footer" . }}

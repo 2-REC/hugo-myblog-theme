@@ -19,6 +19,24 @@ categories:
 series:
 - Themes Guide
 image: images/markdown.png
+header:
+  height: 235px
+  image: images/banner/hugo.png
+  copyright: "copyrighted image"
+  alignX: left
+  alignY: bottom
+  paddingX: 10px
+  paddingY: 10px
+  title:
+    titleColor:
+    titleShadow: true
+    titleFontSize: 25%
+  description:
+    descriptionColor:
+    descriptionShadow: false
+    descriptionCursive: true
+    descriptionFontSize: 10%
+  spaceBetweenTitleDescription: 5%
 ---
 
 This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.

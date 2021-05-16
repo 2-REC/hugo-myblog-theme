@@ -84,19 +84,13 @@
 * [ ] Gallery
     * [x] Add copyright label
         => as in portfolio theme
-    * [ ] Add another gallery ("drawings")
-        * VN flowers
-        * AB (?)
-        * "armoured" guy (?)
-        * Gorilla on bike
-        * gears (?)
-        * crazy machines (?)
 
 
 * [ ] Delete unused icons/svg
 
 * [ ] Sidebars
     * [ ] TOC in sidebar
+        * [ ] change text "what's on this page" to post title?
         * [ ] SET CSS/CLASS SIMILAR TO TAGS, etc (shouldn't use "bio" class)
     * [ ] See how to make sidebars code more generic (instead of copied for every type)
     * [ ] See how taxonomies are ordered
@@ -200,6 +194,14 @@
     * [ ] index.md: Set some content
 * [ ] posts
     * [ ] _index.md: adapt (?)
+  * [ ] Gallery
+    * [ ] Add another gallery ("drawings")
+        * VN flowers
+        * AB (?)
+        * "armoured" guy (?)
+        * Gorilla on bike
+        * gears (?)
+        * crazy machines (?)
 
 ### static
 * [ ] Change images (make basic simple examples)

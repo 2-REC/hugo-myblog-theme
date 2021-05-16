@@ -1,3 +1,4 @@
+{{/* TODO: add other page types? */}}
 {{ if .IsHome }}
   {{ $context := . }}
   {{ with $.Param "homeHeaderType" }}
@@ -7,6 +8,13 @@
       {{ else }}
         {{ partial "header/header-slide" (dict "context" $context "type" .) }}
       {{ end }}
+    </header>
+  {{ end }}
+{{ else if eq .Type "posts" }}
+  {{ $context := . }}
+  {{ with $.Param "header" }}
+    <header class="header">
+      {{ partial "header/header-post" (dict "context" $context) }}
     </header>
   {{ end }}
 {{ end }}

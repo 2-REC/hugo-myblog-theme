@@ -51,6 +51,10 @@ TODO: complete/rewrite/etc.
       * Default:
         * Title: "header-title-color-default"
         * Subtitle: "header-subtitle-color-default"
+  * Single
+    * Header
+      * Added header in single page with optional title and description (similar working than main header 'single' type)
+        TODO: detail more...
 
 * Images
   * Copyright

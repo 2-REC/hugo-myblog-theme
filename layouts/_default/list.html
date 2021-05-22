@@ -26,7 +26,7 @@
         {{ end }}
     {{ end }}
     <div class="list__main {{ if $enableSidebar }}{{ if eq $sidebarPosition "both" }}m{{ else if eq $sidebarPosition "left" }}mr{{ else }}lm{{ end }}{{ else }}lmr{{ end }}">
-        {{ if $.Param "enableBreadcrumb" }}
+        {{ if and ($.Param "enableBreadcrumb") (not ($.Param "disableBreadcrumbList")) }}
             {{ partial "body/breadcrumb" . }}
         {{ end }}
         <header class="list__header">

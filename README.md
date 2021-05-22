@@ -127,6 +127,14 @@ TODO: complete/rewrite/etc.
         name = "wechat"
         url = "images/donation/alipay-qrcode.png" (put the file at "root/static/images/donation/")
         qr = true
+* Breadcrumb
+  * Disable param for list page types (list & taxonomy)
+    => In "params":
+      - disableBreadcrumbList (default: false)
+      - disableBreadcrumbTaxo (default: false)
+  * Allow to use site's name or "Home" as the navigation root
+    => In "params":
+      - breadcrumbHomeSiteName (default: true)
 * Single page
   * Meta
     * Optional "modified" and "reading time" info fields

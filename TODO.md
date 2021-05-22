@@ -2,6 +2,12 @@
 
 ## PRIORITIES / CURRENT STATE
 
+* [ ] Body (common to page types)
+  * [ ] breadcrumb
+    * [ ] Add 'home' icon/font at beginning
+      * [ ] + set as optional?
+    * [ ] Reduce empty space between '/' and label
+
 * [ ] single page
     * [ ] set sections as optional
       * [ ] donations

@@ -31,7 +31,12 @@ homeHeaderType = "multi" # single, multi, custom
 showMobileMenuTerms = ["tags", "categories", "series"] #TODO: change "series" to "types"
 
 # body
-enableBreadcrumb = true
+# breadcrumb
+enableBreadcrumb = true # Default false
+#disableBreadcrumbList = true # Default false
+#disableBreadcrumbTaxo = true # Default false
+#breadcrumbHomeSiteName = false # Default true
+
 # single
 metaInfoEdit = true
 metaInfoReadingTime = true

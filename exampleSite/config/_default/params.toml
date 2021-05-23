@@ -35,7 +35,8 @@ showMobileMenuTerms = ["tags", "categories", "series"] #TODO: change "series" to
 enableBreadcrumb = true # Default false
 #disableBreadcrumbList = true # Default false
 #disableBreadcrumbTaxo = true # Default false
-#breadcrumbHomeSiteName = false # Default true
+breadcrumbHome = "both" # Default "both", values: "text", "icon", "both"
+breadcrumbHomeSiteName = false # Default true
 
 # single
 metaInfoEdit = true

@@ -1,8 +1,8 @@
-// TODO: adapt...?
 .breadcrumb {
+  //TODO: keep background + border-radius? (+margin/padding?)
   margin: 1rem;
   margin-bottom: 0;
-  padding: 0.5rem;
+  padding: 0.25rem;
   border-radius: 0.25rem;
   padding: auto;
   font-family: $title-font;
@@ -40,7 +40,7 @@
 
   li+li:before {
     padding-left: 0.5rem;    
-    content: "/\00a0";
+    content: ">\00a0";
     @include themify($themes) {
       color: themed('breadcrumb-item-color');
     }

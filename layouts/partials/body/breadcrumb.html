@@ -11,11 +11,19 @@
   {{ end }}
   <li {{ if eq .p1 .p2 }} class="is-active" {{ end }}>
     {{ if eq (len .p1.Title) 0 }}
-      {{ if or (not (isset site.Params "breadcrumbhomesitename")) (eq site.Params.breadcrumbHomeSiteName true) }}
-        <a href="{{ .p1.Permalink }}" class="capitalize">{{ .p1.Site.Title }}</a>
-      {{ else }}
-        <a href="{{ .p1.Permalink }}" class="capitalize">Home</a>
-      {{ end }}
+      <a href="{{ .p1.Permalink }}" class="capitalize">
+        {{ $val := "Home" }}
+        {{ if or (not (isset site.Params "breadcrumbhomesitename")) (eq site.Params.breadcrumbHomeSiteName true) }}
+          {{ $val = .p1.Site.Title }}
+        {{ end }}
+        {{ if eq site.Params.breadcrumbHome "both" }}
+          <span class="icon-home">{{ $val }}
+        {{ else if eq site.Params.breadcrumbHome "icon" }}
+          <span class="icon-home">
+        {{ else }}
+          {{ $val }}
+        {{ end }}
+      </a>
     {{ else if eq .p1 .p2 }}
       <span>{{ i18n (lower .p1.Title) | default .p1.Title }}</span>
     {{ else }}

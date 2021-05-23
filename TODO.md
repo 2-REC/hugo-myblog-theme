@@ -85,6 +85,7 @@
     * [ ] Generate font with Fontello
     * [ ] Make sure every icon is correct (eg problem with 'link' from font awesome)
     * [ ] 'Sync' svgs and font (have same icons available in both) (look at every icon used)
+    * [ ] In README: list icons (names + code - from '_icon_font.scss')
 
 
 * [ ] Gallery

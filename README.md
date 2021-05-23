@@ -69,6 +69,7 @@ TODO: complete/rewrite/etc.
 * General
   * Icons
     * Use of an 'icon-font' for icons in text (additionally to SVG tags)
+      TODO: list icons (names + code - from '_icon_font.scss')
 * Themes
   * More dynamic theme management.
     For each theme:
@@ -128,13 +129,16 @@ TODO: complete/rewrite/etc.
         url = "images/donation/alipay-qrcode.png" (put the file at "root/static/images/donation/")
         qr = true
 * Breadcrumb
+  * Allow to have icon or label (or both) for home link
+    => In "params":
+      - breadcrumbHome: values: "text", "icon", "both" (default: "text")
+  * Allow to use site's name or "Home" as the navigation root
+    => In "params":
+      - breadcrumbHomeSiteName (default: true)
   * Disable param for list page types (list & taxonomy)
     => In "params":
       - disableBreadcrumbList (default: false)
       - disableBreadcrumbTaxo (default: false)
-  * Allow to use site's name or "Home" as the navigation root
-    => In "params":
-      - breadcrumbHomeSiteName (default: true)
 * Single page
   * Meta
     * Optional "modified" and "reading time" info fields

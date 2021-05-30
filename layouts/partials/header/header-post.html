@@ -22,9 +22,17 @@
                          background-position: center;
                        {{ end }}
                        height: {{ $height }}px;">
-              {{ with .copyright }}
-              <p class="image__copyright">{{ . | markdownify }}</p>
+              {{ if or .caption .copyright }}
+                <div class="image__text">
+                  {{ if .caption }}
+                    <p class="inline-caption">{{ .caption | markdownify }}{{ if .copyright }}&nbsp;&ndash;{{ end }}</p>
+                  {{ end }}
+                  {{ with .copyright }}
+                    <p class="inline-copyright">{{ . | markdownify }}</p>
+                  {{ end }}
+                </div>
               {{ end }}
+
               {{ $header := . }}
 
               {{/* X Padding */}}

@@ -9,10 +9,12 @@ TODO: complete/rewrite/etc.
     - Only keep minimum, add as desired
         => For each language: scss file + entry in "_syntax.scss"
 - Gallery
-    - 3 modes: "one-by-one" (or "one"), "remote" and "at-once"
-        - one-by-one: "caption" field will be used for each image
-        - remote: Can additionally specify online images (by providing URL for "image" field)
-        - at-once: The "caption" field will not be used (default)
+    * Removed modes ("one-by-one", "remote" and "at-once")
+    * If "images" in front-matter: equivalent to "one-by-one" mode
+      * "image", "caption" and "copyright" (if present) fields will be used for each image
+      * If "image" starts with "http", the image will be considered as remote (online image)
+    * If no "images" in front-matter: equivalent to "at-once" mode
+      * Images obtained from "images" subdirectory
 * Recent posts
     * Added carousel from "Travelify" theme (uses "jQuery.cycle" library)
     * Added parameters for the slides transitions (transition effect, delay and duration)
@@ -56,12 +58,21 @@ TODO: complete/rewrite/etc.
       * Added header in single page with optional title and description (similar working than main header 'single' type)
         TODO: detail more...
 
-* Images
+* Footer
   * Copyright
-    * Field "copyright" to add a small label in bottom right of image mentioning the copyright
-      * Header
-      * Slider/carousel
-      * Gallery: Per image or global
+    * If 'copyright' defined in site config
+    * Params 'copyrightOptions'
+      * 'copyrightLink': Allow copyright owner to be a link. If not defined: no link
+      * 'copyrightOwner': Owner of the copyright. If not defined: 'myname' param is used instead
+      * 'copyrightStartYear': Allow range for copyright period. If not defined: only current year
+      * Removed copyright image
+
+* Images
+  * Field "copyright" to add a small label in bottom right of image mentioning the copyright
+    * Header
+    * Slider/carousel
+    * Gallery: Per image or global
+  * Idem with field "caption", added at left of copyright (if any)
 
 
 

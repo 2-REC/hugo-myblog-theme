@@ -36,7 +36,8 @@ header:
             size: cover
             repeat: no-repeat
             position: center
-        copyright: "internet image"
+        copyright: "No rights reserved"
+        caption: Icy window
         alignX: left
         alignY: top
         paddingX: 50px
@@ -62,6 +63,7 @@ header:
             size: cover
             repeat: no-repeat
             position: center
+        copyright: "No rights reserved"
         alignX: center
         alignY: center
         paddingX: -25%

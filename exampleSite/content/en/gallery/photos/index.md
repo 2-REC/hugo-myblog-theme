@@ -3,12 +3,11 @@ title: Photos
 date: 2019-10-31T10:20:16+09:00
 description: Photo Gallery
 type: gallery
-mode: ssss
 imagesCopyright: "2-REC"
 images:
   - image: images/bridge.jpg
     caption: Ninh Binh bridge
-    copyright: "other copyright test"
+    copyright: "other copyright"
   - image: images/coast.jpg
     caption: Porto coast
   - image: images/boat.jpg

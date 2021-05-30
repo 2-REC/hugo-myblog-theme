@@ -4,9 +4,8 @@
 
 * [ ] Body (common to page types)
   * [ ] breadcrumb
-    * [ ] Add 'home' icon/font at beginning
-      * [ ] + set as optional?
-    * [ ] Reduce empty space between '/' and label
+    * [x] Add 'home' icon/font at beginning
+      * [x] + set as optional
 
 * [ ] single page
     * [ ] set sections as optional
@@ -91,6 +90,9 @@
 * [ ] Gallery
     * [x] Add copyright label
         => as in portfolio theme
+    * [x] Remove "remote" gallery mode, and in "one-by-one" determine for each image if remote or not
+        => combine both
+    * [x] Remove gallery mode: if no "images" in front-matter => "at-once"
 
 
 * [ ] Delete unused icons/svg

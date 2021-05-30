@@ -1,16 +1,20 @@
 .image {
   //TODO: add other image specific CSS (move from other files)
 
-
-  &__copyright {
+  &__text {
     position: absolute;
-    bottom: 0;
-    right: 0;
+      bottom: 0;
+      right: 0;
 
     //margin: 0.1rem;
 //    padding: 0.2rem;
-padding-left: 0.2rem;
-padding-right: 0.2rem;
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
+
+    //TODO: set font!
+    //font-family: ...;
+    font-weight: 600;
+    font-size: .5em;
 
     //TODO: use theme colours?
     //color: black;
@@ -20,14 +24,15 @@ padding-right: 0.2rem;
       background-color: themed('gallery-mask-background-color');
     }
 
+    .inline-caption {
+      display: inline;
+    }
 
-    //TODO: set font!
-    //font-family: ...;
-    font-weight: 600;
-    font-size: .5em;
-
-    &::before {
-      content: "\00a9\2009"; /* Copyright symbol followed by a thin space character */
+    .inline-copyright {
+      display: inline;
+      &::before {
+        content: "\00a9\2009"; /* Copyright symbol followed by a thin space character */
+      }
     }
   }
 }

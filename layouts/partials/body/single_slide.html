@@ -5,8 +5,15 @@
         class="pngfix wp-post-image {{ if $.Site.Params.sliderInitZoom }}initzoom{{ end }} {{ if $.Site.Params.sliderZoom }}zoom{{ end }}"
         alt="{{ .Title }}"
         title="{{ .Title }}">
-    {{ with .Params.copyright }}
-    <p class="image__copyright">{{ . | markdownify }}</p>
+    {{ if or .Params.caption .Params.copyright }}
+      <div class="image__text">
+        {{ if .Params.caption }}
+          <p class="inline-caption">{{ .Params.caption | markdownify }}{{ if .Params.copyright }}&nbsp;&ndash;{{ end }}</p>
+        {{ end }}
+        {{ with .Params.copyright }}
+          <p class="inline-copyright">{{ . | markdownify }}</p>
+        {{ end }}
+      </div>
     {{ end }}
   </figure>
   <article class="featured-text">

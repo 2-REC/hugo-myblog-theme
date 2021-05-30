@@ -14,24 +14,22 @@
         {{ partial "footer/site-counter" . }}
         {{ if $.Site.Copyright }}        
             <p class="caption">
-                {{ if $.Site.Params.copyrightOptions.enableCopyrightLink }}
-                    {{ $leftString := replace (index (split $.Site.Copyright "{}") 0) "{year}" now.Year }}
-                    {{ $rightString := replace (index (split $.Site.Copyright "{}") 1) "{year}" now.Year }}
-
-                    {{ if and ($.Site.Params.copyrightOptions.copyrightLinkImage) ($.Site.Params.copyrightOptions.copyrightLinkText) }}
-                        <a rel="license" href="{{ $.Site.Params.copyrightOptions.copyrightLink }}" class="footer__copyright--img"><img alt="{{ $.Site.Params.copyrightOptions.copyrightLinkText }}" style="border-width:0" src="{{ $.Site.Params.copyrightOptions.copyrightLinkImage }}"/></a>{{ $leftString | markdownify }}<a rel="license" href="{{ $.Site.Params.copyrightOptions.copyrightLink }}">{{ $.Site.Params.copyrightOptions.copyrightLinkText }}</a>{{ $rightString | markdownify }}
-                    {{ else }}
-                        {{ $leftString | markdownify }}<a rel="license" href="{{ $.Site.Params.copyrightOptions.copyrightLink }}">{{ $.Site.Params.copyrightOptions.copyrightLinkText }}</a>{{ $rightString | markdownify }}
-                    {{ end }}
-                {{ else }}
-                    {{ with $.Site.Copyright }}{{ replace . "{year}" now.Year | markdownify}}{{ end }}
+                {{ $owner := $.Site.Params.myname }}
+                {{ with $.Site.Params.copyrightOptions.copyrightOwner }}
+                    {{ $owner = . }}
                 {{ end }}
+                {{ $year := now.Year }}
+                {{ with $.Site.Params.copyrightOptions.copyrightStartYear }}
+                    {{ $year = print . "-" $year }}
+                {{ end }}
+                {{ $leftString := replace (index (split $.Site.Copyright "{}") 0) "{year}" $year }}
+                {{ $rightString := replace (index (split $.Site.Copyright "{}") 1) "{year}" $year }}
+                {{ $link := $.Site.Params.copyrightOptions.copyrightLink }}
+                {{ $leftString | markdownify }}&nbsp;{{ with $link }}<a rel="license" href="{{ . }}">{{ end }}{{ $owner }}{{ if $link }}</a>{{ end }}{{ $rightString | markdownify }}
             </p>
         {{ end }}
-
         {{ if $.Param "showPoweredBy" }}
             <p class="caption">Powered by <a href="https://gohugo.io/" target="_blank" rel="noreferrer">Hugo</a> and <a href="https://github.com/2-REC/hugo-myblog-theme" target="_blank" rel="noreferrer">MyBlog Theme</a></p>
         {{ end }}
-        
     </div> 
 </footer>

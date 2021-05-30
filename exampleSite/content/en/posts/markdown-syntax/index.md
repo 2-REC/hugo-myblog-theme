@@ -22,7 +22,8 @@ image: images/markdown.png
 header:
   height: 235px
   image: images/banner/hugo.png
-  copyright: "copyrighted image"
+  copyright: "Hugo?"
+  caption: "'Hugons'"
   alignX: left
   alignY: bottom
   paddingX: 10px

@@ -271,11 +271,10 @@ enableBusuanzi = false
   link = ""
 
 # 2-REC: added in example
-[copyrightOptions]
-  enableCopyrightLink = false # if set, you can add copyright link
-  copyrightLink = ""
-  copyrightLinkImage = ""
-  copyrightLinkText = ""
+[copyrightOptions] # Footer
+  copyrightLink = "https://github.com/2-REC"
+  copyrightOwner = "2-REC"
+  copyrightStartYear = "2020"
 
 [slider]
   enable = true

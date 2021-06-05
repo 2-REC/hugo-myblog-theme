@@ -1,5 +1,4 @@
 {{ define "main" }}
-
 {{/* TODO: make sure it's ok... */}}
 {{/* 2-REC - SIDEBAR - BEGIN */}}
 {{/*
@@ -33,9 +32,6 @@
     {{ end }}
     <div class="single__main {{ if $enableSidebar }}{{ if eq $sidebarPosition "both" }}m{{ else if eq $sidebarPosition "left" }}mr{{ else }}lm{{ end }}{{ else }}lmr{{ end }}">
 {{/* 2-REC - SIDEBAR - END */}}
-        {{ if $.Param "enableBreadcrumb" }}
-            {{ partial "body/breadcrumb" . }}
-        {{ end }}
         {{ if $.Param "hideSingleContentsWhenJSDisabled" }}
         <noscript>
             <div class="single__nojs">
@@ -57,7 +53,6 @@
                 {{ partial "body/toc" . }}
                 {{ .Content }}
             </article>
-
             {{ partial "script/codeblock-script" . }}
             {{ partial "body/share" . }}
             {{ partial "body/donation" . }}
@@ -73,7 +68,6 @@
             {{/* 2-REC: removed search */}}
         </div>
     </div>
-
     {{/* 2-REC - SIDEBAR - MID */}}
     {{ if $enableSidebar }}
         {{ if or (eq $sidebarPosition "both") (eq $sidebarPosition "right") }}
@@ -84,7 +78,6 @@
     {{ end }}
     {{/* 2-REC - SIDEBAR - END */}}
 </main>
-
 {{ partial "script/sidebar-script" (dict "context" . "sidebarPosition" $sidebarPosition "sidebarSingle" true) }}
 {{ partial "script/single-script" . }}
 {{ end }}

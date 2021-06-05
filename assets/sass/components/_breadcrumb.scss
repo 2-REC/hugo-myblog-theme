@@ -1,9 +1,6 @@
 .breadcrumb {
-  //TODO: keep background + border-radius? (+margin/padding?)
-  margin: 1rem;
-  margin-bottom: 0;
+  margin: 0;
   padding: 0.25rem;
-  border-radius: 0.25rem;
   padding: auto;
   font-family: $title-font;
 
@@ -25,7 +22,8 @@
       @include themify($themes) {
         color: themed('breadcrumb-item-color');
         @include on-event {
-          color: themed('link-hover');
+          text-decoration: none;
+          color: themed('breadcrumb-item-hover-color');
         }
       }
     }

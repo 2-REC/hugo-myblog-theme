@@ -2,11 +2,6 @@
 
 ## PRIORITIES / CURRENT STATE
 
-* [ ] Body (common to page types)
-  * [ ] breadcrumb
-    * [x] Add 'home' icon/font at beginning
-      * [x] + set as optional
-
 * [ ] single page
     * [ ] set sections as optional
       * [ ] donations
@@ -52,6 +47,7 @@
       * [ ] navbar (lg selector+dropdown, etc)
       * [ ] ...
     * [ ] make new themes (colours, fonts, etc.)
+      * [ ] CHECK CONSISTENCY (all links same colours, deco, page consistent fonts, etc.)
     * [ ] add French content (posts, data, etc)
     * [ ] test/check everything
 

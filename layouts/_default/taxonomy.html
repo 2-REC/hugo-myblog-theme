@@ -1,5 +1,4 @@
 {{ define "main" }}
-
 {{ $enableSidebar := false }}
 {{ $enableSidebarRight := not ($.Param "disableSidebarRight") }}
 {{ $enableSidebarLeft := not ($.Param "disableSidebarLeft") }}
@@ -26,17 +25,12 @@
         {{ end }}
     {{ end }}
     <div class="list__main {{ if $enableSidebar }}{{ if eq $sidebarPosition "both" }}m{{ else if eq $sidebarPosition "left" }}mr{{ else }}lm{{ end }}{{ else }}lmr{{ end }}">
-    {{ if and ($.Param "enableBreadcrumb") (not ($.Param "disableBreadcrumbTaxo")) }}
-        {{ partial "body/breadcrumb" . }}
-    {{ end }}
-    <header class="list__header">
+    <div class="list__header">
       <h5 class="list__header--title capitalize h5">{{ .Title }}</h5>
-    </header>
-    
+    </div>
     <div class="list__header--desc p2">
       {{.Content}}
     </div>
-
     {{ $summaryShape := lower ($.Param "summaryShape") }}
     {{ if $.Param "summaryShapeTaxonomy" }}
         {{ $summaryShape = lower ($.Param "summaryShapeTaxonomy") }}
@@ -54,7 +48,6 @@
     {{ end }}
     {{/* 2-REC: removed search */}}
   </div>
-
   {{ if $enableSidebar }}
     {{ if or (eq $sidebarPosition "both") (eq $sidebarPosition "right") }}
       <aside class="list__sidebar_r r" data-dir="{{ $.Param "languagedir" | default "ltr" }}">
@@ -64,7 +57,6 @@
     {{ end }}
   {{ end }}
 </main>
-
 {{ partial "script/sidebar-script" (dict "context" . "sidebarPosition" $sidebarPosition "sidebarSingle" false) }}
 {{ partial "script/list-script" . }}
 {{ partial "script/taxo-script" . }}

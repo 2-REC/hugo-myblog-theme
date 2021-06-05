@@ -1,4 +1,3 @@
-{{/* TODO: add other page types? */}}
 {{ if .IsHome }}
   {{ $context := . }}
   {{ with $.Param "homeHeaderType" }}
@@ -12,9 +11,20 @@
   {{ end }}
 {{ else if eq .Type "posts" }}
   {{ $context := . }}
-  {{ with $.Param "header" }}
+  {{ if or ($.Param "header") $.Site.Params.enableBreadcrumb }}
     <header class="header">
-      {{ partial "header/header-post" (dict "context" $context) }}
+      {{ if $.Site.Params.enableBreadcrumb }}
+        {{ partial "body/breadcrumb" $context }}
+      {{ end }}
+      {{ with $.Param "header" }}
+        {{ partial "header/header-post" (dict "context" $context) }}
+      {{ end }}
+    </header>
+  {{ end }}
+{{ else if .IsNode }}
+  {{ if $.Param "enableBreadcrumb" }}
+    <header class="header">
+      {{ partial "body/breadcrumb" . }}
     </header>
   {{ end }}
 {{ end }}

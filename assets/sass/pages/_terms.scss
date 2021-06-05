@@ -23,6 +23,7 @@
 
   &__list {
     width: 50%;
+    justify-content: center;
 
     @include flexbox();
     @include align-items(center);

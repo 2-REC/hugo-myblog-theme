@@ -3,6 +3,8 @@
 ## PRIORITIES / CURRENT STATE
 
 * [ ] single page
+    * [ ] Header
+      * [ ] fix text overflow problems (on small display)
     * [ ] set sections as optional
       * [ ] donations
       * [ ] share
@@ -94,6 +96,9 @@
 * [ ] Delete unused icons/svg
 
 * [ ] Sidebars
+    * [ ] Add small offset at top of "floating" sidebar (currently aligned to navbar, need a small extra margin)
+    * [ ] thumbnail
+      * [ ] special class/type? (currently "bio_photo"
     * [ ] TOC in sidebar
         * [ ] change text "what's on this page" to post title?
         * [ ] SET CSS/CLASS SIMILAR TO TAGS, etc (shouldn't use "bio" class)

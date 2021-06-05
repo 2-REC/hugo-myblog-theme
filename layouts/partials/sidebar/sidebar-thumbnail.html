@@ -1,0 +1,14 @@
+{{/* TODO - 2-REC: CHANGE CLASS AS FOR TAGS, ETC! */}}
+<section class="bio" data-dir="{{ $.Param "languagedir" | default "ltr" }}">
+  {{ with $.Params.thumbnail }}
+  {{ $image := index ($.Resources.Match .) 0 }}
+{{/* TODO: other class:style? */}}
+  <img src="{{ $image }}" class="bio__photo"
+      alt="thumbnail" />
+  {{ end }}
+</section>
+{{/* TODO: want separator?
+{{ if $.Param "enableSidebarSeparator" }}
+<hr class="hr-fade sidebar-hr"/>
+{{ end }}
+*/}}

@@ -9,7 +9,9 @@
 <ul class="sidebar-float">
     {{ else }}
         {{/* 2-REC: removed search */}}
-        {{ if eq $value "bio" }}
+        {{ if eq $value "thumbnail" }}
+            {{ partial "sidebar/sidebar-thumbnail" $context.Page }}
+        {{ else if eq $value "bio" }}
             {{ partial "sidebar/site-bio" $context.Page }}
         {{ else if eq $value "toc" }}
             {{ partial "sidebar/sidebar-toc" $context.Page }}

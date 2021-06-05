@@ -85,10 +85,11 @@ organization = "Hugo"
 link = "https://somesite.org"
 
 # Sidebar
-# Allowed components: "bio", "top", "recent", "tags", "categories", "series", "-"
+#TODO: depends on page type! (=> specify!)
+# Allowed components: "thumbnail", "bio", "top", "recent", "tags", "categories", "series", "-"
 #sidebarHomeLeft = [ ... ] #TODO
 sidebarHomeRight = [ "bio", "top", "recent", "-", "tags", "categories", "series" ] #TODO
-sidebarSingleLeft = [ "-", "toc" ] #TODO
+sidebarSingleLeft = [ "thumbnail", "-", "toc" ] #TODO
 #sidebarSingleRight = [ "toc", "tags", "categories", "series" ] #TODO
 sidebarSingleRight = [ "-", "tags", "categories", "series" ] #TODO
 singleTaxonomies = true # default: false

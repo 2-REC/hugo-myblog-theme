@@ -19,6 +19,7 @@ categories:
 series:
 - Themes Guide
 image: images/markdown.png
+thumbnail: images/avatar.jpg
 header:
   height: 235px
   image: images/banner/hugo.png

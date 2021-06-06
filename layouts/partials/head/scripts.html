@@ -313,9 +313,7 @@
                   tocElem.querySelector('a[href="#' + id + '"]') ?
                     tocElem.querySelector('a[href="#' + id + '"]').classList.add('active') : null;
 
-                  if (false === tocFolding) {
-                    
-                  } else {
+                  if (true === tocFolding) {
                     tableOfContentsElem.querySelectorAll('ul') ?
                       tableOfContentsElem.querySelectorAll('ul').forEach(function (rootUl) {
                         rootUl.querySelectorAll('li').forEach(function (liElem) {
@@ -387,9 +385,7 @@
                   tocElem.querySelector('a[href="#' + id + '"]') ?
                     tocElem.querySelector('a[href="#' + id + '"]').classList.add('active') : null;
 
-                  if (false === tocFolding) {
-                    
-                  } else {
+                  if (true === tocFolding) {
                     tableOfContentsElem.querySelectorAll('ul') ?
                       tableOfContentsElem.querySelectorAll('ul').forEach(function (rootUl) {
                         rootUl.querySelectorAll('li').forEach(function (liElem) {
@@ -425,9 +421,7 @@
         }
 
         if (tableOfContentsElem && document.documentElement.scrollTop < 250) {
-          if (false === tocFolding) {
-
-          } else {
+          if (true === tocFolding) {
             tableOfContentsElem.querySelector('ul') ?
               tableOfContentsElem.querySelector('ul').querySelectorAll('li').forEach(function (liElem) {
                 liElem.querySelectorAll('ul').forEach(function (ulElem) {

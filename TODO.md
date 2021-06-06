@@ -100,7 +100,8 @@
     * [ ] thumbnail
       * [ ] special class/type? (currently "bio_photo"
     * [ ] TOC in sidebar
-        * [ ] change text "what's on this page" to post title?
+        * [ ] fix "offset" bug (current section should be at top of page)
+        * [ ] fix bug when post smaller than page, if click on a title the navbar disappear, and can't come back, as no scrolling...
         * [ ] SET CSS/CLASS SIMILAR TO TAGS, etc (shouldn't use "bio" class)
     * [ ] See how to make sidebars code more generic (instead of copied for every type)
     * [ ] See how taxonomies are ordered

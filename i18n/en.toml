@@ -36,7 +36,7 @@ other = "Jan 2, 2006"
 #other = "See Also"
 
 [toc-label]
-other = "What's on this Page"
+other = "{{ .Title }}"
 
 #[counter-site-pv]
 #other = "Total views"

@@ -110,7 +110,7 @@ enableSidebarSeries = true # Default: false
 enableSidebarCategories = true # Default: false
 enableToc = true #TODO: rename to enableSidebarToc
 tocLevels = ["h2", "h3", "h4"]
-tocFolding = true # collapse sub titles
+#tocFolding = true # collapse sub titles
 itemsPerCategory = 5 #TODO: set 1 for each component? (recent, top, etc.)
 
 

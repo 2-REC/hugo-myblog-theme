@@ -7,7 +7,13 @@
 //// MID
   top: 7rem;
   font-size: 0.85rem;
-  padding-left: 0.5rem;
+
+  &[data-dir="ltr"] {
+    padding-left: 0.5rem;
+  }
+  &[data-dir="rtl"] {
+    padding-right: 0.5rem;
+  }
   z-index: z('toc');
 
   &[data-ani="true"] {
@@ -27,7 +33,12 @@
 
     .toc__title {
       margin-top: 0.75rem;
-      margin-left: 0.5rem;
+      &[data-dir="ltr"] {
+        margin-left: 0.5rem;
+      }
+      &[data-dir="rtl"] {
+        margin-right: 0.5rem;
+      }
     }
   }
 
@@ -94,58 +105,23 @@
   }
 
   &[data-dir="ltr"] {
-    &[data-folding=true] {
-      @include themify($themes) {
-        a {
-          color: themed('toc-vertical-line');
-          position: relative;
+    @include themify($themes) {
+      a {
+        color: themed('toc-vertical-line');
+        position: relative;
+        text-indent: -1em;
 
-          &::before {
-            content: '';
-            height: 100%;
-            left: -1rem;
-            margin-top: -1px;
-            position: absolute;
-            width: 2px;            
-            background-color: themed('toc-vertical-line');
-            &:last-child {
-              background-color: transparent;
-            }
-          }
-        }
-          
-        .active {
-          color: themed('toc-vertical-line-active');
-          font-weight: 700;
-          &::before {
-            background-color: themed('toc-vertical-line-active');
-          }
+        &::before {
+          content: '\2022';
+          height: 100%;
+          font-weight: 1000;
+          position: absolute;
         }
       }
-    }
 
-    &[data-folding=false] {
-      @include themify($themes) {
-        a {
-          color: themed('toc-vertical-line');
-
-          &.active {
-            color: themed('toc-vertical-line-active');
-            
-            &::before {
-              background-color: themed('toc-vertical-line-active');
-              content: '';
-              height: 0.95rem;
-              left: -1rem;
-              margin-top: 2px;
-              position: absolute;
-              width: 2px;            
-              &:last-child {
-                background-color: transparent;
-              }
-            }
-          }
-        }   
+      .active {
+        color: themed('toc-vertical-line-active');
+        font-weight: 700;
       }
     }
 
@@ -153,8 +129,8 @@
       @include themify($themes) {
         li {        
           li {
-            margin-left: 1rem;
-            color: themed('sidebar-li-color');      
+            margin-left: .5rem;
+            color: themed('sidebar-li-color');
           }  
         }
       }
@@ -162,59 +138,23 @@
   }
 
   &[data-dir="rtl"] {
-    &[data-folding=true] {
+    @include themify($themes) {
       a {
-        color: inherit;
+        color: themed('toc-vertical-line');
         position: relative;
+        text-indent: -1em;
+
         &::before {
-          @include themify($themes) {        
-            background-color: themed('toc-vertical-line');
-          }      
-          content: '';
+          content: '\2022';
           height: 100%;
-          right: -1rem;
-          margin-top: -1px;
+          font-weight: 1000;
           position: absolute;
-          width: 2px;            
-          &:last-child {
-            background-color: transparent;
-          }
         }
       }
 
       .active {
-        @include themify($themes) {
-          color: themed('link-hover');
-          font-weight: 700;
-          &::before {        
-            background-color: themed('toc-vertical-line-active');
-          }
-        }
-      }
-    }
-
-    &[data-folding=false] {
-      @include themify($themes) {
-        a {
-          color: themed('toc-vertical-line');
-
-          &.active {
-            color: themed('toc-vertical-line-active');
-            
-            &::before {
-              background-color: themed('toc-vertical-line-active');
-              content: '';
-              height: 0.95rem;
-              right: -1rem;
-              margin-top: 2px;
-              position: absolute;
-              width: 2px;            
-              &:last-child {
-                background-color: transparent;
-              }
-            }
-          }
-        }   
+        color: themed('toc-vertical-line-active');
+        font-weight: 700;
       }
     }
 
@@ -222,8 +162,8 @@
       @include themify($themes) {
         li {
           li {
-            margin-right: 1rem;
-            color: themed('sidebar-li-color');      
+            margin-right: .5rem;
+            color: themed('sidebar-li-color');
           }  
         }
       }
@@ -233,7 +173,7 @@
   ul {
     @include themify($themes) {
       a {
-        color: themed('toc-title-color');        
+        color: themed('toc-title-color');
         &.active {
           color: themed('toc-vertical-line-active');
         }

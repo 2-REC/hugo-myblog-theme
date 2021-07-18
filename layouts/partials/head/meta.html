@@ -1,6 +1,7 @@
 {{ range .AlternativeOutputFormats }}
 <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" title="{{ .Name }}" href="{{ .Permalink | safeURL }}">
 {{ end }}
+<meta name="application-name" content="{{ .Site.Title }}">
 <meta name="description" content="{{ $.Param "description" }}" />
 {{ with $.Params.keywords }}
 <meta name="keywords" content="{{ delimit $.Params.keywords "," }}">
@@ -90,45 +91,27 @@
   {{ end }}
 {{ end }}
 {{ hugo.Generator }}
-<meta name="msapplication-TileColor" content="{{ $.Scratch.Get "themeTitleColor" | default "#fff" }}">
-<!-- Chrome, Firefox OS and Opera -->
-<meta name="theme-color" content="{{ $.Scratch.Get "themeNavbarColor" | default "#fff" }}">
-<!-- Windows Phone -->
-<meta name="msapplication-navbutton-color" content="{{ $.Scratch.Get "themeNavbarColor" | default "#fff" }}">
-<!-- iOS Safari -->
-<meta name="apple-mobile-web-app-status-bar-style" content="{{ $.Scratch.Get "themeNavbarColor" | default "#fff" }}">
 {{ if $.Param "canonicalUrl" }}
 <link rel="canonical" href="{{ $.Param "canonicalUrl" | absLangURL }}">
 {{ else }}
 <link rel="canonical" href="{{ .Permalink | absLangURL }}">
 {{ end }}
+<!-- Colors and icons -->
+{{/* TODO: set Scratch values somewhere! */}}
+<meta name="msapplication-TileColor" content="{{ $.Scratch.Get "themeTitleColor" | default "#fff" }}">
+<meta name="msapplication-navbutton-color" content="{{ $.Scratch.Get "themeNavbarColor" | default "#fff" }}">
+<meta name="theme-color" content="{{ $.Scratch.Get "themeNavbarColor" | default "#fff" }}">
+<meta name="apple-mobile-web-app-status-bar-style" content="{{ $.Scratch.Get "themeNavbarColor" | default "#fff" }}">
 <link rel="manifest" href="{{ "manifest.json" | relURL }}">
-{{ if $.Site.Params.useFaviconGenerator }}
-  {{/* TODO: see if use all those sizes (+change dir to "logo" (?)) */}}
-  <link rel="apple-touch-icon" sizes="57x57" href="{{ "favicon/apple-icon-57x57.png" | relURL }}">
-  <link rel="apple-touch-icon" sizes="60x60" href="{{ "favicon/apple-icon-60x60.png" | relURL }}">
-  <link rel="apple-touch-icon" sizes="72x72" href="{{ "favicon/apple-icon-72x72.png" | relURL }}">
-  <link rel="apple-touch-icon" sizes="76x76" href="{{ "favicon/apple-icon-76x76.png" | relURL }}">
-  <link rel="apple-touch-icon" sizes="114x114" href="{{ "favicon/apple-icon-114x114.png" | relURL }}">
-  <link rel="apple-touch-icon" sizes="120x120" href="{{ "favicon/apple-icon-120x120.png" | relURL }}">
-  <link rel="apple-touch-icon" sizes="144x144" href="{{ "favicon/apple-icon-144x144.png" | relURL }}">
-  <link rel="apple-touch-icon" sizes="152x152" href="{{ "favicon/apple-icon-152x152.png" | relURL }}">
-  <link rel="apple-touch-icon" sizes="180x180" href="{{ "favicon/apple-icon-180x180.png" | relURL }}">
-  <link rel="icon" type="image/png" sizes="192x192" href="{{ "favicon/android-icon-192x192.png" | relURL }}">
-  <link rel="icon" type="image/png" sizes="192x192" href="{{ "favicon/android-icon-512x512.png" | relURL }}">
-  <link rel="icon" type="image/png" sizes="32x32" href="{{ "favicon/favicon-32x32.png" | relURL }}">
-  <link rel="icon" type="image/png" sizes="96x96" href="{{ "favicon/favicon-96x96.png" | relURL }}">
-  <link rel="icon" type="image/png" sizes="16x16" href="{{ "favicon/favicon-16x16.png" | relURL }}">
-  <meta name="msapplication-TileColor" content="#ffffff">
-  <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
-{{ else }}
-  {{ if (fileExists "static/apple-touch-icon.png") -}}
-  <link rel="apple-touch-icon" href="{{ "apple-touch-icon.png" | relURL }}">
-  {{- end }}
-  <link rel="shortcut icon" href="{{ "logo/favicon.ico" | relURL }}" type="image/x-icon">
-  <link rel="icon" href="{{ "logo/favicon.png" | relURL }}" sizes="any" type="image/png" />
-  {{/* TODO: need "static"? */}}
-  {{ if (fileExists "static/logo/logo.svg") -}}
-  <link rel="icon" href="{{ "logo.svg" | relURL }}" sizes="any" type="image/svg+xml" />
-  {{- end }}
-{{ end }}
+{{/* TODO: add meta for tag "msapplication-config"? */}}
+{{ if (fileExists "static/logo/ms-icon.png") -}}
+<meta name="msapplication-TileImage" content="logo/ms-icon.png">
+{{- end }}
+{{ if (fileExists "static/logo/apple-touch-icon.png") -}}
+<link rel="apple-touch-icon" href="{{ "logo/apple-touch-icon.png" | relURL }}">
+{{- end }}
+<link rel="shortcut icon" href="{{ "logo/favicon.ico" | relURL }}" type="image/x-icon">
+<link rel="icon" href="{{ "logo/favicon.png" | relURL }}" sizes="any" type="image/png" />
+{{ if (fileExists "static/logo/logo.svg") -}}
+<link rel="icon" href="{{ "logo/logo.svg" | relURL }}" sizes="any" type="image/svg+xml" />
+{{- end }}

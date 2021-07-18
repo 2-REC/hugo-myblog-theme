@@ -2,6 +2,8 @@
 
 ## PRIORITIES / CURRENT STATE
 
+* [ ] ADD FR IN i18n!
+
 * [ ] single page
     * [ ] Header
       * [ ] fix text overflow problems (on small display)

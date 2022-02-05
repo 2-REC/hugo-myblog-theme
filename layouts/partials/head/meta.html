@@ -21,75 +21,76 @@
 {{/* Advised not to be used (against spam robots)
 {{ with $.Param "contact" }}<meta name="contact" content="{{ . }}">{{ end }}
 */}}
+<!-- Facebook -->
 <meta property="og:site_name" content="{{ .Site.Title }}">
 <meta property="og:title" content="{{ .Title }}">
 <meta property="og:url" content="{{ .Permalink | absLangURL }}">
+{{/* TODO: handle more types? */}}
 <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
 <meta property="og:description" content="{{ $.Param "description" }}">
+{{/* TODO: rewrite to avoid having same block 3 times... */}}
 {{ if .Params.meta_image }}
   {{ with .Params.meta_image }}
     <meta property="og:image" content="{{ . | absURL }}">
+    {{/* TODO: use 'title' or add "image_alt" in params?
+    <meta property="og:image:alt" content="!" />
+    */}}
     {{/* TODO: useless? => Identical to 'og:image'
     <meta property="og:image:url" content="{{ . | absURL }}">
-    */}}
-    <meta name="twitter:card" content="summary_large_image">
-    {{/* TODO: use this? with 'title'? */}}
-    <meta name="twitter:image:alt" content="{{ $.Param "title" }}">
-    {{/* TODO: useless? => for 'app' cards?
-    <meta name="twitter:app:name:iphone" content="{{ $.Site.Title }}">
-    */}}
-    {{/* TODO: useless? (can use 'og' tags)
-    <meta property="twitter:title" content="{{ $.Param "title" }}">
-    <meta property="twitter:description" content="{{ $.Param "description" }}">
-    */}}
-    {{/* TODO: use analytics?
-    <meta property="fb:app_id" content="your_app_id..." />
-    <meta name="twitter:site" content="@website-username...">
     */}}
   {{ end }}
 {{ else if .Params.image }}
   {{ with .Params.image }}
     <meta property="og:image" content="{{ . | absURL }}">
+    {{/* TODO: use 'title' or add "image_alt" in params?
+    <meta property="og:image:alt" content="!" />
+    */}}
     {{/* TODO: useless? => Identical to 'og:image'
     <meta property="og:image:url" content="{{ . | absURL }}">
-    */}}
-    <meta name="twitter:card" content="summary_large_image">
-    {{/* TODO: use this? with 'title'? */}}
-    <meta name="twitter:image:alt" content="{{ $.Param "title" }}">
-    {{/* TODO: useless? => for 'app' cards?
-    <meta name="twitter:app:name:iphone" content="{{ $.Site.Title }}">
-    */}}
-    {{/* TODO: useless? (can use 'og' tags)
-    <meta property="twitter:title" content="{{ $.Param "title" }}">
-    <meta property="twitter:description" content="{{ $.Param "description" }}">
-    */}}
-    {{/* TODO: use analytics?
-    <meta property="fb:app_id" content="your_app_id..." />
-    <meta name="twitter:site" content="@website-username...">
     */}}
   {{ end }}
 {{ else if $.Param "meta_image" }}
   {{ with $.Param "meta_image" }}
     <meta property="og:image" content="{{ . | absURL }}">
+    {{/* TODO: use 'title' or add "image_alt" in params?
+    <meta property="og:image:alt" content="!" />
+    */}}
     {{/* TODO: useless? => Identical to 'og:image'
     <meta property="og:image:url" content="{{ . | absURL }}">
     */}}
-    <meta name="twitter:card" content="summary_large_image">
-    {{/* TODO: use this? with 'title'? */}}
-    <meta name="twitter:image:alt" content="{{ $.Param "title" }}">
-    {{/* TODO: useless? => for 'app' cards?
-    <meta name="twitter:app:name:iphone" content="{{ $.Site.Title }}">
-    */}}
-    {{/* TODO: useless? (can use 'og' tags)
-    <meta property="twitter:title" content="{{ $.Param "title" }}">
-    <meta property="twitter:description" content="{{ $.Param "description" }}">
-    */}}
-    {{/* TODO: use analytics?
-    <meta property="fb:app_id" content="your_app_id..." />
-    <meta name="twitter:site" content="@website-username...">
-    */}}
   {{ end }}
 {{ end }}
+{{/* TODO: Later, if use Facebook app
+<meta property="fb:app_id" content="your_app_id..." />
+*/}}
+<!-- Twitter -->
+{{/* TODO: use get from config => if post: "creator"+name, else "site"+site_name
+<meta name="twitter:site" content="@website-username...">
+*/}}
+{{/* TODO: useless? (can use 'og' tags) */}}
+<meta property="twitter:title" content="{{ $.Param "title" }}">
+<meta property="twitter:description" content="{{ $.Param "description" }}">
+<meta name="twitter:card" content="summary_large_image">
+{{/* TODO: rewrite to avoid having same block 3 times... */}}
+{{ if .Params.meta_image }}
+  {{ with .Params.meta_image }}
+    {{/* TODO: check for specific twitter image if exist */}}
+    <meta name="twitter:image" content="{{ . | absURL }}">
+  {{ end }}
+{{ else if .Params.image }}
+  {{ with .Params.image }}
+    {{/* TODO: check for specific twitter image if exist */}}
+    <meta name="twitter:image" content="{{ . | absURL }}">
+  {{ end }}
+{{ else if $.Param "meta_image" }}
+  {{ with $.Param "meta_image" }}
+    {{/* TODO: check for specific twitter image if exist */}}
+    <meta name="twitter:image" content="{{ . | absURL }}">
+  {{ end }}
+{{ end }}
+{{/* TODO: use this? with 'title'? */}}
+{{/* TODO: use same as "og": "image_alt"? */}}
+<meta name="twitter:image:alt" content="{{ $.Param "title" }}">
 {{ hugo.Generator }}
 {{ if $.Param "canonicalUrl" }}
 <link rel="canonical" href="{{ $.Param "canonicalUrl" | absLangURL }}">

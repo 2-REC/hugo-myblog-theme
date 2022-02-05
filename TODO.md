@@ -1,5 +1,95 @@
 # TODO
 
+
+##################
+2021/07/18
+
+- [ ] Head - meta
+  => infos:
+        https://socialdebug.com/tags/open-graph
+        https://ogp.me/
+        https://css-tricks.com/essential-meta-tags-social-media/
+        https://kaydee.net/blog/open-graph-image/
+  - [ ] Force "meta_image" in site params (for FB+twitter)
+  - [ ] MAKE SURE EVERYTHING IS OK! (no new bugs or missing stuff)
+  - [ ] See results once publishing posts on FB/etc, and see what needs to add/adapt
+  - [ ] ? - Add "og:locale" + "og:locale:alternate" with "content" determined from config?
+  - [ ] ? - image, vide, audio?
+
+  - [ ] og:image
+        The URL of the image for your object.
+        It should be at least 600×315 pixels, but 1200×630 or larger is preferred (up to 5MB).
+        Stay close to a 1.91:1 aspect ratio to avoid cropping.
+  - [ ] og:image:alt! => use title or ADD "image_alt" PARAM?
+  - [ ] twitter:image
+        A URL to a unique image representing the content of the page.
+        You should not use a generic image such as your website logo, author photo,
+         or other image that spans multiple pages.
+        Images for this Card should be at least 280px in width, and at least 150px in height.
+        Image must be less than 1MB in size.
+  - [] "twitter" + "og" tags?
+    => can use "og" for twitter as well, except image should be different
+        <meta property="og:title" content="European Travel Destinations">
+        <meta property="og:description" content="Offering tour packages for individuals or groups.">
+        <meta property="og:image" content="http://euro-travel-example.com/thumbnail.jpg">
+        <meta property="og:url" content="http://euro-travel-example.com/index.htm">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:image" content="http://euro-travel-example.com/thumbnail_twitter.jpg">
+        For a perfect fit, create separate images for the Open Graph image and the Twitter Card image.
+        It doesn’t take long to resize an OG image to a Twitter Card image.
+        Twitter Card image size should be 1024 pixels by 512 pixels.
+    => Check for specific twitter image if exist (=> Add "image_twitter" in page+site params)
+  - [ ] twitter:image:alt! => use same as for "og" ("image_alt") (or title)
+  - [ ] validate twitter card before publish
+    https://twitter.com/login?redirect_after_login=https%3A%2F%2Fcards-dev.twitter.com%2Fvalidator
+
+- [ ] ADD TO README => "Create a site using the theme"
+  - Create a new repository for the website
+  - Create the new Hugo site
+    ```
+    hugo new site my_website
+    ```
+    where 'my_website' is the local directory where the site will be created.
+  - Copy and adapt the configuration files
+  
+  config/_default
+    config.toml
+      => ... TODO!
+    languages.toml
+      => define languages
+    params.toml
+      => ... TODO!
+  
+    - for each language defined in 'languages.toml':
+      menus.en.toml
+      => set menus + names
+  
+  static
+    manifest.json
+      => For Android support if want to make shortcut/app
+    logos
+      => Add own logos
+      Required:
+      - favicon.ico
+      - favicon.png
+      - logo.png
+      Optional:
+      - logo.svg
+      - Android
+        as defined in "manifest.json"
+      - Apple
+        static/logo/apple-touch-icon.png
+      - Windows
+        static/logo/ms-icon.png
+
+
+- [ ] Toc:
+  - check/remove data-folding if not used
+  - clean css
+  - check toc in single page body
+
+##################
+
 ## PRIORITIES / CURRENT STATE
 
 * [ ] ADD FR IN i18n!
@@ -324,8 +414,6 @@ LATER:
             => Look at: https://brianli.com/how-to-create-a-contact-form-in-hugo-with-netlify-forms/
     * [ ] body
         * [ ] baseof: Purpose? => Same file as in "_default" (can ignore/delete?)
-    * [ ] head
-        * [ ] meta: Set "logo" location as parameter (instead of hardcoded "/logo/...")
     * [ ] navbar
         * [ ] site-nav: Set "logo" image as parameter (instead of hardcoded "/logo/logo.png")
     * [ ] sidebar

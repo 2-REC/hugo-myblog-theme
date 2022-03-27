@@ -46,7 +46,6 @@
     {{ else }}
     {{ partial "summary/tiles" (dict "context" . "pages" $pages) }}
     {{ end }}
-    {{/* 2-REC: removed search */}}
   </div>
   {{ if $enableSidebar }}
     {{ if or (eq $sidebarPosition "both") (eq $sidebarPosition "right") }}

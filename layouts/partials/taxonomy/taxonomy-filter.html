@@ -1,9 +1,10 @@
-{{ if $.Param "enableSidebarSearch" }}
+{{ $search_pages := where .Site.Pages "Section" "search" }}
+{{ if and (gt (len $search_pages) 0) ($.Param "enableSidebarSearch") }}
 <div class="taxo">
     <section>
         <span class="title p2">
-            <a href="{{ "/search" | relLangURL }}" class="taxo__title">
-                Search
+            <a href="{{ "/search/" | relLangURL }}" class="taxo__title">
+                {{ i18n "search" }}
             </a>
         </span>
     </section>

@@ -8,7 +8,6 @@
 </ul>
 <ul class="sidebar-float">
     {{ else }}
-        {{/* 2-REC: removed search */}}
         {{ if eq $value "bio" }}
             {{ partial "sidebar/site-bio" $context.Page }}
         {{ else if eq $value "custom" }}

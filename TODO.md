@@ -3,13 +3,19 @@
 
 ##################
 2022/02/13
+- [ ] Search
+  - [ ] make sure no unused elements left (files, references, styles, etc.)
+  - [ ] rename elements still used but not relateo search (eg: 'search-border-cor' (?))
 - [ ] "taxo-filter"
+  - [ ] ADAPT CSS to rest of theme!
+  - [x] add param to make filter/search optional
+    => not a param, but check if "searh" page exist in content
   - [ ] Bug with summary "tiles"
     => Using "hack" to force rearrange, but has issue of tiles not aligning well (if different heights)
     - [ ] Use different lib/js than "pointyfar"
       - [ ] look at "extended" method:
         https://gronskiy.com/posts/filtering-posts-over-multiple-taxonomies-hugo/
-      - [ ] heck "Shuffle JS", if static
+      - [ ] Check "Shuffle JS", if static
         https://vestride.github.io/Shuffle/
   - [ ] add disclaimer to "pointyfar" (as long as using his code)
     https://github.com/pointyfar/hugo-tags-filter

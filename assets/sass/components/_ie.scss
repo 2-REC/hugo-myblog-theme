@@ -48,31 +48,6 @@
     }
   }
 
-// 2-REC: Removed search
-//  #search.input {
-//    @include themify($themes) {
-//      background-color: themed("search-background-color");
-//    }
-//  }
-//
-//  .search {
-//    .input {
-//      &::-ms-clear {
-//        display: none;
-//      }
-//    }
-//  }
-//
-//  .mobile-search {
-//    &__top {
-//      &--input {
-//        &::-ms-clear {
-//          display: none;
-//        }
-//      }
-//    }
-//  }
-
   pre.chroma {
     &:first-child {
       border: 6px solid transparent;

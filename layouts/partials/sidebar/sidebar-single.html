@@ -8,7 +8,6 @@
 </ul>
 <ul class="sidebar-float">
     {{ else }}
-        {{/* 2-REC: removed search */}}
         {{ if eq $value "thumbnail" }}
             {{ partial "sidebar/sidebar-thumbnail" $context.Page }}
         {{ else if eq $value "bio" }}

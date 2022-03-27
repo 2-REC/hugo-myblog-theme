@@ -3,6 +3,7 @@ title: Photos
 date: 2019-10-31T10:20:16+09:00
 description: Photo Gallery
 type: gallery
+tags: ["example"]
 imagesCopyright: "2-REC"
 images:
   - image: images/bridge.jpg

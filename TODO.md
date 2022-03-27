@@ -2,8 +2,23 @@
 
 
 ##################
-2021/07/18
+2022/02/13
+- [ ] "taxo-filter"
+  - [ ] Bug with summary "tiles"
+    => Using "hack" to force rearrange, but has issue of tiles not aligning well (if different heights)
+    - [ ] Use different lib/js than "pointyfar"
+      - [ ] look at "extended" method:
+        https://gronskiy.com/posts/filtering-posts-over-multiple-taxonomies-hugo/
+      - [ ] heck "Shuffle JS", if static
+        https://vestride.github.io/Shuffle/
+  - [ ] add disclaimer to "pointyfar" (as long as using his code)
+    https://github.com/pointyfar/hugo-tags-filter
+- [ ] "recent carousel"
+  - [ ] bug? => when resizing, warning message from "cycle":
+    [cycle] options not found, "prev/next" ignored
 
+
+2021/07/18
 - [ ] Head - meta
   => infos:
         https://socialdebug.com/tags/open-graph

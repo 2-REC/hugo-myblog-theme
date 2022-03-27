@@ -1,0 +1,62 @@
+<!--<script src="{{ "vendor/htf/hugotagsfilter-1.2.2.min.js" | relURL}}"></script>-->
+<script src="{{ "hugotagsfilter.js" | relURL}}"></script>
+<script>
+var htfConfig = {
+  filters: [
+    {
+      name: 'tags',
+      prefix: 'tag-',
+      buttonClass: 'tag-button',
+      allSelector: '#selectAllTags',
+      attrName: 'data-tags',
+      selectedPrefix: 'stags-',
+      countPrefix: 'ctags-'
+    },
+    {
+      name: 'categories',
+      prefix: 'category-',
+      buttonClass: 'category-button',
+      allSelector: '#selectAllCategories',
+      attrName: 'data-categories',
+      selectedPrefix: 'scategories-',
+      countPrefix: 'ccategories-'
+    },
+    {
+      name: 'series',
+      prefix: 'serie-',
+      buttonClass: 'serie-button',
+      allSelector: '#selectAllSeries',
+      attrName: 'data-series',
+      selectedPrefix: 'sseries-',
+      countPrefix: 'cseries-'
+    },
+    {
+      name: 'section',
+      prefix: 'sect-',
+      buttonClass: 'sect-button',
+      allSelector: '#selectAllSections',
+      attrName: 'data-section',
+      selectedPrefix: 'ssect-',
+      countPrefix: 'csect-'
+      
+    },
+    {
+      name: 'authors',
+      prefix: 'auth-',
+      buttonClass: 'auth-button',
+      allSelector: '#selectAllAuthors',
+      attrName: 'data-authors',
+      selectedPrefix: 'sauth-',
+      countPrefix: 'cauth-'
+      
+    }
+  ],
+  showItemClass: "show-item",
+  filterItemClass: "tf-filter-item",
+  activeButtonClass: "active",
+  counterSelector: "selectedItemCount",
+  populateCount: true,
+  setDisabledButtonClass: "disable-button"
+} 
+var htf = new HugoTagsFilter(htfConfig);
+</script>

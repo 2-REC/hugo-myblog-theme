@@ -17,6 +17,9 @@ other = "Categories"
 [series]
 other = "Series"
 
+[search]
+other = "Search"
+
 #[archive-dateformat]
 #other = "Jan 2"
 #

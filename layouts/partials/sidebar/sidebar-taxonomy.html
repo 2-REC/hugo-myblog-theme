@@ -29,6 +29,8 @@
             {{ partial "taxonomy/taxonomy-categories" $context.Page }}
         {{ else if eq $value "series" }}
             {{ partial "taxonomy/taxonomy-series" $context.Page }}
+        {{ else if eq $value "search" }}
+            {{ partial "taxonomy/taxonomy-filter" $context.Page }}
         {{ else }}
             <script>
             var value = JSON.parse({{ $value | jsonify }});

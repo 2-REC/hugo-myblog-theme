@@ -1,0 +1,228 @@
+{{ define "main" }}
+{{/* TODO: handle different specific sidebar */}}
+{{ $enableSidebar := false }}
+{{ $enableSidebarRight := not ($.Param "disableSidebarRight") }}
+{{ $enableSidebarLeft := not ($.Param "disableSidebarLeft") }}
+{{ $sidebarPosition := "none" }}
+{{ if and $enableSidebarRight ($.Param "sidebarTaxonomyRight") }}
+  {{ $enableSidebar = true }}
+  {{ if and $enableSidebarLeft ($.Param "sidebarTaxonomyLeft") }}
+    {{ $sidebarPosition = "both" }}
+  {{ else }}
+    {{ $sidebarPosition = "right" }}
+  {{ end }}
+{{ else }}
+  {{ if and $enableSidebarLeft ($.Param "sidebarTaxonomyLeft") }}
+    {{ $enableSidebar = true }}
+    {{ $sidebarPosition = "left" }}
+  {{ end }}
+{{ end }}
+
+{{/* TODO: MOVE TO CSS/SCSS! */}}
+<style>
+/*** Important ***/
+.tf-filter-item {
+    display: none;
+}
+
+button.active {
+    background-color: #ddd;
+}
+
+button.disable-button {
+    border-style: dashed;
+}
+
+.show-item {
+    display: block;
+}
+</style>
+
+<main class="main inner" data-sidebar-position={{$sidebarPosition}}>
+  {{ if $enableSidebar }}
+    {{ if or (eq $sidebarPosition "both") (eq $sidebarPosition "left") }}
+{{/* TODO: handle different specific sidebar */}}
+    <aside class="list__sidebar_l l" data-dir="{{ $.Param "languagedir" | default "ltr" }}">
+      {{ partial "sidebar/sidebar-taxonomy" (dict "context" . "sidebarComponents" "sidebarTaxonomyLeft") }}
+    </aside>
+    {{ end }}
+  {{ end }}
+  <div class="list__main {{ if $enableSidebar }}{{ if eq $sidebarPosition "both" }}m{{ else if eq $sidebarPosition "left" }}mr{{ else }}lm{{ end }}{{ else }}lmr{{ end }}">
+  <div class="list__header">
+    <h5 class="list__header--title capitalize h5">{{ .Title }}</h5>
+  </div>
+  <div class="list__header--desc p2">
+    {{.Content}}
+  </div>
+  {{ $summaryShape := lower ($.Param "summaryShape") }}
+  {{ if $.Param "summaryShapeTaxonomy" }}
+    {{ $summaryShape = lower ($.Param "summaryShapeTaxonomy") }}
+  {{ end }}
+
+  {{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
+{{/* TODO: paginator? (issues with filters => only on current page */}}
+{{/*
+  {{ $paginator := .Paginate $pages }}
+  {{ $pages = $paginator.Pages }}
+*/}}
+
+  {{ $sections := .Site.Params.mainSections }}
+
+  {{ $authors := (slice ) }}
+  {{ $no_authors := 0 }}
+
+  {{ range where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
+    {{ with .Params.author }}
+      {{ if eq ( printf "%T" . ) "string"  }}
+        {{ if ( not ( in $authors . ) ) }}
+          {{ $authors = $authors | append . }}
+        {{ end }}
+      {{ else if ( printf "%T" . ) "[]string" }}
+        {{ range . }}
+          {{ if ( not ( in $authors . ) ) }}
+            {{ $authors = $authors | append . }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+    {{ else }}
+      {{ $no_authors = add $no_authors 1 }}
+    {{ end }}
+  {{ end }}
+
+  {{ $tags := $.Site.Taxonomies.tags.ByCount }}
+  {{ $untagged := 0 }}
+  {{ range $pages }}
+    {{ with .Params.tags }}{{ else }}{{ $untagged = add $untagged 1 }}{{ end }}
+  {{ end }}
+
+  {{ $categories := $.Site.Taxonomies.categories.ByCount }}
+  {{ $uncategoried := 0 }}
+  {{ range $pages }}
+    {{ with .Params.categories }}{{ else }}{{ $uncategoried = add $uncategoried 1 }}{{ end }}
+  {{ end }}
+
+  {{ $series := $.Site.Taxonomies.series.ByCount }}
+  {{ $unseried := 0 }}
+  {{ range $pages }}
+    {{ with .Params.series }}{{ else }}{{ $unseried = add $unseried 1 }}{{ end }}
+  {{ end }}
+
+  <hr>
+  <div class="tf-wrapper">
+    <div class="tf-buttons-container flex-grow">
+      <h4>Sections</h4>
+      <button xx id="selectAllSections" onclick="htf.showAll('section')">
+        All Sections
+      </button>
+      {{ range $sections }}
+        <button xx class="sect-button" id="sect-{{ . | urlize }}" onclick="htf.checkFilter('{{ . | urlize }}', 'sect-')">
+          {{ . | title }} <span id="ssect-{{ . | urlize }}"> -count-</span> | <span id="csect-{{ . | urlize }}"> -count-</span>
+        </button>
+      {{ end }}
+      <hr>
+      <h4>Authors</h4>
+      <button xx id="selectAllAuthors" onclick="htf.showAll('authors')">
+        All Authors
+      </button>
+      {{ range $authors }}
+        <button xx class="auth-button" id="auth-{{ . | replaceRE "[.]" "_" | urlize }}" onclick="htf.checkFilter('{{ . | replaceRE "[.]" "_" | urlize }}', 'auth-')">
+          {{ . }} <span id="sauth-{{ . | replaceRE "[.]" "_" | urlize }}"> -count-</span> | <span id="cauth-{{ . | replaceRE "[.]" "_" | urlize }}"> -count-</span>
+        </button>
+      {{ end }}
+      {{ if gt $no_authors 0 }}
+      <button xx class="auth-button" id="auth-no-author" onclick="htf.checkFilter('no-author', 'auth-')">
+        No Author <span id="sauth-no-author"> -count-</span> | <span id="cauth-no-author"> -count-</span>
+      </button>
+      {{ end }}
+      <hr>
+      <h4>Tags</h4>
+      <button xx class="" id="selectAllTags" onclick="htf.showAll('tags')">
+        All Tags
+      </button>
+      {{ range $tags }}
+        {{ if .Term }}
+          <button xx class="tag-button" id="tag-{{ .Term | replaceRE "[.]" "_" | urlize }}" onclick="htf.checkFilter('{{ .Term | replaceRE "[.]" "_" | urlize }}', 'tag-')">
+            <span>{{.Term | humanize | title }}</span>
+            <span id="stags-{{ .Term | urlize }}"> -count-</span> | <span id="ctags-{{ .Term | urlize }}"> -count-</span>
+          </button>
+        {{ end }}
+      {{ end }}
+      {{ if gt $untagged 0 }}
+      <button xx class="tag-button" id="tag-tfuntagged" onclick="htf.checkFilter('tfuntagged', 'tag-')">
+        Untagged <span id="stags-tfuntagged"> -count-</span> | <span id="ctags-tfuntagged"> -count-</span>
+      </button>
+      {{ end }}
+      <hr>
+      <h4>Categories</h4>
+      <button xx class="" id="selectAllCategories" onclick="htf.showAll('categories')">
+        All Categories
+      </button>
+      {{ range $categories }}
+        {{ if .Term }}
+          <button xx class="category-button" id="category-{{ .Term | replaceRE "[.]" "_" | urlize }}" onclick="htf.checkFilter('{{ .Term | replaceRE "[.]" "_" | urlize }}', 'category-')">
+            <span>{{.Term | humanize | title }}</span>
+            <span id="scategories-{{ .Term | urlize }}"> -count-</span> | <span id="ccategories-{{ .Term | urlize }}"> -count-</span>
+          </button>
+        {{ end }}
+      {{ end }}
+      {{ if gt $uncategoried 0 }}
+      <button xx class="category-button" id="category-tfuncategoried" onclick="htf.checkFilter('tfuncategoried', 'category-')">
+        Uncategoried <span id="scategories-tfuncategoried"> -count-</span> | <span id="ccategories-tfuncategoried"> -count-</span>
+      </button>
+      {{ end }}
+      <hr>
+      <h4>Series</h4>
+      <button xx class="" id="selectAllSeries" onclick="htf.showAll('series')">
+        All Series
+      </button>
+      {{ range $series }}
+        {{ if .Term }}
+          <button xx class="serie-button" id="serie-{{ .Term | replaceRE "[.]" "_" | urlize }}" onclick="htf.checkFilter('{{ .Term | replaceRE "[.]" "_" | urlize }}', 'serie-')">
+            <span>{{.Term | humanize | title }}</span>
+            <span id="sseries-{{ .Term | urlize }}"> -count-</span> | <span id="cseries-{{ .Term | urlize }}"> -count-</span>
+          </button>
+        {{ end }}
+      {{ end }}
+      {{ if gt $unseried 0 }}
+      <button xx class="serie-button" id="serie-tfunseried" onclick="htf.checkFilter('tfunseried', 'serie-')">
+        Unseried <span id="sseries-tfunseried"> -count-</span> | <span id="cseries-tfunseried"> -count-</span>
+      </button>
+      {{ end }}
+      <hr>
+      <div><h2><span id="selectedItemCount"></span> Items</h2></div>
+
+      {{ if not (eq $summaryShape "tiles") }}
+      <div class="tf-items-container summary__container" data-display="block">
+        {{ range $pages.ByPublishDate.Reverse }}
+          {{ partial "taxonomy/taxonomy-filter-item-begin" . }}
+          {{ partial "body/summary" (dict "context" . "summaryShape" $summaryShape) }}
+          {{ partial "taxonomy/taxonomy-filter-item-end" . }}
+        {{ end }}
+{{/* TODO: paginator? (issues with filters => only on current page
+=> not easy to fix, can ignore (?)
+*/}}
+{{/*
+        {{ partial "pagination/pagination" . }}
+*/}}
+      </div>
+      {{ else }}
+      {{ partial "summary/tiles" (dict "context" . "pages" $pages.ByPublishDate.Reverse "filters" true) }}
+      {{ end }}
+      </div>
+    </div>
+  </div>
+  {{ if $enableSidebar }}
+    {{ if or (eq $sidebarPosition "both") (eq $sidebarPosition "right") }}
+      <aside class="list__sidebar_r r" data-dir="{{ $.Param "languagedir" | default "ltr" }}">
+{{/* TODO: handle different specific sidebar */}}
+        {{/* TODO: see if need separate "sidebar-taxonomy" (additionally to "sidebar-list") */}}
+        {{ partial "sidebar/sidebar-taxonomy" (dict "context" . "sidebarComponents" "sidebarTaxonomyRight") }}
+      </aside>
+    {{ end }}
+  {{ end }}
+</main>
+{{ partial "script/tags-filter-script" }}
+{{ partial "script/sidebar-script" (dict "context" . "sidebarPosition" $sidebarPosition "sidebarSingle" false) }}
+{{ partial "script/list-script" . }}
+{{ partial "script/taxo-script" . }}
+{{ end }}

@@ -58,6 +58,7 @@
   padding: 1rem;
   @include flexbox();
   @include flex-direction(column);
+  @include align-items(stretch);
 
 /*
   img {

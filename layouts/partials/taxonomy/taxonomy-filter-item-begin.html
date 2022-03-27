@@ -1,0 +1,54 @@
+{{ $tags := "" }}
+{{ with .Params.tags }}
+  {{ range . }}
+    {{ $tags = print $tags " " (. | replaceRE "[.]" "_" | urlize) }}
+  {{ end }}
+{{ end }}
+{{ $tags = trim $tags " " }}
+{{ if eq (len $tags) 0 }}
+  {{ $tags = "tfuntagged" }}
+{{ end }}
+
+{{ $categories := "" }}
+{{ with .Params.categories }}
+  {{ range . }}
+    {{ $categories = print $categories " " (. | replaceRE "[.]" "_" | urlize) }}
+  {{ end }}
+{{ end }}
+{{ $categories = trim $categories " " }}
+{{ if eq (len $categories) 0 }}
+  {{ $categories = "tfuncategoried" }}
+{{ end }}
+
+{{ $series := "" }}
+{{ with .Params.series }}
+  {{ range . }}
+    {{ $series = print $series " " (. | replaceRE "[.]" "_" | urlize) }}
+  {{ end }}
+{{ end }}
+{{ $series = trim $series " " }}
+{{ if eq (len $series) 0 }}
+  {{ $series = "tfunseried" }}
+{{ end }}
+
+{{ $authors := "" }}
+{{ with .Params.author }}
+  {{ if eq ( printf "%T" . ) "string" }}
+    {{ $authors = . | replaceRE "[.]" "_" | urlize }}
+  {{ else if eq ( printf "%T" . ) "[]string" }}
+    {{ range . }}
+      {{ $authors = print $authors " " (. | replaceRE "[.]" "_" | urlize) }}
+    {{end}}
+  {{end}}
+{{end}}
+{{ $authors = trim $authors " " }}
+{{ if eq (len $authors) 0 }}
+  {{ $authors = "no-author" }}
+{{ end }}
+<div class="tf-filter-item tf-item"
+  data-tags="{{ $tags }}"
+  data-categories="{{ $categories }}"
+  data-series="{{ $series }}"
+  data-section="{{ .Section }}"
+  data-authors="{{ $authors }}"
+  >

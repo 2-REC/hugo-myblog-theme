@@ -7,7 +7,7 @@ meta_image = ""
 #themecolor = "" #TODO: remove (unused)
 
 notAllowedTypesInHome = ["about", "contact"] #TODO: adapt!
-notAllowedTypesInHomeSidebar = ["about", "archive"] #TODO: adapt! (contact?)
+notAllowedTypesInHomeSidebar = ["about", "archive", "search"] #TODO: adapt! (contact?)
 # notAllowedTypesInArchive #TODO!
 # notAllowedTypesInHomeFeed = ["about", "archive", "contact", "gallery" ] #TODO: IF using 'showFeedLinks' - adapt! (look in original Zzo)
 
@@ -18,6 +18,7 @@ viewportSize = "wide" # widest, wider, wide, normal, narrow
 enableUiAnimation = true #TODO: keep? used?
 hideSingleContentsWhenJSDisabled = false
 
+mainSections = [ "posts", "gallery" ]
 
 # navbar
 enableThemeChange = true
@@ -27,7 +28,7 @@ enableLangChange = true
 homeHeaderType = "multi" # single, multi, custom
 
 # menu
-showMobileMenuTerms = ["tags", "categories", "series"] #TODO: change "series" to "types"
+showMobileMenuTerms = ["tags", "categories", "series", "search"] #TODO: change "series" to "types"
 
 # body
 # breadcrumb
@@ -87,15 +88,15 @@ link = "https://somesite.org"
 #TODO: depends on page type! (=> specify!)
 # Allowed components: "thumbnail", "bio", "top", "recent", "tags", "categories", "series", "-"
 #sidebarHomeLeft = [ ... ] #TODO
-sidebarHomeRight = [ "bio", "top", "recent", "-", "tags", "categories", "series" ] #TODO
+sidebarHomeRight = [ "bio", "top", "recent", "-", "tags", "categories", "series", "search" ] #TODO
 sidebarSingleLeft = [ "thumbnail", "-", "toc" ] #TODO
-#sidebarSingleRight = [ "toc", "tags", "categories", "series" ] #TODO
-sidebarSingleRight = [ "-", "tags", "categories", "series" ] #TODO
+#sidebarSingleRight = [ "toc", "tags", "categories", "series", "search" ] #TODO
+sidebarSingleRight = [ "-", "tags", "categories", "series", "search" ] #TODO
 singleTaxonomies = true # default: false
 #sidebarListLeft = [ ... ] #TODO
-sidebarListRight = [ "recent", "-", "tags", "categories", "series" ] #TODO
+sidebarListRight = [ "recent", "-", "tags", "categories", "series", "search" ] #TODO
 #sidebarTaxonomyLeft = [ "-", "bio" ] #TODO
-sidebarTaxonomyRight = [ "-", "tags", "categories", "series" ] #TODO
+sidebarTaxonomyRight = [ "-", "tags", "categories", "series", "search" ] #TODO
 #disableSidebarLeft = false # Default: false
 #disableSidebarRight = false # Default: false
 enableSidebarSeparator = true # Default: true
@@ -107,6 +108,7 @@ enableSidebarRecent = true # Default: false
 enableSidebarTags = true # Default: false
 enableSidebarSeries = true # Default: false
 enableSidebarCategories = true # Default: false
+enableSidebarSearch = true # Default: false
 enableToc = true #TODO: rename to enableSidebarToc
 tocLevels = ["h2", "h3", "h4"]
 #tocFolding = true # collapse sub titles

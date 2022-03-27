@@ -58,6 +58,13 @@ TODO: complete/rewrite/etc.
       * Added header in single page with optional title and description (similar working than main header 'single' type)
         TODO: detail more...
 
+* Taxonomies
+  * Search
+    Added page to search/filter posts on specific fields (tags, categories, author, etc.).
+    The code is using:
+      https://github.com/pointyfar/hugo-tags-filter
+      (TODO: add more details/info)
+
 * Footer
   * Copyright
     * If 'copyright' defined in site config

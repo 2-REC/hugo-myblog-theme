@@ -1,0 +1,14 @@
+{{ if $.Param "enableSidebarSearch" }}
+<div class="taxo">
+    <section>
+        <span class="title p2">
+            <a href="{{ "/search" | relLangURL }}" class="taxo__title">
+                Search
+            </a>
+        </span>
+    </section>
+</div>
+{{ if $.Param "enableSidebarSeparator" }}
+<hr class="hr-fade sidebar-hr"/>
+{{ end }}
+{{ end }}

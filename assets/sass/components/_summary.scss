@@ -1,5 +1,11 @@
 //TODO: ADAPT!
 
+.summary {
+  &__container {
+    margin-bottom: 1rem;
+  }
+}
+
 .summary__infos {
   display: block;
   padding-bottom: 0.5em;
@@ -168,10 +174,11 @@ margin-bottom: 0.5rem;
     }
   }
 */
+/*
   &:last-child {
       margin-bottom: 1rem;
   }
-
+*/
   a {
     @include on-event {
       text-decoration: none;
@@ -349,11 +356,11 @@ margin-top: 0;
     }
 */
   }
-
+/*
   &:last-child {
       margin-bottom: 1rem;
   }
-
+*/
   a {
     @include on-event {
       text-decoration: none;
@@ -461,11 +468,11 @@ margin-top: 0;
 
 //    overflow-wrap: break-word;
   }
-
+/*
   &:last-child {
       margin-bottom: 1rem;
   }
-
+*/
   a {
     @include on-event {
       text-decoration: none;

@@ -94,11 +94,25 @@
 
       <hr class="hr-fade">
 
+      {{ if or (not ($.Param "disableSearchSections")) (not ($.Param "disableSearchAuthors")) }}
       <div class="filter-container">
         {{/* SECTIONS */}}
+        {{ if not ($.Param "disableSearchSections") }}
         <div class="filter-item__2">
           <div class="filter-box">
             <h4 class="taxo__title-nolink">{{ i18n "sections" }}</h4>
+{{/* TODO: No sense for "sections", only 1 possible
+            <div class="switch-box">
+              <label class="switch-label tag">
+                <span class="active" id="sectionsSwitchOr">{{ i18n "or" | upper }}</span>
+                <div class="switch">
+                  <input type="checkbox" id="sectionsSwitch" onchange="htf.toggleSwitch('section')">
+                  <span class="slider round"></span>
+                </div>
+                <span id="sectionsSwitchAnd">{{ i18n "and" | upper }}</span>
+              </label>
+            </div>
+*/}}
             <button xx class="tag" id="selectAllSections" onclick="htf.showAll('section')">
               <div class="is-tags taxo__link" data-dir="{{ if ne ($.Param "languagedir") "rtl" }}ltr{{ else }}rtl{{ end }}">
                 <span>{{ i18n "all" }}</span>
@@ -114,11 +128,25 @@
             {{ end }}
           </div>
         </div>
+        {{ end }}
 
         {{/* AUTHORS */}}
+        {{ if not ($.Param "disableSearchAuthors") }}
         <div class="filter-item__2">
           <div class="filter-box">
             <h4 class="taxo__title-nolink">{{ i18n "authors" }}</h4>
+{{/* TODO: No sense for "sections", only 1 possible (?)
+            <div class="switch-box">
+              <label class="switch-label tag">
+                <span class="active" id="authorsSwitchOr">{{ i18n "or" | upper }}</span>
+                <div class="switch">
+                  <input type="checkbox" id="authorsSwitch" onchange="htf.toggleSwitch('authors')">
+                  <span class="slider round"></span>
+                </div>
+                <span id="authorsSwitchAnd">{{ i18n "and" | upper }}</span>
+              </label>
+            </div>
+*/}}
             <button xx class="tag" id="selectAllAuthors" onclick="htf.showAll('authors')">
               <div class="is-tags taxo__link" data-dir="{{ if ne ($.Param "languagedir") "rtl" }}ltr{{ else }}rtl{{ end }}">
                 <span>{{ i18n "all" }}</span>
@@ -142,11 +170,25 @@
             {{ end }}
           </div>
         </div>
+        {{ end }}
+      </div>
+      {{ end }}
 
+      <div class="filter-container">
         {{/* TAGS */}}
         <div class="filter-item__3">
           <div class="filter-box">
             <h4 class="taxo__title-nolink">{{ i18n "tags" }}</h4>
+            <div class="switch-box">
+              <label class="switch-label tag">
+                <span class="active" id="tagsSwitchOr">{{ i18n "or" | upper }}</span>
+                <div class="switch">
+                  <input type="checkbox" id="tagsSwitch" onchange="htf.toggleSwitch('tags')">
+                  <span class="slider round"></span>
+                </div>
+                <span id="tagsSwitchAnd">{{ i18n "and" | upper }}</span>
+              </label>
+            </div>
             <button xx class="tag" id="selectAllTags" onclick="htf.showAll('tags')">
               <div class="is-tags taxo__link" data-dir="{{ if ne ($.Param "languagedir") "rtl" }}ltr{{ else }}rtl{{ end }}">
                 <span>{{ i18n "all" }}</span>
@@ -180,6 +222,16 @@
         <div class="filter-item__3">
           <div class="filter-box">
             <h4 class="taxo__title-nolink">{{ i18n "categories" }}</h4>
+            <div class="switch-box">
+              <label class="switch-label tag">
+                <span class="active" id="categoriesSwitchOr">{{ i18n "or" | upper }}</span>
+                <div class="switch">
+                  <input type="checkbox" id="categoriesSwitch" onchange="htf.toggleSwitch('categories')">
+                  <span class="slider round"></span>
+                </div>
+                <span id="categoriesSwitchAnd">{{ i18n "and" | upper }}</span>
+              </label>
+            </div>
             <button xx class="tag" id="selectAllCategories" onclick="htf.showAll('categories')">
               <div class="is-categories taxo__link" data-dir="{{ if ne ($.Param "languagedir") "rtl" }}ltr{{ else }}rtl{{ end }}">
                 <span>{{ i18n "all" }}</span>
@@ -213,6 +265,16 @@
         <div class="filter-item__3">
           <div class="filter-box">
             <h4 class="taxo__title-nolink">{{ i18n "series" }}</h4>
+            <div class="switch-box">
+              <label class="switch-label tag">
+                <span class="active" id="seriesSwitchOr">{{ i18n "or" | upper }}</span>
+                <div class="switch">
+                  <input type="checkbox" id="seriesSwitch" onchange="htf.toggleSwitch('series')">
+                  <span class="slider round"></span>
+                </div>
+                <span id="seriesSwitchAnd">{{ i18n "and" | upper }}</span>
+              </label>
+            </div>
             <button xx class="tag" id="selectAllSeries" onclick="htf.showAll('series')">
               <div class="is-series taxo__link" data-dir="{{ if ne ($.Param "languagedir") "rtl" }}ltr{{ else }}rtl{{ end }}">
                 <span>{{ i18n "all" }}</span>
@@ -274,7 +336,7 @@
     {{ end }}
   {{ end }}
 </main>
-{{ partial "script/tags-filter-script" }}
+{{ partial "script/tags-filter-script" . }}
 {{ partial "script/sidebar-script" (dict "context" . "sidebarPosition" $sidebarPosition "sidebarSingle" false) }}
 {{ partial "script/list-script" . }}
 {{ partial "script/taxo-script" . }}

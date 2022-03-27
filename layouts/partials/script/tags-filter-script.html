@@ -3,7 +3,7 @@
 <!--
 <script src="{{ "hugotagsfilter.js" | relURL}}"></script>
 -->
-{{ $htf := resources.Get "js/hugotagsfilter.js" | resources.Fingerprint }}
+{{- $htf := resources.Get "js/hugotagsfilter.js" | resources.Fingerprint -}}
 <script type='text/javascript' src="{{ $htf.RelPermalink }}"></script>
 <script>
 var htfConfig = {
@@ -13,6 +13,7 @@ var htfConfig = {
       prefix: 'tag-',
       buttonClass: 'tag-button',
       allSelector: '#selectAllTags',
+      switch: 'tagsSwitch',
       attrName: 'data-tags',
       selectedPrefix: 'stags-',
       countPrefix: 'ctags-'
@@ -22,6 +23,7 @@ var htfConfig = {
       prefix: 'category-',
       buttonClass: 'category-button',
       allSelector: '#selectAllCategories',
+      switch: 'categoriesSwitch',
       attrName: 'data-categories',
       selectedPrefix: 'scategories-',
       countPrefix: 'ccategories-'
@@ -31,30 +33,39 @@ var htfConfig = {
       prefix: 'serie-',
       buttonClass: 'serie-button',
       allSelector: '#selectAllSeries',
+      switch: 'seriesSwitch',
       attrName: 'data-series',
       selectedPrefix: 'sseries-',
       countPrefix: 'cseries-'
-    },
+    }
+{{- if not (.Param "disableSearchSections") -}}
+,
     {
       name: 'section',
       prefix: 'sect-',
       buttonClass: 'sect-button',
       allSelector: '#selectAllSections',
+      switch: 'sectionsSwitch',
       attrName: 'data-section',
       selectedPrefix: 'ssect-',
       countPrefix: 'csect-'
       
-    },
+    }
+{{- end -}}
+{{- if not (.Param "disableSearchAuthors") -}}
+,
     {
       name: 'authors',
       prefix: 'auth-',
       buttonClass: 'auth-button',
       allSelector: '#selectAllAuthors',
+      switch: 'authorsSwitch',
       attrName: 'data-authors',
       selectedPrefix: 'sauth-',
       countPrefix: 'cauth-'
       
     }
+{{- end -}}
   ],
   showItemClass: "show-item",
   filterItemClass: "tf-filter-item",
@@ -62,6 +73,6 @@ var htfConfig = {
   counterSelector: "selectedItemCount",
   populateCount: true,
   setDisabledButtonClass: "disable-button"
-} 
+}
 var htf = new HugoTagsFilter(htfConfig);
 </script>

@@ -188,6 +188,106 @@
 
 }
 
+
+/////////////////////////////////////////////////
+
+.switch-box {
+  display: block;
+  @include no-select;
+}
+.switch-label {
+  cursor: pointer;
+}
+.switch-label .active {
+  @include themify($themes) {
+    color: themed('link-hover');
+  }
+  font-weight: bold;
+}
+
+.switch {
+margin: 0;
+vertical-align: middle;
+
+/*padding-top: .25rem;*/
+  position: relative;
+  display: inline-block;
+/*  width: 60px;*/
+width: 2rem;
+/*  height: 34px;*/
+height: 1rem;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+/*  cursor: pointer;*/
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+/*  background-color: #ccc;*/
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+/*  height: 26px;*/
+height: .6rem;
+/*  width: 26px;*/
+width: .6rem;
+/*  left: 4px;*/
+left: 0.2rem;
+/*  bottom: 4px;*/
+bottom: .2rem;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+/* TODO: useless? (overridden)
+input:checked + .slider {
+  background-color: #2196F3;
+}
+*/
+/* TODO: useless? (overridden)
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+*/
+
+input:checked + .slider:before {
+/*
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+*/
+-webkit-transform: translateX(.9rem);
+-ms-transform: translateX(.9rem);
+transform: translateX(.9rem);
+}
+
+/* Rounded sliders */
+.slider.round {
+/*  border-radius: 34px;*/
+border-radius: 1rem;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+////////////////////////////////////////////////////////////
+
 .tf-filter-item {
     display: none;
 }
@@ -195,10 +295,23 @@
 button {
   background-color: transparent;
   border: 2px solid transparent;
+
+  cursor: pointer;
 }
 
 button.active {
+/*
   border-color: #ccc;
+*/
+@include themify($themes) {
+  border-color: themed('switch-active-color');
+}    
+/*
+switch-button-color
+selection-color
+selection-background-color
+*/
+
   border-style: solid;
 }
 

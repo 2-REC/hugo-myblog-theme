@@ -70,6 +70,8 @@ summaryZoom = false
 galleryInitZoom = true
 galleryZoom = true
 
+#disableSearchSections = true # Default: false
+#disableSearchAuthors = true # Default: false
 
 
 # whoami #TODO: rename all params to "bio..." (+propagate impacts)

@@ -41,6 +41,12 @@ other = "Tous/Toutes"
 [none]
 other = "aucun(e)"
 
+[and]
+other = "et"
+
+[or]
+other = "ou"
+
 # #[archive-dateformat]
 # #other = "Jan 2"
 # #

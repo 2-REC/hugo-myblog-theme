@@ -41,6 +41,12 @@ other = "all"
 [none]
 other = "none"
 
+[and]
+other = "and"
+
+[or]
+other = "or"
+
 #[archive-dateformat]
 #other = "Jan 2"
 #

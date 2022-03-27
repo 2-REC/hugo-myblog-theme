@@ -4,6 +4,7 @@
 ##################
 2022/02/13
 - [ ] CSS
+  - [ ] Unify "media" sizes ... (many different values)
   - [ ] Fix IE bugs... LOTS!
   - [ ] Rename/change unrelated variables (eg: "gtt-color" in most uses isn't related to "gtt" - eg in "modal")
 - [ ] Navbar

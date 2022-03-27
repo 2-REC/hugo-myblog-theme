@@ -157,6 +157,37 @@
 
 /* Hugo Tags Filter */
 
+
+.filter-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+
+  text-align: center;
+
+  .filter-item {
+    &__2 {
+      flex-basis: 50%;
+      flex-grow: 1;
+
+      @media only screen and (max-width: 769px) {
+        flex-basis: 100%;
+      }
+    }
+
+    &__3 {
+      flex-basis: 33%;
+      flex-grow: 1;
+
+      @media only screen and (max-width: 769px) {
+        flex-basis: 100%;
+      }
+    }
+
+  }
+
+}
+
 .tf-filter-item {
     display: none;
 }

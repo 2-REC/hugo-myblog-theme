@@ -11,6 +11,8 @@
   - [ ] Change order?
   - [x] Add "seacrh" (not in mobile layout)
 - [ ] Search
+  - [ ] handle default values for switches/checkboxes
+    (need to have sync between "checked" param in "input" element + "filterAnd" value in HTF config)
   - [ ] make sure no unused elements left (files, references, styles, etc.)
   - [ ] rename elements still used but not relateo search (eg: 'search-border-cor' (?))
 - [ ] "taxo-filter"

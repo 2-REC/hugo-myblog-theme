@@ -101,18 +101,7 @@
         <div class="filter-item__2">
           <div class="filter-box">
             <h4 class="taxo__title-nolink">{{ i18n "sections" }}</h4>
-{{/* TODO: No sense for "sections", only 1 possible
-            <div class="switch-box">
-              <label class="switch-label tag">
-                <span class="active" id="sectionsSwitchOr">{{ i18n "or" | upper }}</span>
-                <div class="switch">
-                  <input type="checkbox" id="sectionsSwitch" onchange="htf.toggleSwitch('section')">
-                  <span class="slider round"></span>
-                </div>
-                <span id="sectionsSwitchAnd">{{ i18n "and" | upper }}</span>
-              </label>
-            </div>
-*/}}
+            {{/* No 'and/or' switch for "sections", only 1 possible */}}
             <button xx class="tag" id="selectAllSections" onclick="htf.showAll('section')">
               <div class="is-tags taxo__link" data-dir="{{ if ne ($.Param "languagedir") "rtl" }}ltr{{ else }}rtl{{ end }}">
                 <span>{{ i18n "all" }}</span>
@@ -135,18 +124,7 @@
         <div class="filter-item__2">
           <div class="filter-box">
             <h4 class="taxo__title-nolink">{{ i18n "authors" }}</h4>
-{{/* TODO: No sense for "sections", only 1 possible (?)
-            <div class="switch-box">
-              <label class="switch-label tag">
-                <span class="active" id="authorsSwitchOr">{{ i18n "or" | upper }}</span>
-                <div class="switch">
-                  <input type="checkbox" id="authorsSwitch" onchange="htf.toggleSwitch('authors')">
-                  <span class="slider round"></span>
-                </div>
-                <span id="authorsSwitchAnd">{{ i18n "and" | upper }}</span>
-              </label>
-            </div>
-*/}}
+            {{/* No 'and/or' switch for "authors", only 1 possible */}}
             <button xx class="tag" id="selectAllAuthors" onclick="htf.showAll('authors')">
               <div class="is-tags taxo__link" data-dir="{{ if ne ($.Param "languagedir") "rtl" }}ltr{{ else }}rtl{{ end }}">
                 <span>{{ i18n "all" }}</span>
@@ -183,7 +161,7 @@
               <label class="switch-label tag">
                 <span class="active" id="tagsSwitchOr">{{ i18n "or" | upper }}</span>
                 <div class="switch">
-                  <input type="checkbox" id="tagsSwitch" onchange="htf.toggleSwitch('tags')">
+                  <input type="checkbox" id="tagsSwitch" onchange="htf.toggleSwitch(this, 'tags')">
                   <span class="slider round"></span>
                 </div>
                 <span id="tagsSwitchAnd">{{ i18n "and" | upper }}</span>
@@ -226,21 +204,21 @@
               <label class="switch-label tag">
                 <span class="active" id="categoriesSwitchOr">{{ i18n "or" | upper }}</span>
                 <div class="switch">
-                  <input type="checkbox" id="categoriesSwitch" onchange="htf.toggleSwitch('categories')">
+                  <input type="checkbox" id="categoriesSwitch" onchange="htf.toggleSwitch(this, 'categories')">
                   <span class="slider round"></span>
                 </div>
                 <span id="categoriesSwitchAnd">{{ i18n "and" | upper }}</span>
               </label>
             </div>
             <button xx class="tag" id="selectAllCategories" onclick="htf.showAll('categories')">
-              <div class="is-categories taxo__link" data-dir="{{ if ne ($.Param "languagedir") "rtl" }}ltr{{ else }}rtl{{ end }}">
+              <div class="is-tags taxo__link" data-dir="{{ if ne ($.Param "languagedir") "rtl" }}ltr{{ else }}rtl{{ end }}">
                 <span>{{ i18n "all" }}</span>
               </div>
             </button>
             {{ range $categories }}
               {{ if .Term }}
                 <button xx class="category-button" id="category-{{ .Term | replaceRE "[.]" "_" | urlize }}" onclick="htf.checkFilter('{{ .Term | replaceRE "[.]" "_" | urlize }}', 'category-')">
-                  <div class="is-categories taxo__link" data-dir="{{ if ne ($.Param "languagedir") "rtl" }}ltr{{ else }}rtl{{ end }}">
+                  <div class="is-tags taxo__link" data-dir="{{ if ne ($.Param "languagedir") "rtl" }}ltr{{ else }}rtl{{ end }}">
 {{/* TODO: want "humanize"+"title" here?
                     <span>{{ .Term | humanize | title }}</span>
 */}}
@@ -252,7 +230,7 @@
             {{ end }}
             {{ if gt $uncategoried 0 }}
             <button xx class="tag category-button" id="category-tfuncategoried" onclick="htf.checkFilter('tfuncategoried', 'category-')">
-              <div class="is-categories taxo__link" data-dir="{{ if ne ($.Param "languagedir") "rtl" }}ltr{{ else }}rtl{{ end }}">
+              <div class="is-tags taxo__link" data-dir="{{ if ne ($.Param "languagedir") "rtl" }}ltr{{ else }}rtl{{ end }}">
                 <span>{{ i18n "none" }}</span>
                 <span class="taxo__num" dir="auto" id="scategories-tfuncategoried"> -count-</span>|<span class="taxo__num" dir="auto" id="ccategories-tfuncategoried"> -count-</span>
               </div>
@@ -269,7 +247,7 @@
               <label class="switch-label tag">
                 <span class="active" id="seriesSwitchOr">{{ i18n "or" | upper }}</span>
                 <div class="switch">
-                  <input type="checkbox" id="seriesSwitch" onchange="htf.toggleSwitch('series')">
+                  <input type="checkbox" id="seriesSwitch" onchange="htf.toggleSwitch(this, 'series')">
                   <span class="slider round"></span>
                 </div>
                 <span id="seriesSwitchAnd">{{ i18n "and" | upper }}</span>
@@ -283,7 +261,7 @@
             {{ range $series }}
               {{ if .Term }}
                 <button xx class="serie-button" id="serie-{{ .Term | replaceRE "[.]" "_" | urlize }}" onclick="htf.checkFilter('{{ .Term | replaceRE "[.]" "_" | urlize }}', 'serie-')">
-                  <div class="is-categories taxo__link" data-dir="{{ if ne ($.Param "languagedir") "rtl" }}ltr{{ else }}rtl{{ end }}">
+                  <div class="is-tags taxo__link" data-dir="{{ if ne ($.Param "languagedir") "rtl" }}ltr{{ else }}rtl{{ end }}">
                     <span>{{ .Term | humanize | title }}</span>
                     <span class="taxo__num" dir="auto" id="sseries-{{ .Term | urlize }}"> -count-</span>|<span class="taxo__num" dir="auto" id="cseries-{{ .Term | urlize }}"> -count-</span>
                   </div>
@@ -292,7 +270,7 @@
             {{ end }}
             {{ if gt $unseried 0 }}
             <button xx class="tag serie-button" id="serie-tfunseried" onclick="htf.checkFilter('tfunseried', 'serie-')">
-              <div class="is-categories taxo__link" data-dir="{{ if ne ($.Param "languagedir") "rtl" }}ltr{{ else }}rtl{{ end }}">
+              <div class="is-tags taxo__link" data-dir="{{ if ne ($.Param "languagedir") "rtl" }}ltr{{ else }}rtl{{ end }}">
                 <span>{{ i18n "none" }}</span>
                 <span class="taxo__num" dir="auto" id="sseries-tfunseried"> -count-</span>|<span class="taxo__num" dir="auto" id="cseries-tfunseried"> -count-</span>
               </div>

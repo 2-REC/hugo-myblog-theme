@@ -59,9 +59,11 @@ class HugoTagsFilter {
     for( var i = 1; i < this.FILTERS.length; i++) {
       this.showCheck(this.FILTERS[i]['name'], false);
     }
+    /**/
 
     /* 2-REC: 'hack' for auto rearrange of summary tiles */
     this.firstFilter = true;
+    /**/
   }
   
   initFilterCount(fvc, isInitial){
@@ -163,16 +165,16 @@ class HugoTagsFilter {
     for ( var i = 0; i < this.FILTERS.length; i++ ) {
       if ( this.FILTERS[i]['prefix'] === tagType ) {
         var index = this.FILTERS[i]['selected'].indexOf(tag);
-        if ( index >= 0 ) { 
+        if ( index >= 0 ) {
           /* already selected, deselect tag */
           /* 2-REC: bug fix => remove from index */
           this.FILTERS[i]['selected'].splice(index, 1);
           this.delClassIfPresent(selectedBtn, this.activeButtonClass);
-        } else { 
+        } else {
           /* add tag to selected list */
           this.FILTERS[i]['selected'].push(tag);
           this.addClassIfMissing(selectedBtn, this.activeButtonClass);
-        } 
+        }
         this.delClassIfPresent(document.querySelector(this.FILTERS[i]['allSelector']), this.activeButtonClass);
         this.showCheck(this.FILTERS[i]['name']);
       }
@@ -211,8 +213,8 @@ class HugoTagsFilter {
       /* show item only if visibility is true for all filters */
       for ( var j = 0; j < this.FILTERS.length; j++ ) {
         /* 2-REC: Added "AND" fltering */
-        var elt = document.getElementById(this.FILTERS[j]['switch'])
-        if (elt && elt.checked) {
+        /* TODO: find better name for 'filterAnd' */
+        if (this.FILTERS[j]['filterAnd']) {
           /* Have switch, and enabled */
           /* If no selection => select all */
           var selected = this.FILTERS[j]['selected'];
@@ -265,6 +267,7 @@ class HugoTagsFilter {
         }
       }
     }
+    /**/
 
   }
   
@@ -329,38 +332,40 @@ class HugoTagsFilter {
   }
 
   /* 2-REC: "AND" filtering */
-  toggleSwitch(filter) {
+  toggleSwitch(checkbox, filter) {
     for( var i = 0; i < this.FILTERS.length; i++) {
       if(filter) {
         if(this.FILTERS[i]['name'] === filter) {
-          this.updateSwitch(this.FILTERS[i]['switch']);
+          this.FILTERS[i]['filterAnd'] = checkbox.checked;
+          this.updateSwitchLabels(checkbox);
         }
       } else {
-        this.updateSwitch(this.FILTERS[i]['switch']);
+        this.FILTERS[i]['filterAnd'] = checkbox.checked;
+        this.updateSwitchLabels(checkbox);
       }
     }
     this.showCheck(filter)
   }
 
-  updateSwitch(switchId) {
-    var checkbox = document.getElementById(switchId);
-    if (checkbox) {
-      var andLabel = document.getElementById((switchId + "And"));
-      var orLabel = document.getElementById((switchId + "Or"));
-      if(checkbox.checked){
-        if (andLabel) {
-          this.addClassIfMissing(andLabel, this.activeButtonClass);
-        }
-        if (orLabel) {
-          this.delClassIfPresent(orLabel, this.activeButtonClass);
-        }
-      } else {
-        if (andLabel) {
-          this.delClassIfPresent(andLabel, this.activeButtonClass);
-        }
-        if (orLabel) {
-          this.addClassIfMissing(orLabel, this.activeButtonClass);
-        }
+  updateSwitchLabels(checkbox) {
+    var switchId = checkbox.id;
+
+    /* TODO(2-REC): Add "And"+"Or" labels as global parameters for HTF (e.g.: "andSuffix"+"orSuffix") */
+    var andLabel = document.getElementById((switchId + "And"));
+    var orLabel = document.getElementById((switchId + "Or"));
+    if(checkbox.checked){
+      if (andLabel) {
+        this.addClassIfMissing(andLabel, this.activeButtonClass);
+      }
+      if (orLabel) {
+        this.delClassIfPresent(orLabel, this.activeButtonClass);
+      }
+    } else {
+      if (andLabel) {
+        this.delClassIfPresent(andLabel, this.activeButtonClass);
+      }
+      if (orLabel) {
+        this.addClassIfMissing(orLabel, this.activeButtonClass);
       }
     }
   }

@@ -13,7 +13,7 @@ var htfConfig = {
       prefix: 'tag-',
       buttonClass: 'tag-button',
       allSelector: '#selectAllTags',
-      switch: 'tagsSwitch',
+      filterAnd: false,
       attrName: 'data-tags',
       selectedPrefix: 'stags-',
       countPrefix: 'ctags-'
@@ -23,7 +23,7 @@ var htfConfig = {
       prefix: 'category-',
       buttonClass: 'category-button',
       allSelector: '#selectAllCategories',
-      switch: 'categoriesSwitch',
+      filterAnd: false,
       attrName: 'data-categories',
       selectedPrefix: 'scategories-',
       countPrefix: 'ccategories-'
@@ -33,7 +33,7 @@ var htfConfig = {
       prefix: 'serie-',
       buttonClass: 'serie-button',
       allSelector: '#selectAllSeries',
-      switch: 'seriesSwitch',
+      filterAnd: false,
       attrName: 'data-series',
       selectedPrefix: 'sseries-',
       countPrefix: 'cseries-'
@@ -45,7 +45,6 @@ var htfConfig = {
       prefix: 'sect-',
       buttonClass: 'sect-button',
       allSelector: '#selectAllSections',
-      switch: 'sectionsSwitch',
       attrName: 'data-section',
       selectedPrefix: 'ssect-',
       countPrefix: 'csect-'
@@ -59,7 +58,6 @@ var htfConfig = {
       prefix: 'auth-',
       buttonClass: 'auth-button',
       allSelector: '#selectAllAuthors',
-      switch: 'authorsSwitch',
       attrName: 'data-authors',
       selectedPrefix: 'sauth-',
       countPrefix: 'cauth-'
@@ -74,5 +72,14 @@ var htfConfig = {
   populateCount: true,
   setDisabledButtonClass: "disable-button"
 }
+
+/*****/
+/*
+function toggleTest(filterName) {
+  console.log("TEST: " + filterName)
+}
+*/
+/*****/
+
 var htf = new HugoTagsFilter(htfConfig);
 </script>

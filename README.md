@@ -62,10 +62,17 @@ TODO: complete/rewrite/etc.
 
 * Taxonomies
   * Search
-    Added page to search/filter posts on specific fields (tags, categories, author, etc.).
-    The code is using:
-      https://github.com/pointyfar/hugo-tags-filter
-      (TODO: add more details/info)
+    * Added page to search/filter posts on specific fields (tags, categories, author, etc.).
+      The code is using:
+        https://github.com/pointyfar/hugo-tags-filter
+        Modified version:
+        https://github.com/2-REC-forks/hugo-tags-filter
+        (TODO: add more details/info)
+    * Possibility to switch AND/OR results
+      (TODO: add more details...
+        - need id for switch, and ids for "and"+"or" label as id+"And", id+"Or" respectively
+        ...
+      )
 
 * Footer
   * Copyright

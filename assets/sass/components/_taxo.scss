@@ -29,6 +29,14 @@
     }
   }
 
+  &__title-nolink {
+    font-weight: 700;
+    font-family: $title-font;
+    @include themify($themes) {
+      color: themed('taxo-title-color');
+    }
+  }
+
   &__link {
     text-decoration: none !important;   
 
@@ -144,4 +152,27 @@
       padding: 0.125rem 0.25rem 0.125rem 0;
     }
   }
+}
+
+
+/* Hugo Tags Filter */
+.tf-filter-item {
+    display: none;
+}
+/*
+button {
+  padding: 0.2em;
+}
+*/
+button.active {
+  /* TODO: use a variable instead of hoardcoded */
+  background-color: #ccc;
+}
+
+button.disable-button {
+  border-style: dashed;
+}
+
+.show-item {
+  display: block;
 }

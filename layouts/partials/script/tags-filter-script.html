@@ -1,5 +1,10 @@
+<!-- TODO: see which version to use -->
 <!--<script src="{{ "vendor/htf/hugotagsfilter-1.2.2.min.js" | relURL}}"></script>-->
+<!--
 <script src="{{ "hugotagsfilter.js" | relURL}}"></script>
+-->
+{{ $htf := resources.Get "js/hugotagsfilter.js" | resources.Fingerprint }}
+<script type='text/javascript' src="{{ $htf.RelPermalink }}"></script>
 <script>
 var htfConfig = {
   filters: [

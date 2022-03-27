@@ -3,7 +3,10 @@
 
 ##################
 2022/02/13
+- [ ] CSS
+  - [ ] Rename/change unrelated variables (eg: "gtt-color" in most uses isn't related to "gtt" - eg in "modal")
 - [ ] Search
+  - [ ] Add seacrh in nav bar (not in mobile layout)
   - [ ] make sure no unused elements left (files, references, styles, etc.)
   - [ ] rename elements still used but not relateo search (eg: 'search-border-cor' (?))
 - [ ] "taxo-filter"
@@ -160,6 +163,7 @@
 * [ ] Global
     * [ ] FIX "RTL" LAYOUTS!
       * [ ] navbar (lg selector+dropdown, etc)
+        * [ ] In mobile, logo should be right side?
       * [ ] ...
     * [ ] make new themes (colours, fonts, etc.)
       * [ ] CHECK CONSISTENCY (all links same colours, deco, page consistent fonts, etc.)

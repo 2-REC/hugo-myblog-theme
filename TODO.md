@@ -4,12 +4,18 @@
 ##################
 2022/02/13
 - [ ] CSS
+  - [ ] Fix IE bugs... LOTS!
   - [ ] Rename/change unrelated variables (eg: "gtt-color" in most uses isn't related to "gtt" - eg in "modal")
 - [ ] Search
   - [ ] Add seacrh in nav bar (not in mobile layout)
   - [ ] make sure no unused elements left (files, references, styles, etc.)
   - [ ] rename elements still used but not relateo search (eg: 'search-border-cor' (?))
 - [ ] "taxo-filter"
+  - [ ] could refactor for common code/partial for each filter type
+  - [ ] "All"
+    - [ ] add specific class ("clean" left/right padding)
+    - [ ] add numbers? (total count)
+  - [ ] Make i18n entries for "all"+"none" for each filter type? (tags, categories, etc.)
   - [ ] ADAPT CSS to rest of theme!
   - [x] add param to make filter/search optional
     => not a param, but check if "searh" page exist in content

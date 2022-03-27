@@ -156,17 +156,19 @@
 
 
 /* Hugo Tags Filter */
+
 .tf-filter-item {
     display: none;
 }
-/*
+
 button {
-  padding: 0.2em;
+  background-color: transparent;
+  border: 2px solid transparent;
 }
-*/
+
 button.active {
-  /* TODO: use a variable instead of hoardcoded */
-  background-color: #ccc;
+  border-color: #ccc;
+  border-style: solid;
 }
 
 button.disable-button {
@@ -175,4 +177,8 @@ button.disable-button {
 
 .show-item {
   display: block;
+}
+
+.filter-box {
+  padding: .5rem;
 }

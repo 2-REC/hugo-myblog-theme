@@ -86,7 +86,7 @@
     &[data-kind="section"] {
       display: -ms-grid;
       display: grid;
-      &[data-type="gallery"] {
+      &[data-type="galleries"] {
         display: inline-block;
       }
       &[data-type="showcase"] {
@@ -254,7 +254,7 @@
     &[data-kind="section"] {
       display: -ms-grid;
       display: grid;
-      &[data-type="gallery"] {
+      &[data-type="galleries"] {
         display: inline-block;
       }
       &[data-type="showcase"] {

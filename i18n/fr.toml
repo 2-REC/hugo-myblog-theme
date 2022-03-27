@@ -8,6 +8,9 @@
 [reading-time]
 other = "minutes"
 
+[sections]
+other = "Sections"
+
 [tags]
 other = "Tags"
 
@@ -17,9 +20,27 @@ other = "Catégories"
 [series]
 other = "Séries"
 
+[posts]
+other = "Posts"
+
+[galleries]
+other = "Galeries"
+
 [search]
 other = "Recherche"
-# 
+
+[authors]
+other = "Auteurs"
+
+[items]
+other = "Eléments"
+
+[all]
+other = "Tous/Toutes"
+
+[none]
+other = "aucun(e)"
+
 # #[archive-dateformat]
 # #other = "Jan 2"
 # #

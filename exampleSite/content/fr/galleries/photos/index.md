@@ -2,7 +2,7 @@
 title: Photos
 date: 2019-10-31T10:20:16+09:00
 description: Galerie Photo
-type: gallery
+type: galleries
 mode: one-by-one
 images:
   - image: images/bridge.jpg

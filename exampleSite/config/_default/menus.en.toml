@@ -11,9 +11,9 @@
   weight = 2
 
 [[main]]
-  identifier = "gallery"
+  identifier = "galleries"
   name = "Galleries"
-  url = "gallery"
+  url = "galleries"
   weight = 3
 
 [[main]]

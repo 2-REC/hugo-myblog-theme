@@ -1,9 +1,12 @@
-{{/* DUAL_SIDEBAR - CHANGED */}}
-{{/*TODO: reason for being "ul"? */}}
+{{/* TODO: reason for being "ul"? */}}
 <ul class="sidebar">
 {{ $context := .context }}
+{{ $type := .type }}
+{{ if not (isset . "type") }}
+  {{ $type = "list" }}
+{{ end }}
 {{ range $index, $value := .context.Param .sidebarComponents }}
-    {{/* 2-REC: Special "separator" for floating section */}}
+    {{/* Special "separator" for floating section */}}
     {{ if eq $value "-" }}
 </ul>
 <ul class="sidebar-float">
@@ -11,11 +14,10 @@
         {{ if eq $value "bio" }}
             {{ partial "sidebar/site-bio" $context.Page }}
         {{ else if eq $value "custom" }}
-            {{ if $context.Param "enableSidebarCustom" }}
-                {{ partial "sidebar/custom-list" $context.Page }}
-                {{ if $context.Param "enableSidebarSeparator" }}
-                <hr class="hr-fade sidebar-hr"/>
-                {{ end }}
+            {{ $partial := print "sidebar/custom-" $type }}
+            {{ partial $partial $context.Page }}
+            {{ if $context.Param "enableSidebarSeparator" }}
+            <hr class="hr-fade sidebar-hr"/>
             {{ end }}
         {{/*TODO: ok? */}}
         {{ else if eq $value "top" }}
@@ -33,7 +35,7 @@
         {{ else }}
             <script>
             var value = JSON.parse({{ $value | jsonify }});
-            console.error("Component '" + value + "' not handled in 'list' sidebar => Ignored");
+            console.error("Component '" + value + "' not handled in '{{ $type }}' sidebar => Ignored");
             </script>
         {{ end }}
     {{ end }}

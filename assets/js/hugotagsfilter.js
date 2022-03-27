@@ -55,6 +55,10 @@ class HugoTagsFilter {
       }
     }
     this.showCheck(this.FILTERS[0]['name'], true);
+    /* 2-REC: makes 'all' button selected for every filter */
+    for( var i = 1; i < this.FILTERS.length; i++) {
+      this.showCheck(this.FILTERS[i]['name'], false);
+    }
 
     /* 2-REC: 'hack' for auto rearrange of summary tiles */
     this.firstFilter = true;

@@ -28,7 +28,7 @@ enableLangChange = true
 homeHeaderType = "multi" # single, multi, custom
 
 # menu
-showMobileMenuTerms = ["tags", "categories", "series", "search"] #TODO: change "series" to "types"
+showMobileMenuTerms = ["tags", "categories", "series"] #TODO: change "series" to "types"
 
 # body
 # breadcrumb
@@ -84,9 +84,9 @@ link = "https://somesite.org"
 
 # Sidebar
 #TODO: depends on page type! (=> specify!)
-# Allowed components: "thumbnail", "bio", "top", "recent", "tags", "categories", "series", "-"
+# Allowed components: "thumbnail", "bio", "top", "recent", "tags", "categories", "series", "search", custom", "-"
 #sidebarHomeLeft = [ ... ] #TODO
-sidebarHomeRight = [ "bio", "top", "recent", "-", "tags", "categories", "series", "search" ] #TODO
+sidebarHomeRight = [ "bio", "recent", "-", "tags", "categories", "series", "search" ] #TODO
 sidebarSingleLeft = [ "thumbnail", "-", "toc" ] #TODO
 #sidebarSingleRight = [ "toc", "tags", "categories", "series", "search" ] #TODO
 sidebarSingleRight = [ "-", "tags", "categories", "series", "search" ] #TODO
@@ -95,12 +95,13 @@ singleTaxonomies = true # default: false
 sidebarListRight = [ "recent", "-", "tags", "categories", "series", "search" ] #TODO
 #sidebarTaxonomyLeft = [ "-", "bio" ] #TODO
 sidebarTaxonomyRight = [ "-", "tags", "categories", "series", "search" ] #TODO
+#sidebarSearchLeft = [ "-", "bio" ] #TODO
+#sidebarSearchRight = [ "-", "bio" ] #TODO
 #disableSidebarLeft = false # Default: false
 #disableSidebarRight = false # Default: false
 enableSidebarSeparator = true # Default: true
 enableSidebarBio = true # Default: false
 enableBioImage = true # Default: true
-#enableSidebarCustom = false # Default: false
 enableSidebarPostsByOrder = false # Default: false #TODO: rename to "enableTop"?
 enableSidebarRecent = true # Default: false
 enableSidebarTags = true # Default: false

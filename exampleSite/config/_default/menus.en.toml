@@ -27,3 +27,9 @@
   name = "Contact"
   url = "contact"
   weight = 5
+
+[[main]]
+  identifier = "search"
+  name = "icon-search"
+  url = "search"
+  weight = 6

@@ -6,8 +6,10 @@
 - [ ] CSS
   - [ ] Fix IE bugs... LOTS!
   - [ ] Rename/change unrelated variables (eg: "gtt-color" in most uses isn't related to "gtt" - eg in "modal")
+- [ ] Navbar
+  - [ ] Change order?
+  - [x] Add "seacrh" (not in mobile layout)
 - [ ] Search
-  - [ ] Add seacrh in nav bar (not in mobile layout)
   - [ ] make sure no unused elements left (files, references, styles, etc.)
   - [ ] rename elements still used but not relateo search (eg: 'search-border-cor' (?))
 - [ ] "taxo-filter"
@@ -449,7 +451,8 @@ LATER:
         * [ ] site-nav: Set "logo" image as parameter (instead of hardcoded "/logo/logo.png")
     * [ ] sidebar
         * [ ] list
-            * [ ] posts-by-order => how does it work? (seems broken?)
+            * [ ] posts-by-order => see how to handle
+              * [ ] Need to manually adapt/set order every time new posts?
         * [ ] sidebar-menu => Empty!?
     * [ ] script
         => See what to keep (and remove uses in code)

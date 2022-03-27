@@ -1,7 +1,8 @@
+{{/* TODO: should be "ul" as others (or "div" everywhere)? */}}
 <div class="sidebar">
 {{ $context := .context }}
 {{ range $index, $value := .context.Param .sidebarComponents }}
-    {{/* 2-REC: Special "separator" for floating section */}}
+    {{/* Special "separator" for floating section */}}
     {{ if eq $value "-" }}
 </div>
 <div class="sidebar-float">
@@ -9,11 +10,9 @@
         {{ if eq $value "bio" }}
             {{ partial "sidebar/site-bio" $context.Page }}
         {{ else if eq $value "custom" }}
-            {{ if $context.Param "enableSidebarCustom" }}
-                {{ partial "sidebar/custom-home" $context.Page }}
-                {{ if $context.Param "enableSidebarSeparator" }}
-                <hr class="hr-fade sidebar-hr"/>
-                {{ end }}
+            {{ partial "sidebar/custom-home" $context.Page }}
+            {{ if $context.Param "enableSidebarSeparator" }}
+            <hr class="hr-fade sidebar-hr"/>
             {{ end }}
         {{/*TODO: ok? */}}
         {{ else if eq $value "top" }}

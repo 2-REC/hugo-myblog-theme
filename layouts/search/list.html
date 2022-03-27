@@ -1,18 +1,17 @@
 {{ define "main" }}
-{{/* TODO: handle different specific sidebar */}}
 {{ $enableSidebar := false }}
 {{ $enableSidebarRight := not ($.Param "disableSidebarRight") }}
 {{ $enableSidebarLeft := not ($.Param "disableSidebarLeft") }}
 {{ $sidebarPosition := "none" }}
-{{ if and $enableSidebarRight ($.Param "sidebarTaxonomyRight") }}
+{{ if and $enableSidebarRight ($.Param "sidebarSearchRight") }}
   {{ $enableSidebar = true }}
-  {{ if and $enableSidebarLeft ($.Param "sidebarTaxonomyLeft") }}
+  {{ if and $enableSidebarLeft ($.Param "sidebarSearchLeft") }}
     {{ $sidebarPosition = "both" }}
   {{ else }}
     {{ $sidebarPosition = "right" }}
   {{ end }}
 {{ else }}
-  {{ if and $enableSidebarLeft ($.Param "sidebarTaxonomyLeft") }}
+  {{ if and $enableSidebarLeft ($.Param "sidebarSearchLeft") }}
     {{ $enableSidebar = true }}
     {{ $sidebarPosition = "left" }}
   {{ end }}
@@ -20,9 +19,8 @@
 <main class="main inner" data-sidebar-position={{$sidebarPosition}}>
   {{ if $enableSidebar }}
     {{ if or (eq $sidebarPosition "both") (eq $sidebarPosition "left") }}
-{{/* TODO: handle different specific sidebar */}}
     <aside class="list__sidebar_l l" data-dir="{{ $.Param "languagedir" | default "ltr" }}">
-      {{ partial "sidebar/sidebar-taxonomy" (dict "context" . "sidebarComponents" "sidebarTaxonomyLeft") }}
+      {{ partial "sidebar/sidebar-list" (dict "context" . "sidebarComponents" "sidebarSearchLeft" "type" "search") }}
     </aside>
     {{ end }}
   {{ end }}
@@ -92,6 +90,7 @@
 
       <hr class="hr-fade">
 
+      {{/* SECTIONS */}}
       <div class="filter-box">
         <h4 class="taxo__title-nolink">{{ i18n "sections" }}</h4>
         <button xx class="tag" id="selectAllSections" onclick="htf.showAll('section')">
@@ -111,6 +110,7 @@
 
       <hr class="hr-fade">
 
+      {{/* AUTHORS */}}
       <div class="filter-box">
         <h4 class="taxo__title-nolink">{{ i18n "authors" }}</h4>
         <button xx class="tag" id="selectAllAuthors" onclick="htf.showAll('authors')">
@@ -138,6 +138,7 @@
 
       <hr class="hr-fade">
 
+      {{/* TAGS */}}
       <div class="filter-box">
         <h4 class="taxo__title-nolink">{{ i18n "tags" }}</h4>
         <button xx class="tag" id="selectAllTags" onclick="htf.showAll('tags')">
@@ -170,6 +171,7 @@
 
       <hr class="hr-fade">
 
+      {{/* CATEGORIES */}}
       <div class="filter-box">
         <h4 class="taxo__title-nolink">{{ i18n "categories" }}</h4>
         <button xx class="tag" id="selectAllCategories" onclick="htf.showAll('categories')">
@@ -202,6 +204,7 @@
 
       <hr class="hr-fade">
 
+      {{/* SERIES */}}
       <div class="filter-box">
         <h4 class="taxo__title-nolink">{{ i18n "series" }}</h4>
         <button xx class="tag" id="selectAllSeries" onclick="htf.showAll('series')">
@@ -258,9 +261,7 @@
   {{ if $enableSidebar }}
     {{ if or (eq $sidebarPosition "both") (eq $sidebarPosition "right") }}
       <aside class="list__sidebar_r r" data-dir="{{ $.Param "languagedir" | default "ltr" }}">
-{{/* TODO: handle different specific sidebar */}}
-        {{/* TODO: see if need separate "sidebar-taxonomy" (additionally to "sidebar-list") */}}
-        {{ partial "sidebar/sidebar-taxonomy" (dict "context" . "sidebarComponents" "sidebarTaxonomyRight") }}
+        {{ partial "sidebar/sidebar-list" (dict "context" . "sidebarComponents" "sidebarSearchRight" "type" "search") }}
       </aside>
     {{ end }}
   {{ end }}

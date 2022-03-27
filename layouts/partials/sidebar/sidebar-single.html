@@ -15,11 +15,9 @@
         {{ else if eq $value "toc" }}
             {{ partial "sidebar/sidebar-toc" $context.Page }}
         {{ else if eq $value "custom" }}
-            {{ if $context.Param "enableSidebarCustom" }}
-                {{ partial "sidebar/custom-single" $context.Page }}
-                {{ if $context.Param "enableSidebarSeparator" }}
-                <hr class="hr-fade sidebar-hr"/>
-                {{ end }}
+            {{ partial "sidebar/custom-single" $context.Page }}
+            {{ if $context.Param "enableSidebarSeparator" }}
+            <hr class="hr-fade sidebar-hr"/>
             {{ end }}
         {{/*TODO: ok? */}}
         {{ else if eq $value "top" }}

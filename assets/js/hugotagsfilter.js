@@ -56,7 +56,7 @@ class HugoTagsFilter {
     }
     this.showCheck(this.FILTERS[0]['name'], true);
     /* 2-REC: makes 'all' button selected for every filter */
-    for( var i = 1; i < this.FILTERS.length; i++) {
+    for(var i = 1; i < this.FILTERS.length; i++) {
       this.showCheck(this.FILTERS[i]['name'], false);
     }
     /**/
@@ -213,7 +213,6 @@ class HugoTagsFilter {
       /* show item only if visibility is true for all filters */
       for ( var j = 0; j < this.FILTERS.length; j++ ) {
         /* 2-REC: Added "AND" fltering */
-        /* TODO: find better name for 'filterAnd' */
         if (this.FILTERS[j]['filterAnd']) {
           /* Have switch, and enabled */
           /* If no selection => select all */
@@ -334,14 +333,10 @@ class HugoTagsFilter {
   /* 2-REC: "AND" filtering */
   toggleSwitch(checkbox, filter) {
     for( var i = 0; i < this.FILTERS.length; i++) {
-      if(filter) {
-        if(this.FILTERS[i]['name'] === filter) {
-          this.FILTERS[i]['filterAnd'] = checkbox.checked;
-          this.updateSwitchLabels(checkbox);
-        }
-      } else {
+      if(this.FILTERS[i]['name'] === filter) {
         this.FILTERS[i]['filterAnd'] = checkbox.checked;
         this.updateSwitchLabels(checkbox);
+        break
       }
     }
     this.showCheck(filter)

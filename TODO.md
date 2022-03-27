@@ -3,6 +3,8 @@
 
 ##################
 2022/02/13
+- [ ] assets\js\lazysizes.min.js
+  => Update to >5.2.1 (ecurity issues)
 - [ ] CSS
   - [ ] Unify "media" sizes ... (many different values)
   - [ ] Fix IE bugs... LOTS!
@@ -13,6 +15,17 @@
 - [ ] Search
   - [ ] handle default values for switches/checkboxes
     (need to have sync between "checked" param in "input" element + "filterAnd" value in HTF config)
+    Something like(+need to provide "switchId" in "htfconfig"):
+      initSwitches() {
+        for(var i = 1; i < this.FILTERS.length; i++) {
+          var switchId = this.FILTERS[i]['switchId'];
+          if (switchId) {
+            var checkbox = document.getElementById(switchId);
+            if (checkbox) {
+              checkbox.checked = this.FILTERS[i]['filterAnd'];
+              var filterName = this.FILTERS[i]['name']
+              this.toggleSwitch(checkbox, filterName);
+      => Also, issue with page layout when all posts not visible at init.
   - [ ] make sure no unused elements left (files, references, styles, etc.)
   - [ ] rename elements still used but not relateo search (eg: 'search-border-cor' (?))
 - [ ] "taxo-filter"

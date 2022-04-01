@@ -1,5 +1,5 @@
 {{ $tags := "" }}
-{{ with .Params.tags }}
+{{ with .context.Params.tags }}
   {{ range . }}
     {{ $tags = print $tags " " (. | replaceRE "[.]" "_" | urlize) }}
   {{ end }}
@@ -10,7 +10,7 @@
 {{ end }}
 
 {{ $categories := "" }}
-{{ with .Params.categories }}
+{{ with .context.Params.categories }}
   {{ range . }}
     {{ $categories = print $categories " " (. | replaceRE "[.]" "_" | urlize) }}
   {{ end }}
@@ -21,7 +21,7 @@
 {{ end }}
 
 {{ $series := "" }}
-{{ with .Params.series }}
+{{ with .context.Params.series }}
   {{ range . }}
     {{ $series = print $series " " (. | replaceRE "[.]" "_" | urlize) }}
   {{ end }}
@@ -32,7 +32,7 @@
 {{ end }}
 
 {{ $authors := "" }}
-{{ with .Params.author }}
+{{ with .context.Params.author }}
   {{ if eq ( printf "%T" . ) "string" }}
     {{ $authors = . | replaceRE "[.]" "_" | urlize }}
   {{ else if eq ( printf "%T" . ) "[]string" }}
@@ -45,7 +45,7 @@
 {{ if eq (len $authors) 0 }}
   {{ $authors = "no-author" }}
 {{ end }}
-<div class="grid-item tf-filter-item tf-item"
+<div class="{{ if eq .summaryShape "tiles" }}grid-item {{ end }}tf-filter-item tf-item"
   data-tags="{{ $tags }}"
   data-categories="{{ $categories }}"
   data-series="{{ $series }}"

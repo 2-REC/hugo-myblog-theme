@@ -7,7 +7,7 @@
     <div class="grid-sizer"></div>
     {{ range .pages }}
       {{- if $filters -}}
-      {{ partial "taxonomy/taxonomy-filter-item-begin" . }}
+      {{ partial "taxonomy/taxonomy-filter-item-begin" (dict "context" . "summaryShape" "tiles") }}
       {{- else -}}
       <div class="grid-item">
       {{- end -}}

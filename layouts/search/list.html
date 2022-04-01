@@ -289,9 +289,9 @@
       {{ if not (eq $summaryShape "tiles") }}
       <div class="tf-items-container summary__container" data-display="block">
         {{ range $pages.ByPublishDate.Reverse }}
-          {{ partial "taxonomy/taxonomy-filter-item-begin" . }}
+          {{ partial "taxonomy/taxonomy-filter-item-begin" (dict "context" . "summaryShape" $summaryShape) }}
           {{ partial "body/summary" (dict "context" . "summaryShape" $summaryShape) }}
-          {{ partial "taxonomy/taxonomy-filter-item-end" . }}
+          </div>
         {{ end }}
 {{/* TODO: paginator? (issues with filters => only on current page
 => not easy to fix, can ignore (?)

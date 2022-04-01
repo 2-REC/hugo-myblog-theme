@@ -26,6 +26,9 @@ class HugoTagsFilter {
     
     this.FILTERS = (config && config.filters) ? config.filters : defaultFilters;
     this.showItemClass = (config && config.showItemClass) ? config.showItemClass : "tf-show";
+    /* 2-REC: Hide */
+    this.hideItemClass = (config && config.hideItemClass) ? config.hideItemClass : "tf-hide";
+    /**/
     this.activeButtonClass = (config && config.activeButtonClass) ? config.activeButtonClass : "active";
     this.filterItemClass = (config && config.filterItemClass) ? config.filterItemClass : "tf-filter-item";
     this.counterSelector = (config && config.counterSelector) ? config.counterSelector : "selectedItemCount";
@@ -59,10 +62,6 @@ class HugoTagsFilter {
     for(var i = 1; i < this.FILTERS.length; i++) {
       this.showCheck(this.FILTERS[i]['name'], false);
     }
-    /**/
-
-    /* 2-REC: 'hack' for auto rearrange of summary tiles */
-    this.firstFilter = true;
     /**/
   }
   
@@ -208,7 +207,10 @@ class HugoTagsFilter {
     for ( var i = 0; i < this.filterItems.length; i++ ) {
       /* First remove "show" class */
       this.delClassIfPresent(this.filterItems[i], this.showItemClass);
-      
+      /* 2-REC: Hide */
+      this.addClassIfMissing(this.filterItems[i], this.hideItemClass);
+      /**/
+
       var visibility = 0;
       /* show item only if visibility is true for all filters */
       for ( var j = 0; j < this.FILTERS.length; j++ ) {
@@ -241,6 +243,9 @@ class HugoTagsFilter {
         if ( !this.filterItems[i].classList.contains(this.showItemClass) ) {
           this.selectedItemCount++;
           this.addClassIfMissing(this.filterItems[i], this.showItemClass);
+          /* 2-REC: Hide */
+          this.delClassIfPresent(this.filterItems[i], this.hideItemClass);
+          /**/
         }
       }
     }
@@ -251,19 +256,29 @@ class HugoTagsFilter {
     
     this.checkButtonCounts(isInitial)
 
-    /* 2-REC: 'hack' for auto rearrange of summary tiles
-      => 'position' set to 'absolute' and 'top'+'left' not refreshed
+    /* 2-REC: Hide
+      'Hack' to auto rearrange summary tiles
+      => Positions not automatically refreshed when hiding/showing grid items
+      TODO: Avoid using both 'showItemClass' & 'hideItemClass'.
     */
-    if (this.firstFilter) {
-      this.firstFilter = false;
-      var items = document.getElementsByClassName("grid-item");
-      if (items) {
-        for (let i = 0; i < items.length; i++) {
-          var grid = items[i];
-          grid.style.position = "relative";
-          grid.style.top = 0;
-          grid.style.left = 0;
+    var items = document.getElementsByClassName("grid-item");
+    if (items) {
+      const heights = [0, 0, 0, 0];
+      for (let i = 0; i < items.length; i++) {
+        var grid = items[i];
+
+        if (grid.classList.contains(this.hideItemClass)) {
+          continue
         }
+
+        /* Add item in column with lowest height */
+        const min = Math.min.apply(Math, heights);
+        const index = heights.indexOf(min);
+
+        grid.style.left = (index * 25) + "%";
+        grid.style.top = min + "px";
+
+        heights[index] += grid.offsetHeight;
       }
     }
     /**/
@@ -331,37 +346,39 @@ class HugoTagsFilter {
   }
 
   /* 2-REC: "AND" filtering */
-  toggleSwitch(checkbox, filter) {
+  updateSwitch(checkbox, filter) {
     for( var i = 0; i < this.FILTERS.length; i++) {
       if(this.FILTERS[i]['name'] === filter) {
         this.FILTERS[i]['filterAnd'] = checkbox.checked;
-        this.updateSwitchLabels(checkbox);
         break
       }
     }
     this.showCheck(filter)
   }
 
-  updateSwitchLabels(checkbox) {
-    var switchId = checkbox.id;
+  toggleSwitch(checkbox, filterName, uncheckedId, checkedId) {
+    this.updateSwitch(checkbox, filterName);
 
-    /* TODO(2-REC): Add "And"+"Or" labels as global parameters for HTF (e.g.: "andSuffix"+"orSuffix") */
-    var andLabel = document.getElementById((switchId + "And"));
-    var orLabel = document.getElementById((switchId + "Or"));
-    if(checkbox.checked){
-      if (andLabel) {
-        this.addClassIfMissing(andLabel, this.activeButtonClass);
-      }
-      if (orLabel) {
-        this.delClassIfPresent(orLabel, this.activeButtonClass);
-      }
-    } else {
-      if (andLabel) {
-        this.delClassIfPresent(andLabel, this.activeButtonClass);
-      }
-      if (orLabel) {
-        this.addClassIfMissing(orLabel, this.activeButtonClass);
-      }
+    if (checkedId) {
+        var checkedLabel = document.getElementById(checkedId);
+        if (checkedLabel) {
+            if(checkbox.checked) {
+                this.addClassIfMissing(checkedLabel, this.activeButtonClass);
+            } else {
+                this.delClassIfPresent(checkedLabel, this.activeButtonClass);
+            }
+        }
+    }
+
+    if (uncheckedId) {
+        var uncheckedLabel = document.getElementById(uncheckedId);
+        if (uncheckedLabel) {
+            if(checkbox.checked) {
+                this.delClassIfPresent(uncheckedLabel, this.activeButtonClass);
+            } else {
+                this.addClassIfMissing(uncheckedLabel, this.activeButtonClass);
+            }
+        }
     }
   }
   /**/

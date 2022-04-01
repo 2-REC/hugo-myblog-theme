@@ -6,10 +6,11 @@
   <div class="grid tile-grid__container">
     <div class="grid-sizer"></div>
     {{ range .pages }}
-      {{ if $filters }}
+      {{- if $filters -}}
       {{ partial "taxonomy/taxonomy-filter-item-begin" . }}
-      {{ end }}
+      {{- else -}}
       <div class="grid-item">
+      {{- end -}}
         <div class="box-masonry">
           {{ $image := and (isset .Params "image") .Params.image }}
           {{ $showonlyimage := false }}
@@ -93,9 +94,6 @@
             </a>
         </div>
       </div>
-      {{ if $filters }}
-      {{ partial "taxonomy/taxonomy-filter-item-end" . }}
-      {{ end }}
     {{ end }}
   </div>
 {{/* TODO: no effect? - check if no problems with taxo-filter! */}}

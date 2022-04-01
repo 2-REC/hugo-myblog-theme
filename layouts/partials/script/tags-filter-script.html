@@ -66,20 +66,14 @@ var htfConfig = {
 {{- end -}}
   ],
   showItemClass: "show-item",
+  /* 2-REC: Hide */
+  hideItemClass: "hide-item",
+  /**/
   filterItemClass: "tf-filter-item",
   activeButtonClass: "active",
   counterSelector: "selectedItemCount",
   populateCount: true,
   setDisabledButtonClass: "disable-button"
 }
-
-/*****/
-/*
-function toggleTest(filterName) {
-  console.log("TEST: " + filterName)
-}
-*/
-/*****/
-
 var htf = new HugoTagsFilter(htfConfig);
 </script>

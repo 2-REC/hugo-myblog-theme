@@ -102,6 +102,25 @@
     }
   }
 
+  .is-filter {
+    border-radius: 0.175rem;
+    
+    @include themify($themes) {
+      color: themed('taxo-title-color');
+      background-color: themed('taxo-tags-background-color');
+    }
+
+    padding: 0.125rem 0.25rem;
+
+    &[data-dir="ltr"] {
+      padding: 0.125rem 0 0.125rem 0.25rem;
+    }
+
+    &[data-dir="rtl"] {
+      padding: 0.125rem 0.25rem 0.125rem 0;
+    }
+  }
+
   .is-tags {
     border-radius: 0.175rem;
     
@@ -109,6 +128,8 @@
       color: themed('taxo-tags-color');
       background-color: themed('taxo-tags-background-color');
     }
+
+    padding: 0.125rem 0.25rem;
 
     &[data-dir="ltr"] {
       padding: 0.125rem 0 0.125rem 0.25rem;
@@ -127,6 +148,8 @@
       background-color: themed('taxo-categories-background-color');
     }
 
+    padding: 0.125rem 0.25rem;
+
     &[data-dir="ltr"] {
       padding: 0.125rem 0 0.125rem 0.25rem;
     }
@@ -143,6 +166,8 @@
       color: themed('taxo-series-color');
       background-color: themed('taxo-series-background-color');
     }
+
+    padding: 0.125rem 0.25rem;
 
     &[data-dir="ltr"] {
       padding: 0.125rem 0 0.125rem 0.25rem;
@@ -319,9 +344,16 @@ button.disable-button {
   border-style: dashed;
 }
 
+/* 2-REC: Hide */
+/*
 .show-item {
   display: block;
 }
+*/
+.hide-item {
+  display: none !important;
+}
+/**/
 
 .filter-box {
   padding: .5rem;

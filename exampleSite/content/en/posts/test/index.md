@@ -9,7 +9,8 @@ author: Jeus
 tags:
 - hugo
 series:
--
+- ser1
+- ser2
 categories:
 - hugo
 #image: images/feature2/color-palette.png #TODO: see about images

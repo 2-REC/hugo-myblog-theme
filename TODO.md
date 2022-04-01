@@ -27,7 +27,7 @@
               this.toggleSwitch(checkbox, filterName);
       => Also, issue with page layout when all posts not visible at init.
   - [ ] make sure no unused elements left (files, references, styles, etc.)
-  - [ ] rename elements still used but not relateo search (eg: 'search-border-cor' (?))
+  - [ ] rename elements still used but not related to search (eg: 'search-border-cor' (?))
 - [ ] "taxo-filter"
   - [ ] could refactor for common code/partial for each filter type
   - [ ] "All"
@@ -37,8 +37,9 @@
   - [ ] ADAPT CSS to rest of theme!
   - [x] add param to make filter/search optional
     => not a param, but check if "searh" page exist in content
-  - [ ] Bug with summary "tiles"
-    => Using "hack" to force rearrange, but has issue of tiles not aligning well (if different heights)
+  - [x] Bug with summary "tiles"
+    => Using "hack" to force rearrange, seems ok.
+    Worth checking others?
     - [ ] Use different lib/js than "pointyfar"
       - [ ] look at "extended" method:
         https://gronskiy.com/posts/filtering-posts-over-multiple-taxonomies-hugo/

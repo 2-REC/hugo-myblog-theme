@@ -67,6 +67,9 @@ var htfConfig = {
   ],
   showItemClass: "show-item",
   /* 2-REC: Hide */
+  {{- if eq (.Param "summaryShape") "tiles" -}}
+  useTiles: true,
+  {{- end -}}
   hideItemClass: "hide-item",
   /**/
   filterItemClass: "tf-filter-item",
@@ -75,5 +78,6 @@ var htfConfig = {
   populateCount: true,
   setDisabledButtonClass: "disable-button"
 }
+
 var htf = new HugoTagsFilter(htfConfig);
 </script>

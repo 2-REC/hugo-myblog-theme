@@ -37,14 +37,16 @@
   - [ ] ADAPT CSS to rest of theme!
   - [x] add param to make filter/search optional
     => not a param, but check if "searh" page exist in content
-  - [x] Bug with summary "tiles"
-    => Using "hack" to force rearrange, seems ok.
-    Worth checking others?
-    - [ ] Use different lib/js than "pointyfar"
-      - [ ] look at "extended" method:
-        https://gronskiy.com/posts/filtering-posts-over-multiple-taxonomies-hugo/
-      - [ ] Check "Shuffle JS", if static
-        https://vestride.github.io/Shuffle/
+  - [ ] Bug with summary "tiles"
+    - [ ] BUG when changing window size with some filters on, and then removing theme
+      => Seems related to 'translate' animations in CSS (?)
+    - [x] Using "hack" to force rearrange, seems ok.
+    - [ ] Worth checking others?
+      - [ ] Use different lib/js than "pointyfar"
+        - [ ] look at "extended" method:
+          https://gronskiy.com/posts/filtering-posts-over-multiple-taxonomies-hugo/
+        - [ ] Check "Shuffle JS", if static
+          https://vestride.github.io/Shuffle/
   - [ ] add disclaimer to "pointyfar" (as long as using his code)
     https://github.com/pointyfar/hugo-tags-filter
 - [ ] "recent carousel"

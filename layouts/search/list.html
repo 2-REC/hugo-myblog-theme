@@ -291,7 +291,7 @@
         {{ range $pages.ByPublishDate.Reverse }}
           {{ partial "taxonomy/taxonomy-filter-item-begin" (dict "context" . "summaryShape" $summaryShape) }}
           {{ partial "body/summary" (dict "context" . "summaryShape" $summaryShape) }}
-          </div>
+          {{ partial "taxonomy/taxonomy-filter-item-end" }}
         {{ end }}
 {{/* TODO: paginator? (issues with filters => only on current page
 => not easy to fix, can ignore (?)

@@ -67,9 +67,7 @@ var htfConfig = {
   ],
   showItemClass: "show-item",
   /* 2-REC: Hide */
-  {{- if eq (.Param "summaryShape") "tiles" -}}
-  useTiles: true,
-  {{- end -}}
+  /* TODO: Avoid using both 'showItemClass' & 'hideItemClass'. */
   hideItemClass: "hide-item",
   /**/
   filterItemClass: "tf-filter-item",
@@ -80,4 +78,80 @@ var htfConfig = {
 }
 
 var htf = new HugoTagsFilter(htfConfig);
+
+/* 2-REC: Hide */
+/* Special case for tiles - "auto-arrange" fix */
+{{- if eq (.Param "summaryShape") "tiles" -}}
+/* TODO: Move to other file/partial? */
+const wrapper = document.getElementsByClassName("tf-wrapper");
+/* TODO: If more than 1, should raise error (?) */
+if (wrapper && wrapper.length > 0) {
+
+  function arrangeGrid() {
+    const items = wrapper[0].getElementsByClassName("grid-item");
+    const hideItemClass = "hide-item";
+
+    function process() {
+      /* 'Hack' to auto rearrange tiles
+        => Positions not automatically refreshed when hiding/showing grid items
+      */
+      if (items) {
+        var classList = items[0].classList;
+
+        var nbColumns = 0;
+        if (classList.contains("full")) {
+          nbColumns = 1;
+        } else if (classList.contains("half")) {
+          nbColumns = 2;
+        } else if (classList.contains("third")) {
+          nbColumns = 3;
+        } else if (classList.contains("quarter")) {
+          nbColumns = 4;
+        }
+
+        if (nbColumns != 0) {
+          const heights = [];
+          for (let i=0; i<nbColumns; ++i) heights[i] = 0;
+          const width = 100 / nbColumns;
+
+          for (let i = 0; i < items.length; i++) {
+            var grid = items[i];
+
+            /* Cancel animation to remove issues when resizing */
+            /* TODO: Need to handle others (webkit, etc.)? */
+            grid.style.transition = "none";
+            grid.style.transform = "none";
+
+            if (grid.classList.contains(hideItemClass)) {
+              continue
+            }
+
+            if (nbColumns == 1) {
+              grid.style.left = "0";
+              grid.style.top = heights[0] + "px";
+
+              heights[0] += grid.offsetHeight;
+
+            } else {
+              /* Add item in column with lowest height */
+              const min = Math.min.apply(Math, heights);
+              const index = heights.indexOf(min);
+
+              grid.style.left = (index * width) + "%";
+              grid.style.top = min + "px";
+
+              heights[index] += grid.offsetHeight;
+            }
+          }
+        }
+      }
+    }
+    process();
+  }
+
+  htf.postCheck = arrangeGrid;
+}
+{{- end -}}
+/**/
+
 </script>

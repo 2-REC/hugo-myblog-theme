@@ -28,7 +28,6 @@ class HugoTagsFilter {
     this.showItemClass = (config && config.showItemClass) ? config.showItemClass : "tf-show";
     /* 2-REC: Hide */
     this.hideItemClass = (config && config.hideItemClass) ? config.hideItemClass : "tf-hide";
-    this.useTiles = (config && config.useTiles) ? config.useTiles : false;
     /**/
     this.activeButtonClass = (config && config.activeButtonClass) ? config.activeButtonClass : "active";
     this.filterItemClass = (config && config.filterItemClass) ? config.filterItemClass : "tf-filter-item";
@@ -256,66 +255,17 @@ class HugoTagsFilter {
     }
     
     this.checkButtonCounts(isInitial)
-
-    /* 2-REC: Hide
-      'Hack' to auto rearrange summary tiles
-      => Positions not automatically refreshed when hiding/showing grid items
-      TODO: Avoid using both 'showItemClass' & 'hideItemClass'.
-    */
-    if (this.useTiles) {
-      /* TODO: should only get items in 'tf-wrapper' element */
-      /* TODO: get items at beginning, and keep list (instead of repeating) */
-      var items = document.getElementsByClassName("grid-item");
-      if (items) {
-        var classList = items[0].classList;
-
-        var nbColumns = 0;
-        if (classList.contains("full")) {
-          nbColumns = 1;
-        } else if (classList.contains("half")) {
-          nbColumns = 2;
-        } else if (classList.contains("third")) {
-          nbColumns = 3;
-        } else if (classList.contains("quarter")) {
-          nbColumns = 4;
-        }
-
-        if (nbColumns != 0) {
-          const heights = [];
-          for (let i=0; i<nbColumns; ++i) heights[i] = 0;
-          const width = 100 / nbColumns;
-
-          for (let i = 0; i < items.length; i++) {
-            var grid = items[i];
-  
-            if (grid.classList.contains(this.hideItemClass)) {
-              continue
-            }
-
-            if (nbColumns == 1) {
-              grid.style.left = "0";
-              grid.style.top = heights[0] + "px";
-  
-              heights[0] += grid.offsetHeight;
-
-            } else {
-              /* Add item in column with lowest height */
-              const min = Math.min.apply(Math, heights);
-              const index = heights.indexOf(min);
-  
-              grid.style.left = (index * width) + "%";
-              grid.style.top = min + "px";
-  
-              heights[index] += grid.offsetHeight;
-            }
-          }
-        }
-      }
-    }
+    /* 2-REC: Hide */
+    this.postCheck();
     /**/
-
   }
-  
+
+  /* 2-REC: Hide */
+  postCheck() {
+    /* This function can be overridden to add post process */
+  }
+  /**/
+
   checkButtonCounts(isInitial){
     this.filterValues = this.initFilterCount(this.filterValues, isInitial);
     this.populateCounters(this.filterValues);

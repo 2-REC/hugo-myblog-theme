@@ -93,7 +93,11 @@
               </div>
             </a>
         </div>
+      {{- if $filters -}}
+      {{ partial "taxonomy/taxonomy-filter-item-end" }}
+      {{- else -}}
       </div>
+      {{- end -}}
     {{ end }}
   </div>
 {{/* TODO: no effect? - check if no problems with taxo-filter! */}}

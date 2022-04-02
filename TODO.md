@@ -2,7 +2,7 @@
 
 
 ##################
-2022/02/13
+2022/04/02
 - [ ] assets\js\lazysizes.min.js
   => Update to >5.2.1 (ecurity issues)
 - [ ] CSS
@@ -12,7 +12,11 @@
 - [ ] Navbar
   - [ ] Change order?
   - [x] Add "seacrh" (not in mobile layout)
+  - [ ] Mobile
+    - [ ] RTL languages don't flip menu horizontally!
+    - [ ] Add option to show/hide taxo buttons?
 - [ ] Search
+  - [x] BUG: Tiles: Footer not repositionned when hiding/showing items.
   - [ ] handle default values for switches/checkboxes
     (need to have sync between "checked" param in "input" element + "filterAnd" value in HTF config)
     Something like(+need to provide "switchId" in "htfconfig"):
@@ -35,19 +39,14 @@
     - [ ] add numbers? (total count)
   - [ ] Make i18n entries for "all"+"none" for each filter type? (tags, categories, etc.)
   - [ ] ADAPT CSS to rest of theme!
-  - [x] add param to make filter/search optional
-    => not a param, but check if "searh" page exist in content
-  - [ ] Bug with summary "tiles"
-    - [ ] BUG when changing window size with some filters on, and then removing theme
-      => Seems related to 'translate' animations in CSS (?)
-    - [x] Using "hack" to force rearrange, seems ok.
+  - [ ] Summary tiles
     - [ ] Worth checking others?
       - [ ] Use different lib/js than "pointyfar"
         - [ ] look at "extended" method:
           https://gronskiy.com/posts/filtering-posts-over-multiple-taxonomies-hugo/
         - [ ] Check "Shuffle JS", if static
           https://vestride.github.io/Shuffle/
-  - [ ] add disclaimer to "pointyfar" (as long as using his code)
+  - [ ] Add disclaimer to "pointyfar" (as long as using his code)
     https://github.com/pointyfar/hugo-tags-filter
 - [ ] "recent carousel"
   - [ ] bug? => when resizing, warning message from "cycle":

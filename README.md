@@ -68,11 +68,9 @@ TODO: complete/rewrite/etc.
         Modified version:
         https://github.com/2-REC-forks/hugo-tags-filter
         (TODO: add more details/info)
+    * Optional (disabled if no "search" page found in site content)
     * Possibility to switch AND/OR results
-      (TODO: add more details...
-        - need id for switch, and ids for "and"+"or" label as id+"And", id+"Or" respectively
-        ...
-      )
+      (TODO: add more details...)
 
 * Footer
   * Copyright

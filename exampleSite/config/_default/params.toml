@@ -7,9 +7,9 @@ meta_image = ""
 #themecolor = "" #TODO: remove (unused)
 
 notAllowedTypesInHome = ["about", "contact"] #TODO: adapt!
-notAllowedTypesInHomeSidebar = ["about", "archive"] #TODO: adapt! (contact?)
-# notAllowedTypesInArchive #TODO!
-# notAllowedTypesInHomeFeed = ["about", "archive", "contact", "gallery" ] #TODO: IF using 'showFeedLinks' - adapt! (look in original Zzo)
+notAllowedTypesInHomeSidebar = ["about", "archive", "search"] #TODO: adapt! (contact?)
+#notAllowedTypesInArchive #TODO!
+#notAllowedTypesInHomeFeed = ["about", "archive", "contact", "galleries" ] #TODO: IF using 'showFeedLinks' - adapt! (look in original Zzo)
 
 viewportSize = "wide" # widest, wider, wide, normal, narrow
 #enableSideDataLeft = true # Default: false
@@ -18,6 +18,7 @@ viewportSize = "wide" # widest, wider, wide, normal, narrow
 enableUiAnimation = true #TODO: keep? used?
 hideSingleContentsWhenJSDisabled = false
 
+mainSections = [ "posts", "galleries" ]
 
 # navbar
 enableThemeChange = true
@@ -43,8 +44,6 @@ enableTocContent = false # TOC in page body
 #titleClipboard = true # Default false
 codeClipboard = true # Default false
 
-#enableSearch = false #2-REC: renoved search
-#enableSearchHighlight = false
 enableGoToTop = true
 
 summaryShape = "tiles" # Default for all pages, values: "card", "classic", "compact", "tiles"
@@ -71,6 +70,8 @@ summaryZoom = false
 galleryInitZoom = true
 galleryZoom = true
 
+#disableSearchSections = true # Default: false
+#disableSearchAuthors = true # Default: false
 
 
 # whoami #TODO: rename all params to "bio..." (+propagate impacts)
@@ -85,28 +86,30 @@ link = "https://somesite.org"
 
 # Sidebar
 #TODO: depends on page type! (=> specify!)
-# Allowed components: "thumbnail", "bio", "top", "recent", "tags", "categories", "series", "-"
+# Allowed components: "thumbnail", "bio", "top", "recent", "tags", "categories", "series", "search", custom", "-"
 #sidebarHomeLeft = [ ... ] #TODO
-sidebarHomeRight = [ "bio", "top", "recent", "-", "tags", "categories", "series" ] #TODO
+sidebarHomeRight = [ "bio", "recent", "-", "tags", "categories", "series", "search" ] #TODO
 sidebarSingleLeft = [ "thumbnail", "-", "toc" ] #TODO
-#sidebarSingleRight = [ "toc", "tags", "categories", "series" ] #TODO
-sidebarSingleRight = [ "-", "tags", "categories", "series" ] #TODO
+#sidebarSingleRight = [ "toc", "tags", "categories", "series", "search" ] #TODO
+sidebarSingleRight = [ "-", "tags", "categories", "series", "search" ] #TODO
 singleTaxonomies = true # default: false
 #sidebarListLeft = [ ... ] #TODO
-sidebarListRight = [ "recent", "-", "tags", "categories", "series" ] #TODO
+sidebarListRight = [ "recent", "-", "tags", "categories", "series", "search" ] #TODO
 #sidebarTaxonomyLeft = [ "-", "bio" ] #TODO
-sidebarTaxonomyRight = [ "-", "tags", "categories", "series" ] #TODO
+sidebarTaxonomyRight = [ "-", "tags", "categories", "series", "search" ] #TODO
+#sidebarSearchLeft = [ "-", "bio" ] #TODO
+#sidebarSearchRight = [ "-", "bio" ] #TODO
 #disableSidebarLeft = false # Default: false
 #disableSidebarRight = false # Default: false
 enableSidebarSeparator = true # Default: true
 enableSidebarBio = true # Default: false
 enableBioImage = true # Default: true
-#enableSidebarCustom = false # Default: false
 enableSidebarPostsByOrder = false # Default: false #TODO: rename to "enableTop"?
 enableSidebarRecent = true # Default: false
 enableSidebarTags = true # Default: false
 enableSidebarSeries = true # Default: false
 enableSidebarCategories = true # Default: false
+enableSidebarSearch = true # Default: false
 enableToc = true #TODO: rename to enableSidebarToc
 tocLevels = ["h2", "h3", "h4"]
 #tocFolding = true # collapse sub titles

@@ -43,124 +43,6 @@
     margin: 0.25rem 0.5rem 0;
   }
 
-//TODO: not used anymore (was for language selector)
-/*
-  .dropdown {
-    position: absolute;
-    left: 0.5rem;
-    bottom: 0.5rem;
-    width: 40px;
-    height: 40px;
-    border-radius: 0.25rem;
-
-    @include flexbox();
-    @include align-items(center);
-    @include justify-content(center);    
-    @include themify($themes) {
-      color: themed('gtt-color');
-      background-color: themed('gtt-background-color');
-      @include on-event {
-        color: themed('gtt-hover-color');
-        background-color: themed('gtt-hover-background-color');
-      }
-    }
-
-    &-trigger {
-      outline: none;
-      border-radius: 0.25rem;
-      cursor: pointer;
-      border: none;
-      width: 100%;
-      height: 100%;
-      
-      @include themify($themes) {
-        color: themed('gtt-color');
-        background-color: themed('gtt-background-color');
-        @include on-event {
-          color: themed('gtt-hover-color');
-          background-color: themed('gtt-hover-background-color');
-        }
-      }
-    }
-
-    &-content {
-      position: absolute;
-      bottom: 100%;
-      left: 0;
-      display: none;
-      height: auto;
-      z-index: z("dropdown");      
-      border-top-left-radius: 0.15rem;
-      border-top-right-radius: 0.15rem;
-
-      a {
-        font-size: 0.9rem;
-      }
-
-      @include box-shadow(0, 1px, 3px, 0, rgba(0, 0, 0, 0.4));
-      @include themify($themes) {
-        border-bottom: 4px solid themed("dropdown-border-top-color");
-        background-color: themed("dropdown-content-background-color");
-      }
-
-      .is-active {
-        @include themify($themes) {
-          background-color: themed("dropdown-item-active-background-color");
-        }
-      }
-    }
-
-    &-item {
-      padding: 0.25rem 0.75rem;
-      height: 100%;
-      min-width: 40px;
-      max-width: 150px;
-      text-decoration: none;
-      display: block;
-      font-size: 1rem;
-
-      @include truncate(150px);
-      @include themify($themes) {
-        color: themed("dropdown-item-color");
-        @include on-event {
-          color: themed("dropdown-item-hover-color");
-          background-color: themed("dropdown-item-hover-background-color");
-          text-decoration: none;
-
-          &:first-child {
-            border-top-left-radius: 0.15rem;
-            border-top-right-radius: 0.15rem;
-          }
-        }
-      }
-    }
-  }
-*/
-
-//TODO: unused
-/*
-  .select-theme {    
-    &__label {      
-      color: inherit;
-      text-transform: capitalize;            
-    }
-
-    &__item {
-      text-transform: capitalize;
-    }
-  }
-*/
-
-//TODO: not used anymore (was for language selector)
-/*
-  .select-lang {
-    &__label {
-      color: inherit;
-      text-transform: capitalize;
-    }
-  }
-*/
-
   .social {
     margin: 0.25rem;
     a {
@@ -174,13 +56,6 @@
       }   
     }
   }
-
-//TODO: not used anymore (was for language selector)
-/*
-  .dropdown:hover .dropdown-content {
-    display: block;
-  }
-*/
 
   hr {
     @include themify($themes) {

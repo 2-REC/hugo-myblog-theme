@@ -1,9 +1,70 @@
 # TODO
 
+- [ ] Mention use of libraries/modules in README/disclaimer
+  - [ ] assets\js\lazysizes.min.js
+    https://github.com/aFarkas/lazysizes
+  - [ ] photoswipe
+  - [ ] hugo-tags-filter ("pointyfar")
+    https://github.com/pointyfar/hugo-tags-filter
+
 
 ##################
-2021/07/18
+2022/04/02
 
+- [ ] Features:
+  - [ ] Check if page visits/counts features are still there (or removed from ZZO)
+
+- [ ] CSS
+  - [ ] Unify "media" sizes ... (many different values)
+  - [ ] Fix IE bugs... LOTS!
+  - [ ] Rename/change unrelated variables (eg: "gtt-color" in most uses isn't related to "gtt" - eg in "modal")
+
+- [ ] Navbar
+  - [ ] Change order?
+  - [x] Add "search" (not in mobile layout)
+  - [ ] Mobile
+    - [ ] RTL languages don't flip menu horizontally!
+    - [ ] Add option to show/hide taxonomies buttons?
+
+- [ ] Search
+  - [x] BUG: Tiles: Footer not repositionned when hiding/showing items.
+  - [ ] handle default values for switches/checkboxes
+    => Need to have sync between "checked" param in "input" element + "filterAnd" value in HTF config.
+      Something like (+need to provide "switchId" in "htfconfig"):
+        ```
+        initSwitches() {
+          for(var i = 1; i < this.FILTERS.length; i++) {
+            var switchId = this.FILTERS[i]['switchId'];
+            if (switchId) {
+              var checkbox = document.getElementById(switchId);
+              if (checkbox) {
+                checkbox.checked = this.FILTERS[i]['filterAnd'];
+                var filterName = this.FILTERS[i]['name']
+                this.toggleSwitch(checkbox, filterName);
+        ```
+      => Also, there is an issue with page layout when all posts not visible at init.
+  - [x] Adapt CSS to rest of theme
+  - [ ] Refactoring/cleaning
+    - [ ] "search/list.html"
+      - [ ] Could refactor for common code/partial for each filter type
+      - [ ] "All" buttons
+        - [ ] add specific class ("clean" left/right padding)
+        - [ ] add numbers? (total count)
+    - [ ] Make sure no unused elements left (files, references, styles, etc.)
+    - [ ] Rename elements still used but not related to search (eg: 'search-border-cor' (?))
+  - [ ] Check other libraries/modules for summary tiles
+    - [ ] Use different lib/js than "pointyfar"
+      - [ ] look at "extended" method:
+        https://gronskiy.com/posts/filtering-posts-over-multiple-taxonomies-hugo/
+      - [ ] Check "Shuffle JS", if static
+        https://vestride.github.io/Shuffle/
+
+- [ ] "recent carousel"
+  - [ ] bug? => when resizing, warning message from "cycle":
+    [cycle] options not found, "prev/next" ignored
+
+
+2021/07/18
 - [ ] Head - meta
   => infos:
         https://socialdebug.com/tags/open-graph
@@ -139,6 +200,7 @@
 * [ ] Global
     * [ ] FIX "RTL" LAYOUTS!
       * [ ] navbar (lg selector+dropdown, etc)
+        * [ ] In mobile, logo should be right side?
       * [ ] ...
     * [ ] make new themes (colours, fonts, etc.)
       * [ ] CHECK CONSISTENCY (all links same colours, deco, page consistent fonts, etc.)
@@ -418,7 +480,8 @@ LATER:
         * [ ] site-nav: Set "logo" image as parameter (instead of hardcoded "/logo/logo.png")
     * [ ] sidebar
         * [ ] list
-            * [ ] posts-by-order => how does it work? (seems broken?)
+            * [ ] posts-by-order => see how to handle
+              * [ ] Need to manually adapt/set order every time new posts?
         * [ ] sidebar-menu => Empty!?
     * [ ] script
         => See what to keep (and remove uses in code)

@@ -2,16 +2,16 @@
 title: Other Post
 date: 2020-05-09T12:00:00+07:00
 description: Basic post.
-draft: true
+draft: false
 author: 2-REC
 tags:
 - post
-- example
+- exemple
 - image
 categories:
-- examples
+- exemples
 series:
-- Examples
+- Exemples
 ---
 
 Basic post example. - En Français

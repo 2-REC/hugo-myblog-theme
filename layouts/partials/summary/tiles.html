@@ -1,8 +1,16 @@
+{{ $filters := isset . "filters" }}
+{{ if $filters }}
+  {{ $filters = eq .filters true }}
+{{ end }}
 <div class="tile-grid">
   <div class="grid tile-grid__container">
     <div class="grid-sizer"></div>
     {{ range .pages }}
+      {{- if $filters -}}
+      {{ partial "taxonomy/taxonomy-filter-item-begin" (dict "context" . "summaryShape" "tiles") }}
+      {{- else -}}
       <div class="grid-item">
+      {{- end -}}
         <div class="box-masonry">
           {{ $image := and (isset .Params "image") .Params.image }}
           {{ $showonlyimage := false }}
@@ -85,9 +93,14 @@
               </div>
             </a>
         </div>
+      {{- if $filters -}}
+      {{ partial "taxonomy/taxonomy-filter-item-end" }}
+      {{- else -}}
       </div>
+      {{- end -}}
     {{ end }}
   </div>
+{{/* TODO: no effect? - check if no problems with taxo-filter! */}}
   {{ partial "pagination/pagination" .context }}
 </div>
 {{ partial "script/tiles-script" . }}

@@ -2,7 +2,7 @@
 title: "{{ replace .Name "-" " " | title }}"
 date: {{ .Date }}
 description: 
-type: gallery
+type: galleries
 mode: at-once # at-once or one-by-one
 tags:
 -

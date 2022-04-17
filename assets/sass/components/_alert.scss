@@ -4,6 +4,7 @@
     border: 1px solid transparent;
     border-radius: 0.125rem;
 
+    /* TODO: don't use hardcoded colors (+avoid 'dropdown-item-color' - not related) */
     @include themify($themes) {
         &-info {
             background-color: rgba(215, 238, 249, 0.4);

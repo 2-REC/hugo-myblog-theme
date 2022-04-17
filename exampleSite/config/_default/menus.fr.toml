@@ -11,9 +11,9 @@
   weight = 2
 
 [[main]]
-  identifier = "gallery"
+  identifier = "galleries"
   name = "Galeries"
-  url = "gallery"
+  url = "galleries"
   weight = 3
 
 [[main]]
@@ -27,3 +27,9 @@
   name = "Contact"
   url = "contact"
   weight = 5
+
+[[main]]
+  identifier = "search"
+  name = "icon-search"
+  url = "search"
+  weight = 6

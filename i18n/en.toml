@@ -8,6 +8,9 @@ other = "Jan 2, 2006"
 [reading-time]
 other = "min read"
 
+[sections]
+other = "Sections"
+
 [tags]
 other = "Tags"
 
@@ -16,6 +19,33 @@ other = "Categories"
 
 [series]
 other = "Series"
+
+[posts]
+other = "Posts"
+
+[galleries]
+other = "Galleries"
+
+[search]
+other = "Search"
+
+[authors]
+other = "Authors"
+
+[items]
+other = "Items"
+
+[all]
+other = "all"
+
+[none]
+other = "none"
+
+[and]
+other = "and"
+
+[or]
+other = "or"
 
 #[archive-dateformat]
 #other = "Jan 2"

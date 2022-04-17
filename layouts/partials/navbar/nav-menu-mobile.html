@@ -28,21 +28,30 @@
             <a href="{{ .URL | relLangURL }}">{{ safeHTML .Name }}</a>
           </li>
         {{ end }}
-
       {{ else }}
-        <li class="navbarm__menu--item {{ if $active }}active{{ end }}">
-          <a href="{{ $menu.URL | relLangURL }}">{{ safeHTML $menu.Name }}</a>
-        </li>
+        {{/* If "name" starts with "icon-" => use icon */}}
+        {{ if eq (substr .Name 0 5) "icon-" }}
+          <li class="navbarm__menu--item {{ if $active }}active{{ end }}">
+            <a href="{{ $menu.URL | relLangURL }}">
+              <span class="{{ .Name }}"></span>
+            </a>
+          </li>
+        {{ else }}
+          <li class="navbarm__menu--item {{ if $active }}active{{ end }}">
+            <a href="{{ $menu.URL | relLangURL }}">{{ safeHTML $menu.Name }}</a>
+          </li>
+        {{ end }}
       {{ end }}
-      
     {{ end }}
 
-    {{ range $index, $term := $.Site.Params.showMobileMenuTerms }}
-      <li class="navbarm__menu--item {{ if (in $current.Permalink $term) }}active{{ end }}">
-        <a href="{{ $term | relLangURL }}" class="navbarm__menu--term" data-index="{{ $index }}">
-          {{ i18n $term }}
-        </a>
-      </li>
+    {{ if $.Site.Params.showMobileMenuTerms }}
+      {{ range $index, $term := $.Site.Params.showMobileMenuTerms }}
+        <li class="navbarm__menu--item {{ if (in $current.Permalink $term) }}active{{ end }}">
+          <a href="{{ $term | relLangURL }}" class="navbarm__menu--term" data-index="{{ $index }}">
+            {{ i18n $term }}
+          </a>
+        </li>
+      {{ end }}
     {{ end }}
   </ul>
 </div>

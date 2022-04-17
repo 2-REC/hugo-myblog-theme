@@ -20,7 +20,7 @@
     {{ if $enableSidebar }}
         {{ if or (eq $sidebarPosition "both") (eq $sidebarPosition "left") }}
         <aside class="list__sidebar_l l" data-dir="{{ $.Param "languagedir" | default "ltr" }}">
-            {{ partial "sidebar/sidebar-taxonomy" (dict "context" . "sidebarComponents" "sidebarTaxonomyLeft") }}
+            {{ partial "sidebar/sidebar-list" (dict "context" . "sidebarComponents" "sidebarTaxonomyLeft" "type" "taxonomy") }}
         </aside>
         {{ end }}
     {{ end }}
@@ -46,13 +46,11 @@
     {{ else }}
     {{ partial "summary/tiles" (dict "context" . "pages" $pages) }}
     {{ end }}
-    {{/* 2-REC: removed search */}}
   </div>
   {{ if $enableSidebar }}
     {{ if or (eq $sidebarPosition "both") (eq $sidebarPosition "right") }}
       <aside class="list__sidebar_r r" data-dir="{{ $.Param "languagedir" | default "ltr" }}">
-        {{/* TODO: see if need separate "sidebar-taxonomy" (additionally to "sidebar-list") */}}
-        {{ partial "sidebar/sidebar-taxonomy" (dict "context" . "sidebarComponents" "sidebarTaxonomyRight") }}
+        {{ partial "sidebar/sidebar-list" (dict "context" . "sidebarComponents" "sidebarTaxonomyRight" "type" "taxonomy") }}
       </aside>
     {{ end }}
   {{ end }}

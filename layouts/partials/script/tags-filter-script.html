@@ -1,0 +1,165 @@
+<!-- TODO: determine best version to use -->
+<!--<script src="{{ "vendor/htf/hugotagsfilter-1.2.2.min.js" | relURL}}"></script>-->
+<!--
+<script src="{{ "hugotagsfilter.js" | relURL}}"></script>
+-->
+{{- $htf := resources.Get "js/hugotagsfilter.js" | resources.Fingerprint -}}
+<script type='text/javascript' src="{{ $htf.RelPermalink }}"></script>
+<script>
+var htfConfig = {
+  filters: [
+    {
+      name: 'tags',
+      prefix: 'tag-',
+      buttonClass: 'tag-button',
+      allSelector: '#selectAllTags',
+      filterAnd: false,
+      attrName: 'data-tags',
+      selectedPrefix: 'stags-',
+      countPrefix: 'ctags-'
+    },
+    {
+      name: 'categories',
+      prefix: 'category-',
+      buttonClass: 'category-button',
+      allSelector: '#selectAllCategories',
+      filterAnd: false,
+      attrName: 'data-categories',
+      selectedPrefix: 'scategories-',
+      countPrefix: 'ccategories-'
+    },
+    {
+      name: 'series',
+      prefix: 'serie-',
+      buttonClass: 'serie-button',
+      allSelector: '#selectAllSeries',
+      filterAnd: false,
+      attrName: 'data-series',
+      selectedPrefix: 'sseries-',
+      countPrefix: 'cseries-'
+    }
+{{- if not (.Param "disableSearchSections") -}}
+,
+    {
+      name: 'section',
+      prefix: 'sect-',
+      buttonClass: 'sect-button',
+      allSelector: '#selectAllSections',
+      attrName: 'data-section',
+      selectedPrefix: 'ssect-',
+      countPrefix: 'csect-'
+      
+    }
+{{- end -}}
+{{- if not (.Param "disableSearchAuthors") -}}
+,
+    {
+      name: 'authors',
+      prefix: 'auth-',
+      buttonClass: 'auth-button',
+      allSelector: '#selectAllAuthors',
+      attrName: 'data-authors',
+      selectedPrefix: 'sauth-',
+      countPrefix: 'cauth-'
+      
+    }
+{{- end -}}
+  ],
+  showItemClass: "show-item",
+  /* 2-REC: Hide */
+  /* TODO: Avoid using both 'showItemClass' & 'hideItemClass'. */
+  hideItemClass: "hide-item",
+  /**/
+  filterItemClass: "tf-filter-item",
+  activeButtonClass: "active",
+  counterSelector: "selectedItemCount",
+  populateCount: true,
+  setDisabledButtonClass: "disable-button"
+}
+
+var htf = new HugoTagsFilter(htfConfig);
+
+/* 2-REC: Hide */
+/* Special case for tiles - "auto-arrange" fix */
+{{- if eq (.Param "summaryShape") "tiles" -}}
+/* TODO: Move to other file/partial? */
+const wrapper = document.getElementsByClassName("tf-wrapper");
+/* TODO: If more than 1, should raise error (?) */
+if (wrapper && wrapper.length > 0) {
+  const grids = wrapper[0].getElementsByClassName("tile-grid");
+  /* TODO: If more than 1, should raise error (?) */
+  if (grids && grids.length > 0) {
+
+    function arrangeGrid() {
+      const grid = grids[0];
+      const items = grid.getElementsByClassName("grid-item");
+      const hideItemClass = "hide-item";
+
+      function process() {
+        /* 'Hack' to auto rearrange tiles
+          => Positions not automatically refreshed when hiding/showing grid items
+        */
+        if (items) {
+          var classList = items[0].classList;
+
+          var nbColumns = 0;
+          if (classList.contains("full")) {
+            nbColumns = 1;
+          } else if (classList.contains("half")) {
+            nbColumns = 2;
+          } else if (classList.contains("third")) {
+            nbColumns = 3;
+          } else if (classList.contains("quarter")) {
+            nbColumns = 4;
+          }
+
+          if (nbColumns != 0) {
+            const heights = [];
+            for (let i=0; i<nbColumns; ++i) heights[i] = 0;
+            const width = 100 / nbColumns;
+
+            for (let i = 0; i < items.length; i++) {
+              var item = items[i];
+
+              /* Cancel animation to remove issues when resizing */
+              /* TODO: Need to handle others (webkit, etc.)? */
+              item.style.transition = "none";
+              item.style.transform = "none";
+
+              if (item.classList.contains(hideItemClass)) {
+                continue
+              }
+
+              if (nbColumns == 1) {
+                item.style.left = "0";
+                item.style.top = heights[0] + "px";
+
+                heights[0] += item.offsetHeight;
+
+              } else {
+                /* Add item in column with lowest height */
+                const min = Math.min.apply(Math, heights);
+                const index = heights.indexOf(min);
+
+                item.style.left = (index * width) + "%";
+                item.style.top = min + "px";
+
+                heights[index] += item.offsetHeight;
+              }
+            }
+
+            const max = Math.max.apply(Math, heights);
+            grid.style.height = max + "px";
+          }
+        }
+      }
+      process();
+    }
+
+    htf.postCheck = arrangeGrid;
+  }
+}
+{{- end -}}
+/**/
+
+</script>

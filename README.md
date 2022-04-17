@@ -3,6 +3,8 @@ HUGO theme for blogs.
 
 
 TODO: complete/rewrite/etc.
+- Navbar
+  - Allow to use icon instead of text, if setting "icon-..." for "name" field
 - Syntax highlighting (using Chroma)
   - sass/syntax
     (+reference Chroma site? - or indicate in )
@@ -57,6 +59,18 @@ TODO: complete/rewrite/etc.
     * Header
       * Added header in single page with optional title and description (similar working than main header 'single' type)
         TODO: detail more...
+
+* Taxonomies
+  * Search
+    * Added page to search/filter posts on specific fields (tags, categories, author, etc.).
+      The code is using:
+        https://github.com/pointyfar/hugo-tags-filter
+        Modified version:
+        https://github.com/2-REC-forks/hugo-tags-filter
+        (TODO: add more details/info)
+    * Optional (disabled if no "search" page found in site content)
+    * Possibility to switch AND/OR results
+      (TODO: add more details...)
 
 * Footer
   * Copyright

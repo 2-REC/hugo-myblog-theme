@@ -8,11 +8,11 @@ enableTocContent: false
 tags:
 - post
 - basic
-- example
+- exemple
 categories:
-- examples
+- exemples
 series:
-- Examples
+- Exemples
 ---
 
 Basic post example. - En Français...

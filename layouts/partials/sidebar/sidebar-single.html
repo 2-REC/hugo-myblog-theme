@@ -8,7 +8,6 @@
 </ul>
 <ul class="sidebar-float">
     {{ else }}
-        {{/* 2-REC: removed search */}}
         {{ if eq $value "thumbnail" }}
             {{ partial "sidebar/sidebar-thumbnail" $context.Page }}
         {{ else if eq $value "bio" }}
@@ -16,11 +15,9 @@
         {{ else if eq $value "toc" }}
             {{ partial "sidebar/sidebar-toc" $context.Page }}
         {{ else if eq $value "custom" }}
-            {{ if $context.Param "enableSidebarCustom" }}
-                {{ partial "sidebar/custom-single" $context.Page }}
-                {{ if $context.Param "enableSidebarSeparator" }}
-                <hr class="hr-fade sidebar-hr"/>
-                {{ end }}
+            {{ partial "sidebar/custom-single" $context.Page }}
+            {{ if $context.Param "enableSidebarSeparator" }}
+            <hr class="hr-fade sidebar-hr"/>
             {{ end }}
         {{/*TODO: ok? */}}
         {{ else if eq $value "top" }}
@@ -33,6 +30,8 @@
             {{ partial "taxonomy/taxonomy-categories-single" $context.Page }}
         {{ else if eq $value "series" }}
             {{ partial "taxonomy/taxonomy-series-single" $context.Page }}
+        {{ else if eq $value "search" }}
+            {{ partial "taxonomy/taxonomy-filter" $context.Page }}
         {{ else }}
             <script>
             var value = JSON.parse({{ $value | jsonify }});

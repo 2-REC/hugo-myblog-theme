@@ -1,0 +1,317 @@
+{{ define "main" }}
+{{ $enableSidebar := false }}
+{{ $enableSidebarRight := not ($.Param "disableSidebarRight") }}
+{{ $enableSidebarLeft := not ($.Param "disableSidebarLeft") }}
+{{ $sidebarPosition := "none" }}
+{{ if and $enableSidebarRight ($.Param "sidebarSearchRight") }}
+  {{ $enableSidebar = true }}
+  {{ if and $enableSidebarLeft ($.Param "sidebarSearchLeft") }}
+    {{ $sidebarPosition = "both" }}
+  {{ else }}
+    {{ $sidebarPosition = "right" }}
+  {{ end }}
+{{ else }}
+  {{ if and $enableSidebarLeft ($.Param "sidebarSearchLeft") }}
+    {{ $enableSidebar = true }}
+    {{ $sidebarPosition = "left" }}
+  {{ end }}
+{{ end }}
+<main class="main inner" data-sidebar-position={{$sidebarPosition}}>
+  {{ if $enableSidebar }}
+    {{ if or (eq $sidebarPosition "both") (eq $sidebarPosition "left") }}
+    <aside class="list__sidebar_l l" data-dir="{{ $.Param "languagedir" | default "ltr" }}">
+      {{ partial "sidebar/sidebar-list" (dict "context" . "sidebarComponents" "sidebarSearchLeft" "type" "search") }}
+    </aside>
+    {{ end }}
+  {{ end }}
+  <div class="list__main {{ if $enableSidebar }}{{ if eq $sidebarPosition "both" }}m{{ else if eq $sidebarPosition "left" }}mr{{ else }}lm{{ end }}{{ else }}lmr{{ end }}">
+  <div class="list__header">
+    <h5 class="list__header--title capitalize h5">{{ .Title }}</h5>
+  </div>
+  {{/* TODO: make nicer CSS */}}
+  <div class="list__header--desc p2">
+    {{.Content}}
+  </div>
+  {{ $summaryShape := lower ($.Param "summaryShape") }}
+  {{ if $.Param "summaryShapeTaxonomy" }}
+    {{ $summaryShape = lower ($.Param "summaryShapeTaxonomy") }}
+  {{ end }}
+
+
+  {{/* TODO: move all this to separate file/partial (use "scratch"?) */}}
+
+  {{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
+  {{/* TODO: fix paginator (issues with filters => only on current page)
+  {{ $paginator := .Paginate $pages }}
+  {{ $pages = $paginator.Pages }}
+  */}}
+
+  {{ $sections := .Site.Params.mainSections }}
+
+  {{ $authors := (slice ) }}
+  {{ $no_authors := 0 }}
+
+  {{ range where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
+    {{ with .Params.author }}
+      {{ if eq ( printf "%T" . ) "string"  }}
+        {{ if ( not ( in $authors . ) ) }}
+          {{ $authors = $authors | append . }}
+        {{ end }}
+      {{ else if ( printf "%T" . ) "[]string" }}
+        {{ range . }}
+          {{ if ( not ( in $authors . ) ) }}
+            {{ $authors = $authors | append . }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+    {{ else }}
+      {{ $no_authors = add $no_authors 1 }}
+    {{ end }}
+  {{ end }}
+
+  {{ $tags := $.Site.Taxonomies.tags.ByCount }}
+  {{ $untagged := 0 }}
+  {{ range $pages }}
+    {{ with .Params.tags }}{{ else }}{{ $untagged = add $untagged 1 }}{{ end }}
+  {{ end }}
+
+  {{ $categories := $.Site.Taxonomies.categories.ByCount }}
+  {{ $uncategoried := 0 }}
+  {{ range $pages }}
+    {{ with .Params.categories }}{{ else }}{{ $uncategoried = add $uncategoried 1 }}{{ end }}
+  {{ end }}
+
+  {{ $series := $.Site.Taxonomies.series.ByCount }}
+  {{ $unseried := 0 }}
+  {{ range $pages }}
+    {{ with .Params.series }}{{ else }}{{ $unseried = add $unseried 1 }}{{ end }}
+  {{ end }}
+
+  <hr>
+  <div class="tf-wrapper taxo">
+    <div class="tf-buttons-container flex-grow">
+
+      <hr class="hr-fade">
+
+      {{ if or (not ($.Param "disableSearchSections")) (not ($.Param "disableSearchAuthors")) }}
+      <div class="filter-container">
+        {{/* SECTIONS */}}
+        {{ if not ($.Param "disableSearchSections") }}
+        <div class="filter-item__2">
+          <div class="filter-box">
+            <h4 class="taxo__title-nolink">{{ i18n "sections" }}</h4>
+            {{/* No 'and/or' switch for "sections", only 1 possible */}}
+            <button xx class="tag" id="selectAllSections" onclick="htf.showAll('section')">
+              <div class="is-filter taxo__link">
+                <span>{{ i18n "all" }}</span>
+              </div>
+            </button>
+            {{ range $sections }}
+              <button xx class="tag sect-button" id="sect-{{ . | urlize }}" onclick="htf.checkFilter('{{ . | urlize }}', 'sect-')">
+                <div class="is-filter taxo__link" data-dir="{{ if ne ($.Param "languagedir") "rtl" }}ltr{{ else }}rtl{{ end }}">
+                  <span>{{ i18n . }}</span>
+                  <span class="taxo__num" dir="auto" id="ssect-{{ . | urlize }}"> -count-</span>|<span class="taxo__num" dir="auto" id="csect-{{ . | urlize }}"> -count-</span>
+                </div>
+              </button>
+            {{ end }}
+          </div>
+        </div>
+        {{ end }}
+
+        {{/* AUTHORS */}}
+        {{ if not ($.Param "disableSearchAuthors") }}
+        <div class="filter-item__2">
+          <div class="filter-box">
+            <h4 class="taxo__title-nolink">{{ i18n "authors" }}</h4>
+            {{/* No 'and/or' switch for "authors", only 1 possible */}}
+            <button xx class="tag" id="selectAllAuthors" onclick="htf.showAll('authors')">
+              <div class="is-filter taxo__link">
+                <span>{{ i18n "all" }}</span>
+              </div>
+            </button>
+            {{ range $authors }}
+              <button xx class="tag auth-button" id="auth-{{ . | replaceRE "[.]" "_" | urlize }}" onclick="htf.checkFilter('{{ . | replaceRE "[.]" "_" | urlize }}', 'auth-')">
+                  <div class="is-filter taxo__link" data-dir="{{ if ne ($.Param "languagedir") "rtl" }}ltr{{ else }}rtl{{ end }}">
+                    <span>{{ . }}</span>
+                    <span class="taxo__num" dir="auto" id="sauth-{{ . | replaceRE "[.]" "_" | urlize }}"> -count-</span>|<span class="taxo__num" dir="auto" id="cauth-{{ . | replaceRE "[.]" "_" | urlize }}"> -count-</span>
+                </div>
+              </button>
+            {{ end }}
+            {{ if gt $no_authors 0 }}
+            <button xx class="tag auth-button" id="auth-no-author" onclick="htf.checkFilter('no-author', 'auth-')">
+              <div class="is-filter taxo__link" data-dir="{{ if ne ($.Param "languagedir") "rtl" }}ltr{{ else }}rtl{{ end }}">
+                <span>{{ i18n "none" }}</span>
+                <span class="taxo__num" dir="auto" id="sauth-no-author"> -count-</span>|<span class="taxo__num" dir="auto" id="cauth-no-author"> -count-</span>
+              </div>
+            </button>
+            {{ end }}
+          </div>
+        </div>
+        {{ end }}
+      </div>
+      {{ end }}
+
+      <div class="filter-container">
+        {{/* TAGS */}}
+        <div class="filter-item__3">
+          <div class="filter-box">
+            <h4 class="taxo__title-nolink">{{ i18n "tags" }}</h4>
+            <div class="switch-box">
+              <label class="switch-label tag">
+                <span class="active" id="tagsSwitchOr">{{ i18n "or" | upper }}</span>
+                <div class="switch">
+                  <input type="checkbox" id="tagsSwitch" onchange="htf.toggleSwitch(this, 'tags', 'tagsSwitchOr', 'tagsSwitchAnd')">
+                  <span class="slider round"></span>
+                </div>
+                <span id="tagsSwitchAnd">{{ i18n "and" | upper }}</span>
+              </label>
+            </div>
+            <button xx class="tag" id="selectAllTags" onclick="htf.showAll('tags')">
+              <div class="is-tags taxo__link">
+                <span>{{ i18n "all" }}</span>
+              </div>
+            </button>
+            {{ range $tags }}
+              {{ if .Term }}
+                <button xx class="tag tag-button" id="tag-{{ .Term | replaceRE "[.]" "_" | urlize }}" onclick="htf.checkFilter('{{ .Term | replaceRE "[.]" "_" | urlize }}', 'tag-')">
+                  <div class="is-tags taxo__link" data-dir="{{ if ne ($.Param "languagedir") "rtl" }}ltr{{ else }}rtl{{ end }}">
+{{/* TODO: want "humanize"+"title" here?
+                    <span>{{ .Term | humanize | title }}</span>
+*/}}
+                    <span>{{ .Term }}</span>
+                    <span class="taxo__num" dir="auto" id="stags-{{ .Term | urlize }}"> -count-</span>|<span class="taxo__num" dir="auto" id="ctags-{{ .Term | urlize }}"> -count-</span>
+                  </div>
+                </button>
+              {{ end }}
+            {{ end }}
+            {{ if gt $untagged 0 }}
+            <button xx class="tag tag-button" id="tag-tfuntagged" onclick="htf.checkFilter('tfuntagged', 'tag-')">
+              <div class="is-tags taxo__link" data-dir="{{ if ne ($.Param "languagedir") "rtl" }}ltr{{ else }}rtl{{ end }}">
+                <span>{{ i18n "none" }}</span>
+                <span class="taxo__num" dir="auto" id="stags-tfuntagged"> -count-</span>|<span class="taxo__num" dir="auto" id="ctags-tfuntagged"> -count-</span>
+              </div>
+            </button>
+            {{ end }}
+          </div>
+        </div>
+
+        {{/* CATEGORIES */}}
+        <div class="filter-item__3">
+          <div class="filter-box">
+            <h4 class="taxo__title-nolink">{{ i18n "categories" }}</h4>
+            <div class="switch-box">
+              <label class="switch-label tag">
+                <span class="active" id="categoriesSwitchOr">{{ i18n "or" | upper }}</span>
+                <div class="switch">
+                  <input type="checkbox" id="categoriesSwitch" onchange="htf.toggleSwitch(this, 'categories', 'categoriesSwitchOr', 'categoriesSwitchAnd')">
+                  <span class="slider round"></span>
+                </div>
+                <span id="categoriesSwitchAnd">{{ i18n "and" | upper }}</span>
+              </label>
+            </div>
+            <button xx class="tag" id="selectAllCategories" onclick="htf.showAll('categories')">
+              <div class="is-categories taxo__link">
+                <span>{{ i18n "all" }}</span>
+              </div>
+            </button>
+            {{ range $categories }}
+              {{ if .Term }}
+                <button xx class="category-button" id="category-{{ .Term | replaceRE "[.]" "_" | urlize }}" onclick="htf.checkFilter('{{ .Term | replaceRE "[.]" "_" | urlize }}', 'category-')">
+                  <div class="is-categories taxo__link" data-dir="{{ if ne ($.Param "languagedir") "rtl" }}ltr{{ else }}rtl{{ end }}">
+{{/* TODO: want "humanize"+"title" here?
+                    <span>{{ .Term | humanize | title }}</span>
+*/}}
+                    <span>{{ .Term }}</span>
+                    <span class="taxo__num" dir="auto" id="scategories-{{ .Term | urlize }}"> -count-</span>|<span class="taxo__num" dir="auto" id="ccategories-{{ .Term | urlize }}"> -count-</span>
+                  </div>
+                </button>
+              {{ end }}
+            {{ end }}
+            {{ if gt $uncategoried 0 }}
+            <button xx class="tag category-button" id="category-tfuncategoried" onclick="htf.checkFilter('tfuncategoried', 'category-')">
+              <div class="is-categories taxo__link" data-dir="{{ if ne ($.Param "languagedir") "rtl" }}ltr{{ else }}rtl{{ end }}">
+                <span>{{ i18n "none" }}</span>
+                <span class="taxo__num" dir="auto" id="scategories-tfuncategoried"> -count-</span>|<span class="taxo__num" dir="auto" id="ccategories-tfuncategoried"> -count-</span>
+              </div>
+            </button>
+            {{ end }}
+          </div>
+        </div>
+
+        {{/* SERIES */}}
+        <div class="filter-item__3">
+          <div class="filter-box">
+            <h4 class="taxo__title-nolink">{{ i18n "series" }}</h4>
+            <div class="switch-box">
+              <label class="switch-label tag">
+                <span class="active" id="seriesSwitchOr">{{ i18n "or" | upper }}</span>
+                <div class="switch">
+                  <input type="checkbox" id="seriesSwitch" onchange="htf.toggleSwitch(this, 'series', 'seriesSwitchOr', 'seriesSwitchAnd')">
+                  <span class="slider round"></span>
+                </div>
+                <span id="seriesSwitchAnd">{{ i18n "and" | upper }}</span>
+              </label>
+            </div>
+            <button xx class="tag" id="selectAllSeries" onclick="htf.showAll('series')">
+              <div class="is-series taxo__link">
+                <span>{{ i18n "all" }}</span>
+              </div>
+            </button>
+            {{ range $series }}
+              {{ if .Term }}
+                <button xx class="serie-button" id="serie-{{ .Term | replaceRE "[.]" "_" | urlize }}" onclick="htf.checkFilter('{{ .Term | replaceRE "[.]" "_" | urlize }}', 'serie-')">
+                  <div class="is-series taxo__link" data-dir="{{ if ne ($.Param "languagedir") "rtl" }}ltr{{ else }}rtl{{ end }}">
+                    <span>{{ .Term | humanize | title }}</span>
+                    <span class="taxo__num" dir="auto" id="sseries-{{ .Term | urlize }}"> -count-</span>|<span class="taxo__num" dir="auto" id="cseries-{{ .Term | urlize }}"> -count-</span>
+                  </div>
+                </button>
+              {{ end }}
+            {{ end }}
+            {{ if gt $unseried 0 }}
+            <button xx class="tag serie-button" id="serie-tfunseried" onclick="htf.checkFilter('tfunseried', 'serie-')">
+              <div class="is-series taxo__link" data-dir="{{ if ne ($.Param "languagedir") "rtl" }}ltr{{ else }}rtl{{ end }}">
+                <span>{{ i18n "none" }}</span>
+                <span class="taxo__num" dir="auto" id="sseries-tfunseried"> -count-</span>|<span class="taxo__num" dir="auto" id="cseries-tfunseried"> -count-</span>
+              </div>
+            </button>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+
+      <hr class="hr-fade">
+
+      <div class="filter-box">
+        <div><h2 class="taxo__title-nolink"><span id="selectedItemCount"></span> {{ i18n "items" }}</h2></div>
+      </div>
+
+      {{ if not (eq $summaryShape "tiles") }}
+      <div class="tf-items-container summary__container" data-display="block">
+        {{ range $pages.ByPublishDate.Reverse }}
+          {{ partial "taxonomy/taxonomy-filter-item-begin" (dict "context" . "summaryShape" $summaryShape) }}
+          {{ partial "body/summary" (dict "context" . "summaryShape" $summaryShape) }}
+          {{ partial "taxonomy/taxonomy-filter-item-end" }}
+        {{ end }}
+        {{/* TODO: fix paginator (issues with filters => only on current page)
+        {{ partial "pagination/pagination" . }}
+        */}}
+      </div>
+      {{ else }}
+      {{ partial "summary/tiles" (dict "context" . "pages" $pages.ByPublishDate.Reverse "filters" true) }}
+      {{ end }}
+      </div>
+    </div>
+  </div>
+  {{ if $enableSidebar }}
+    {{ if or (eq $sidebarPosition "both") (eq $sidebarPosition "right") }}
+      <aside class="list__sidebar_r r" data-dir="{{ $.Param "languagedir" | default "ltr" }}">
+        {{ partial "sidebar/sidebar-list" (dict "context" . "sidebarComponents" "sidebarSearchRight" "type" "search") }}
+      </aside>
+    {{ end }}
+  {{ end }}
+</main>
+{{ partial "script/tags-filter-script" . }}
+{{ partial "script/sidebar-script" (dict "context" . "sidebarPosition" $sidebarPosition "sidebarSingle" false) }}
+{{ partial "script/list-script" . }}
+{{ partial "script/taxo-script" . }}
+{{ end }}

@@ -25,8 +25,9 @@ $code-font-stack: Consolas,
               Courier,
               monospace !default;
 
-//TODO: remove unused (card-outter, card-inner, search-btn, search, ...)
-// gtt?
+//TODO: make sure can remove (unused):
+// "header", "search", "footer", "gallery-mask", "card-outter", "card-inner"
+
 $z-indexes: ("modal", "navbar", "dropdown", "header", "gtt", "clipboard", "grid", "search-btn", "search", "content", "footer", "taxo", "toc", "gallery-mask", "card-outter", "card-inner");
 
 $breakpoints: (

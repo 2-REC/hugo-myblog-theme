@@ -2,6 +2,104 @@
 HUGO theme for blogs.
 
 
+## Using Theme
+
+Instructions to build a new site using the "MyBlog" Hugo theme.
+
+
+! - Could use Hugo command "hugo new site" to create the new site, but the structure of this theme being different (e.g. "config"), it is easier to create it namnually.
+
+
+More details about the steps to do are provided in the "Checklist" section below.
+
+
+Main steps:
+
+* Create new directory to contain the new site
+
+* Copy theme (git clone)
+  => To "themes/myblog"
+
+* Copy directories from "exampleSite":
+  * config
+  * data
+
+* Create empty directory "content"
+
+* Edit config file "config\_default\config.toml":
+  * Set theme "myblog"
+  * Set site name
+
+* ...
+
+TODO:
+- add logos (+favicon)
+- add avatar image (?)
+- adapt params
+
+
+
+### Checklist
+
+Check list when making a new site using the theme.
+
+* [ ] archetypes
+    * [ ] Override desired archetypes
+    * [ ] Add new archetypes
+
+* [ ] config/_default
+    * [ ] config.toml : Global site settings
+        * [ ] Adapt values
+    * [ ] languages.toml : Define site languages
+        => Should have at least 1
+    * [ ] menus.en.toml : Nav bar entries
+        => 1 file per language
+        * [ ] Adapt entries (+order)
+    * [ ] params.toml : Site parameters
+        * [ ] Adapt values (remove unused)
+
+* [ ] content
+    => Divided per language if needed (1 sub directory per language)
+    * [ ] _index.md: Homepage header definition
+        * [ ] Adapt: images, texts, style, layout, etc.
+            => Resources must be located in "static" directory (or sub directories)
+    * [ ] about:
+        * [ ] Adapt index.md
+        * [ ] Add content (images, etc.)
+    * [ ] contact:
+        * [ ] Adapt index.md
+            => Choose a form (or "none")
+        * [ ] Add content (images, etc.)
+    TODO: continue...
+    * [ ] posts:
+        * [ ] Adapt _index.md
+        * [ ] Add content...
+
+* [ ] static
+    => Resources used globally by the website: images, icons, fonts, etc.
+    * [ ] manifest.json : Info for PWA
+        * [ ] Adapt content (images referred from "static" directory)
+    * [ ] logo : Favicon and logo images
+        !TODO: Location defined in code ("head/meta" and "navbar/site-nav"), should be changed to be a site parameter
+        * [ ] Add desired icons and logo images
+            => See about different sizes, density, etc. (see Zzo original theme)
+    TODO: continue...
+
+
+Additionnally, can adapt style+layouts in SCSS files:
+...
+* assets/sass
+    * pages
+        => Most pages, except "_wrapper"?
+        * [ ] _about
+        * [ ] _single
+        * [ ] _terms: generic titles, links, tags, etc.
+
+
+----
+
+(TODO: move rest to other file?)
+
 TODO: complete/rewrite/etc.
 - Navbar
   - Allow to use icon instead of text, if setting "icon-..." for "name" field
@@ -198,63 +296,6 @@ TODO: complete/rewrite/etc.
         Reconciling the guidelines for the image is simple:
         Follow Facebook’s recommendation of a minimum dimension of 1200×630 pixels and an aspect ratio of 1.91:1, but adhere to Twitter’s file size requirement of less than 1MB.
     * Adapt static/manifest.json + icons stuff in head/meta
-
-
-## NEW SITE
-
-Check list when making a new site using the theme.
-
-* [ ] archetypes
-    * [ ] Override desired archetypes
-    * [ ] Add new archetypes
-
-* [ ] config/_default
-    * [ ] config.toml : Global site settings
-        * [ ] Adapt values
-    * [ ] languages.toml : Define site languages
-        => Should have at least 1
-    * [ ] menus.en.toml : Nav bar entries
-        => 1 file per language
-        * [ ] Adapt entries (+order)
-    * [ ] params.toml : Site parameters
-        * [ ] Adapt values (remove unused)
-
-* [ ] content
-    => Divided per language if needed (1 sub directory per language)
-    * [ ] _index.md: Homepage header definition
-        * [ ] Adapt: images, texts, style, layout, etc.
-            => Resources must be located in "static" directory (or sub directories)
-    * [ ] about:
-        * [ ] Adapt index.md
-        * [ ] Add content (images, etc.)
-    * [ ] contact:
-        * [ ] Adapt index.md
-            => Choose a form (or "none")
-        * [ ] Add content (images, etc.)
-    TODO: continue...
-    * [ ] posts:
-        * [ ] Adapt _index.md
-        * [ ] Add content...
-
-* [ ] static
-    => Resources used globally by the website: images, icons, fonts, etc.
-    * [ ] manifest.json : Info for PWA
-        * [ ] Adapt content (images referred from "static" directory)
-    * [ ] logo : Favicon and logo images
-        !TODO: Location defined in code ("head/meta" and "navbar/site-nav"), should be changed to be a site parameter
-        * [ ] Add desired icons and logo images
-            => See about different sizes, density, etc. (see Zzo original theme)
-    TODO: continue...
-
-
-Additionnally, can adapt style+layouts in SCSS files:
-...
-* assets/sass
-    * pages
-        => Most pages, except "_wrapper"?
-        * [ ] _about
-        * [ ] _single
-        * [ ] _terms: generic titles, links, tags, etc.
 
 
 

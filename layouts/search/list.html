@@ -38,14 +38,13 @@
   {{ end }}
 
 
-  {{/* TODO: move all this to separate file/partial (and use "scratch"?) */}}
+  {{/* TODO: move all this to separate file/partial (use "scratch"?) */}}
 
   {{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
-{{/* TODO: paginator? (issues with filters => only on current page */}}
-{{/*
+  {{/* TODO: fix paginator (issues with filters => only on current page)
   {{ $paginator := .Paginate $pages }}
   {{ $pages = $paginator.Pages }}
-*/}}
+  */}}
 
   {{ $sections := .Site.Params.mainSections }}
 
@@ -293,12 +292,9 @@
           {{ partial "body/summary" (dict "context" . "summaryShape" $summaryShape) }}
           {{ partial "taxonomy/taxonomy-filter-item-end" }}
         {{ end }}
-{{/* TODO: paginator? (issues with filters => only on current page
-=> not easy to fix, can ignore (?)
-*/}}
-{{/*
+        {{/* TODO: fix paginator (issues with filters => only on current page)
         {{ partial "pagination/pagination" . }}
-*/}}
+        */}}
       </div>
       {{ else }}
       {{ partial "summary/tiles" (dict "context" . "pages" $pages.ByPublishDate.Reverse "filters" true) }}

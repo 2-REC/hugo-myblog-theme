@@ -1,40 +1,93 @@
 # hugo-myblog-theme
+
 HUGO theme for blogs.
 
+Based on the ZZO theme (TODO: add link). The main changes are:
+* Recent posts carousel
+* Customizable left+right sidebars
+* Posts as tiles
+* Tag filters
+* Copyrights lavel on images (TODO: check wasn't there already)
+* ... (TODO: continue)
 
-## Using Theme
+
+## Usage
 
 Instructions to build a new site using the "MyBlog" Hugo theme.
 
 
-! - Could use Hugo command "hugo new site" to create the new site, but the structure of this theme being different (e.g. "config"), it is easier to create it namnually.
+**NOTE:**
+The Hugo command "hugo new site" can be used to create the new site, but the structure of this theme being different (e.g. "config"), it is easier to create it manually.
 
 
-More details about the steps to do are provided in the "Checklist" section below.
+More details about each step are provided in the "Checklist" (TODO: add link) section below.
 
 
 Main steps:
 
-* Create new directory to contain the new site
+* Create a new directory to contain the new site.
 
-* Copy theme (git clone)
-  => To "themes/myblog"
+* Create subsubdirectories:
+  * themes
+  * content
 
-* Copy directories from "exampleSite":
+* Copy the theme (git clone) to "themes/myblog".
+
+* Copy directories from "exampleSite" (in the theme) to the main site directory:
   * config
   * data
 
-* Create empty directory "content"
+* Edit the config file "config/_default/config.toml":
+  * Set the site name:
+    ```
+    title = "..."
+    ```
+  * Set the theme:
+    ```
+    theme = "myblog"
+    ```
 
-* Edit config file "config\_default\config.toml":
-  * Set theme "myblog"
-  * Set site name
+* Logo + favicon
+  * (Optional) Add site icon.
+    => 2 different ways:
+      * Default location (automatic):
+        * Create directories "static/logo".
+        * Add an image file "logo.png" in the new directory.
+      * Specific location (manual):
+        * Create directory "static" if doesn't exist.
+        * Add an image file in that directory (or subdirectories if desired);
+        * Set the prameter "logoImage" in the params file "config/_default/params.toml".
+          For example, if in "static/logo":
+          ```
+          logoImage = "/logo/mylogo.png"
+          ```
 
-* ...
+* Bio
+  * (Optional) Add avatar image.
+    => 2 different ways:
+      * Default location (automatic):
+        * Create directories "static/images/bio".
+        * Add an image file "avatar" (".jpg", ".png" or ".svg") in the new directory.
+      * Specific location (manual):
+        * Create directory "static" if doesn't exist.
+        * Add an image file in that directory (or subdirectories if desired);
+        * Set the prameter "bioImage" in the params file "config/_default/params.toml".
+          For example, if in "static/images":
+          ```
+          bioImage = "/images/avatar.jpg"
+          ```
+
+- galleries
+- posts
+- search
+...
+
+
+* CONTINUE FROM HERE!
+...
 
 TODO:
 - add logos (+favicon)
-- add avatar image (?)
 - adapt params
 
 

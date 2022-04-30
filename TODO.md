@@ -252,7 +252,7 @@
 * [ ] Sidebars
     * [ ] Add small offset at top of "floating" sidebar (currently aligned to navbar, need a small extra margin)
     * [ ] thumbnail
-      * [ ] special class/type? (currently "bio_photo"
+      * [ ] special class/type? (currently "bio__photo")
     * [ ] TOC in sidebar
         * [ ] fix "offset" bug (current section should be at top of page)
         * [ ] fix bug when post smaller than page, if click on a title the navbar disappear, and can't come back, as no scrolling...

@@ -1,24 +1,24 @@
-{{ if and ($.Param "enableSidebarRecent") ($.Param "itemsPerCategory") }}
+{{- if and ($.Param "enableSidebarRecent") ($.Param "itemsPerCategory") -}}
     {{/* TODO:: how is the order determined? */}}
-    {{ $filteredSections := .Site.Sections }}
-    {{ range $.Param "notAllowedTypesInHomeSidebar" }}
-        {{ $filteredSections = (where $filteredSections "Type" "!=" (lower .)) }}
-    {{ end }}
-
-    {{ range $filteredSections }}
-    <section class="sidebar-recent">
-        <a href="{{ .RelPermalink }}" class="sidebar-recent__title p2">{{ .Title }}</a>
-        <ul class="sidebar-recent__ul">
-            {{ range first ($.Param "itemsPerCategory") .Pages }}
-                <li>
-                    <a href="{{ .RelPermalink }}" class="sidebar-recent__a p2">{{ .Title }}</a>
-                </li>
-            {{ end }}
-        </ul>
-    </section>
-    {{ end }}
-    {{/* TODO: inside or outside the "range"? */}}
-    {{ if $.Param "enableSidebarSeparator" }}
-    <hr class="hr-fade sidebar-hr"/>
-    {{ end }}
-{{ end }}
+    {{- $filteredSections := .Site.Sections -}}
+    {{- range $.Param "notAllowedTypesInHomeSidebar" -}}
+        {{- $filteredSections = (where $filteredSections "Type" "!=" (lower .)) -}}
+    {{- end -}}
+    {{- if $filteredSections -}}
+        {{- range $filteredSections -}}
+        <section class="sidebar-recent">
+            <a href="{{ .RelPermalink }}" class="sidebar-recent__title p2">{{ .Title }}</a>
+            <ul class="sidebar-recent__ul">
+                {{- range first ($.Param "itemsPerCategory") .Pages -}}
+                    <li>
+                        <a href="{{ .RelPermalink }}" class="sidebar-recent__a p2">{{ .Title }}</a>
+                    </li>
+                {{- end -}}
+            </ul>
+        </section>
+        {{- end -}}
+        {{- if $.Param "enableSidebarSeparator" -}}
+        <hr class="hr-fade sidebar-hr"/>
+        {{- end -}}
+    {{- end -}}
+{{- end -}}

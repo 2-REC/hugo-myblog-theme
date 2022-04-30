@@ -14,6 +14,7 @@
   }  
 }
 
+/* TODO(2-REC) : removed in bio, other uses? (check in zzo)
 .hr-slash {
   width: 100%;
   height: 7px;
@@ -32,7 +33,8 @@
     );    
   } 
 }
-
+*/
+/* TODO(2-REC) : unused? (check in zzo)
 .hr-dots {
   @include themify($themes) {
     $color: themed('hr-color');
@@ -43,3 +45,4 @@
     border-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2 1" width="8" height="4"><circle fill="#{$color}" cx="1" cy="0.5" r="0.5"/></svg>') 0 0 100% repeat;   
   }
 }
+*/

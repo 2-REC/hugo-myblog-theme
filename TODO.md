@@ -492,6 +492,7 @@ LATER:
         * [ ] taxo-script.html (empty)
     * [ ] social
         * [ ] See what to keep... (+associated in "params.toml")
+        * [ ] Add missing icons
         * [ ] See if want to change icons
     * [ ] summary
         * [ ] Make partial for "meta" block

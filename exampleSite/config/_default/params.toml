@@ -76,7 +76,7 @@ galleryZoom = true
 
 # whoami #TODO: rename all params to "bio..." (+propagate impacts)
 myname = "Someone"
-email = "someone@email.com" #TODO: use same as in "socialOptions"
+email = "someone@email.com" #TODO: use same as in "socialOptions" - Duplicate? Remove here?
 whoami = "Blogger"
 bioImage = "" # Example: "/images/bio/avatar.jpg"
 useGravatar = false
@@ -187,6 +187,7 @@ enableBusuanzi = false
 
 
 [socialOptions]
+  #TODO: Add missing icons!
   email = "mailto:your@email.com"
   phone = ""
   facebook = "http://facebook.com/"

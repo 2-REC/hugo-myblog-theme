@@ -60,6 +60,8 @@
         <a href="{{ $.Param "link" }}" target="_blank" rel="noreferrer">{{ $.Param "link" }}</a>
     </div>
     {{- end }}
+    {{/* TODO(2-REC): want it optional? */}}
+    {{/* TODO(2-REC): Handle 'phone' as 'email': remove from here and add entry above */}}
     <div class="bio__social">
     {{- range $name, $path := $.Param "socialOptions" }}
         {{- if (and $path (ne $name "email")) }}

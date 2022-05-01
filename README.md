@@ -62,9 +62,9 @@ Main steps:
           logoImage = "/logo/mylogo.png"
           ```
 
-* Bio
-  * (Optional) Add avatar image.
-    => 2 different ways:
+* (Optional) Bio
+  * (Optional) Avatar image.
+    => 3 different ways:
       * Default location (automatic):
         * Create directories "static/images/bio".
         * Add an image file "avatar" (".jpg", ".png" or ".svg") in the new directory.
@@ -76,10 +76,33 @@ Main steps:
           ```
           bioImage = "/images/avatar.jpg"
           ```
+      * Gravatar: (TODO: check how it works + test)
+        * useGravatar = true
+          (TODO: + other params?)
+  * "whoami": Blog author information.
+    (TODO: rename "whoami" + fields)
+    For example:
+    * myname = "Someone Else"
+    * whoami = "Blogger"
+    * Optional:
+      * location = "City, Country"
+      * organization = "Hugo"
+      * email = "someone@email.com"
+        **NOTE:** Sould use the same as in "socialOptions".
+      * link = "https://somesite.org"
+  * Social Options: Contact information, such as social networks, sites and communities.
+    (TODO: Check for missing icons!)
+    => Long list of supported platforms. Check "socialOptions" in "params.toml" for the complete list.
+    Examples of social options: email, phone, facebook, twitter, github, instagram, youtube, linkedin, pinterest, steam.
+    **NOTE:** Additional options can be added by creating a new entry in the list (in params file) and adding its corresponding icon. See (TODO: add link) for details.
+      (TODO: check if correct (to adew option), or if more complex)
+    **NOTE:** The social options can also be in the site footer. See below for details.
 
 - galleries
 - posts
-- search
+- search (filters)
+- footer
+  showSocialLinks, etc.
 ...
 
 

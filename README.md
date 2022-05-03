@@ -33,9 +33,8 @@ Main steps:
 
 * Copy the theme (git clone) to "themes/myblog".
 
-* Copy directories from "exampleSite" (in the theme) to the main site directory:
-  * config
-  * data
+* Copy "config" directory from "exampleSite" (in the theme) to the main site directory.
+  * From "themes/myblog/exampleSite/config" to "config".
 
 * Edit the config file "config/_default/config.toml":
   * Set the site name:
@@ -47,27 +46,27 @@ Main steps:
     theme = "myblog"
     ```
 
-* Logo + favicon
-  * (Optional) Add site icon.
+* Logo + favicon.
+  * Site icon (favicon):
+        * Add an icon file "favicon.ico" in the "static/logo" directory.
+  * (Optional) Site logo (home).  
     => 2 different ways:
       * Default location (automatic):
-        * Create directories "static/logo".
-        * Add an image file "logo.png" in the new directory.
+        * Add an icon file "logo.png" in the "static/logo" directory.
       * Specific location (manual):
-        * Create directory "static" if doesn't exist.
-        * Add an image file in that directory (or subdirectories if desired);
+        * Add an image file in the "static" directory (or in subdirectories if desired).
         * Set the prameter "logoImage" in the params file "config/_default/params.toml".
           For example, if in "static/logo":
           ```
           logoImage = "/logo/mylogo.png"
           ```
 
-* (Optional) Bio
-  * (Optional) Avatar image.
+* (Optional) Bio.
+  * (Optional) Avatar image.  
     => 3 different ways:
       * Default location (automatic):
         * Create directories "static/images/bio".
-        * Add an image file "avatar" (".jpg", ".png" or ".svg") in the new directory.
+        * Add an image file "avatar" (".jpg", ".png" or ".svg") in the directory.
       * Specific location (manual):
         * Create directory "static" if doesn't exist.
         * Add an image file in that directory (or subdirectories if desired);
@@ -90,13 +89,33 @@ Main steps:
       * email = "someone@email.com"
         **NOTE:** Sould use the same as in "socialOptions".
       * link = "https://somesite.org"
-  * Social Options: Contact information, such as social networks, sites and communities.
-    (TODO: Check for missing icons!)
+  * Social Options: Contact information, such as social networks, sites and communities.  
+    (TODO: Check for missing icons!)  
     => Long list of supported platforms. Check "socialOptions" in "params.toml" for the complete list.
     Examples of social options: email, phone, facebook, twitter, github, instagram, youtube, linkedin, pinterest, steam.
     **NOTE:** Additional options can be added by creating a new entry in the list (in params file) and adding its corresponding icon. See (TODO: add link) for details.
       (TODO: check if correct (to adew option), or if more complex)
     **NOTE:** The social options can also be in the site footer. See below for details.
+
+* (Optional) Carousel.  
+  => Recent posts displayed as a "carousel".
+  * The parameters for the carousel are set in the "slider" section of the "params.toml" file.  
+    The main parameters are:
+    * enable: To allow/disallow the carousel feature.
+    * manual: Specifies if only the posts having a "slide=true" option enabled are displayed.
+    * num_features: The number of elements to display in the carousel.
+    * transition parameters: effect, delay, duration (more details are provided in the "params" file).
+  * Additionally to the recent posts, other specific slides can be defined to be displayed in the carousel.
+    * For each slide, a "yaml" file must be defined in the "data/slider" directory (located at the root of the site).  
+    * The parameters for slides are:
+      * Title: Title of the slide.
+      * banner: Path to the slide image (path in "static" directory).
+      * copyright: Label to display on the image for copyright disclaimer (optional).
+      * caption: Description label to display on the image (optional).
+      * Summary: Text displayed in the slide.
+      * url: Link to another page or external site.
+    Examples of slides can be found in the "exampleSite" (in "data/slider" directory).
+
 
 - galleries
 - posts
@@ -105,12 +124,7 @@ Main steps:
   showSocialLinks, etc.
 ...
 
-
-* CONTINUE FROM HERE!
-...
-
 TODO:
-- add logos (+favicon)
 - adapt params
 
 

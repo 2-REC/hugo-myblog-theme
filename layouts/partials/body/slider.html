@@ -6,9 +6,6 @@
           {{ if gt (len .Site.Data.slider) 0 }}
             {{ range $index, $slide := .Site.Data.slider }}
               {{ if and (isset $slide "banner") (not (eq .banner "")) }}
-                {{/* TODO: Why if index is 0, set to display none? => first one ignored... why?
-                    (+same in other cases below)
-                */}}
                 <div class="slides {{ if eq $index 0 }} displayblock {{ else }} displaynone {{ end }}">
                 {{/* TODO: set "_blank" as option? ("isExternalLink") */}}
                 <a class="slide-textbox" href="{{ .url }}" title="{{ .Title }}" target="_blank">

@@ -23,7 +23,9 @@ The Hugo command "hugo new site" can be used to create the new site, but the str
 More details about each step are provided in the "Checklist" (TODO: add link) section below.
 
 
-Main steps:
+### Main Steps
+
+#### Preparation
 
 * Create a new directory to contain the new site.
 
@@ -36,6 +38,10 @@ Main steps:
 * Copy "config" directory from "exampleSite" (in the theme) to the main site directory.
   * From "themes/myblog/exampleSite/config" to "config".
 
+
+#### Config
+(TODO: move below?)
+
 * Edit the config file "config/_default/config.toml":
   * Set the site name:
     ```
@@ -46,14 +52,15 @@ Main steps:
     theme = "myblog"
     ```
 
-* Logo + favicon.
-  * Site icon (favicon):
-        * Add an icon file "favicon.ico" in the "static/logo" directory.
-  * (Optional) Site logo (home).  
+#### Logo + favicon
+
+* Site icon (favicon):
+    * Add an icon file "favicon.ico" in the "static/logo" directory.
+* Site logo (home) (Optional).  
     => 2 different ways:
-      * Default location (automatic):
+    * Default location (automatic):
         * Add an icon file "logo.png" in the "static/logo" directory.
-      * Specific location (manual):
+    * Specific location (manual):
         * Add an image file in the "static" directory (or in subdirectories if desired).
         * Set the prameter "logoImage" in the params file "config/_default/params.toml".
           For example, if in "static/logo":
@@ -61,67 +68,138 @@ Main steps:
           logoImage = "/logo/mylogo.png"
           ```
 
-* (Optional) Bio.
-  * (Optional) Avatar image.  
+#### Header (Optional)
+
+Home page header.
+
+Different types of headeres are handled: "single", "multi" or "custom".
+
+Headers are defined in "_index.md" at the root of each language directory in "content" (e.g.: "content/en").
+A different header can be defined for each type of header.
+
+The desired header type is specified by the parameter "homeHeaderType" in "params.toml".
+
+Examples can be found in "header.md" in "archetypes" directory.
+
+
+Parameters:
+* Types:
+    * Single: Single header
+    * Multi: Slides
+        * Uses the "Cycle" library for the slideshow.
+            **NOTE:** The "swipe" feature is not handled here.
+        * Slider settings specified in "options" field.
+    * Custom: Defined in "custom-header.html"
+    * None: No entry in "params" => No header
+
+* Image: Optional
+
+* Title + Subtitle
+TODO: check that complete/correct.
+    * Align:
+        * Horizontal: left|center|right
+        * Vertical: top|center|bottom
+    * Padding:
+        * Horizontal and vertical for "title block" in each slide
+            => According to alignments
+        * Vertical for each title (top+bottom)
+        * Vertical for each subtitle (top+bottom)
+        * Vertical between title and subtitle blocks
+    * Units: '%' or 'px'
+      ! - Except for header 'height', must be 'px'
+        * Must be specified
+            * No unit => error
+            * Except if '0'
+    * Color:
+        * RGB or RGBA format
+        * Default:
+            * Title: "header-title-color-default"
+            * Subtitle: "header-subtitle-color-default"
+
+
+#### Bio (Optional)
+
+* Avatar image (Optional).  
     => 3 different ways:
-      * Default location (automatic):
+    * Default location (automatic):
         * Create directories "static/images/bio".
         * Add an image file "avatar" (".jpg", ".png" or ".svg") in the directory.
-      * Specific location (manual):
+    * Specific location (manual):
         * Create directory "static" if doesn't exist.
         * Add an image file in that directory (or subdirectories if desired);
         * Set the prameter "bioImage" in the params file "config/_default/params.toml".
-          For example, if in "static/images":
-          ```
-          bioImage = "/images/avatar.jpg"
-          ```
-      * Gravatar: (TODO: check how it works + test)
+            For example, if in "static/images":
+            ```
+            bioImage = "/images/avatar.jpg"
+            ```
+    * Gravatar: (TODO: check how it works + test)
         * useGravatar = true
-          (TODO: + other params?)
-  * "whoami": Blog author information.
+            (TODO: + other params?)
+
+* "whoami": Blog author information.
     (TODO: rename "whoami" + fields)
     For example:
     * myname = "Someone Else"
     * whoami = "Blogger"
     * Optional:
-      * location = "City, Country"
-      * organization = "Hugo"
-      * email = "someone@email.com"
-        **NOTE:** Sould use the same as in "socialOptions".
-      * link = "https://somesite.org"
-  * Social Options: Contact information, such as social networks, sites and communities.  
+        * location = "City, Country"
+        * organization = "Hugo"
+        * email = "someone@email.com"
+            **NOTE:** Sould use the same as in "socialOptions".
+        * link = "https://somesite.org"
+
+* Social Options: Contact information, such as social networks, sites and communities.  
     (TODO: Check for missing icons!)  
     => Long list of supported platforms. Check "socialOptions" in "params.toml" for the complete list.
     Examples of social options: email, phone, facebook, twitter, github, instagram, youtube, linkedin, pinterest, steam.
-    **NOTE:** Additional options can be added by creating a new entry in the list (in params file) and adding its corresponding icon. See (TODO: add link) for details.
-      (TODO: check if correct (to adew option), or if more complex)
+    **NOTE:** Additional options can be added by creating a new entry in the list (in params file) and adding its corresponding icon. See (TODO: add link) for details.  
+        (TODO: check if correct (to add new option), or if need other changes)
     **NOTE:** The social options can also be in the site footer. See below for details.
 
-* (Optional) Carousel.  
-  => Recent posts displayed as a "carousel".
-  * The parameters for the carousel are set in the "slider" section of the "params.toml" file.  
+
+#### Carousel (Optional)
+
+Recent posts displayed as a "carousel".
+
+Additional slides (not post related) can be defined to be displayed in the carousel.
+
+
+* The parameters for the carousel are set in the "slider" section of the "params.toml" file.  
     The main parameters are:
     * enable: To allow/disallow the carousel feature.
     * manual: Specifies if only the posts having a "slide=true" option enabled are displayed.
     * num_features: The number of elements to display in the carousel.
     * transition parameters: effect, delay, duration (more details are provided in the "params" file).
-  * Additionally to the recent posts, other specific slides can be defined to be displayed in the carousel.
+
+* Additionally to the recent posts, other specific slides can be defined:
     * For each slide, a "yaml" file must be defined in the "data/slider" directory (located at the root of the site).  
     * The parameters for slides are:
-      * Title: Title of the slide.
-      * banner: Path to the slide image (path in "static" directory).
-      * copyright: Label to display on the image for copyright disclaimer (optional).
-      * caption: Description label to display on the image (optional).
-      * Summary: Text displayed in the slide.
-      * url: Link to another page or external site.
-    Examples of slides can be found in the "exampleSite" (in "data/slider" directory).
+        * Title: Title of the slide.
+        * banner: Path to the slide image (path in "static" directory).
+        * copyright: Label to display on the image for copyright disclaimer (optional).
+        * caption: Description label to display on the image (optional).
+        * Summary: Text displayed in the slide.
+        * url: Link to another page or external site.
+            Examples of slides can be found in the "exampleSite" (in "data/slider" directory).
+    **NOTE:** At least 2 slides are required for the carousel. If there is only 1 slide, the carousel is deactivated.
 
+
+#### ...
+- search (filters)
+- posts
+    TODO: check
+      * Single
+        * Header
+          * Added header in single page with optional title and description (similar working than main header 'single' type)
+            TODO: detail more...
 
 - galleries
-- posts
-- search (filters)
 - footer
   showSocialLinks, etc.
+- about page
+- contact page
+- static/manifest.json (? - role/usage?)
+
 ...
 
 TODO:
@@ -212,7 +290,7 @@ TODO: complete/rewrite/etc.
         * if defined in "data": images are taken from "static" directory
         * for posts, image is in the post resources (need a page bundle)
 * Header
-  * Example in "archetypes/header.md"
+TODO: detail only changes from Zzo (not usage)
   * Types:
     * Single: Single header
     * Multi: Slides
@@ -384,7 +462,7 @@ TODO: complete/rewrite/etc.
 # Info
     * Post main image for social networks:
         Reconciling the guidelines for the image is simple:
-        Follow Facebook’s recommendation of a minimum dimension of 1200×630 pixels and an aspect ratio of 1.91:1, but adhere to Twitter’s file size requirement of less than 1MB.
+        Follow Facebook's recommendation of a minimum dimension of 1200*630 pixels and an aspect ratio of 1.91:1, but adhere to Twitter's file size requirement of less than 1MB.
     * Adapt static/manifest.json + icons stuff in head/meta
 
 

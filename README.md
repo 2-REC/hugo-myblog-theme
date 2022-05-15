@@ -30,27 +30,46 @@ More details about each step are provided in the "Checklist" (TODO: add link) se
 * Create a new directory to contain the new site.
 
 * Create subsubdirectories:
-  * themes
-  * content
+    * themes
+    * content
 
 * Copy the theme (git clone) to "themes/myblog".
 
+* Delete the "exampleSite" subdirectory.
+
 * Copy "config" directory from "exampleSite" (in the theme) to the main site directory.
-  * From "themes/myblog/exampleSite/config" to "config".
+    * From "themes/myblog/exampleSite/config" to "config".
+TODO: infos about "languages.toml", etc.
 
 
 #### Config
 (TODO: move below?)
 
 * Edit the config file "config/_default/config.toml":
-  * Set the site name:
-    ```
-    title = "..."
-    ```
-  * Set the theme:
-    ```
-    theme = "myblog"
-    ```
+    * Set the site name:
+        ```
+        title = "..."
+        ```
+    * Set the theme:
+        ```
+        theme = "myblog"
+        ```
+
+
+Languages:
+* entry for each language
+* "defaultContentLanguage" (config)
+* "enableLangChange" param
+* A location must be specified for each language (even if only 1).
+Specified by "contentdir".
+and/or "defaultContentLanguageInSubdir"?
+
+=> If only 1 language, no "en" in URL
+(TODO: for itips, add FR later)
+
+
+- static/manifest.json (? - role/usage?)
+
 
 #### Logo + favicon
 
@@ -67,57 +86,105 @@ More details about each step are provided in the "Checklist" (TODO: add link) se
           ```
           logoImage = "/logo/mylogo.png"
           ```
++ static/manifest.json (logos definition)
+
 
 #### Header (Optional)
 
 Home page header.
 
-Different types of headeres are handled: "single", "multi" or "custom".
-
-Headers are defined in "_index.md" at the root of each language directory in "content" (e.g.: "content/en").
-A different header can be defined for each type of header.
-
+Different types of headers are handled: "single", "multi" or "custom".
 The desired header type is specified by the parameter "homeHeaderType" in "params.toml".
+
+For "single" and "multi", headers are defined in the "header" section of the "_index.md" file at the root of each language directory in "content" (e.g.: "content/en").
+A different header can be defined for both types.
 
 Examples can be found in "header.md" in "archetypes" directory.
 
+A custom header can be defined in "custom-header.html" in "layouts/partials/header".
 
-Parameters:
-* Types:
-    * Single: Single header
-    * Multi: Slides
-        * Uses the "Cycle" library for the slideshow.
-            **NOTE:** The "swipe" feature is not handled here.
-        * Slider settings specified in "options" field.
-    * Custom: Defined in "custom-header.html"
-    * None: No entry in "params" => No header
+If no "header" entry is defined in "params", no header is created.
 
-* Image: Optional
 
-* Title + Subtitle
-TODO: check that complete/correct.
-    * Align:
-        * Horizontal: left|center|right
-        * Vertical: top|center|bottom
-    * Padding:
-        * Horizontal and vertical for "title block" in each slide
-            => According to alignments
-        * Vertical for each title (top+bottom)
-        * Vertical for each subtitle (top+bottom)
-        * Vertical between title and subtitle blocks
-    * Units: '%' or 'px'
-      ! - Except for header 'height', must be 'px'
-        * Must be specified
-            * No unit => error
-            * Except if '0'
-    * Color:
-        * RGB or RGBA format
-        * Default:
-            * Title: "header-title-color-default"
-            * Subtitle: "header-subtitle-color-default"
+The parameters in "_index.md" for the "single" and "multi" headers are the following:
+
+* type:
+    * single: Single header.
+    * multi: Slides.
+
+* Height: Height of the header (must be in "px" unit).
+
+* If "type" is "multi", the remaining parameters are divided in 2 parts: "options and "slides".
+    * options: Slider settings.
+        * transition_effect
+            * Handled values are:
+                blindX, blindY, blindZ
+                cover
+                curtainX, curtainY
+                fade, fadeZoom
+                growX, growY
+                none
+                scrollUp, scrollDown, scrollLeft, scrollRight
+                scrollHorz, scrollVert
+                shuffle
+                slideX, slideY
+                toss
+                turnUp, turnDown, turnLeft, turnRight
+                uncover
+                wipe
+                zoom
+        * transition_delay: Time in milliseconds between each transition.
+        * transition_duration: Time taken by the transition.
+    * slides: Slides definition.
+        * For each slide, a set of parameters is required to define the slide.
+        * The parameters for each slide are the same as for the "single" header.
+
+* Slide definition
+    * For a "single" header of for each slide of the "multi" header, the following parameters are available:
+
+TODO: check that complete + add details.
+    * image (optional):
+        * src: Path to the background image file (relative to the "static" directory).
+        * size
+        * repeat
+        * position
+        * copyright
+        * caption
+    * The remaining parameters are related to the "title" block.
+        * Alignment:
+            * alignX: Horizontal align (left|center|right).
+            * alignY: Vertical align (top|center|bottom).
+        * Padding: According to alignments.
+            * paddingX: Horizontal padding.
+            * paddingY: Vertical padding.
+        * Title parameters:
+            * title: Can be on several lines.
+            * titlePaddingY: Vertical padding for each title line (top+bottom).
+            * titleFontSize: Size of the title font.
+            * titleColor: Color of the title font (in RGB or RGBA format).
+                * By default: "header-title-color-default".
+            * titleShadow: Shadow for the title.
+        * Subtitle parameters:
+            * subtitle
+            * subtitlePaddingY
+            * subtitleFontSize
+            * subtitleColor
+                * By default: "header-subtitle-color-default".
+            * subtitleShadow
+            * subtitleCursive: Subtitle font cursive.
+        * spaceBetweenTitleSubtitle: Vertical padding between title and subtitle blocks.
+
+**NOTE:** Measures or size values can use "%" or "px" units.
+Units must be specified, unless te value is 0.
 
 
 #### Bio (Optional)
+
+The "bio" section can be added to sidebars.
+It contains information relative to the blogger/author.
+
+TODO: Also in "about" page. (?)
+
 
 * Avatar image (Optional).  
     => 3 different ways:
@@ -193,12 +260,12 @@ Additional slides (not post related) can be defined to be displayed in the carou
           * Added header in single page with optional title and description (similar working than main header 'single' type)
             TODO: detail more...
 
+- sidebars
 - galleries
 - footer
   showSocialLinks, etc.
 - about page
 - contact page
-- static/manifest.json (? - role/usage?)
 
 ...
 
@@ -294,6 +361,8 @@ TODO: detail only changes from Zzo (not usage)
   * Types:
     * Single: Single header
     * Multi: Slides
+        * Uses the "Cycle" library for the slideshow.
+            **NOTE:** The "swipe" feature is not handled here.
     * Custom: Defined in "custom-header.html"
     * None: No entry in "params" => No header
   * Slides:
@@ -462,7 +531,7 @@ TODO: detail only changes from Zzo (not usage)
 # Info
     * Post main image for social networks:
         Reconciling the guidelines for the image is simple:
-        Follow Facebook's recommendation of a minimum dimension of 1200*630 pixels and an aspect ratio of 1.91:1, but adhere to Twitter's file size requirement of less than 1MB.
+        Follow Facebook's recommendation of a minimum dimension of 1200x630 pixels and an aspect ratio of 1.91:1, but adhere to Twitter's file size requirement of less than 1MB.
     * Adapt static/manifest.json + icons stuff in head/meta
 
 
@@ -475,4 +544,3 @@ TODO: detail only changes from Zzo (not usage)
 * jQuery Cycle Plugin (+developer)
     http://jquery.malsup.com/cycle/
 * others?
-

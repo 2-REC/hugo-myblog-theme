@@ -1,6 +1,6 @@
 baseURL = "https://example.com"
 title = "MyBlog Theme"
-theme = "hugo-myblog-theme"
+theme = "../.."
 
 defaultContentLanguage = "en"
 defaultContentLanguageInSubdir = true

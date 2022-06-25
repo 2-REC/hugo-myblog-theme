@@ -113,6 +113,7 @@ The parameters in "_index.md" for the "single" and "multi" headers are the follo
     * multi: Slides.
 
 * Height: Height of the header (must be in "px" unit).
+    The value should be determined accordingly to the size of the background image and the desired results.
 
 * If "type" is "multi", the remaining parameters are divided in 2 parts: "options and "slides".
     * options: Slider settings.
@@ -145,7 +146,8 @@ The parameters in "_index.md" for the "single" and "multi" headers are the follo
 TODO: check that complete + add details.
     * image (optional):
         * src: Path to the background image file (relative to the "static" directory).
-        * size
+        * size: "fit" or "cover" are generally the best, depending on desired results.
+            Other options are: "contain", "auto", "percentage", length".
         * repeat
         * position
         * copyright
@@ -275,8 +277,9 @@ TODO:
 
 
 ### Checklist
+**TODO:** check required (not redundant) + update
 
-Check list when making a new site using the theme.
+Checklist when making a new site using the theme.
 
 * [ ] archetypes
     * [ ] Override desired archetypes

@@ -9,6 +9,13 @@
 
 
 ##################
+2022/06/26
+
+- [ ] Themes: get rid of "primary_color" definition + code in "assets/sass/main.scss"
+    Creates issue when defining new themes, need to adapt the name of the variable "$button_{{ .name }}_primary_color"
+    => ```$button_{{ .name }}_primary_color: {{ .primary_color }};``` seems useless (?)
+
+
 2022/04/02
 
 - [ ] Features:

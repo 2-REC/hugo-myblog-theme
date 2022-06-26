@@ -29,6 +29,7 @@ $grid_row_gap: {{ .Site.Data.grid.grid_row_gap }};
 //$button_solarized_primary_color: {{ .Site.Data.button.solarized_primary_color }};
 //$button_kimbie_primary_color: {{ .Site.Data.button.kimbie_primary_color }};
 //////// THEMES - MID
+//TODO: remove this + usage in themes "scss" files => seems useless
 {{ range .Site.Data.theme.themes }}
 $button_{{ .name }}_primary_color: {{ .primary_color }};
 {{ end }}

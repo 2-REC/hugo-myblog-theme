@@ -35,11 +35,18 @@ More details about each step are provided in the "Checklist" (TODO: add link) se
 
 * Copy the theme (git clone) to "themes/myblog".
 
+(**TODO:** Needed?
 * Delete the "exampleSite" subdirectory.
+)
 
 * Copy "config" directory from "exampleSite" (in the theme) to the main site directory.
     * From "themes/myblog/exampleSite/config" to "config".
 TODO: infos about "languages.toml", etc.
+
+**NOTE:** The content in the "themes" directory should ideally not be modified.
+Any change to make to a theme should be done by modifying copied/added files directly in the site main directory.
+Information can be found in the [Hugo's Lookup Order](https://gohugo.io/templates/lookup-order) documentation page.
+The lookup order also applies to other files than layout, such as files in "data", "i18n", assets", etc.
 
 
 #### Config
@@ -64,11 +71,17 @@ Languages:
 Specified by "contentdir".
 and/or "defaultContentLanguageInSubdir"?
 
+* i18n stuff
+  Define specific keywords/texts for each language.
+  **TODO:** Add info/details
+  => Copy i18n directory from theme + adapt content.
+
 => If only 1 language, no "en" in URL
 (TODO: for itips, add FR later)
 
 
 - static/manifest.json (? - role/usage?)
+**TODO:** Add info/details
 
 
 #### Logo + favicon
@@ -251,6 +264,28 @@ Additional slides (not post related) can be defined to be displayed in the carou
         * url: Link to another page or external site.
             Examples of slides can be found in the "exampleSite" (in "data/slider" directory).
     **NOTE:** At least 2 slides are required for the carousel. If there is only 1 slide, the carousel is deactivated.
+
+
+#### Themes
+
+Colours, fonts, etc.
+Can have 1 or more defined styles.
+
+Each theme must:
+    * be defined in "data/theme.toml"
+        **TODO:** Add info/details
+    * have a file defining all its values, located in "assets/sass/themes"
+
+
+Selectable in navigation bar on top.
+
+* fonts:
+    * Main fonts usage specified in "data/fonts.toml"
+    * Available fonts in "static/fonts" of theme.
+        => Add new fonts in "static/fonts" of site
+
+
+(data/grid.toml?)
 
 
 #### ...

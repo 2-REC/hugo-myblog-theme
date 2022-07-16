@@ -25,6 +25,7 @@ enableThemeChange = true
 enableLangChange = true
 
 # header
+# Examples defined in "content/en/_index.md": "single-image", "single-fixed", "single-ratio", "single-window", "multi".
 homeHeaderType = "multi" # single, multi, custom
 
 # menu

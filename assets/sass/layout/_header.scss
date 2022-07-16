@@ -1,4 +1,6 @@
 .header {
+  overflow: hidden;
+
   .title {
     font-family: $title-font;
     font-weight: 900;
@@ -63,4 +65,34 @@
   &__align-right {
     text-align: right;
   }
+
+  &__content {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+
+  &__image {
+    /* "block" to avoid padding below item */
+    display: block;
+
+    width: 100%;
+    height:100%;
+  }
+}
+
+
+/* TODO: Move elsewhere (common) */
+.flex-font {
+  /* Default, to be overridden */
+  width:100%;
+
+  padding: 0;
+  margin: 0;
+}
+
+.padding-block {
+  opacity: 0;
 }

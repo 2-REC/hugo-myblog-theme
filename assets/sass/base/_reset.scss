@@ -65,6 +65,11 @@ h6 {
   padding: 0;
 }
 
+// Hide content until loaded
+body {
+  display: none;
+}
+
 // List
 ul {
   list-style: none;

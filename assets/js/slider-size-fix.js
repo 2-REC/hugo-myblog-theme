@@ -1,3 +1,6 @@
+/* TODO(2-REC): Unnescessary now as page reloaded on resize
+=> Can be deleted
+ */
 ;(function($,undefined){"use strict";
 
 var resizeTimer;

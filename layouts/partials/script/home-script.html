@@ -1,6 +1,11 @@
-{{/* 2-REC: Added Busuanzi check */}}
-{{ if .Site.Params.enableBusuanzi }}
 <script>
+// Hide content until loaded
+var bodys = document.querySelectorAll("body");
+bodys.forEach(element => {
+  element.style.display = "block";
+});
+
+{{ if .Site.Params.enableBusuanzi }}
   window.onload = function() {
     // counter
     {{ $enableBusuanzi := .Site.Params.enableBusuanzi }}
@@ -12,5 +17,5 @@
       siteUvElem.textContent = siteUvElem.textContent.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
     }
   }
-</script>
 {{ end }}
+</script>

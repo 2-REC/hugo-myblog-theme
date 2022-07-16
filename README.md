@@ -123,30 +123,49 @@ The parameters in "_index.md" for the "single" and "multi" headers are the follo
 
 * type:
     * single: Single header.
+        * **NOTE:** For "single" headers, any value for this field can be used, not necessarily "single" (value other than "multi" and "custom").
     * multi: Slides.
 
-* Height: Height of the header (must be in "px" unit).
-    The value should be determined accordingly to the size of the background image and the desired results.
+* fit: Type of fitting for the header height.
+    * Accepted values are: image, fixed, ratio, window.
+    * image: The header displays the full image, keeping its aspect ratio.
+        * **NOTE:** This type of fitting is not accepted for the "multi" type.
+    * fixed: The header has a fixed height (in "px").
+    * ratio: The header height is a ratio of its width (in "%").
+        * **NOTE:** The background image is deformed to fit the specified ratio.
+    * window: The header height is a ratio of the window's height (in "%").
+    * **NOTE:** Except for "image", the sizing of the background image can be controlled by parameters of the "image" field (see below).
 
-* If "type" is "multi", the remaining parameters are divided in 2 parts: "options and "slides".
+* height: Height of the header
+    * The value should be determined accordingly to the size of the background image and the desired results.
+    * Ignored if "fit" is "image".
+    * Must be in "px" unit if "fit" is "fixed".
+    * Must be in "%" unit if "fit" is "ratio" or "window".
+
+* If "type" is "multi", the remaining parameters are divided in 2 parts: "options" and "slides".
     * options: Slider settings.
         * transition_effect
             * Handled values are:
-                blindX, blindY, blindZ
-                cover
-                curtainX, curtainY
-                fade, fadeZoom
-                growX, growY
-                none
-                scrollUp, scrollDown, scrollLeft, scrollRight
-                scrollHorz, scrollVert
-                shuffle
-                slideX, slideY
-                toss
-                turnUp, turnDown, turnLeft, turnRight
-                uncover
-                wipe
-                zoom
+                * blindX, blindY, blindZ
+                * cover
+                * fade
+                * growX
+                * none (no slideshow)
+                * scrollUp, scrollDown, scrollLeft, scrollRight
+                * scrollHorz, scrollVert
+                * slideX
+                * toss
+                * turnLeft, turnRight
+                * uncover
+                * wipe
+            * The following transitions seems problematic (undesired results):
+                * curtainX, curtainY
+                * fadeZoom
+                * growY
+                * shuffle? (weird behaviour)
+                * slideY
+                * turnUp, turnDown
+                * zoom
         * transition_delay: Time in milliseconds between each transition.
         * transition_duration: Time taken by the transition.
     * slides: Slides definition.
@@ -157,20 +176,22 @@ The parameters in "_index.md" for the "single" and "multi" headers are the follo
     * For a "single" header of for each slide of the "multi" header, the following parameters are available:
 
 TODO: check that complete + add details.
-    * image (optional):
+    * image (optional, unless "fit" is set to "image" for which it is mandatory):
         * src: Path to the background image file (relative to the "static" directory).
-        * size: "fit" or "cover" are generally the best, depending on desired results.
-            Other options are: "contain", "auto", "percentage", length".
-        * repeat
-        * position
         * copyright
         * caption
+        * The following parameters are only handled if the fitting type "fit" is "fixed", "ratio" or "window" (not for "image"):
+            * size: "cover" and "contain" are generally used, depending on desired results.
+                Other options are: "auto", as well as percentage or length values.
+            * repeat
+            * position
     * The remaining parameters are related to the "title" block.
         * Alignment:
-            * alignX: Horizontal align (left|center|right).
-            * alignY: Vertical align (top|center|bottom).
+            * alignX: Horizontal align (left|center|right). Default: "center".
+            * alignY: Vertical align (top|center|bottom). Default: "center".
         * Padding: According to alignments.
             * paddingX: Horizontal padding.
+                * If "alignX" is "center", a negative value can be used to add padding to the right.
             * paddingY: Vertical padding.
         * Title parameters:
             * title: Can be on several lines.

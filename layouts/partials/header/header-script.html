@@ -1,0 +1,82 @@
+{{- $fit := .fit -}}
+{{- $height := .height -}}
+{{- $multi := .multi }}
+<script type='text/javascript'>
+    {{ if eq $fit "ratio" -}}
+    fitRatio = function () {
+        var divs = document.getElementsByClassName("fit-ratio");
+        for(var i = 0; i < divs.length; i++) {
+            var width = divs[i].offsetWidth;
+            divs[i].style.height = (width * {{ div $height 100.0 }}) + "px";
+        }
+    };
+
+    if (window.addEventListener) {
+        {{/* TODO(2-REC): "load" or "DOMContentLoaded"? */ -}}
+        window.addEventListener('DOMContentLoaded', fitRatio);
+    } else {
+        window.attachEvent('onload', fitRatio);
+    }
+
+    {{/* With slides ("multi"), the page is reloaded on resize, so this listener is useless */ -}}
+    {{ if not $multi -}}
+    if (window.addEventListener) {
+        /* TODO(2-REC): make sure don't need timeout*/
+        window.addEventListener('resize', fitRatio);
+        /*window.addEventListener('resize', function() { setTimeout(fitRatio, 100) });*/
+    } else {
+        window.attachEvent('onresize', fitRatio);
+    }
+    {{ end -}}
+    {{- end -}}
+
+
+    flexFont = function () {
+        var divs = document.getElementsByClassName("flex-font");
+        for(var i = 0; i < divs.length; i++) {
+            var relFontsize = divs[i].offsetHeight;
+            divs[i].style.fontSize = relFontsize + "px";
+            divs[i].style.lineHeight = relFontsize + "px";
+        }
+    };
+
+    if (window.addEventListener) {
+        {{/* TODO(2-REC): "load" or "DOMContentLoaded"? */ -}}
+        window.addEventListener('DOMContentLoaded', function() {
+            flexFont();
+        });
+    } else {
+        window.attachEvent('onload', function() {
+            flexFont();
+        });
+    }
+
+    var resizeTimer;
+    {{ if $multi -}}
+    reloadFunction = function() {
+        window.location.reload();
+    };
+
+    if (window.addEventListener) {
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(reloadFunction, 100);
+        });
+    } else {
+        window.attachEvent('onresize', function() {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(reloadFunction, 100);
+        });
+    }
+    {{- else -}}
+    if (window.addEventListener) {
+        window.addEventListener('resize', function() {
+            flexFont();
+        });
+    } else {
+        window.attachEvent('onresize', function() {
+            flexFont();
+        });
+    }
+    {{- end }}
+</script>

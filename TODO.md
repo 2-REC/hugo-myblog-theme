@@ -9,6 +9,16 @@
 
 
 ##################
+2022/07/05
+- [ ] Header
+  - [ ] Check that 'slider-size-fix' is useless
+    - [ ] delete 'slider-size-fix.js' file
+    - [ ] revert to original 'jquery.cycle.all.min.js' file
+        - [ ] update to latest? (if no breaking changes)
+    - [ ] remove commented code in 'header-slide.html'
+  - [ ] Handle separate X align+padding for title & subtitle (alignX+paddingX)
+
+
 2022/06/26
 
 - [ ] Themes: get rid of "primary_color" definition + code in "assets/sass/main.scss"

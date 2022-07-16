@@ -88,8 +88,16 @@ display: block;
 	display: none;
 }
 */
-.featured-slider,.featured-slider .slider-cycle-header {
+/*.featured-slider,.featured-slider .slider-cycle-header {*/
+.featured-slider,.slider-cycle-header {
 	position: relative;
+}
+.slide-header {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 /////////////////
 

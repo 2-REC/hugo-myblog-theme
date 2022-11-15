@@ -9,6 +9,24 @@
 
 
 ##################
+2022/09/05
+- [ ] Figures/images
+    - [ ] "Override" default Hugo "figure" shortcode to handle copyright label/text as in header images (overlay)
+        - [ ] param "label"
+        - [ ] param "copyright"
+        - [ ] param "src"
+        - [ ] don't use "alt" as caption text when fullscreen
+
+2022/08/10
+- [ ] Code blocks
+    - [ ] fix line number column width issue (horizontal scroll bar)
+        * when only 1 single line, the scrollbar appears
+        => hide/disable scrollbar?
+    - [ ] add option/param to hide the language label/header
+- [ ] Posts meta
+    - [ ] Hide 'modified' date if same as 'creation' date
+
+
 2022/07/05
 - [ ] Header
   - [ ] Check that 'slider-size-fix' is useless
@@ -20,14 +38,12 @@
 
 
 2022/06/26
-
 - [ ] Themes: get rid of "primary_color" definition + code in "assets/sass/main.scss"
     Creates issue when defining new themes, need to adapt the name of the variable "$button_{{ .name }}_primary_color"
     => ```$button_{{ .name }}_primary_color: {{ .primary_color }};``` seems useless (?)
 
 
 2022/04/02
-
 - [ ] Features:
   - [ ] Check if page visits/counts features are still there (or removed from ZZO)
 

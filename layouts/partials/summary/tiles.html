@@ -48,7 +48,9 @@
                     {{ if eq (.Param "languagedir") "rtl" }}
                       {{ $dir = "rtl" }}
                     {{ end }}
+                    {{ if ne .Site.Params.summaryMetaInfoCreate false }}
                     <time title="{{ i18n "tooltip-date" }}" dir="{{ $dir }}"><span class="icon-calendar"></span>{{ .Date.Format (i18n "summary-dateformat") }}&nbsp;</time>
+                    {{ end }}
                     {{ if .Site.Params.summaryMetaInfoEdit }}
                     {{ if ne (.Date.Format (i18n "summary-dateformat")) (.Lastmod.Format (i18n "summary-dateformat")) }}
                     <time title="{{ i18n "tooltip-modified" }}" dir="{{ $dir }}"><span class="icon-edit"></span>{{ .Lastmod.Format (i18n "summary-dateformat") }}&nbsp;</time>
@@ -61,6 +63,9 @@
                     <span title="{{ i18n "tooltip-author" }}" dir="{{ $dir }}"><span class="icon-user"></span>{{ . }}</span>
                     {{ end }}
                   </div>
+{{/* TODO(2-REC): Which order for tags/categories/series? */}}
+{{/* TODO(2-REC): Add separators/labels? */}}
+{{/* TODO(2-REC): Use different style for each */}}
                   {{ if .Site.Params.summaryMetaTags }}
                     {{ if .Params.tags }}
                     <ul class="summary__tag--wrapper">
@@ -80,7 +85,46 @@
                     </ul>
                     {{ end }}
                   {{ end }}
+                  {{ if .Site.Params.summaryMetaCategories }}
+                    {{ if .Params.categories }}
+                    <ul class="summary__tag--wrapper">
+                      {{ range .Params.categories }}
+                        {{ if . }}
+                        {{/* TODO: want to set as links? - problems as already inside a link*/}}
+                        {{/*
+                        <a href="{{ "categories/" | relLangURL }}{{ . | urlize }}" class="summary__tag">
+                          {{ . }}
+                        </a>
+                        */}}
+                        <li class="summary__tag">
+                          {{ . }}
+                        </li>
+                        {{ end }}
+                      {{ end }}
+                    </ul>
+                    {{ end }}
+                  {{ end }}
+                  {{ if .Site.Params.summaryMetaSeries }}
+                    {{ if .Params.series }}
+                    <ul class="summary__tag--wrapper">
+                      {{ range .Params.series }}
+                        {{ if . }}
+                        {{/* TODO: want to set as links? - problems as already inside a link*/}}
+                        {{/*
+                        <a href="{{ "series/" | relLangURL }}{{ . | urlize }}" class="summary__tag">
+                          {{ . }}
+                        </a>
+                        */}}
+                        <li class="summary__tag">
+                          {{ . }}
+                        </li>
+                        {{ end }}
+                      {{ end }}
+                    </ul>
+                    {{ end }}
+                  {{ end }}
                 {{ end }}
+                {{ if .Site.Params.summaryDescription }}
                 <div class="box-masonry-description">
                   <p>
                     {{ if .Description }}
@@ -90,6 +134,7 @@
                     {{ end }}
                   </p>
                 </div>
+                {{ end }}
               </div>
             </a>
         </div>

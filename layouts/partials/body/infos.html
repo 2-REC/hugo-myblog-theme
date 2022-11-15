@@ -2,7 +2,7 @@
 <div class="single__infos caption">
   <time title="{{ i18n "tooltip-date" }}"><span class="icon-calendar"></span>{{ .Date.Format (i18n "single-dateformat") }}&nbsp;</time>
   {{ if .Site.Params.metaInfoEdit }}
-  {{ if eq (.Date.Format (i18n "summary-dateformat")) (.Lastmod.Format (i18n "summary-dateformat")) }}
+  {{ if ne (.Date.Format (i18n "summary-dateformat")) (.Lastmod.Format (i18n "summary-dateformat")) }}
   <time title="{{ i18n "tooltip-modified" }}"><span class="icon-edit"></span>{{ .Lastmod.Format (i18n "single-dateformat") }}&nbsp;</time>
   {{ end }}
   {{ end }}

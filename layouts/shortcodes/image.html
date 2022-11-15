@@ -1,0 +1,16 @@
+<figure class="post_image">
+    <img src={{ .Get "src" }}
+        {{ if .Get "alt" }}
+         alt={{ .Get "alt" }}
+        {{ else if .Get "caption" }}
+         alt={{ .Get "caption" }}
+        {{ end }}
+    />
+    <figcaption>
+        <p>{{- if .Get "caption" -}}
+             {{- .Get "caption" -}}
+             {{- if .Get "copyright" -}}&nbsp;&mdash;&nbsp;{{- end -}}
+           {{- end -}}
+           {{ with .Get "copyright" }}&copy;&nbsp;{{ . }}{{ end }}</p>
+    </figcaption>
+</figure>

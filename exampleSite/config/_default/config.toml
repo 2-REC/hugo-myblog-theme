@@ -32,7 +32,7 @@ paginate = 10 # Default 10
   [markup.tableOfContents]
     endLevel = 4
     ordered = false
-    startLevel = 2
+    startLevel = 1
 
 
 

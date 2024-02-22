@@ -1,3 +1,4 @@
+#logoImage = "" # E.g.: "/logo/logo.png"
 logoText = "ExampleSite"
 logoType = "short" # long, short
 description = "MyBlog Theme for Hugo example site."
@@ -26,7 +27,7 @@ enableLangChange = true
 
 # header
 # Examples defined in "content/en/_index.md": "single-image", "single-fixed", "single-ratio", "single-window", "multi".
-homeHeaderType = "multi" # single, multi, custom
+homeHeaderType = "multi"
 
 # menu
 showMobileMenuTerms = ["tags", "categories", "series"] #TODO: change "series" to "types"
@@ -34,8 +35,8 @@ showMobileMenuTerms = ["tags", "categories", "series"] #TODO: change "series" to
 # body
 # breadcrumb
 enableBreadcrumb = true # Default false
-breadcrumbHome = "both" # Default "both", values: "text", "icon", "both"
-breadcrumbHomeSiteName = false # Default true
+breadcrumbHome = "both" # Default "icon", values: "text", "icon", "both"
+#breadcrumbHomeSiteName = false # Default true
 
 # single
 metaInfoEdit = true
@@ -54,9 +55,13 @@ summaryShape = "tiles" # Default for all pages, values: "card", "classic", "comp
 showonlyimage = false
 summaryMeta = true # Default false
 #summaryImagePosition = "left" # Default "left"
+#summaryMetaInfoCreate = false # Default true
 #summaryMetaInfoEdit = true # Default false
 summaryMetaInfoReadingTime = true # Default false
 summaryMetaTags = true # Default false
+#summaryMetaCategories = true # Default false
+#summaryMetaSeries = true # Default false
+#summaryDescription = true # Default false
 
 
 paginateWindow = 1
@@ -75,7 +80,9 @@ galleryZoom = true
 #disableSearchAuthors = true # Default: false
 
 
-# whoami #TODO: rename all params to "bio..." (+propagate impacts)
+#TODO: rename all params to "bio..." (+propagate impacts)
+# whoami
+# Not necessary if no "bio" in sidebars
 myname = "Someone"
 email = "someone@email.com" #TODO: use same as in "socialOptions" - Duplicate? Remove here?
 whoami = "Blogger"

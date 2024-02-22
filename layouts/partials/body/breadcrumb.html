@@ -18,10 +18,10 @@
         {{ end }}
         {{ if eq site.Params.breadcrumbHome "both" }}
           <span class="icon-home">{{ $val }}
-        {{ else if eq site.Params.breadcrumbHome "icon" }}
-          <span class="icon-home">
-        {{ else }}
+        {{ else if eq site.Params.breadcrumbHome "text" }}
           {{ $val }}
+        {{ else }}
+          <span class="icon-home">
         {{ end }}
       </a>
     {{ else if eq .p1 .p2 }}

@@ -7,9 +7,8 @@
   "description": "MyBlog Hugo Theme",
   "icons": [
     {
-      "src": "logo/favicon.png",
-      "sizes": "16x16",
-      "type": "image/png"
+      "src": "logo/logo.ico",
+      "sizes": "16x16"
     }, {
       "src": "logo/logo.png",
       "sizes": "48x48",

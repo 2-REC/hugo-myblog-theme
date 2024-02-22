@@ -164,13 +164,13 @@
     logos
       => Add own logos
       Required:
-      - favicon.ico
-      - favicon.png
+      - logo.ico
       - logo.png
       Optional:
       - logo.svg
       - Android
         as defined in "manifest.json"
+        TODO: check sizes and needed files in manifest...
       - Apple
         static/logo/apple-touch-icon.png
       - Windows

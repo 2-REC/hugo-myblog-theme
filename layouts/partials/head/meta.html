@@ -111,8 +111,10 @@
 {{ if (fileExists "static/logo/apple-touch-icon.png") -}}
 <link rel="apple-touch-icon" href="{{ "logo/apple-touch-icon.png" | relURL }}">
 {{- end }}
-<link rel="shortcut icon" href="{{ "logo/favicon.ico" | relURL }}" type="image/x-icon">
-<link rel="icon" href="{{ "logo/favicon.png" | relURL }}" sizes="any" type="image/png" />
+<link rel="icon" href="{{ "logo/logo.ico" | relURL }}" type="image/x-icon">
+{{ if (fileExists "static/logo/logo.png") -}}
+<link rel="icon" href="{{ "logo/logo.png" | relURL }}" sizes="any" type="image/png" />
+{{- end }}
 {{ if (fileExists "static/logo/logo.svg") -}}
 <link rel="icon" href="{{ "logo/logo.svg" | relURL }}" sizes="any" type="image/svg+xml" />
 {{- end }}

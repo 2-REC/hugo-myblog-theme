@@ -87,7 +87,7 @@ and/or "defaultContentLanguageInSubdir"?
 #### Logo + favicon
 
 * Site icon (favicon):
-    * Add an icon file "favicon.ico" in the "static/logo" directory.
+    * Add an icon file "logo.ico" in the "static/logo" directory.
 * Site logo (home) (Optional).  
     => 2 different ways:
     * Default location (automatic):

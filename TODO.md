@@ -1,5 +1,7 @@
 # TODO
 
+- [ ] add '-' in desired '{{' and '}}'
+
 - [ ] Mention use of libraries/modules in README/disclaimer
   - [ ] assets\js\lazysizes.min.js
     https://github.com/aFarkas/lazysizes

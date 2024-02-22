@@ -438,7 +438,6 @@
 
   // ======================= theme change =======================
     {{/* 2-REC: check if saved 'theme' is valid*/}}
-    //var localTheme = localStorage.getItem('theme');
     {{ $themeOptions := slice }}
     {{ range .Site.Data.theme.themes }}
         {{ $themeOptions = $themeOptions | append .name }}

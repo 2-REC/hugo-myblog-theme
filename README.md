@@ -397,6 +397,7 @@ Additionnally, can adapt style+layouts in SCSS files:
 TODO: complete/rewrite/etc.
 - Navbar
   - Allow to use icon instead of text, if setting "icon-..." for "name" field
+  - Entry in navbar not added if no directory in "content"
 - Syntax highlighting (using Chroma)
   - sass/syntax
     (+reference Chroma site? - or indicate in )
@@ -578,6 +579,7 @@ TODO: detail only changes from Zzo (not usage)
 
 * All themes but "light" & "dark"
 * Search feature
+  * ~Replaced by filters search
 * Swipe
   - Removed swipe shortcodes "swiper" and "swiperItem"
   - Removed swipe from header (using slider from "jQuery.cycle" library)

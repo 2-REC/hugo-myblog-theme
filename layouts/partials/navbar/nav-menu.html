@@ -19,13 +19,16 @@
       </div>
     </div>
     {{ else }}
-      {{/* If "name" starts with "icon-" => use icon */}}
-      {{ if eq (substr .Name 0 5) "icon-" }}
-        <a href="{{ .URL | relLangURL }}" class="navbar__menu-item navbar__slide-down {{ if $active }}active{{ end }}" dir="{{ if ne ($.Param "languagedir") "rtl" }}ltr{{ else }}rtl{{ end }}" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}">
-          <span class="{{ .Name }}"></span>
-        </a>
-      {{ else }}
-        <a href="{{ .URL | relLangURL }}" class="navbar__menu-item navbar__slide-down {{ if $active }}active{{ end }}" dir="{{ if ne ($.Param "languagedir") "rtl" }}ltr{{ else }}rtl{{ end }}" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}">{{ safeHTML .Name }}</a>
+      {{/* TODO: should do the same check for children of dropdown menus */}}
+      {{ if os.FileExists .URL }}
+        {{/* If "name" starts with "icon-" => use icon */}}
+        {{ if eq (substr .Name 0 5) "icon-" }}
+          <a href="{{ .URL | relLangURL }}" class="navbar__menu-item navbar__slide-down {{ if $active }}active{{ end }}" dir="{{ if ne ($.Param "languagedir") "rtl" }}ltr{{ else }}rtl{{ end }}" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}">
+            <span class="{{ .Name }}"></span>
+          </a>
+        {{ else }}
+          <a href="{{ .URL | relLangURL }}" class="navbar__menu-item navbar__slide-down {{ if $active }}active{{ end }}" dir="{{ if ne ($.Param "languagedir") "rtl" }}ltr{{ else }}rtl{{ end }}" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}">{{ safeHTML .Name }}</a>
+        {{ end }}
       {{ end }}
     {{ end }}
   {{ end }}

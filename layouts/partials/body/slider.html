@@ -76,7 +76,7 @@
       var transition_duration = "{{ $transition_duration }}";
       var slider_value = { "transition_effect": transition_effect, "transition_delay": transition_delay, "transition_duration": transition_duration };
     </script>
-    {{ $jquery := resources.Get "js/jquery.js" | resources.Fingerprint }}
+    {{ $jquery := resources.Get "js/jquery.min.js" | resources.Fingerprint }}
     <script type='text/javascript' src="{{ $jquery.RelPermalink }}"></script>
     {{ $jqueryCycle := resources.Get "js/jquery.cycle.all.min.js" | resources.Fingerprint }}
     <script type='text/javascript' src="{{ $jqueryCycle.RelPermalink }}"></script>

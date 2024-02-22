@@ -67,9 +67,9 @@ header:
         paddingY: 0
         title:
           - HUGO
-          - Coloré
+          - ColorÃ©
         subtitle:
-          - Centré + décalage horizontal
+          - CentrÃ© + dÃ©calage horizontal
         titleColor: rgba(0, 0, 128, 0.5)
         titleShadow: false
         titleFontSize: 25%
@@ -93,7 +93,7 @@ header:
         title:
           - HUGO
         subtitle:
-          - Alignement bas-droite (avec décalage X+Y)
+          - Alignement bas-droite (avec dÃ©calage X+Y)
         titleColor:
         titleShadow: true
         titleFontSize: 44px

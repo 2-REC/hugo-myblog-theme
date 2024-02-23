@@ -2,35 +2,9 @@
 {{- $height := .height -}}
 {{- $multi := .multi }}
 <script type='text/javascript'>
-    {{ if eq $fit "ratio" -}}
-    fitRatio = function () {
-        var divs = document.getElementsByClassName("fit-ratio");
-        for(var i = 0; i < divs.length; i++) {
-            var width = divs[i].offsetWidth;
-            divs[i].style.height = (width * {{ div $height 100.0 }}) + "px";
-        }
-    };
+    /* TODO: should handle "fit: window" case differently, only resizing when height change */
 
-    if (window.addEventListener) {
-        {{/* TODO(2-REC): "load" or "DOMContentLoaded"? */ -}}
-        window.addEventListener('DOMContentLoaded', fitRatio);
-    } else {
-        window.attachEvent('onload', fitRatio);
-    }
-
-    {{/* With slides ("multi"), the page is reloaded on resize, so this listener is useless */ -}}
-    {{ if not $multi -}}
-    if (window.addEventListener) {
-        /* TODO(2-REC): make sure don't need timeout*/
-        window.addEventListener('resize', fitRatio);
-        /*window.addEventListener('resize', function() { setTimeout(fitRatio, 100) });*/
-    } else {
-        window.attachEvent('onresize', fitRatio);
-    }
-    {{ end -}}
-    {{- end -}}
-
-
+    /* flexFont: Resize fonts */
     flexFont = function () {
         var divs = document.getElementsByClassName("flex-font");
         for(var i = 0; i < divs.length; i++) {
@@ -40,43 +14,78 @@
         }
     };
 
-    if (window.addEventListener) {
-        {{/* TODO(2-REC): "load" or "DOMContentLoaded"? */ -}}
-        window.addEventListener('DOMContentLoaded', function() {
-            flexFont();
-        });
-    } else {
-        window.attachEvent('onload', function() {
-            flexFont();
-        });
-    }
+    {{ if eq $fit "ratio" -}}
+    /* fitRatio: Resize components */
+    fitRatio = function () {
+        var divs = document.getElementsByClassName("fit-ratio");
+        for(var i = 0; i < divs.length; i++) {
+            var width = divs[i].offsetWidth;
+            divs[i].style.height = (width * {{ div $height 100.0 }}) + "px";
+        }
+    };
+    {{- end }}
 
-    var resizeTimer;
-    {{ if $multi -}}
-    reloadFunction = function() {
-        window.location.reload();
+    /* load event */
+    loadFunction = function () {
+        {{ if eq $fit "ratio" -}}
+        fitRatio();
+        {{- end }}
+        flexFont();
     };
 
     if (window.addEventListener) {
-        window.addEventListener('resize', function() {
-            clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(reloadFunction, 100);
-        });
+        {{/* TODO: "load" or "DOMContentLoaded"? */}}
+        window.addEventListener('DOMContentLoaded', loadFunction);
     } else {
-        window.attachEvent('onresize', function() {
-            clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(reloadFunction, 100);
-        });
+        window.attachEvent('onload', loadFunction);
     }
-    {{- else -}}
+
+    {{ if $multi -}}
+    /* reloadFunction: reload the page*/
+    reloadFunction = function() {
+        if (typeof windowWidth === 'undefined' || windowWidth != window.innerWidth) {
+            windowWidth = window.innerWidth;
+            window.location.reload();
+        }
+    };
+
+    var resizeTimer;
     if (window.addEventListener) {
         window.addEventListener('resize', function() {
-            flexFont();
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(reloadFunction, 100);
         });
     } else {
         window.attachEvent('onresize', function() {
-            flexFont();
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(reloadFunction, 100);
         });
     }
+
+    {{- else -}}
+    /* resize event */
+    resizeFunction = function () {
+        {{ if ne $fit "window" -}}
+        /* To avoid page reloaging issues on Android when the address bar collapses, which triggers a resize event */
+        if (typeof windowWidth === 'undefined' || windowWidth != window.innerWidth) {
+        {{- end }}
+            windowWidth = window.innerWidth;
+            {{ if eq $fit "ratio" -}}
+            fitRatio();
+            {{- end }}
+            flexFont();
+        {{ if ne $fit "window" -}}
+        }
+        {{- end }}
+    };
+
+    if (window.addEventListener) {
+        window.addEventListener('resize', resizeFunction);
+    } else {
+        window.attachEvent('onresize', resizeFunction);
+    }
+
     {{- end }}
+
+    var windowWidth = window.innerWidth;
 </script>

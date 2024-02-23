@@ -90,6 +90,7 @@ header:
         spaceBetweenTitleSubtitle: 0
 
   - type: single-image
+    # Fit to image
     fit: image
     image:
         src: images/header/background.jpg
@@ -114,6 +115,7 @@ header:
     spaceBetweenTitleSubtitle: 10%
 
   - type: single-fixed
+    # Fixed height
     fit: fixed
     height: 235px
     image:
@@ -143,6 +145,7 @@ header:
     spaceBetweenTitleSubtitle: 10%
 
   - type: single-ratio
+    # Fit height/width ratio
     fit: ratio
     height: 25%
     image:
@@ -171,6 +174,7 @@ header:
     spaceBetweenTitleSubtitle: 10%
 
   - type: single-window
+    # Fit window's height ratio
     fit: window
     height: 25%
     image:

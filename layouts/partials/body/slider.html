@@ -80,10 +80,6 @@
     <script type='text/javascript' src="{{ $jquery.RelPermalink }}"></script>
     {{ $jqueryCycle := resources.Get "js/jquery.cycle.all.min.js" | resources.Fingerprint }}
     <script type='text/javascript' src="{{ $jqueryCycle.RelPermalink }}"></script>
-    {{/* 2-REC: Slider size "fix" - MID */}}
-    {{ $sliderSizeFix := resources.Get "js/slider-size-fix.js" | resources.Fingerprint }}
-    <script type='text/javascript' src="{{ $sliderSizeFix.RelPermalink }}"></script>
-    {{/* 2-REC: Slider size "fix" - END */}}
     {{ $slider := resources.Get "js/slider-settings.min.js" | resources.Fingerprint }}
     <script type='text/javascript' src="{{ $slider.RelPermalink }}"></script>
   {{ end }}

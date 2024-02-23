@@ -31,9 +31,9 @@
 
 2022/07/05
 - [ ] Header
-  - [ ] Check that 'slider-size-fix' is useless
-    - [ ] delete 'slider-size-fix.js' file
-    - [ ] revert to original 'jquery.cycle.all.min.js' file
+  - [x] Check that 'slider-size-fix' is useless
+    - [x] delete 'slider-size-fix.js' file
+    - [x] revert to original 'jquery.cycle.all.min.js' file
         - [ ] update to latest? (if no breaking changes)
     - [ ] remove commented code in 'header-slide.html'
   - [ ] Handle separate X align+padding for title & subtitle (alignX+paddingX)

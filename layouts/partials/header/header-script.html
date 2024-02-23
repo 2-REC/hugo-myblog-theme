@@ -2,8 +2,6 @@
 {{- $height := .height -}}
 {{- $multi := .multi }}
 <script type='text/javascript'>
-    /* TODO: should handle "fit: window" case differently, only resizing when height change */
-
     /* flexFont: Resize fonts */
     flexFont = function () {
         var divs = document.getElementsByClassName("flex-font");
@@ -43,8 +41,13 @@
     {{ if $multi -}}
     /* reloadFunction: reload the page*/
     reloadFunction = function() {
-        if (typeof windowWidth === 'undefined' || windowWidth != window.innerWidth) {
+        {{ if ne $fit "window" -}}
+        if (windowWidth != window.innerWidth) {
             windowWidth = window.innerWidth;
+        {{- else -}}
+        if (windowHeight != window.innerHeight) {
+            windowHeight = window.innerHeight;
+        {{- end }}
             window.location.reload();
         }
     };
@@ -67,16 +70,17 @@
     resizeFunction = function () {
         {{ if ne $fit "window" -}}
         /* To avoid page reloaging issues on Android when the address bar collapses, which triggers a resize event */
-        if (typeof windowWidth === 'undefined' || windowWidth != window.innerWidth) {
-        {{- end }}
+        if (windowWidth != window.innerWidth) {
             windowWidth = window.innerWidth;
+        {{- else -}}
+        if (windowHeight != window.innerHeight) {
+            windowHeight = window.innerHeight;
+        {{- end }}
             {{ if eq $fit "ratio" -}}
             fitRatio();
             {{- end }}
             flexFont();
-        {{ if ne $fit "window" -}}
         }
-        {{- end }}
     };
 
     if (window.addEventListener) {
@@ -87,5 +91,9 @@
 
     {{- end }}
 
+{{ if ne $fit "window" -}}
     var windowWidth = window.innerWidth;
+{{- else -}}
+    var windowHeight = window.innerHeight;
+{{- end }}
 </script>

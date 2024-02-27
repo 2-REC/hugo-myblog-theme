@@ -39,10 +39,12 @@
 
 
 /* TODO(2-REC): Move elsewhere (?) */
-.post_image {
-/*
+.post_image_container {
   position: relative;
-*/
+}
+.post_image {
+  cursor: pointer;
+
   @include themify($themes) {
     /* TODO(2-REC): Use other color? */
     background-color: themed("gallery-mask-background-color");

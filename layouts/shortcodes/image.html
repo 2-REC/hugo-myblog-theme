@@ -1,17 +1,21 @@
+{{- $src := .Get "src" -}}
+{{- $caption := .Get "caption" -}}
+{{- $copyright := .Get "copyright" -}}
+{{- $alt := .Get "alt" | default $caption -}}
+{{- with $copyright -}}
+  {{- if $alt -}}
+    {{- $alt = print $alt (htmlUnescape " - &copy; ") . -}}
+  {{- end -}}
+{{- end -}}
+<div class="post_image_container">
 <figure class="post_image">
-    <img src={{ .Get "src" }}
-        {{ if .Get "alt" }}
-         alt={{ .Get "alt" }}
-        {{ else if .Get "caption" }}
-         alt={{ .Get "caption" }}
-        {{ end }}
-    />
-    <a href="{{ .Get "src" }}" itemprop="contentUrl"></a>
-    <figcaption>
-        <p>{{- if .Get "caption" -}}
-             {{- .Get "caption" -}}
-             {{- if .Get "copyright" -}}&nbsp;&mdash;&nbsp;{{- end -}}
-           {{- end -}}
-           {{ with .Get "copyright" }}&copy;&nbsp;{{ . }}{{ end }}</p>
-    </figcaption>
+  <img src={{ $src }}
+       {{ with $alt }}alt="{{.}}" {{ end -}}
+  />
+  {{ with .Get "link" | default $src }}<a href="{{ . }}" itemprop="contentUrl"></a>{{ end }}
+  <div class="image__text">
+    {{ if $caption }}<p class="inline-caption">{{ $caption }}{{ if $copyright }}{{ " - " }}{{ end }}</p>{{ end }}
+    {{ with $copyright }}<p class="inline-copyright">{{ . }}</p>{{ end }}
+  </div>
 </figure>
+</div>

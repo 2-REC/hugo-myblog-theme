@@ -1,5 +1,9 @@
 # TODO
 
+!
+- [ ] scripts
+  - [ ] check use of 'defer' for scripts loading (if used in some, required by others, but not all!)
+
 - [ ] add '-' in desired '{{' and '}}'
 
 - [ ] Mention use of libraries/modules in README/disclaimer

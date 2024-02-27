@@ -46,12 +46,6 @@
         </div>
         {{ partial "body/main-right" . }}
     </div>
+    {{ partial "tail/scripts" . }}
 </body>
-<script>
-// Hide content until loaded
-var bodys = document.querySelectorAll("body");
-bodys.forEach(element => {
-  element.style.display = "block";
-});
-</script>
 </html>

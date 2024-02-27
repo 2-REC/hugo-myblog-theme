@@ -22,7 +22,7 @@ Basic post example.
 TODO: MAKE PROPER POST 'post with images'
 
 dgsdgsdg
-<img src="images/avatar.jpg" />
+{{< image src="images/avatar.jpg" caption="Heo" alt="Heo, the best" copyright="Lai">}}
 rgsdgsdg
-<img src="images/logo.png" />
+{{< image src="images/logo.png" >}}
 sdgsdgsg

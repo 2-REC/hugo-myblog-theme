@@ -49,20 +49,35 @@
         {{ with .copyright }}
           {{ $copyright = . }}
         {{ end }}
+        {{- $caption := .caption -}}
+        {{- $title := .title -}}
+        {{- /* add copyright to caption */ -}}
+        {{- $captionThumb := $caption -}}
+        {{- with $copyright -}}
+          {{- if $caption -}}
+            {{- $caption = print $caption " - &copy; " . -}}
+          {{- else -}}
+            {{- $caption = print "&copy; " . -}}
+          {{- end -}}
+        {{- end -}}
         <div class="grid-item">
           <div class="gallery-tile">
             <div class="gallery-tile-image with-hover-overlay {{ if $.Site.Params.galleryInitZoom }}initzoom{{ end }} {{ if $.Site.Params.galleryZoom }}zoom{{ end }}">
-              {{ if not (hasPrefix .image "http") }}
-              <img src="{{ $image.Permalink }}"
-              {{ else }}
-              <img src="{{ .image }}"
-              {{ end }}
-                  alt="{{ print .caption }}"
-                  data-caption="{{ if .caption }}{{ print .caption }}{{ with $copyright }}&nbsp;&hyphen;&nbsp;&copy;&nbsp;{{ . }}{{ end }}{{ else }}{{ with $copyright }}&copy;&nbsp;{{ . }}{{ end }}{{ end }}" />
+              {{/* TODO: make separate partial for figure/image */}}
+              <figure>
+                {{ if not (hasPrefix .image "http") }}
+                <img src="{{ $image.Permalink }}"
+                {{ else }}
+                <img src="{{ .image }}"
+                {{ end }}
+                    {{ with .alt | default $caption }} alt="{{ . }}"{{ end }} />
+                <a href="{{ $image }}" itemprop="contentUrl"></a>
+                {{- /* no 'figcaption' in gallery */ -}}
+              </figure>
             </div>
             <div class="gallery-tile-hover-text-header">
               <div class="gallery-tile-description">
-                <p>{{ .caption }}</p>
+                <p>{{ if $title }}{{ $title }}{{ else }}{{ $captionThumb }}{{ end }}</p>
               </div>
             </div>
           </div>
@@ -72,6 +87,6 @@
     {{ partial "pagination/pagination-single" . }}
   </main>
 {{ end }}
-{{ partial "body/photoswipe" . }}
+{{ partial "body/load-photoswipe" . }}
 {{ partial "script/tiles-script" . }}
 {{ end }}

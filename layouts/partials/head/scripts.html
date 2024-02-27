@@ -8,6 +8,12 @@
 {{ end }}
 {{ end }}
 
+{{/* TODO: MOVE JQUERY TO static/plugins! */}}
+{{/*
+<script src="{{ "plugins/jquery/jquery.min.js" | relURL }}"></script>
+*/}}
+{{ $jquery := resources.Get "js/jquery.min.js" | resources.Fingerprint }}
+<script defer src="{{ $jquery.RelPermalink }}"></script>
 {{ $enquire := resources.Get "js/enquire.min.js" | resources.Fingerprint }}
 <script src="{{ $enquire.RelPermalink }}"></script>
 {{ $lazysizes := resources.Get "js/lazysizes.min.js" | resources.Fingerprint }}

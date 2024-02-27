@@ -5,7 +5,7 @@
 - [ ] Mention use of libraries/modules in README/disclaimer
   - [ ] assets\js\lazysizes.min.js
     https://github.com/aFarkas/lazysizes
-  - [ ] photoswipe
+  - [x] photoswipe
   - [ ] hugo-tags-filter ("pointyfar")
     https://github.com/pointyfar/hugo-tags-filter
 

@@ -520,9 +520,8 @@ TODO: detail only changes from Zzo (not usage)
   * Fixed sizing issues (20% seems buggy, +use of "match"+"unmatch" doesn't work well when quick resize, +no init trigger on page onload)
   * Image files need to be located in the post directory (eg: "content\en\gallery\photos") instead of in "static" directory
 * Photoswipe (galleries and posts images)
-  * View not closing when swiping outside of an image
-  * View closing when clicking (even if on image - TODO: should fix that?)
-  * Exit fullscreen mode when leaving view
+  * Replaced by "[Photoswipe]()" used in "[hugo-easy-gallery](https://github.com/liwenyip/hugo-easy-gallery/)" from [liwenyip](https://github.com/liwenyip).
+  * Allows better touch controls (zoom, pan, swipe).
 * Header
   * Changed "swiper" to "slider" (uses "jQuery.cycle" library)
   * Added more alignment possibilities
@@ -600,8 +599,10 @@ TODO: detail only changes from Zzo (not usage)
 ## DISCLAIMER
 * Hugo (+developer)
 * Zzo Theme (+developer)
-* Creative Protfolio Theme (+developer)
+* Creative Portfolio Theme (+developer)
     https://themes.gohugo.io/hugo-creative-portfolio-theme
 * jQuery Cycle Plugin (+developer)
     http://jquery.malsup.com/cycle/
+* "[PhotoSwipe](http://photoswipe.com)" by Dmitry Semenov
+* "[hugo-easy-gallery](https://github.com/liwenyip/hugo-easy-gallery/)" from [liwenyip](https://github.com/liwenyip)
 * others?

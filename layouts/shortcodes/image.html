@@ -6,6 +6,7 @@
          alt={{ .Get "caption" }}
         {{ end }}
     />
+    <a href="{{ .Get "src" }}" itemprop="contentUrl"></a>
     <figcaption>
         <p>{{- if .Get "caption" -}}
              {{- .Get "caption" -}}

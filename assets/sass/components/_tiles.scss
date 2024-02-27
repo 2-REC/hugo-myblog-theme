@@ -443,7 +443,15 @@ margin: 0.51rem;
   position: absolute;
   left: 0;
   right: 0;
-  top: 0;
+
+  /* center text vertically on image */
+  /* TODO: '5 cqh'? Shouldn't be 50? */
+  container-name: tile-text-header;
+  container-type: inline-size;
+  //top: 0;
+  top: 50%;
+  margin-top: -5cqh;
+
   padding: 15px 20px 15px;
 
   opacity: 0;
@@ -486,6 +494,14 @@ margin: 0.51rem;
     font-family: 'icon-font';
     content: "\e801";
     font-size: 1.5rem;
+  }
+}
+
+/* TODO: keep? change? */
+/* resize text when container gets too small */
+@container tile-text-header (max-width: 225px) {
+  .gallery-tile .gallery-tile-hover-text-header p {
+    font-size: 0.75em;
   }
 }
 

@@ -1,6 +1,7 @@
 {{- if ($.Scratch.Get "photoswipeloaded") }}
 {{ "<!-- Load PhotoSwipe js if the load-photoswipe shortcode has been used -->" | safeHTML }}
-<script defer src="{{ "js/load-photoswipe.js" | relURL }}"></script>
+{{ $loadPhotswipe := resources.Get "js/load-photoswipe.js" | resources.Minify | resources.Fingerprint }}
+<script defer src="{{ $loadPhotswipe.RelPermalink }}"></script>
 <script defer src="{{ "plugins/photoswipe/js/photoswipe.min.js" | relURL }}"></script>
 <script defer src="{{ "plugins/photoswipe/js/photoswipe-ui-default.min.js" | relURL }}"></script>
 {{ end -}}

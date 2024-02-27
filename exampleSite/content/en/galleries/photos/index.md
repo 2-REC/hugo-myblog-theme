@@ -7,30 +7,35 @@ tags: ["example"]
 imagesCopyright: "2-REC"
 images:
   - image: images/bridge.jpg
-    caption: Ninh Binh bridge
+    title: Ninh Binh Bridge
+    caption: "Beautiful bridge in Ninh Binh"
     copyright: "other copyright"
   - image: images/coast.jpg
-    caption: Porto coast
+    title: Porto coast
   - image: images/boat.jpg
-    caption: Porto
+    title: Porto
   - image: images/dragon.jpg
-    caption: Hoi An lantern dragon
+    title: Dragon Lantern
+    caption: Hoi An dragon lantern
   - image: images/forest.jpg
+    title: Hallerbos
     caption: Hallerbos bluebells
   - image: images/nature.jpg
-    caption: old ruins in nature
+    title: Temple Ruins
+    caption: old ruins in nature (Cambodia)
   - image: images/birdhouse.jpg
-    caption: birdhouse
+    title: birdhouse
   - image: images/pagoda.jpg
-    caption: Hanoi pagoda
+    title: Hanoi pagoda
   - image: images/pyramid.jpg
+    title: Siem Reap
     caption: Siem Reap pyramid temple
   - image: images/street.jpg
-    caption: Monschau street
+    title: Monschau street
   - image: images/temple.jpg
-    caption: Siem Reap temple
+    title: Siem Reap temple
   - image: images/xmas.jpg
-    caption: Köln Xmas market
+    title: Köln Xmas market
 image: gallery.jpg
 summaryImagePosition: right
 ---

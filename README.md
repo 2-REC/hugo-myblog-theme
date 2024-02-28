@@ -317,6 +317,28 @@ Selectable in navigation bar on top.
         * Header
           * Added header in single page with optional title and description (similar working than main header 'single' type)
             TODO: detail more...
+            Example: (in "posts/markdown-syntax/index.md")
+              ```
+              header:
+                height: 235px (only 'px' for now... TODO: handle '%' + 'em')
+                image: images/banner/hugo.png
+                copyright: "Hugo?"
+                caption: "'Hugons'"
+                alignX: left
+                alignY: bottom
+                paddingX: 10px
+                paddingY: 10px
+                title:
+                  titleColor:
+                  titleShadow: true
+                  titleFontSize: 25%
+                description:
+                  descriptionColor:
+                  descriptionShadow: false
+                  descriptionCursive: true
+                  descriptionFontSize: 10%
+                spaceBetweenTitleDescription: 5%
+              ```
 
 - sidebars
 - galleries

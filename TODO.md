@@ -4,7 +4,18 @@
 - [ ] scripts
   - [ ] check use of 'defer' for scripts loading (if used in some, required by others, but not all!)
 
-- [ ] add '-' in desired '{{' and '}}'
+- [ ] header-slide
+  - [x] Check that 'slider-size-fix' is useless
+    - [x] delete 'slider-size-fix.js' file
+    - [x] revert to original 'jquery.cycle.all.min.js' file
+        - [ ] update to latest? (if no breaking changes)
+  - [ ] Handle separate X align+padding for title & subtitle (alignX+paddingX)
+  - [ ] Handle 'em' units (+'rem'?)
+
+- [ ] header-post
+  - [ ] Handle '%' and 'em' units (+'rem'?)
+
+- [ ] check when want '-' in each '{{' and '}}'
 
 - [ ] Mention use of libraries/modules in README/disclaimer
   - [ ] assets\js\lazysizes.min.js
@@ -32,16 +43,6 @@
     - [ ] add option/param to hide the language label/header
 - [ ] Posts meta
     - [ ] Hide 'modified' date if same as 'creation' date
-
-
-2022/07/05
-- [ ] Header
-  - [x] Check that 'slider-size-fix' is useless
-    - [x] delete 'slider-size-fix.js' file
-    - [x] revert to original 'jquery.cycle.all.min.js' file
-        - [ ] update to latest? (if no breaking changes)
-    - [ ] remove commented code in 'header-slide.html'
-  - [ ] Handle separate X align+padding for title & subtitle (alignX+paddingX)
 
 
 2022/06/26

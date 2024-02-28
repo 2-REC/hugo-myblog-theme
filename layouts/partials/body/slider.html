@@ -15,14 +15,14 @@
                           alt="{{ .Title }}"
                           title="{{ .Title }}">
                       {{ if or .caption .copyright }}
-                        <div class="image__text">
+                        <figcaption class="image__text">
                           {{ if .caption }}
                             <p class="inline-caption">{{ .caption | markdownify }}{{ if .copyright }}&nbsp;&ndash;{{ end }}</p>
                           {{ end }}
                           {{ with .copyright }}
                             <p class="inline-copyright">{{ . | markdownify }}</p>
                           {{ end }}
-                        </div>
+                        </figcaption>
                       {{ end }}
                     </figure>
                     <article class="featured-text">

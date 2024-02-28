@@ -6,14 +6,14 @@
         alt="{{ .Title }}"
         title="{{ .Title }}">
     {{ if or .Params.caption .Params.copyright }}
-      <div class="image__text">
+      <figcaption class="image__text">
         {{ if .Params.caption }}
           <p class="inline-caption">{{ .Params.caption | markdownify }}{{ if .Params.copyright }}&nbsp;&ndash;{{ end }}</p>
         {{ end }}
         {{ with .Params.copyright }}
           <p class="inline-copyright">{{ . | markdownify }}</p>
         {{ end }}
-      </div>
+      </figcaption>
     {{ end }}
   </figure>
   <article class="featured-text">

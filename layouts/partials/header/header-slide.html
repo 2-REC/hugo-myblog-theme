@@ -71,24 +71,25 @@
                                 {{- $alignX = "center" -}}
                             {{- end -}}
                             {{- if eq $fit "image" -}}
-                                <div class="site-header__align-{{ $alignX }}"
+                                <figure class="site-header__align-{{ $alignX }}"
                                         data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}">
                                     {{ with .image -}}
+                                        {{- /* TODO: 'itemprop' etc.? */ -}}
                                         <img class="site-header__image" src="{{ .src | relURL }}" alt="{{ with .caption }}{{ . }}{{ end }}"
                                                 data-caption="{{ with .caption }}{{ print . }}{{ end }}{{ with .copyright }}&nbsp;&hyphen;&nbsp;&copy;&nbsp;{{ . }}{{ end }}"/>
                                         {{ if or .caption .copyright -}}
-                                            <div class="image__text">
+                                            <figcaption class="image__text">
                                                 {{ if .caption -}}
                                                     <p class="inline-caption">{{ .caption | markdownify }}{{ if .copyright }}&nbsp;&ndash;&nbsp;{{ end }}</p>
                                                 {{- end -}}
                                                 {{ with .copyright -}}
                                                     <p class="inline-copyright">{{ . | markdownify }}</p>
                                                 {{- end }}
-                                            </div>
+                                            </figcaption>
                                         {{- end -}}
                                     {{- end -}}
                             {{- else -}}
-                                <div class="site-header__align-{{ $alignX }}
+                                <figure class="site-header__align-{{ $alignX }}
                                             {{- if eq $fit "ratio" }} fit-ratio{{- end -}}
                                             {{- if eq $type "multi" }} slide-header{{- end -}}"
                                         data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}"
@@ -106,14 +107,14 @@
                                             {{- end -}}">
                                     {{ with .image -}}
                                         {{- if or .caption .copyright -}}
-                                            <div class="image__text">
+                                            <figcaption class="image__text">
                                                 {{ if .caption -}}
                                                     <p class="inline-caption">{{ .caption | markdownify }}{{ if .copyright }}&nbsp;&ndash;&nbsp;{{ end }}</p>
                                                 {{- end -}}
                                                 {{- with .copyright -}}
                                                     <p class="inline-copyright">{{ . | markdownify }}</p>
                                                 {{- end }}
-                                            </div>
+                                            </figcaption>
                                         {{- end -}}
                                     {{- end -}}
                             {{- end }}
@@ -441,7 +442,7 @@
                                                     {{- end -}}
                                                 </div>
                                     </div>
-                                </div>
+                                </figure>
                         {{- end -}}
                     {{- end -}}
                 </div>

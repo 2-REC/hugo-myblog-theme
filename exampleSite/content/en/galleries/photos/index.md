@@ -37,6 +37,7 @@ images:
   - image: images/xmas.jpg
     title: Köln Xmas market
 image: gallery.jpg
+#figcaption: true
 summaryImagePosition: right
 ---
 

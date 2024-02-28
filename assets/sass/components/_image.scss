@@ -30,6 +30,7 @@
 
     .inline-copyright {
       display: inline;
+      white-space: nowrap;
       &::before {
         content: "\00a9\2009"; /* Copyright symbol followed by a thin space character */
       }

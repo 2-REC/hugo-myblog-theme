@@ -132,6 +132,7 @@ figcaption {
   font-style: italic;
   font-size: 0.9rem;
   margin: 0;
+  text-align: right;
 
   @include themify($themes) {
     color: themed("figcaption-color");

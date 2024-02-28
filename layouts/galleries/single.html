@@ -1,38 +1,51 @@
-{{ define "main" }}
+{{- define "main" -}}
 <header class="header basicflex-column">
   <h3 class="gallery__title h3">{{ .Title }}</h3>
   <div class="px py p2 single__contents">
     {{ .Content }}
   </div>
 </header>
-{{ $root := . }}
-{{ $imagesCopyright := .Params.ImagesCopyright }}
-{{ if not .Params.Images }}
-  {{ $copyright := $imagesCopyright }}
+{{- $page := . -}}
+{{- $imagesCopyright := .Params.ImagesCopyright -}}
+{{- $figcaption := .Params.figcaption | default false -}}
+{{- /* TODO: should be refactored as both blocks are very similar */ -}}
+{{- if not .Params.Images }}
   <main class="tile-grid main">
     <div class="grid tile-grid__container gallery__container">
       <div class="grid-sizer"></div>
-      {{ $images := .Resources.Match "images/*" }}
-      {{ if gt (len $images) 0 }}
-        {{ range $images }}
-          {{ if eq .ResourceType "image" }}
-            {{ $caption := index (split (index (split .Name "/") (sub (len (split .Name "/")) 1)) ".") 0 }}
-            <div class="grid-item">
-              <div class="gallery-tile">
-                <div class="gallery-tile-image with-hover-overlay {{ if $.Site.Params.galleryInitZoom }}initzoom{{ end }} {{ if $.Site.Params.galleryZoom }}zoom{{ end }}">
-                  <img src="{{ .Permalink }}" alt="{{ index (split .Name ".") 0 }}"
-                      data-caption="{{ print $caption }}{{ with $copyright }}&nbsp;&hyphen;&nbsp;&copy;&nbsp;{{ . }}{{ end }}" />
-                </div>
-                <div class="gallery-tile-hover-text-header">
-                  <div class="gallery-tile-description">
-                    <p>{{ $caption }}</p>
-                  </div>
+      {{- $images := .Resources.Match "images/*" -}}
+      {{- range $images -}}
+        {{- if eq .ResourceType "image" -}}
+          {{- $copyright := $imagesCopyright -}}
+          {{- $title := index (split (index (split .Name "/") (sub (len (split .Name "/")) 1)) ".") 0 -}}
+          {{- $caption := $title }}
+          <div class="grid-item">
+            <div class="gallery-tile">
+              <div class="gallery-tile-image with-hover-overlay {{ if $.Site.Params.galleryInitZoom }}initzoom{{ end }} {{ if $.Site.Params.galleryZoom }}zoom{{ end }}">
+                {{- /* TODO: make separate partial for figure/image? */}}
+                <figure>
+                  <img src="{{ .Permalink }}"
+                       alt="{{ $caption }}" />
+                  <a href="{{ .Permalink }}" itemprop="contentUrl"></a>
+                  <figcaption class="image__text" {{- if not $figcaption -}}style="display: none;"{{ end }}>
+                    {{ with $title }}<p class="inline-caption">{{ . }}</p>{{ end }}
+                    {{ with $copyright }}<p class="inline-copyright">{{ . }}</p>{{ end }}
+                  </figcaption>
+                </figure>
+              </div>
+              <div class="gallery-tile-hover-text-header">
+                <div class="gallery-tile-description">
+                  <p>
+                    {{- if not $figcaption -}}
+                      {{- with $title }}{{ . }}{{ end -}}
+                    {{- end -}}
+                  </p>
                 </div>
               </div>
             </div>
-          {{ end }}
-        {{ end }}
-      {{ end }}
+          </div>
+        {{- end -}}
+      {{- end }}
     </div>
     {{ partial "pagination/pagination-single" . }}
   </main>
@@ -40,49 +53,48 @@
   <main class="tile-grid main">
     <div class="grid tile-grid__container gallery__container">
       <div class="grid-sizer"></div>
-      {{ range .Params.Images }}
-        {{ $image := .image }}
-        {{ if not (hasPrefix .image "http") }}
-          {{ $image = index ($root.Resources.Match .image) 0 }}
-        {{ end }}
-        {{ $copyright := $imagesCopyright }}
-        {{ with .copyright }}
-          {{ $copyright = . }}
-        {{ end }}
-        {{- $title := .title -}}
-        {{- $caption := .caption | default $title -}}
-        {{- /* add copyright to caption */ -}}
-        {{- with $copyright -}}
-          {{- if $caption -}}
-            {{- $caption = print $caption " - &copy; " . -}}
-          {{- else -}}
-            {{- $caption = print "&copy; " . -}}
-          {{- end -}}
+      {{- range .Params.Images -}}
+        {{- $image := .image -}}
+        {{- if not (hasPrefix .image "http") -}}
+          {{- $image = index ($page.Resources.Match .image) 0 -}}
         {{- end -}}
+        {{- $copyright := $imagesCopyright -}}
+        {{- with .copyright -}}
+          {{- $copyright = . -}}
+        {{- end -}}
+        {{- $title := .title -}}
+        {{- $caption := .caption | default $title }}
         <div class="grid-item">
           <div class="gallery-tile">
             <div class="gallery-tile-image with-hover-overlay {{ if $.Site.Params.galleryInitZoom }}initzoom{{ end }} {{ if $.Site.Params.galleryZoom }}zoom{{ end }}">
-              {{/* TODO: make separate partial for figure/image */}}
+              {{- /* TODO: make separate partial for figure/image? */}}
               <figure>
                 {{- if not (hasPrefix .image "http") }}
                 <img src="{{ $image.Permalink }}"
-                {{ else }}
-{{/* TODO: was '.image' (?) */}}
+                {{- else }}
                 <img src="{{ $image }}"
-                {{ end -}}
-                    {{ with .alt | default $caption }} alt="{{ . }}"{{ end }} />
+                {{- end }}
+                     {{ with .alt | default $caption }}alt="{{ . }}"{{ end }} />
+                {{- /* TODO: should add '.Permalink' if 'http' prefix? */}}
                 <a href="{{ $image }}" itemprop="contentUrl"></a>
-                {{- /* no 'figcaption' in gallery */ -}}
+                <figcaption class="image__text" {{- if not $figcaption -}}style="display: none;"{{ end }}>
+                  {{ with $title }}<p class="inline-caption">{{ . }}</p>{{ end }}
+                  {{ with $copyright }}<p class="inline-copyright">{{ . }}</p>{{ end }}
+                </figcaption>
               </figure>
             </div>
             <div class="gallery-tile-hover-text-header">
               <div class="gallery-tile-description">
-                <p>{{ with $title }}{{ . }}{{ end }}</p>
+                <p>
+                  {{- if not $figcaption -}}
+                    {{- with $title }}{{ . }}{{ end -}}
+                  {{- end -}}
+                </p>
               </div>
             </div>
           </div>
         </div>
-      {{ end }}
+      {{- end }}
     </div>
     {{ partial "pagination/pagination-single" . }}
   </main>

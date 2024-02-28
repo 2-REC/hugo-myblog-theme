@@ -15,6 +15,15 @@
 - [ ] header-post
   - [ ] Handle '%' and 'em' units (+'rem'?)
 
+- [ ] Figures/images
+  - [ ] use 'itemprop' for every "figure" tag? (now only for gallery + image shortcode)
+    - [ ] handle thumbnails (image + gallery)
+    - [ ] 'image' shortcode
+        - handle thumbnails
+        - images don't cycle? (cannot go from last fo first)
+        - CSS?
+            - margins!?
+ 
 - [ ] check when want '-' in each '{{' and '}}'
 
 - [ ] Mention use of libraries/modules in README/disclaimer
@@ -26,15 +35,6 @@
 
 
 ##################
-2022/09/05
-- [ ] Figures/images
-    - [ ] handle thumbnails (image + gallery)
-    - [ ] 'image' shortcode
-        - handle thumbnails
-        - images don't cycle? (cannot go from last fo first)
-        - CSS?
-            - margins!?
- 
 2022/08/10
 - [ ] Code blocks
     - [ ] fix line number column width issue (horizontal scroll bar)

@@ -23,9 +23,8 @@
             <div class="gallery-tile">
               <div class="gallery-tile-image with-hover-overlay {{ if $.Site.Params.galleryInitZoom }}initzoom{{ end }} {{ if $.Site.Params.galleryZoom }}zoom{{ end }}">
                 {{- /* TODO: make separate partial for figure/image? */}}
-                <figure>
-                  <img src="{{ .Permalink }}"
-                       alt="{{ $caption }}" />
+                <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+                  <img src="{{ .Permalink }}" alt="{{ $caption }}" itemprop="thumbnail" />
                   <a href="{{ .Permalink }}" itemprop="contentUrl"></a>
                   <figcaption class="image__text" {{- if not $figcaption -}}style="display: none;"{{ end }}>
                     {{ with $title }}<p class="inline-caption">{{ . }}</p>{{ end }}
@@ -68,13 +67,13 @@
           <div class="gallery-tile">
             <div class="gallery-tile-image with-hover-overlay {{ if $.Site.Params.galleryInitZoom }}initzoom{{ end }} {{ if $.Site.Params.galleryZoom }}zoom{{ end }}">
               {{- /* TODO: make separate partial for figure/image? */}}
-              <figure>
+              <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
                 {{- if not (hasPrefix .image "http") }}
                 <img src="{{ $image.Permalink }}"
                 {{- else }}
                 <img src="{{ $image }}"
                 {{- end }}
-                     {{ with .alt | default $caption }}alt="{{ . }}"{{ end }} />
+                     {{ with .alt | default $caption }}alt="{{ . }}"{{ end }} itemprop="thumbnail" />
                 {{- /* TODO: should add '.Permalink' if 'http' prefix? */}}
                 <a href="{{ $image }}" itemprop="contentUrl"></a>
                 <figcaption class="image__text" {{- if not $figcaption -}}style="display: none;"{{ end }}>

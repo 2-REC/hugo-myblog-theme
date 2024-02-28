@@ -74,7 +74,7 @@
                                 <figure class="site-header__align-{{ $alignX }}"
                                         data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}">
                                     {{ with .image -}}
-                                        {{- /* TODO: 'itemprop' etc.? */ -}}
+                                        {{- /* TODO: change copyright handling! */}}
                                         <img class="site-header__image" src="{{ .src | relURL }}" alt="{{ with .caption }}{{ . }}{{ end }}"
                                                 data-caption="{{ with .caption }}{{ print . }}{{ end }}{{ with .copyright }}&nbsp;&hyphen;&nbsp;&copy;&nbsp;{{ . }}{{ end }}"/>
                                         {{ if or .caption .copyright -}}

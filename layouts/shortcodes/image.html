@@ -8,14 +8,16 @@
   {{- end -}}
 {{- end -}}
 <div class="post_image_container">
-<figure class="post_image">
-  <img src={{ $src }}
-       {{ with $alt }}alt="{{.}}" {{ end -}}
-  />
-  {{ with .Get "link" | default $src }}<a href="{{ . }}" itemprop="contentUrl"></a>{{ end }}
-  <div class="image__text">
-    {{ if $caption }}<p class="inline-caption">{{ $caption }}{{ if $copyright }}{{ " - " }}{{ end }}</p>{{ end }}
-    {{ with $copyright }}<p class="inline-copyright">{{ . }}</p>{{ end }}
-  </div>
-</figure>
+  <figure class="post_image" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <img src={{ $src }} itemprop="thumbnail" {{ with $alt }}alt="{{.}}" {{ end }} />
+    {{ with .Get "link" | default $src }}<a href="{{ . }}" itemprop="contentUrl"></a>{{ end }}
+    <div class="image__text">
+      {{- if $caption }}
+      <p class="inline-caption">{{ $caption }}{{ if $copyright }}{{ " - " }}{{ end }}</p>
+      {{- end }}
+      {{- with $copyright }}
+      <p class="inline-copyright">{{ . }}</p>
+      {{- end }}
+    </div>
+  </figure>
 </div>

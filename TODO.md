@@ -17,12 +17,13 @@
 ##################
 2022/09/05
 - [ ] Figures/images
-    - [ ] "Override" default Hugo "figure" shortcode to handle copyright label/text as in header images (overlay)
-        - [ ] param "label"
-        - [ ] param "copyright"
-        - [ ] param "src"
-        - [ ] don't use "alt" as caption text when fullscreen
-
+    - [ ] handle thumbnails (image + gallery)
+    - [ ] 'image' shortcode
+        - handle thumbnails
+        - images don't cycle? (cannot go from last fo first)
+        - CSS?
+            - margins!?
+ 
 2022/08/10
 - [ ] Code blocks
     - [ ] fix line number column width issue (horizontal scroll bar)

@@ -14,13 +14,14 @@
       </a>
       <div class="navbar__dropdown--content">
         {{ range .Children }}
-        <a href="{{ .URL | relLangURL }}" class="navbar__dropdown--item" dir="{{ if ne ($.Param "languagedir") "rtl" }}ltr{{ else }}rtl{{ end }}">{{ safeHTML .Name }}</a>
+          {{ if $.GetPage .URL }}
+          <a href="{{ .URL | relLangURL }}" class="navbar__dropdown--item" dir="{{ if ne ($.Param "languagedir") "rtl" }}ltr{{ else }}rtl{{ end }}">{{ safeHTML .Name }}</a>
+          {{ end }}
         {{ end }}
       </div>
     </div>
     {{ else }}
-      {{/* TODO: should do the same check for children of dropdown menus */}}
-      {{ if os.FileExists .URL }}
+      {{ if $.GetPage .URL }}
         {{/* If "name" starts with "icon-" => use icon */}}
         {{ if eq (substr .Name 0 5) "icon-" }}
           <a href="{{ .URL | relLangURL }}" class="navbar__menu-item navbar__slide-down {{ if $active }}active{{ end }}" dir="{{ if ne ($.Param "languagedir") "rtl" }}ltr{{ else }}rtl{{ end }}" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}">

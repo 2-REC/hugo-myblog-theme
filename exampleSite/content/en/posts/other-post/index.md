@@ -22,7 +22,9 @@ Basic post example.
 TODO: MAKE PROPER POST 'post with images'
 
 dgsdgsdg
+<div style="width: 50%; margin: auto;">
 {{< image src="images/avatar.jpg" caption="Heo" alt="Heo, the best" copyright="Lai" >}}
+</div>
 rgsdgsdg
-{{< image src="images/logo.png" >}}
+{{< image src="/images/coast.jpg" caption="image in 'static'">}}
 sdgsdgsg

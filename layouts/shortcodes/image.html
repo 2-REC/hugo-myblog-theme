@@ -1,15 +1,44 @@
+{{- /* get input parameters */ -}}
 {{- $src := .Get "src" -}}
 {{- $caption := .Get "caption" -}}
-{{- $copyright := .Get "copyright" -}}
 {{- $alt := .Get "alt" | default $caption -}}
+{{- $copyright := .Get "copyright" -}}
+{{- $thumbSuffix := .Get "thumb" | default "-thumb" -}}
+
+{{- $srcPath := $src -}}
+{{- if hasPrefix $src "/" -}}
+  {{- $srcPath = (print "/static/" $src) -}}
+{{- else -}}
+  {{- /* TODO: check if path is absolute! */ -}}
+  {{- $tmpPath := print (replace $.Page.File.Dir  "\\" "/") "/" $src -}}
+  {{- /* if file exists, update the path */ -}}
+  {{- if fileExists $tmpPath -}}
+    {{- $srcPath = $tmpPath -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /* get the thumbnail if exists */ -}}
+{{- $srcFile := path.Base $src }}
+{{- $srcDir := path.Dir $srcPath -}}
+{{- $srcURLDir := path.Dir $src }}
+{{- $thumbFile := $srcFile | replaceRE "(\\.)" ($thumbSuffix | printf "%s.") -}}
+{{- $thumbURL := print $srcURLDir "/" $thumbFile -}}
+{{- $thumbPath := print $srcDir "/" $thumbFile -}}
+{{- $thumb := $src -}}
+{{- if fileExists $thumbPath -}}
+  {{- $thumb = $thumbURL -}}
+{{- end -}}
+
+{{- /* add copyright */ -}}
 {{- with $copyright -}}
   {{- if $alt -}}
     {{- $alt = print $alt (htmlUnescape " - &copy; ") . -}}
   {{- end -}}
 {{- end -}}
+
 <div class="post_image_container">
   <figure class="post_image" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-    <img src={{ $src }} itemprop="thumbnail" {{ with $alt }}alt="{{.}}" {{ end }} />
+    <img src={{ $thumb }} itemprop="thumbnail" {{ with $alt }}alt="{{ . }}" {{ end }} />
     {{ with .Get "link" | default $src }}<a href="{{ . }}" itemprop="contentUrl"></a>{{ end }}
     <figcaption class="image__text">
       {{- if $caption }}

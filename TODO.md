@@ -17,12 +17,11 @@
 
 - [ ] Figures/images
   - [ ] use 'itemprop' for every "figure" tag? (now only for gallery + image shortcode)
-    - [ ] handle thumbnails (image + gallery)
+    - [x] handle thumbnails (image + gallery)
     - [ ] 'image' shortcode
-        - handle thumbnails
+        - [x] handle thumbnails
         - images don't cycle? (cannot go from last fo first)
-        - CSS?
-            - margins!?
+        - [x] CSS (margins)
  
 - [ ] check when want '-' in each '{{' and '}}'
 

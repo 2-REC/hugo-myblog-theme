@@ -6,8 +6,13 @@
   </div>
 </header>
 {{- $page := . -}}
+
+{{- /* get input parameters */ -}}
 {{- $imagesCopyright := .Params.ImagesCopyright -}}
 {{- $figcaption := .Params.figcaption | default false -}}
+{{- /* TODO: default should be set in config */ -}}
+{{- $thumbSuffix := .Params.Thumb | default "-thumb" -}}
+
 {{- /* TODO: should be refactored as both blocks are very similar */ -}}
 {{- if not .Params.Images }}
   <main class="tile-grid main">
@@ -16,33 +21,54 @@
       {{- $images := .Resources.Match "images/*" -}}
       {{- range $images -}}
         {{- if eq .ResourceType "image" -}}
-          {{- $copyright := $imagesCopyright -}}
-          {{- $title := index (split (index (split .Name "/") (sub (len (split .Name "/")) 1)) ".") 0 -}}
-          {{- $caption := $title }}
-          <div class="grid-item">
-            <div class="gallery-tile">
-              <div class="gallery-tile-image with-hover-overlay {{ if $.Site.Params.galleryInitZoom }}initzoom{{ end }} {{ if $.Site.Params.galleryZoom }}zoom{{ end }}">
-                {{- /* TODO: make separate partial for figure/image? */}}
-                <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-                  <img src="{{ .Permalink }}" alt="{{ $caption }}" itemprop="thumbnail" />
-                  <a href="{{ .Permalink }}" itemprop="contentUrl"></a>
-                  <figcaption class="image__text" {{- if not $figcaption -}}style="display: none;"{{ end }}>
-                    {{ with $title }}<p class="inline-caption">{{ . }}</p>{{ end }}
-                    {{ with $copyright }}<p class="inline-copyright">{{ . }}</p>{{ end }}
-                  </figcaption>
-                </figure>
-              </div>
-              <div class="gallery-tile-hover-text-header">
-                <div class="gallery-tile-description">
-                  <p>
-                    {{- if not $figcaption -}}
-                      {{- with $title }}{{ . }}{{ end -}}
-                    {{- end -}}
-                  </p>
+          {{- /* skip image if ends with "thumbSuffix" and image with suffix exists - will be used as thumbnail */ -}}
+          {{- $skip := false -}}
+          {{- if .Name | findRE ($thumbSuffix | printf "%s.") -}}
+            {{- $thumbS := .Name | replaceRE ($thumbSuffix | printf "%s.") "." -}}
+            {{- $imageRsc2 := index ($page.Resources.Match $thumbS) 0 -}}
+            {{- if and $imageRsc2 (eq $imageRsc2.ResourceType "image") -}}
+              {{- $skip = true -}}
+            {{- end -}}
+          {{- end -}}
+
+          {{- if not $skip -}}
+            {{- $copyright := $imagesCopyright -}}
+            {{- $title := index (split (index (split .Name "/") (sub (len (split .Name "/")) 1)) ".") 0 -}}
+            {{- $caption := $title }}
+
+            {{- /* get the thumbnail if exists */ -}}
+            {{- $thumb := .RelPermalink -}}
+            {{- $thumbURL := .Name | replaceRE "(\\.)" ($thumbSuffix | printf "%s.") -}}
+            {{- $imageRsc := index ($page.Resources.Match $thumbURL) 0 -}}
+            {{- if and $imageRsc (eq $imageRsc.ResourceType "image") -}}
+              {{- $thumb = $thumbURL -}}
+            {{- end -}}
+
+            <div class="grid-item">
+              <div class="gallery-tile">
+                <div class="gallery-tile-image with-hover-overlay {{ if $.Site.Params.galleryInitZoom }}initzoom{{ end }} {{ if $.Site.Params.galleryZoom }}zoom{{ end }}">
+                  {{- /* TODO: make separate partial for figure/image? */}}
+                  <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+                    <img src="{{ $thumb }}" alt="{{ $caption }}" itemprop="thumbnail" />
+                    <a href="{{ .RelPermalink }}" itemprop="contentUrl"></a>
+                    <figcaption class="image__text" {{- if not $figcaption -}}style="display: none;"{{ end }}>
+                      {{ with $title }}<p class="inline-caption">{{ . }}</p>{{ end }}
+                      {{ with $copyright }}<p class="inline-copyright">{{ . }}</p>{{ end }}
+                    </figcaption>
+                  </figure>
+                </div>
+                <div class="gallery-tile-hover-text-header">
+                  <div class="gallery-tile-description">
+                    <p>
+                      {{- if not $figcaption -}}
+                        {{- with $title }}{{ . }}{{ end -}}
+                      {{- end -}}
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          {{- end -}}
         {{- end -}}
       {{- end }}
     </div>
@@ -53,28 +79,63 @@
     <div class="grid tile-grid__container gallery__container">
       <div class="grid-sizer"></div>
       {{- range .Params.Images -}}
+        {{- /* get image parameters */ -}}
         {{- $image := .image -}}
-        {{- if not (hasPrefix .image "http") -}}
-          {{- $image = index ($page.Resources.Match .image) 0 -}}
-        {{- end -}}
-        {{- $copyright := $imagesCopyright -}}
-        {{- with .copyright -}}
-          {{- $copyright = . -}}
-        {{- end -}}
         {{- $title := .title -}}
         {{- $caption := .caption | default $title }}
+        {{- $copyright := .copyright | default $imagesCopyright -}}
+        {{- $thumbSuffix := .thumb | default $thumbSuffix -}}
+
+        {{- /* add copyright to caption */ -}}
+        {{- with $copyright -}}
+          {{- if $caption -}}
+            {{- $caption = print $caption (htmlUnescape " - &copy; ") . -}}
+          {{- else -}}
+            {{- $caption = print (htmlUnescape "&copy; ") . -}}
+          {{- end -}}
+        {{- end -}}
+
+        {{- $src := $image -}}
+        {{- $thumb := $image -}}
+
+        {{- if not (hasPrefix .image "http") -}}
+          {{- $srcPath := "" -}}
+          {{- if hasPrefix $src "/" -}}
+            {{- $srcPath = (print "/static/" $src) -}}
+          {{- else -}}
+            {{- $imageRsc := index ($page.Resources.Match $image) 0 -}}
+            {{- if or (not $imageRsc) (ne $imageRsc.ResourceType "image") -}}
+              {{- errorf "ERROR '%s': '%s' not found or not an image" $page.RelPermalink $image -}}
+            {{- end -}}
+            {{- /* TODO: want? */ -}}
+            {{- $image = $imageRsc.RelPermalink -}}
+            {{- $srcPath = print (replace $.Page.File.Dir  "\\" "/") "/" $src -}}
+          {{- end -}}
+
+          {{- /* get the thumbnail if exists */ -}}
+          {{- $srcFile := path.Base $src -}}
+          {{- $srcDir := path.Dir $srcPath -}}
+          {{- $thumbFile := $srcFile | replaceRE "(\\.)" ($thumbSuffix | printf "%s.") -}}
+          {{- $thumbPath := print $srcDir "/" $thumbFile -}}
+          {{- $srcURLDir := path.Dir $image -}}
+          {{- $thumbURL := print $srcURLDir "/" $thumbFile -}}
+          {{- if fileExists $thumbPath -}}
+            {{- $thumb = $thumbURL -}}
+          {{- end -}}
+        {{- end -}}
+
         <div class="grid-item">
           <div class="gallery-tile">
             <div class="gallery-tile-image with-hover-overlay {{ if $.Site.Params.galleryInitZoom }}initzoom{{ end }} {{ if $.Site.Params.galleryZoom }}zoom{{ end }}">
               {{- /* TODO: make separate partial for figure/image? */}}
               <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
                 {{- if not (hasPrefix .image "http") }}
-                <img src="{{ $image.Permalink }}"
+                <img src="{{ $thumb }}"
                 {{- else }}
                 <img src="{{ $image }}"
                 {{- end }}
                      {{ with .alt | default $caption }}alt="{{ . }}"{{ end }} itemprop="thumbnail" />
-                {{- /* TODO: should add '.Permalink' if 'http' prefix? */}}
+                {{- /* TODO: should add '.Permalink' if not 'http' prefix? */}}
                 <a href="{{ $image }}" itemprop="contentUrl"></a>
                 <figcaption class="image__text" {{- if not $figcaption -}}style="display: none;"{{ end }}>
                   {{ with $title }}<p class="inline-caption">{{ . }}</p>{{ end }}

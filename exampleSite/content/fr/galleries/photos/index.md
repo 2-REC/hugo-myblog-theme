@@ -23,6 +23,7 @@ images:
     title: Hanoi
   - image: images/pyramid.jpg
     title: Siem Reap
+    thumb: -small
   - image: images/street.jpg
     title: Monschau
   - image: images/temple.jpg

@@ -30,6 +30,7 @@ images:
   - image: images/pyramid.jpg
     title: Siem Reap
     caption: Siem Reap pyramid temple
+    thumb: -small
   - image: images/street.jpg
     title: Monschau street
   - image: images/temple.jpg

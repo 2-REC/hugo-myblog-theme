@@ -428,10 +428,18 @@ TODO: complete/rewrite/etc.
 - Gallery
     * Removed modes ("one-by-one", "remote" and "at-once")
     * If "images" in front-matter: equivalent to "one-by-one" mode
-      * "image", "caption" and "copyright" (if present) fields will be used for each image
+      * "image", "title", "caption" and "copyright", "thumb" (if present) fields will be used for each image
       * If "image" starts with "http", the image will be considered as remote (online image)
+      * If "image" starts with "/", the image will be considered as "static" (in "static" dir instead of post's "content")
     * If no "images" in front-matter: equivalent to "at-once" mode
       * Images obtained from "images" subdirectory
+  TODO: add:
+  - global parameters:
+    - figcaption: true|false
+    - used for all image, if not overloaded
+      - imagesCopyright
+      - thumb
+
 * Recent posts
     * Added carousel from "Travelify" theme (uses "jQuery.cycle" library)
     * Added parameters for the slides transitions (transition effect, delay and duration)

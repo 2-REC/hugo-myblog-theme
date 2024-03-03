@@ -56,7 +56,10 @@
           {{ end }}
         {{ end }}
       </div>
-      <nav id="controllers" class="clearfix"></nav>
+      <button id="controllerPrev" class="controllerButton">{{ partial "svgs/arrow/arrow-left.svg" (dict "width" 24 "height" 24) }}</button>
+      <button id="controllerNext" class="controllerButton">{{ partial "svgs/arrow/arrow-right.svg" (dict "width" 24 "height" 24) }}</button>
+      <nav id="controllers" class="clearfix">
+	  </nav>
     </section>
     <script type='text/javascript'>
       {{ $transition_effect := "fade" }}

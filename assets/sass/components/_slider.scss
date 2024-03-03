@@ -201,37 +201,70 @@ overflow: hidden;
 */
 }
 
-/* Controllers */
-#controllers {
-  pointer-events: none;
+/* Prev/Next buttons */
+.controllerButton {
+  z-index: 9999;
+  position: absolute;
+  display: inline-block;
+  overflow: hidden;
+  width: 32px;
+  height: 32px;
+  margin: 0;
+  top: 50%;
+  /* TODO: add other transforms? (moz, etc.) */
+  transform: translate(0, -50%);
 
-	text-align: center;
-	line-height: 0;
-	position: absolute;
-	width: 100%;
-	bottom: 15px;
-	z-index: 9999;
-}
-#controllers a {
   pointer-events: auto;
-	width: 10px;
-	height: 10px;
-	margin: 0 4px;
-	overflow: hidden;
-	display: inline-block;
-//	background-color: #fff;
-	border-radius: 2px;
-//	color: #fff;
+
+  border-radius: 2px;
 
   @include themify($themes) {
     background-color: themed('gallery-mask-background-color');
     color: themed('gallery-mask-background-color');
   }
 }
-#controllers a:hover,#controllers a.active {
-//	background-color: #439f55;
-//	color: #439f55;
+.controllerButton:hover, .controllerButton.active {
+  @include themify($themes) {
+    color: themed('title-color');
+    @include on-event {
+      color: themed('link-hover');
+    }
+  }
+}
+#controllerPrev {
+  left: 0;
+}
+#controllerNext {
+  right: 0;
+}
 
+/* Controllers */
+#controllers {
+  pointer-events: none;
+
+  text-align: center;
+  line-height: 0;
+  position: absolute;
+  width: 100%;
+  bottom: 15px;
+  z-index: 9999;
+}
+#controllers a {
+  pointer-events: auto;
+  width: 10px;
+  height: 10px;
+  margin: 0 4px;
+  overflow: hidden;
+  display: inline-block;
+  border-radius: 2px;
+
+  @include themify($themes) {
+    background-color: themed('gallery-mask-background-color');
+/*    color: themed('gallery-mask-background-color');*/
+color: transparent;
+  }
+}
+#controllers a:hover,#controllers a.active {
   @include themify($themes) {
     background-color: themed('title-color');
     color: themed('title-color');

@@ -130,8 +130,9 @@ right: 5%;
 	margin-top: 4px;
 	float: right;
 	clear: right;
-	width: 35%;
-max-height: 80%;
+	width: auto;
+	max-width: 50%;
+	max-height: 80%;
 overflow: hidden;
 //	text-shadow: 0 2px 2px rgba(0,0,0,0.4);
 	border-radius: 4px;
@@ -300,12 +301,19 @@ article:hover {
     text-decoration: inherit;
 }
 */
-/* All Mobile Portrait size smaller than 768 (devices and browsers) */
+
 @media only screen and (max-width: 767px) {
-//	.featured-title,.featured-content,.featured-text {
-	.featured-content {
-		display: none;
-	}
+  .featured-content {
+    display: none;
+  }
+  .featured-text {
+    padding: 10px;
+    width: auto;
+    max-width: 75%;
+  }
+  .featured-text .featured-title {
+    font-size: 14px;
+  }
 /* ??
 	#content h1,#content h2,#content h3,#content h4,#content h5,#content h6 {
 		padding-bottom: 10px;

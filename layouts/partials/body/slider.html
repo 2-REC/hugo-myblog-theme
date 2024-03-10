@@ -1,60 +1,67 @@
-{{ if isset .Site.Params "slider" }}
-  {{ if .Site.Params.slider.enable }}
+{{- if isset .Site.Params "slider" -}}
+  {{- if .Site.Params.slider.enable -}}
+    {{- $data_slides := slice -}}
+    {{- if .Site.Data.slider -}}
+      {{- range .Site.Data.slider -}}
+        {{- if and (isset . "banner") (not (eq .banner "")) -}}
+          {{- $data_slides = $data_slides | append . -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+
+    {{- $post_slides := slice -}}
+    {{- if and (isset $.Site.Params.slider "manual") ($.Site.Params.slider.manual) -}}
+      {{- range .Site.Pages.ByParam "slide" }}
+        {{- if .Params.slide -}}
+          {{- if and (isset .Params "banner") (not (eq .Params.banner "")) -}}
+            {{- $post_slides = $post_slides | append . -}}
+          {{- end -}}
+        {{- end -}}
+      {{- end -}}
+    {{- else -}}
+      {{- $features := add .Site.Params.slider.num_features 1 -}}
+      {{- range first $features (where .Site.Pages "Type" "posts") -}}
+        {{- if and (isset .Params "banner") (not (eq .Params.banner "")) -}}
+          {{- $post_slides = $post_slides | append . -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+
+    {{- if and (or $post_slides $data_slides) (gt (math.Add (len $post_slides) (len $data_slides)) 1) -}}
     <section class="featured-slider">
       <div class="slider-cycle">
-        {{ if .Site.Data.slider }}
-          {{ if gt (len .Site.Data.slider) 0 }}
-            {{ range $index, $slide := .Site.Data.slider }}
-              {{ if and (isset $slide "banner") (not (eq .banner "")) }}
-                <div class="slides {{ if eq $index 0 }} displayblock {{ else }} displaynone {{ end }}">
-                {{/* TODO: set "_blank" as option? ("isExternalLink") */}}
-                <a class="slide-textbox" href="{{ .url }}" title="{{ .Title }}" target="_blank">
-                    <figure>
-                      <img src="{{ .banner  | absURL }}"
-                          class="pngfix wp-post-image {{ if $.Site.Params.sliderInitZoom }}initzoom{{ end }} {{ if $.Site.Params.sliderZoom }}zoom{{ end }}"
-                          alt="{{ .Title }}"
-                          title="{{ .Title }}">
-                      {{ if or .caption .copyright }}
-                        <figcaption class="image__text">
-                          {{ if .caption }}
-                            <p class="inline-caption">{{ .caption | markdownify }}{{ if .copyright }}&nbsp;&ndash;{{ end }}</p>
-                          {{ end }}
-                          {{ with .copyright }}
-                            <p class="inline-copyright">{{ . | markdownify }}</p>
-                          {{ end }}
-                        </figcaption>
-                      {{ end }}
-                    </figure>
-                    <article class="featured-text">
-                      <h4 class="featured-title">{{ .Title }}</h4>
-                      <div class="featured-content">{{ printf "%s" .Summary | markdownify }}</div>
-                    </article>
-                  </a>
-                </div>
-              {{ end }}
-            {{ end }}
-          {{ end }}
-        {{ end }}
-        {{ if and (isset $.Site.Params.slider "manual") ($.Site.Params.slider.manual) }}
-          {{ range $index, $page := .Site.Pages.ByParam "slide" }}
-            {{ if and (isset .Params "banner") (not (eq .Params.banner "")) }}
-              {{ if and (isset .Params "slide") (.Params.slide) }}
-                <div class="slides {{ if eq $index 0 }} displayblock {{ else }} displaynone {{ end }}">
-                  {{ partial "body/single_slide" . }}
-                </div>
-              {{ end }}
-            {{ end }}
-          {{ end }}
-        {{ else }}
-          {{ $features := add .Site.Params.slider.num_features 1 }}
-          {{ range $index, $page := first $features (where .Site.Pages "Type" "posts") }}
-            {{ if and (isset .Params "banner") (not (eq .Params.banner "")) }}
-              <div class="slides {{ if eq $index 0 }} displayblock {{ else }} displaynone {{ end }}">
-                {{ partial "body/single_slide" . }}
-              </div>
-            {{ end }}
-          {{ end }}
-        {{ end }}
+        {{- range $index, $slide := $data_slides -}}
+          <div class="slides {{ if eq $index 0 }} displayblock {{ else }} displaynone {{ end }}">
+            {{/* TODO: set "_blank" as option? ("isExternalLink") */}}
+            <a class="slide-textbox" href="{{ $slide.url }}" title="{{ $slide.Title }}" target="_blank">
+              <figure>
+                <img src="{{ $slide.banner | absURL }}"
+                     class="pngfix wp-post-image {{ if $.Site.Params.sliderInitZoom }}initzoom{{ end }} {{ if $.Site.Params.sliderZoom }}zoom{{ end }}"
+                     alt="{{ $slide.Title }}"
+                     title="{{ $slide.Title }}" />
+                {{ if or $slide.caption $slide.copyright }}
+                <figcaption class="image__text">
+                  {{ if $slide.caption }}
+                    <p class="inline-caption">{{ $slide.caption | markdownify }}{{ if $slide.copyright }}&nbsp;&ndash;{{ end }}</p>
+                  {{ end }}
+                  {{ with $slide.copyright }}
+                    <p class="inline-copyright">{{ . | markdownify }}</p>
+                  {{ end }}
+                </figcaption>
+                {{ end }}
+              </figure>
+              <article class="featured-text">
+                <h4 class="featured-title">{{ $slide.Title }}</h4>
+                <div class="featured-content">{{ printf "%s" $slide.Summary | markdownify }}</div>
+              </article>
+            </a>
+          </div>
+        {{- end -}}
+        {{- range $index, $slide := $post_slides -}}
+          <div class="slides {{ if eq $index 0 }} displayblock {{ else }} displaynone {{ end }}">
+            {{ partial "body/single_slide" $slide }}
+          </div>
+        {{- end -}}
       </div>
       <button id="controllerPrev" class="controllerButton">{{ partial "svgs/arrow/arrow-left.svg" (dict "width" 24 "height" 24) }}</button>
       <button id="controllerNext" class="controllerButton">{{ partial "svgs/arrow/arrow-right.svg" (dict "width" 24 "height" 24) }}</button>
@@ -85,5 +92,6 @@
     <script defer type='text/javascript' src="{{ $jqueryCycle.RelPermalink }}"></script>
     {{ $slider := resources.Get "js/slider-settings.min.js" | resources.Fingerprint }}
     <script defer type='text/javascript' src="{{ $slider.RelPermalink }}"></script>
+    {{- end -}}
   {{ end }}
 {{ end }}

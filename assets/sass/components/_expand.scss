@@ -60,8 +60,8 @@
     @include themify($themes) {
       color: inherit;
       background-color: themed('toc-header-background-color');
-      @include on-event {
-        background-color: themed('toc-header-background-color-hover');
+      &:hover {
+        background-color: themed('toc-header-background-hover-color');
       }
     }
   }

@@ -25,6 +25,16 @@ $dark: (
     button-primary-border-color: darken(white, 15%),
     button-primary-border-hover-color: white,
 
+    sidebar-title-color: #aed581,
+    sidebar-title-hover-color: lighten(#aed581, 25%),
+    sidebar-li-color: #FCFCFA,
+    sidebar-li-hover-color: lighten(#FCFCFA, 25%),
+
+    /* sidebar toc */
+    toc-title-color: #90a4ae,
+    toc-label-color: #727072,
+    toc-label-active-color: black,
+
     /* navigation bar (top) */
     navbar-background-color: #403E41,
     navbar-border-bottom-color: #4e4e4e,
@@ -52,8 +62,6 @@ $dark: (
     featured-button-color: darken(white, 15%),
     featured-button-hover-color: white,
 
-    sidebar-title-color: #aed581,
-    sidebar-li-color: #FCFCFA,
     taxo-title-color: #bdbdbd,
     taxo-num-color: #FCFCFA,
     taxo-num-background-color: #212121,
@@ -77,6 +85,10 @@ $dark: (
     single-contents-subtitle-color: #FCFCFA,
     related-header-title-color: #FCFCFA,
     related-link-color: #A9DC76,
+    toc-header-background-color: #403E41,
+    toc-header-background-hover-color: #424242,
+    toc-body-background-color: #403E41,
+
     content-box-border-color: #616161,
     content-box-background-color: #403E41,
     burger-menu-color: #FCFCFA,
@@ -103,13 +115,6 @@ $dark: (
     terms-series-color: #EA9C77,
     terms-len-color: #727072,
 
-    toc-label-color: #727072,
-    toc-title-color: #90a4ae,
-    toc-vertical-line: #727072,
-    toc-vertical-line-active: #FF6188,
-    toc-header-background-color: #403E41,
-    toc-header-background-color-hover: #424242,
-    toc-body-background-color: #403E41,
 /*
     search-placeholder-color: #727072,
     search-color: #FCFCFA,

@@ -25,6 +25,16 @@ $light: (
     button-primary-border-color: darken(white, 15%),
     button-primary-border-hover-color: white,
 
+    sidebar-title-color: #607d8b,
+    sidebar-title-hover-color: lighten(#607d8b, 15%),
+    sidebar-li-color: #424242,
+    sidebar-li-hover-color: lighten(#424242, 15%),
+
+    /* sidebar toc */
+    toc-title-color: #727072,
+    toc-label-color: #727072,
+    toc-label-active-color: darken(#727072, 15%),
+
     /* navigation bar (top) */
     navbar-background-color: #EEEEEE,
     navbar-border-bottom-color: #CCCCCC,
@@ -52,8 +62,6 @@ $light: (
     featured-button-color: lighten(black, 30%),
     featured-button-hover-color: white,
 
-    sidebar-title-color: #607d8b,
-    sidebar-li-color: #424242,
     taxo-title-color: #607d8b,
     taxo-num-color: #424242,
     taxo-num-background-color: darken(#eee, 15%),
@@ -77,6 +85,10 @@ $light: (
     single-contents-subtitle-color: #424242,
     related-header-title-color: #424242,
     related-link-color: #607d8b,
+    toc-header-background-color: darken(#eee, 1.5%),
+    toc-header-background-hover-color: darken(#eee, 3%),
+    toc-body-background-color: lighten(#eee, 1.5%),
+
     content-box-border-color: #aaa,
     content-box-background-color: #eeeeee,
     burger-menu-color: #777,
@@ -103,13 +115,6 @@ $light: (
     terms-series-color: #424242,
     terms-len-color: #727072,
 
-    toc-label-color: #727072,
-    toc-title-color: #727072,
-    toc-vertical-line: #727072,
-    toc-vertical-line-active: #26a69a,
-    toc-header-background-color: darken(#eee, 1.5%),
-    toc-header-background-color-hover: darken(#eee, 3%),
-    toc-body-background-color: lighten(#eee, 1.5%),
 /*
     search-placeholder-color: #bdbdbd,
     search-color: #424242,

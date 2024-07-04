@@ -91,7 +91,7 @@
     }
     
     @include themify($themes) {
-      color: themed('toc-label-color');
+      color: themed('toc-title-color');
     }
 
 //// BEGIN
@@ -107,7 +107,7 @@
   &[data-dir="ltr"] {
     @include themify($themes) {
       a {
-        color: themed('toc-vertical-line');
+        color: themed('toc-label-color');
         position: relative;
         text-indent: -1em;
 
@@ -120,7 +120,7 @@
       }
 
       .active {
-        color: themed('toc-vertical-line-active');
+        color: themed('toc-label-active-color');
         font-weight: 700;
       }
     }
@@ -141,7 +141,7 @@
   &[data-dir="rtl"] {
     @include themify($themes) {
       a {
-        color: themed('toc-vertical-line');
+        color: themed('toc-label-color');
         position: relative;
         text-indent: -1em;
 
@@ -154,7 +154,7 @@
       }
 
       .active {
-        color: themed('toc-vertical-line-active');
+        color: themed('toc-label-active-color');
         font-weight: 700;
       }
     }
@@ -176,9 +176,9 @@
   ul {
     @include themify($themes) {
       a {
-        color: themed('toc-title-color');
+        color: themed('toc-label-color');
         &.active {
-          color: themed('toc-vertical-line-active');
+          color: themed('toc-label-active-color');
         }
       }
     }

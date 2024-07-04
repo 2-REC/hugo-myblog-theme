@@ -8,13 +8,15 @@
   @include justify-content(center);
   @include flex-direction(column);
 
+/* TODO: add optional background image */
   @include themify($themes) {
     .title {
-      color: themed('title-color');
+      color: themed('e404-title-color');
+      text-shadow: 1.2px 1.2px 0 themed('e404-title-shadow-color');
     }
 
     .subtitle {
-      color: themed('meta-color');
+      color: themed('e404-color');
     }
   }
 }

@@ -75,6 +75,16 @@ $light: (
     pagination-disabled-color: #bdbdbd,
     pagination-number-color: #757575,
 
+    share-color: #FCFCFA,
+    share-shadow-color: #727072,
+    share-background-color: #90a4ae,
+    action-color: black,
+    action-shadow-color: black,
+    action-background-color: #eceff1,
+    action-popup-background-color: white,
+    action-popup-color: black,
+    action-popup-border-color: black,
+
     list-title-color: #607d8b,
     list-title-shadow-color: #eee,
 
@@ -143,9 +153,5 @@ $light: (
 
     custom-scrollbar-foreground-color: #cfd8dc,
     custom-scrollbar-background-color: #FCFCFA,
-    share-color: #FCFCFA,
-    share-shadow-color: #727072,
-    share-background-color: #90a4ae,
-    action-background-color: #eceff1,
     button-primary-color: $button_light_primary_color,
 );

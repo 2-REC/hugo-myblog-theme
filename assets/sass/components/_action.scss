@@ -38,9 +38,9 @@
     &[data-type="donation"] {
       svg {
         @include themify($themes) {
-          color: themed('share-color');
+          color: themed('action-color');
           background-color: themed('action-background-color');
-          @include box-shadow(1px, 1px, 3px, 0, themed('share-shadow-color'));
+          @include box-shadow(1px, 1px, 3px, 0, themed('action-shadow-color'));
         }
       }
     }
@@ -90,7 +90,7 @@
       display: none;
       position: absolute;
       bottom: 100%;
-      z-index: 1;
+      z-index: z('modal');
       min-width: 250px;
       max-width: 350px;
       height: auto;
@@ -107,8 +107,9 @@
       }
 
       @include themify($themes) {
-        border: 1px solid themed('dropdown-item-hover-background-color');
-        background-color: themed('dropdown-content-background-color');
+        border: 1px solid themed('action-popup-border-color');
+        background-color: themed('action-popup-background-color');
+        color: themed('action-popup-color');
       }
     }
   }

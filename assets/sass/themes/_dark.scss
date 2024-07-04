@@ -75,6 +75,16 @@ $dark: (
     pagination-disabled-color: #757575,
     pagination-number-color: #FCFCFA,
 
+    share-color: #dbdbdb,
+    share-shadow-color: #888,
+    share-background-color: lighten(#403E41, 2.5%),
+    action-color: black,
+    action-shadow-color: black,
+    action-background-color: #525252,
+    action-popup-background-color: white,
+    action-popup-color: black,
+    action-popup-border-color: black,
+
     list-title-color: #ddd,
     list-title-shadow-color: #403E41,
 
@@ -143,9 +153,5 @@ $dark: (
 
     custom-scrollbar-foreground-color: #888,
     custom-scrollbar-background-color: #eee,
-    share-color: #dbdbdb,
-    share-shadow-color: #888,
-    share-background-color: lighten(#403E41, 2.5%),
-    action-background-color: #525252,
     button-primary-color: $button_dark_primary_color,
 );

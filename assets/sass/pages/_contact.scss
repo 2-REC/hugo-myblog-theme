@@ -27,7 +27,7 @@
 
     @include themify($themes) {
       color: themed('contact-input-color');
-      border: 1px solid themed('search-border-color');
+      border: 1px solid themed('contact-border-color');
       background-color: themed('contact-input-background-color');
     }
 
@@ -61,7 +61,7 @@
 
     @include themify($themes) {
       color: themed('contact-input-color');
-      border: 1px solid themed('search-border-color');
+      border: 1px solid themed('contact-border-color');
       background-color: themed('contact-input-background-color');
     }
 
@@ -108,7 +108,7 @@
 
     @include themify($themes) {
       color: inherit;
-      border: 1px solid themed('search-border-color');
+      border: 1px solid themed('contact-border-color');
       background-color: themed('contact-button-background-color');
     }
   }

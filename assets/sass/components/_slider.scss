@@ -101,18 +101,11 @@ display: block;
 }
 /////////////////
 
+/* NOTE: colors are set in child elements: 'featured-text', 'featured-title' & 'featured-content'  */
+/*
 .slide-textbox {
-  @include themify($themes) {
-//    background-color: themed('title-color');
-//    color: themed('title-color');
-    color: themed('link');
-
-    @include on-event {
-//      background-color: themed('link-hover');
-      color: themed('link-hover');
-    }
-  }
 }
+*/
 
 .featured-text {
 	position: absolute;
@@ -139,7 +132,7 @@ overflow: hidden;
 	border: none;
 
   @include themify($themes) {
-    background-color: themed('gallery-mask-background-color');
+    background-color: themed('featured-background-color');
   }
 
 //  pointer-events: none;
@@ -163,16 +156,11 @@ overflow: hidden;
   letter-spacing: 0.1em;
 
   @include themify($themes) {
-//    background-color: themed('title-color');
-//    color: themed('title-color');
-//    color: themed('link');
+    color: themed('featured-title-color');
 
-/*
     @include on-event {
-//      background-color: themed('link-hover');
-      color: themed('link-hover');
+      color: themed('featured-title-hover-color');
     }
-*/
   }
 }
 
@@ -188,23 +176,13 @@ overflow: hidden;
   font-size: 14px;
 
   @include themify($themes) {
-    color: themed('body-color');
+    color: themed('featured-content-color');
   }
-/*
-  @include themify($themes) {
-    background-color: themed('title-color');
-    color: themed('title-color');
-    @include on-event {
-      background-color: themed('link-hover');
-      color: themed('link-hover');
-    }
-  }
-*/
 }
 
 /* Prev/Next buttons */
 .controllerButton {
-  z-index: 9999;
+  z-index: z('feature-btn');
   position: absolute;
   display: inline-block;
   overflow: hidden;
@@ -220,16 +198,14 @@ overflow: hidden;
   border-radius: 2px;
 
   @include themify($themes) {
-    background-color: themed('gallery-mask-background-color');
-    color: themed('gallery-mask-background-color');
+    color: themed('featured-button-color');
+    background-color: themed('featured-button-background-color');
   }
 }
-.controllerButton:hover, .controllerButton.active {
+.controllerButton:hover {
   @include themify($themes) {
-    color: themed('title-color');
-    @include on-event {
-      color: themed('link-hover');
-    }
+    color: themed('featured-button-hover-color');
+    background-color: themed('featured-button-background-hover-color');
   }
 }
 #controllerPrev {
@@ -248,7 +224,7 @@ overflow: hidden;
   position: absolute;
   width: 100%;
   bottom: 15px;
-  z-index: 9999;
+  z-index: z('feature-btn');
 }
 #controllers a {
   pointer-events: auto;
@@ -260,19 +236,18 @@ overflow: hidden;
   border-radius: 2px;
 
   @include themify($themes) {
-    background-color: themed('gallery-mask-background-color');
-/*    color: themed('gallery-mask-background-color');*/
-color: transparent;
+    background-color: themed('featured-button-background-color');
+    color: transparent;
   }
 }
-#controllers a:hover,#controllers a.active {
+#controllers a:hover {
   @include themify($themes) {
-    background-color: themed('title-color');
-    color: themed('title-color');
-    @include on-event {
-      background-color: themed('link-hover');
-      color: themed('link-hover');
-    }
+    background-color: themed('featured-button-hover-color');
+  }
+}
+#controllers a.active {
+  @include themify($themes) {
+    background-color: themed('featured-button-color');
   }
 }
 
@@ -318,5 +293,12 @@ article:hover {
 	#content h1,#content h2,#content h3,#content h4,#content h5,#content h6 {
 		padding-bottom: 10px;
 	}
+*/
+
+/* TODO: hide on mobile? */
+/*
+.list__main .featured-slider {
+display: none;
+}
 */
 }

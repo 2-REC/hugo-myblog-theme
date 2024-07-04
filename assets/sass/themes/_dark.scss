@@ -30,6 +30,16 @@ $dark: (
     header-subtitle-color-default: #FFD866,
     header-subtitle-shadow-color-default: #212121,
 
+    /* home slide */
+    featured-background-color: #00000077,
+    featured-title-color: darken(white, 15%),
+    featured-title-hover-color: white,
+    featured-content-color: darken(white, 15%),
+    featured-button-background-color: #00000077,
+    featured-button-background-hover-color: black,
+    featured-button-color: darken(white, 15%),
+    featured-button-hover-color: white,
+
     sidebar-title-color: #aed581,
     sidebar-li-color: #FCFCFA,
     taxo-title-color: #bdbdbd,

@@ -30,6 +30,16 @@ $light: (
     header-subtitle-color-default: #607d8b,
     header-subtitle-shadow-color-default: #eee,
 
+    /* home slide */
+    featured-background-color: #FFFFFF77,
+    featured-title-color: lighten(black, 15%),
+    featured-title-hover-color: black,
+    featured-content-color: lighten(black, 30%),
+    featured-button-background-color: #FFFFFF77,
+    featured-button-background-hover-color: darken(white, 15%),
+    featured-button-color: lighten(black, 30%),
+    featured-button-hover-color: white,
+
     sidebar-title-color: #607d8b,
     sidebar-li-color: #424242,
     taxo-title-color: #607d8b,

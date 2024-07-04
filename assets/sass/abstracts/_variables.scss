@@ -25,10 +25,8 @@ $code-font-stack: Consolas,
               Courier,
               monospace !default;
 
-//TODO: make sure can remove (unused):
-// "header", "search", "footer", "gallery-mask", "card-outter", "card-inner"
-
-$z-indexes: ("modal", "navbar", "dropdown", "header", "gtt", "clipboard", "grid", "search-btn", "search", "content", "footer", "taxo", "toc", "gallery-mask", "card-outter", "card-inner");
+/* TODO: remove unused! */
+$z-indexes: ("modal", "navbar", "dropdown", "header", "gtt", "feature-btn", "clipboard", "grid", "search-btn", "search", "content", "footer", "taxo", "toc", "gallery-mask", "card-outter", "card-inner");
 
 $breakpoints: (
   'xs': 0,

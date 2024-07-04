@@ -85,10 +85,6 @@ $light: (
     burger-menu-color: #777,
     social-icon-color: #777,
     social-icon-hover-color: darken(#777, 20%),
-    pagination-link-color: #424242,
-    pagination-background-color: #eee,
-    pagination-disabled-color: #bdbdbd,
-    pagination-number-color: #757575,
 
     share-color: #FCFCFA,
     share-shadow-color: #727072,
@@ -148,6 +144,14 @@ $light: (
     switch-background-color: #bdbdbd,
     switch-button-color: #424242,
     switch-active-color: #607d8b,
+
+    /* pagination */
+    pagination-background-color: #eee,
+    pagination-number-color: #757575,
+    pagination-number-hover-color: #424242,
+    pagination-number-active-color: #424242,
+/* TODO: unused...? => check code in 'pagination' */
+/*    pagination-disabled-color: #bdbdbd,*/
 
     gallery-title-color: #424242,
     gallery-title-shadow-color: #eee,

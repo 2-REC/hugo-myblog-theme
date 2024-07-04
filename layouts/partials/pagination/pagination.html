@@ -1,4 +1,6 @@
+{{/* TODO: rewrite without 'Scratch' */}}
 {{ $pag := $.Paginator }}
+{{/* TODO: check al this... 'window'? 'show'? */}}
 {{ $window := $.Site.Params.paginateWindow | default 1 }}
 {{ if gt $pag.TotalPages 1 }}
   {{ $total := $pag.TotalPages }}

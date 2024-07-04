@@ -28,7 +28,15 @@
       font-weight: bold;
       a {
         @include themify($themes) {
-          color: themed('link-hover');
+          color: themed('pagination-number-active-color');
+        }      
+      }
+    }
+
+    &:hover {
+      a {
+        @include themify($themes) {
+          color: themed('pagination-number-hover-color');
         }      
       }
     }

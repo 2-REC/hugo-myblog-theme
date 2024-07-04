@@ -47,14 +47,14 @@
   .social {
     margin: 0.25rem;
     a {
-      @include themify($themes) {        
+      @include themify($themes) {
         text-decoration: none;
         color: themed('social-icon-color');
         &:hover {
           color: themed('social-icon-hover-color');
           transition: color 0.2s ease;
-        }        
-      }   
+        }
+      }
     }
   }
 
@@ -69,7 +69,7 @@
       color: themed('footer-link-color');
       &:hover {
         color: themed('footer-link-hover-color');
-      }        
+      }
     }
   }
 }

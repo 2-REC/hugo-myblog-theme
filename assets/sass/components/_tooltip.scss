@@ -4,7 +4,7 @@
 
 .tooltipped:after {
     position: absolute;
-    z-index: 1000000;
+    z-index: z('modal');
     display: none;
     padding: 5px 8px;
     font: normal normal 11px/1.5 "Lato", "Work Sans", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
@@ -25,7 +25,7 @@
 
 .tooltipped:before {
     position: absolute;
-    z-index: 1000001;
+    z-index: z('modal') + 1;
     display: none;
     width: 0;
     height: 0;

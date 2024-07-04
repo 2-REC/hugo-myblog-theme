@@ -52,10 +52,10 @@ other = "ou"
 # #
 # #[talks-dateformat]
 # #other = "Jan 2"
-# 
-# [single-dateformat]
-# other = "Jan 2, 2006"
-# 
+
+[single-dateformat]
+other = "02/01/2006"
+
 # #[pub-dateformat]
 # #other = "2006-01-02"
 # #
@@ -73,16 +73,16 @@ other = "ou"
 # #
 # #[counter-site-uv]
 # #other = "Total visitors"
-# 
-# [counter-page-pv]
-# other = "views"
-# 
-# [donate-message]
-# other = "Support the author with"
-# 
-# [share-message]
-# other = "Share on"
-# 
+
+[counter-page-pv]
+other = "vues"
+
+[donate-message]
+other = "Aider l'auteur"
+
+[share-message]
+other = "Partager sur"
+
 # #[contact-name]
 # #other = "Name"
 # #

@@ -74,19 +74,6 @@
     
     @include flexbox();
     @include justify-content(center);
-
-/*
-  @include themify($themes) {
-//    background-color: themed('title-color');
-//    color: themed('title-color');
-    color: themed('link');
-
-    @include on-event {
-//      background-color: themed('link-hover');
-      color: themed('link-hover');
-    }
-  }
-*/
   }
 }
 
@@ -429,8 +416,6 @@ margin: 0.51rem;
   transition: all 0.2s ease-out;
 
   @include themify($themes) {
-//TODO: useless - to remove
-//    color: themed('gallery-mask-color');
     background-color: themed('gallery-mask-background-color');
   }
 }
@@ -465,7 +450,7 @@ margin: 0.51rem;
   transition: all 0.2s ease-out;
 }
 
-// ~ 'gallery-tile-description'
+// Also overrides 'gallery-tile-description'
 .gallery-tile .gallery-tile-hover-text-header p {
   //position: absolute;
   //left: 50%;

@@ -14,10 +14,6 @@
         {{ partial "footer/site-counter" . }}
         {{ if $.Site.Copyright }}        
             <p class="caption">
-                {{ $owner := $.Site.Params.myname }}
-                {{ with $.Site.Params.copyrightOptions.copyrightOwner }}
-                    {{ $owner = . }}
-                {{ end }}
                 {{ $year := now.Year }}
                 {{ with $.Site.Params.copyrightOptions.copyrightStartYear }}
                     {{ $year = print . "-" $year }}
@@ -25,11 +21,15 @@
                 {{ $leftString := replace (index (split $.Site.Copyright "{}") 0) "{year}" $year }}
                 {{ $rightString := replace (index (split $.Site.Copyright "{}") 1) "{year}" $year }}
                 {{ $link := $.Site.Params.copyrightOptions.copyrightLink }}
-                {{ $leftString | markdownify }}&nbsp;{{ with $link }}<a rel="license" href="{{ . }}">{{ end }}{{ $owner }}{{ if $link }}</a>{{ end }}{{ $rightString | markdownify }}
+                {{ $owner := $.Site.Params.myname }}
+                {{ with $.Site.Params.copyrightOptions.copyrightOwner }}
+                    {{ $owner = . }}
+                {{ end }}
+                {{ $leftString | markdownify }}&nbsp;{{ with $link }}<a href="{{ . }}" target="_blank" rel="author external">{{ end }}{{ $owner }}{{ if $link }}</a>{{ end }}{{ $rightString | markdownify }}
             </p>
         {{ end }}
         {{ if $.Param "showPoweredBy" }}
-            <p class="caption">Powered by <a href="https://gohugo.io/" target="_blank" rel="noreferrer">Hugo</a> and <a href="https://github.com/2-REC/hugo-myblog-theme" target="_blank" rel="noreferrer">MyBlog Theme</a></p>
+            <p class="caption">Powered by <a href="https://gohugo.io/" target="_blank" rel="external">Hugo</a></p>
         {{ end }}
     </div> 
 </footer>

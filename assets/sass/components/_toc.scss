@@ -125,13 +125,14 @@
       }
     }
 
+    /* TODO: seems unused? */
     ul {
       @include themify($themes) {
-        li {        
+        li {
           li {
             margin-left: .5rem;
             color: themed('sidebar-li-color');
-          }  
+          }
         }
       }
     }
@@ -158,6 +159,7 @@
       }
     }
 
+    /* TODO: seems unused? */
     ul {
       @include themify($themes) {
         li {
@@ -170,6 +172,7 @@
     }
   }
 
+  /* TODO: seems unused? */
   ul {
     @include themify($themes) {
       a {

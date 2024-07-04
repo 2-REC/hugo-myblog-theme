@@ -262,6 +262,8 @@
     * [ ] "Carousel" images
 
 * [ ] Slides: Recent posts / Carousel
+    * [ ] Add 'disableFeaturedOnMobile' param
+        => set 'display: none' when param is set.
     * [ ] Switch to Cycle2
         http://jquery.malsup.com/cycle2/
     * [ ] Clean CSS (as well as for tiles)
@@ -385,7 +387,7 @@
     * [ ] Adapt entries (+order)
 * [ ] params.toml
     * [ ] notAllowedTypesInHome, notAllowedTypesInHomeSidebar, etc.
-        => Should instead have "allowedTypesInHome", "allowedTypesInHomeSidebar", etc.
+        => Rename to "notAllowedTypesInPosts" & "notAllowedTypesInPostLists"
     * [ ] notAllowedTypesInHomeFeed
         => Adapt to page/posts types
     * [ ] enableHomeSidebarTitles
@@ -548,7 +550,15 @@ LATER:
 ## LATER
 
 * [ ] Make specific css type +theme colors for each page type
-  => Add other specific params for each page (font, etc)
+  * [ ] Add other specific params for each page (font, etc)
+    => Rewrite entire font handling.
+    Remove from "data/fonts.toml" (and change in "main.scss")
+    (and use fonts defined in "_mixins.scss")
+    eg:
+    ```
+    $twotone: (
+        font-title: "\"Merriweather\", sans-serif",
+        ...
+    ```
   * [ ] about, contact, gallery, terms
   * [ ] list (used by list, taxo, galleries)
-

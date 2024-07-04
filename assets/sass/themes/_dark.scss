@@ -10,6 +10,21 @@ $dark: (
     hr-color: #595B5C,
     body-background-color: #2D2A2E,
     backdrop-background-color: #212121,
+
+    /* 'button' shortcode */
+    button-default-color: black,
+    button-default-hover-color: black,
+    button-default-background-color: darken(white, 15%),
+    button-default-background-hover-color: darken(white, 30%),
+    button-default-border-color: lighten(black, 15%),
+    button-default-border-hover-color: black,
+    button-primary-color: white,
+    button-primary-hover-color: white,
+    button-primary-background-color: lighten(black, 15%),
+    button-primary-background-hover-color: lighten(black, 30%),
+    button-primary-border-color: darken(white, 15%),
+    button-primary-border-hover-color: white,
+
     dropdown-border-top-color: #424242,
     dropdown-item-active-background-color: #424242,
     dropdown-content-background-color: #595B5C,
@@ -153,7 +168,6 @@ $dark: (
 
     custom-scrollbar-foreground-color: #888,
     custom-scrollbar-background-color: #eee,
-    button-primary-color: $button_dark_primary_color,
 
     /* 'alert' shortcode */
 /* TODO */

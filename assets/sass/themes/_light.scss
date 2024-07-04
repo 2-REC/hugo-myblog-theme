@@ -10,6 +10,21 @@ $light: (
     hr-color: #ccc,
     body-background-color: #fafafa,
     backdrop-background-color: #e0e0e0,
+
+    /* 'button' shortcode */
+    button-default-color: black,
+    button-default-hover-color: black,
+    button-default-background-color: darken(white, 15%),
+    button-default-background-hover-color: darken(white, 30%),
+    button-default-border-color: lighten(black, 15%),
+    button-default-border-hover-color: black,
+    button-primary-color: white,
+    button-primary-hover-color: white,
+    button-primary-background-color: lighten(black, 15%),
+    button-primary-background-hover-color: lighten(black, 30%),
+    button-primary-border-color: darken(white, 15%),
+    button-primary-border-hover-color: white,
+
     dropdown-border-top-color: #e0e0e0,    
     dropdown-item-active-background-color: #e0e0e0,
     dropdown-content-background-color: #fafafa,
@@ -153,7 +168,6 @@ $light: (
 
     custom-scrollbar-foreground-color: #cfd8dc,
     custom-scrollbar-background-color: #FCFCFA,
-    button-primary-color: $button_light_primary_color,
 
     /* 'alert' shortcode */
     alert-info-background-color: lighten(blue, 30%),

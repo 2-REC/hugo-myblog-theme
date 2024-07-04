@@ -4,57 +4,56 @@
     border: 1px solid transparent;
     border-radius: 0.125rem;
 
-    /* TODO: don't use hardcoded colors (+avoid 'dropdown-item-color' - not related) */
     @include themify($themes) {
         &-info {
-            background-color: rgba(215, 238, 249, 0.4);
-            color: themed('dropdown-item-color');
+            background-color: themed('alert-info-background-color');
+            color: themed('alert-info-text-color');
 
             &[data-dir="rtl"] {
-                border-right: 5px solid #bbdefb;
+                border-right: 5px solid themed('alert-info-border-color');
             }
 
             &[data-dir="ltr"] {
-                border-left: 5px solid #bbdefb;
+                border-left: 5px solid themed('alert-info-border-color');
             }
         }
 
         &-success {
-            background-color: rgba(217, 239, 214, 0.4);
-            color: themed('dropdown-item-color');
+            background-color: themed('alert-success-background-color');
+            color: themed('alert-success-text-color');
 
             &[data-dir="rtl"] {
-                border-right: 5px solid #c8e6c9;
+                border-right: 5px solid themed('alert-success-border-color');
             }
 
             &[data-dir="ltr"] {
-                border-left: 5px solid #c8e6c9;
+                border-left: 5px solid themed('alert-success-border-color');
             }
         }
 
         &-warning {
-            background-color: rgba(255, 249, 196, 0.4);
-            color: themed('dropdown-item-color');
+            background-color: themed('alert-warning-background-color');
+            color: themed('alert-warning-text-color');
 
             &[data-dir="rtl"] {
-                border-right: 5px solid #ffeb3b;
+                border-right: 5px solid themed('alert-warning-border-color');
             }
 
             &[data-dir="ltr"] {
-                border-left: 5px solid #ffeb3b;
+                border-left: 5px solid themed('alert-warning-border-color');
             }
         }
 
         &-danger {
-            background-color: rgba(245, 221, 221, 0.4);
-            color: themed('dropdown-item-color');
+            background-color: themed('alert-danger-background-color');
+            color: themed('alert-danger-text-color');
 
             &[data-dir="rtl"] {
-                border-right: 5px solid #ffcdd2;
+                border-right: 5px solid themed('alert-danger-border-color');
             }
 
             &[data-dir="ltr"] {
-                border-left: 5px solid #ffcdd2;
+                border-left: 5px solid themed('alert-danger-border-color');
             }
         }
     }

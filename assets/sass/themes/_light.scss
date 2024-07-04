@@ -154,4 +154,18 @@ $light: (
     custom-scrollbar-foreground-color: #cfd8dc,
     custom-scrollbar-background-color: #FCFCFA,
     button-primary-color: $button_light_primary_color,
+
+    /* 'alert' shortcode */
+    alert-info-background-color: lighten(blue, 30%),
+    alert-info-text-color: black,
+    alert-info-border-color: blue,
+    alert-success-background-color: lighten(green, 30%),
+    alert-success-text-color: black,
+    alert-success-border-color: green,
+    alert-warning-background-color: lighten(yellow, 30%),
+    alert-warning-text-color: black,
+    alert-warning-border-color: yellow,
+    alert-danger-background-color: lighten(red, 30%),
+    alert-danger-text-color: black,
+    alert-danger-border-color: red,
 );

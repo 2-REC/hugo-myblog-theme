@@ -96,13 +96,9 @@ margin: 0.51rem;
 
 font-size: 14px;
 
-/* ?
   @include themify($themes) {
-    color: themed('body-background-color');
-    //color: themed('backdrop-background-color');
-    //color: themed('content-box-background-color');
+    background-color: themed('tiles-background-color');
   }
-*/
 
   box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2);
 
@@ -324,10 +320,8 @@ text-shadow: 0 0 1px 2px rgba(0, 0, 0, 0.6);
 
     @include themify($themes) {
       color: themed('gallery-title-color');
-      text-shadow: 1.2px 1.2px 0 themed('gallery-title-color'),
-        2.4px 2.4px 0 lighten(themed('gallery-title-shadow-color'), 4%),
-        3.6px 3.6px 0 lighten(themed('gallery-title-shadow-color'), 8%),
-        4.8px 4.8px 0 lighten(themed('gallery-title-shadow-color'), 12%);
+      /* TODO: could be configurable (?) */
+      text-shadow: 1.2px 1.2px 0 themed('gallery-title-shadow-color');
     }    
   }
 }
@@ -470,8 +464,7 @@ margin: 0.51rem;
   @include flex-direction(column);
   @include align-items(center);
   @include themify($themes) {
-//    color: themed('link');
-    color: themed('link-hover');
+    color: themed('gallery-link');
   }
 
   //TODO: adapt with my icons!

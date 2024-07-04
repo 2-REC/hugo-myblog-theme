@@ -45,6 +45,7 @@ $themes: (
 {{ end }}
 );
 
+//TODO: MAKE OPTIONAL (can have no code)!
 $codeblock: (
 {{ range .Site.Data.theme.themes }}
     {{ .name }}: ${{ .chroma_background }},

@@ -17,7 +17,7 @@
 
     @include on-event {
       color: themed('gtt-hover-color');  
-      background-color: themed('gtt-hover-background-color');
+      background-color: themed('gtt-background-hover-color');
     }
   }
 

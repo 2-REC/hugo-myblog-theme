@@ -60,7 +60,16 @@
 
   hr {
     @include themify($themes) {
-      border-top: 1px solid themed('hr-color') !important;
+      border-top: 1px solid themed('footer-hr-color') !important;
+    }
+  }
+
+  a {
+    @include themify($themes) {
+      color: themed('footer-link-color');
+      &:hover {
+        color: themed('footer-link-hover-color');
+      }        
     }
   }
 }

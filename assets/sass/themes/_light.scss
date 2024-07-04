@@ -1,15 +1,15 @@
-//TODO: adapt/change!
 $light: (
-    footer-background-color: #eee,
-    footer-color: #424242,  
-    link: #607d8b,
-    link-hover: #26a69a,
-    title-color: #607d8b,
-    meta-color: #424242,
+    /* global/general */
+    link: #607D8B,
+    link-hover: #26A69A,
+    hr-color: #CCCCCC,
+
+    selection-color: #FCFCFA,
+    selection-background-color: #FF6188,
+
+    backdrop-background-color: #E0E0E0,
+    body-background-color: #FAFAFA,
     body-color: #424242,
-    hr-color: #ccc,
-    body-background-color: #fafafa,
-    backdrop-background-color: #e0e0e0,
 
     /* 'button' shortcode */
     button-default-color: black,
@@ -24,6 +24,44 @@ $light: (
     button-primary-background-hover-color: lighten(black, 30%),
     button-primary-border-color: darken(white, 15%),
     button-primary-border-hover-color: white,
+
+    custom-scrollbar-foreground-color: #cfd8dc,
+    custom-scrollbar-background-color: #FCFCFA,
+
+    footer-color: #607d8b,
+    footer-background-color: #eeeeee,
+    footer-link-color: #607d8b,
+    footer-link-hover-color: #26a69a,
+    footer-hr-color: white,
+
+    gtt-color: #607d8b,
+    gtt-hover-color: #26a69a,
+    gtt-background-color: transparent,
+    gtt-background-hover-color: white,
+
+    figcaption-color: black,
+    figcaption-background-color: white,
+
+    meta-color: #424242,
+
+    /* taxonomies */
+    taxo-title-color: #607d8b,
+    taxo-active-color: black,
+    taxo-num-color: #424242,
+    taxo-num-background-color: darken(#eee, 15%),
+    taxo-tags-color: #424242,
+    taxo-tags-background-color: darken(#eee, 2%),
+    taxo-categories-color: #424242,
+    taxo-categories-background-color: darken(#eee, 2%),
+    taxo-series-color: #424242,
+    taxo-series-background-color: darken(#eee, 2%),
+    /* 'sections' & 'authors' */
+    taxo-filter-color: #424242,
+    taxo-filter-background-color: darken(#eee, 2%),
+
+/* TODO: use different for 'bio'? */
+    social-icon-color: #607d8b,
+    social-icon-hover-color: #26a69a,
 
     sidebar-title-color: #607d8b,
     sidebar-title-hover-color: lighten(#607d8b, 15%),
@@ -47,6 +85,7 @@ $light: (
     navbar-menu-item-active-background-color: #e0e0e0,
     burger-menu-color: #777,
 
+    /* header slides */
     header-title-color-default: #607d8b,
     header-title-shadow-color-default: #eee,
     header-subtitle-color-default: #607d8b,
@@ -62,38 +101,25 @@ $light: (
     featured-button-color: lighten(black, 30%),
     featured-button-hover-color: white,
 
-    taxo-title-color: #607d8b,
-    taxo-num-color: #424242,
-    taxo-num-background-color: darken(#eee, 15%),
-    taxo-tags-background-color: darken(#eee, 2%),
-    taxo-tags-color: #424242,
-    taxo-series-background-color: darken(#eee, 2%),
-    taxo-series-color: #424242,
-    taxo-categories-background-color: darken(#eee, 2%),
-    taxo-categories-color: #424242,
-    breadcrumb-item-color: #555,
-    breadcrumb-item-hover-color: #607d8b,
+    /* breadcrumb (path) */
     breadcrumb-background-color: #eee,
+    breadcrumb-item-color: #555,
     breadcrumb-item-active-color: #aaa,
+    breadcrumb-item-hover-color: #607d8b,
 
-    figcaption-color: #bdbdbd,
-    figcaption-background-color: #424242,
+    /* single post */
     single-hr-background-color: #bdbdbd,
     single-blockquote-border-color: #bdbdbd,
     single-header-title-color: #424242,
     single-contents-title-color: #607d8b,
     single-contents-subtitle-color: #424242,
-    related-header-title-color: #424242,
-    related-link-color: #607d8b,
+
     toc-header-background-color: darken(#eee, 1.5%),
     toc-header-background-hover-color: darken(#eee, 3%),
     toc-body-background-color: lighten(#eee, 1.5%),
 
     content-box-border-color: #aaa,
     content-box-background-color: #eeeeee,
-    burger-menu-color: #777,
-    social-icon-color: #777,
-    social-icon-hover-color: darken(#777, 20%),
 
     share-color: #FCFCFA,
     share-shadow-color: #727072,
@@ -105,9 +131,11 @@ $light: (
     action-popup-color: black,
     action-popup-border-color: black,
 
+    /* list page */
     list-title-color: #607d8b,
     list-title-shadow-color: #eee,
 
+    /* taxonomy pages */
     terms-title-color: #607d8b,
     terms-title-shadow-color: #eee,
     terms-tags-color: #424242,
@@ -115,34 +143,7 @@ $light: (
     terms-series-color: #424242,
     terms-len-color: #727072,
 
-/*
-    search-placeholder-color: #bdbdbd,
-    search-color: #424242,
-    search-icon-color: #bdbdbd,
-    search-border-color: #e0e0e0,
-    search-border-outline-color: rgba(207, 216, 220, 0.6),
-    search-border-active-color: #b0bec5,
-    search-background-color: #eeeeee,
-    search-content-color: #424242,
-    search-content-background-color: #eeeeee,
-    search-hover-background-color: darken(#eeeeee, 10%),
-    search-highlight-color: #FF6188,
-*/
-    selection-color: #FCFCFA,
-    selection-background-color: #FF6188,
-
-    //TODO: move below (before "about"?)
-    //TODO: add 'archive-title-color' and 'archive-title-shadow-color'?
-    archive-key-color: #FCFCFA,
-    archive-meta-color: #424242,
-    archive-type-color: #546e7a,
-    archive-key-background-color: #607d8b,
-    archive-type-background-color: #bdbdbd,
-    archive-hover-line-color: #FF6188,
-    gtt-color: #727072,
-    gtt-background-color: #eeeeee,
-    gtt-hover-color: #607d8b,
-    gtt-hover-background-color: darken(#eeeeee, 10%),
+    /* search page */
     switch-background-color: #bdbdbd,
     switch-button-color: #424242,
     switch-active-color: #607d8b,
@@ -155,13 +156,24 @@ $light: (
 /* TODO: unused...? => check code in 'pagination' */
 /*    pagination-disabled-color: #bdbdbd,*/
 
+    tiles-background-color: rgba(236, 239, 241, 0.85),
+    tiles-mask-background-color: rgba(236, 239, 241, 0.85),
+
     gallery-title-color: #424242,
     gallery-title-shadow-color: #eee,
-//TODO: unused - to remove
-//    gallery-mask-color: #424242,
     gallery-mask-background-color: rgba(236, 239, 241, 0.85),
+    gallery-link: black,
 
-    tiles-mask-background-color: rgba(236, 239, 241, 0.85),
+/* TODO: 'archive' currently not handled */
+/*
+    // TODO: add 'archive-title-color' and 'archive-title-shadow-color'?
+    archive-key-color: #FCFCFA,
+    archive-type-color: #82aaff,
+    archive-meta-color: #aed581,
+    archive-key-background-color: #FF6188,
+    archive-type-background-color: #424242,
+    archive-hover-line-color: #FF6188,
+*/
 
     about-title-color: #424242,
     about-title-shadow-color: #eee,
@@ -175,9 +187,6 @@ $light: (
     contact-button-background-color: #eee,
     contact-border-color: #1d1d1d,
 */
-
-    custom-scrollbar-foreground-color: #cfd8dc,
-    custom-scrollbar-background-color: #FCFCFA,
 
     e404-color: black,
     e404-title-color: black,
@@ -196,4 +205,7 @@ $light: (
     alert-danger-background-color: lighten(red, 30%),
     alert-danger-text-color: black,
     alert-danger-border-color: red,
+
+    /* custom variables (external to theme) */
+    /* ... */
 );

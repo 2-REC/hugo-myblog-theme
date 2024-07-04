@@ -106,8 +106,8 @@
     border-radius: 0.175rem;
     
     @include themify($themes) {
-      color: themed('taxo-title-color');
-      background-color: themed('taxo-tags-background-color');
+      color: themed('taxo-filter-color');
+      background-color: themed('taxo-filter-background-color');
     }
 
     padding: 0.125rem 0.25rem;
@@ -329,7 +329,7 @@ button.active {
   border-color: #ccc;
 */
 @include themify($themes) {
-  border-color: themed('switch-active-color');
+  border-color: themed('taxo-active-color');
 }    
 /*
 switch-button-color

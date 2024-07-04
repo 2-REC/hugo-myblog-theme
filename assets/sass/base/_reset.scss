@@ -28,10 +28,10 @@ background-color: black;
 a {
   @include themify($themes) {
     text-decoration: none;
-    color: themed("link");
+    color: themed('link');
 
     @include on-event {
-      color: themed("link-hover");
+      color: themed('link-hover');
       text-decoration: underline;
     }
   }
@@ -128,20 +128,6 @@ dfn {
   font-style: italic;
 }
 
-figcaption {
-  font-style: italic;
-  font-size: 0.9rem;
-  margin: 0;
-  text-align: right;
-
-  @include themify($themes) {
-    color: themed("figcaption-color");
-    strong {
-      color: themed("figcaption-strong-color");
-    }
-  }
-}
-
 pre {
   white-space: pre;
   -webkit-hyphens: none;
@@ -152,14 +138,14 @@ pre {
 ::-moz-selection {
   /* Code for Firefox */
   @include themify($themes) {
-    color: themed("selection-color");
-    background: themed("selection-background-color");
+    color: themed('selection-color');
+    background: themed('selection-background-color');
   }
 }
 
 ::selection {
   @include themify($themes) {
-    color: themed("selection-color");
-    background: themed("selection-background-color");
+    color: themed('selection-color');
+    background: themed('selection-background-color');
   }
 }

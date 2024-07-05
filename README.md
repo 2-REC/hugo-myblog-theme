@@ -220,10 +220,11 @@ The "bio" section can be added to sidebars.
 It contains information relative to the blogger/author.
 
 TODO: Also in "about" page. (?)
+TODO: if other authors (post specific), use 'whoami' (TODO!)
 
 
 * Avatar image (Optional).  
-    => 3 different ways:
+    => 2 different ways:
     * Default location (automatic):
         * Create directories "static/images/bio".
         * Add an image file "avatar" (".jpg", ".png" or ".svg") in the directory.
@@ -235,26 +236,26 @@ TODO: Also in "about" page. (?)
             ```
             bioImage = "/images/avatar.jpg"
             ```
-    * Gravatar: (TODO: check how it works + test)
-        * useGravatar = true
-            (TODO: + other params?)
 
-* "whoami": Blog author information.
-    (TODO: rename "whoami" + fields)
+* Blog author information.
     For example:
-    * myname = "Someone Else"
-    * whoami = "Blogger"
+    * bioName = "Bob Solo"
+    * bioDescription = "Blogger"
     * Optional:
-        * location = "City, Country"
-        * organization = "Hugo"
-        * email = "someone@email.com"
-            **NOTE:** Sould use the same as in "socialOptions".
-        * link = "https://somesite.org"
+        * bioLocation = "City, Country"
+        * bioOrganization = "Hugo"
+        * bioShowEmail
+            * true: Use value defined in "socialOptions" (and email not added to social icons).
+            * false (default): Email added to social icons.
+        * bioLink = "https://somesite.org"
+        * bioHideSocial
+            * true: Hide social icons.
+            * false (default): Show social icons.
 
 * Social Options: Contact information, such as social networks, sites and communities.  
     (TODO: Check for missing icons!)  
     => Long list of supported platforms. Check "socialOptions" in "params.toml" for the complete list.
-    Examples of social options: email, phone, facebook, twitter, github, instagram, youtube, linkedin, pinterest, steam.
+    Examples of social options: email, facebook, twitter, github, instagram, youtube, linkedin, pinterest, steam.
     **NOTE:** Additional options can be added by creating a new entry in the list (in params file) and adding its corresponding icon. See (TODO: add link) for details.  
         (TODO: check if correct (to add new option), or if need other changes)
     **NOTE:** The social options can also be in the site footer. See below for details.
@@ -502,7 +503,7 @@ TODO: detail only changes from Zzo (not usage)
     * If 'copyright' defined in site config
     * Params 'copyrightOptions'
       * 'copyrightLink': Allow copyright owner to be a link. If not defined: no link
-      * 'copyrightOwner': Owner of the copyright. If not defined: 'myname' param is used instead
+      * 'copyrightOwner': Owner of the copyright. If not defined: 'bioName' param is used instead
       * 'copyrightStartYear': Allow range for copyright period. If not defined: only current year
       * Removed copyright image
 
@@ -614,6 +615,7 @@ TODO: detail only changes from Zzo (not usage)
   - Removed swipe from header (using slider from "jQuery.cycle" library)
 * Busuanzi site counter
 * Baidu Analytics
+* Gravatar (in bio)
 * Publications
 
 

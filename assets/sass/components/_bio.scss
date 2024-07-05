@@ -3,8 +3,8 @@
   @include justify-content(center);
   @include align-items(flex-start);
   @include flex-direction(column);
-  @include themify($codeblock) {
-    color: themed('content-pre-color');
+  @include themify($themes) {
+    color: themed('bio-color');
   }
 
   width: 100%;
@@ -47,10 +47,9 @@ width: 100%;
     font-size: 26px;
     margin-top: 0.8rem;
 
-    //TODO: add this?
-    //@include themify($themes) {
-    //  color: themed('body-color');
-    //}
+    @include themify($themes) {
+      color: themed('bio-name-color');
+    }
   }
 
   &__desc {
@@ -76,7 +75,7 @@ width: 100%;
         @include flexbox();
         @include align-items(center);
         @include themify($themes) {
-          color: themed('social-icon-color');
+          color: themed('bio-social-icon-color');
         }
       }
 
@@ -95,7 +94,7 @@ width: 100%;
         @include flexbox();
         @include align-items(center);
         @include themify($themes) {
-          color: themed('social-icon-color');
+          color: themed('bio-social-icon-color');
         }
       }
 
@@ -122,9 +121,9 @@ width: 100%;
       @include align-items(center);
       @include justify-content(center);
       @include themify($themes) {
-        color: themed('social-icon-color');
+        color: themed('bio-social-icon-color');
         @include on-event {
-          color: themed('social-icon-hover-color');
+          color: themed('bio-social-icon-hover-color');
         }
       }
     }

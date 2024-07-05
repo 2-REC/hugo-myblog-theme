@@ -59,7 +59,6 @@ $light: (
     taxo-filter-color: #424242,
     taxo-filter-background-color: darken(#eee, 2%),
 
-/* TODO: use different for 'bio'? */
     social-icon-color: #607d8b,
     social-icon-hover-color: #26a69a,
 
@@ -72,6 +71,12 @@ $light: (
     toc-title-color: #727072,
     toc-label-color: #727072,
     toc-label-active-color: darken(#727072, 15%),
+
+    /* sidebar bio */
+    bio-color: black,
+    bio-name-color: black,
+    bio-social-icon-color: #bdbdbd,
+    bio-social-icon-hover-color: #26a69a,
 
     /* navigation bar (top) */
     navbar-background-color: #EEEEEE,

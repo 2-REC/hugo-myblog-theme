@@ -3,12 +3,15 @@
     {{ partial "footer/go-to-top" . }}
     <hr />
 
-    {{/* TODO: should be optional? (in "if 'footerLinks'" block) */}}
+    {{ if $.Param "footerLinks" }}
     <div class="basicflex">
         {{ range $.Param "footerLinks" }}
-            <a href="{{ .link }}" class="footer__link" target="_blank" rel="noreferrer">{{ .name }}</a>
+            {{ if .name }}
+                <a href="{{ .link }}" class="footer__link" target="_blank" rel="noreferrer">{{ .name }}</a>
+            {{ end }}
         {{ end }}
     </div>
+    {{ end }}
 
     <div class="footer__poweredby">
         {{ partial "footer/site-counter" . }}
@@ -21,7 +24,7 @@
                 {{ $leftString := replace (index (split $.Site.Copyright "{}") 0) "{year}" $year }}
                 {{ $rightString := replace (index (split $.Site.Copyright "{}") 1) "{year}" $year }}
                 {{ $link := $.Site.Params.copyrightOptions.copyrightLink }}
-                {{ $owner := $.Site.Params.myname }}
+                {{ $owner := $.Site.Params.bioName }}
                 {{ with $.Site.Params.copyrightOptions.copyrightOwner }}
                     {{ $owner = . }}
                 {{ end }}

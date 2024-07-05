@@ -15,8 +15,8 @@
 {{ if $.Param "author" }}
 <meta name="author" content="{{ $.Param "author" }}">
 <meta property="article:author" content="{{ .Permalink | absLangURL }}@{{ $.Param "author" }}">
-{{ else if .Site.Params.myname }}
-<meta name="author" content="{{ .Site.Params.myname }}">
+{{ else if .Site.Params.bioName }}
+<meta name="author" content="{{ .Site.Params.bioName }}">
 {{ end }}
 {{/* Advised not to be used (against spam robots)
 {{ with $.Param "contact" }}<meta name="contact" content="{{ . }}">{{ end }}

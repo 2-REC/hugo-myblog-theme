@@ -82,17 +82,16 @@ galleryZoom = true
 #disableSearchAuthors = true # Default: false
 
 
-#TODO: rename all params to "bio..." (+propagate impacts)
-# whoami
+# Creator (bio)
 # Not necessary if no "bio" in sidebars
-myname = "Someone"
-email = "someone@email.com" #TODO: use same as in "socialOptions" - Duplicate? Remove here?
-whoami = "Blogger"
+bioName = "Someone"
+#bioShowEmail = true # Default: false
+bioDescription = "Blogger"
 bioImage = "" # Example: "/images/bio/avatar.jpg"
-useGravatar = false
-location = "City, Country"
-organization = "Hugo"
-link = "https://somesite.org"
+bioLocation = "City, Country"
+bioOrganization = "Hugo"
+bioLink = "https://somesite.org"
+#bioHideSocial = true # Default: false
 
 # Sidebar
 #TODO: depends on page type! (=> specify!)
@@ -198,8 +197,7 @@ enableBusuanzi = false
 
 [socialOptions]
   #TODO: Add missing icons!
-  email = "mailto:your@email.com"
-  phone = ""
+  email = "your@email.com"
   facebook = "http://facebook.com/"
   twitter = "http://twitter.com/"
   github = "https://github.com/2-REC/hugo-myblog-theme"

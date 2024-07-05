@@ -452,13 +452,11 @@ TODO: detail only changes from Zzo (not usage)
   * Types:
     * Single: Single header
     * Multi: Slides
-        * Uses the "Cycle" library for the slideshow.
-            **NOTE:** The "swipe" feature is not handled here.
     * Custom: Defined in "custom-header.html"
     * None: No entry in "params" => No header
   * Slides:
     * When "multi", uses "Cycle" library for slideshow
-      ! - Removed "swipe" feature as in Zzo
+        **NOTE:** The "swipe" feature is not handled anymore.
     * Slider settings specified in "options" field
   * Image: Optional
   * Titles + Subtitles
@@ -524,7 +522,7 @@ TODO: detail only changes from Zzo (not usage)
 * Themes
   * More dynamic theme management.
     For each theme:
-    - Add entry+infos in "data/theme.toml" (name, chroma, chroma_background, primary_color)
+    - Add entry+infos in "data/theme.toml" (name, chroma, chroma_background)
     - Add scss files ("themes/name.scss" + "themes/chroma_background.scss" + "syntax/chroma.scss")
   * Default case for 'theme' if current value in local storage is not valid
     => Remove 'theme' from localStorage if value is not in list of themes (in 'data/theme.toml').
@@ -609,10 +607,11 @@ TODO: detail only changes from Zzo (not usage)
 
 * All themes but "light" & "dark"
 * Search feature
-  * ~Replaced by filters search
+    * Removed as wasn't fully fonctional
+    * ~Replaced by feature to filter on taxonomy terms
 * Swipe
-  - Removed swipe shortcodes "swiper" and "swiperItem"
-  - Removed swipe from header (using slider from "jQuery.cycle" library)
+    * Removed swipe shortcodes "swiper" and "swiperItem"
+    * Removed swipe from header (using "slider" from "jQuery.cycle" library)
 * Busuanzi site counter
 * Baidu Analytics
 * Gravatar (in bio)
@@ -629,6 +628,7 @@ TODO: detail only changes from Zzo (not usage)
 
 
 ## DISCLAIMER
+
 * Hugo (+developer)
 * Zzo Theme (+developer)
 * Creative Portfolio Theme (+developer)

@@ -1,5 +1,28 @@
 # TODO
 
+# GLOBAL
+
+
+# Homepage
+
+## Header
+
+* [ ] Disable selection in header.
+
+## Featured / Slides
+
+* [ ] Update to latest? (if no breaking changes)
+    https://jquery.malsup.com/cycle2/
+    (swipe support on mobile)
+
+* [ ] Add swipe feature to slides? ("swipe.js" or other? "Cycle2"?)
+    => Would be nice, at least on mobile.
+
+
+
+----
+
+
 !
 - [ ] scripts
   - [ ] check use of 'defer' for scripts loading (if used in some, required by others, but not all!)
@@ -8,7 +31,6 @@
   - [x] Check that 'slider-size-fix' is useless
     - [x] delete 'slider-size-fix.js' file
     - [x] revert to original 'jquery.cycle.all.min.js' file
-        - [ ] update to latest? (if no breaking changes)
   - [ ] Handle separate X align+padding for title & subtitle (alignX+paddingX)
   - [ ] Handle 'em' units (+'rem'?)
 
@@ -23,15 +45,14 @@
         - images don't cycle? (cannot go from last fo first)
         - [x] CSS (margins)
  
-- [ ] check when want '-' in each '{{' and '}}'
-
 - [ ] Mention use of libraries/modules in README/disclaimer
   - [ ] assets\js\lazysizes.min.js
     https://github.com/aFarkas/lazysizes
   - [x] photoswipe
   - [ ] hugo-tags-filter ("pointyfar")
     https://github.com/pointyfar/hugo-tags-filter
-  - [ ] cycle
+  - [x] cycle
+
 
 
 

@@ -22,17 +22,7 @@ $grid_row_gap: {{ .Site.Data.grid.grid_row_gap }};
 //$theme_hacker_chroma_background: {{ .Site.Data.skin.theme_hacker_chroma_background }};
 //$theme_solarized_chroma_background: {{ .Site.Data.skin.theme_solarized_chroma_background }};
 //$theme_kimbie_chroma_background: {{ .Site.Data.skin.theme_kimbie_chroma_background }};
-//
-//$button_dark_primary_color: {{ .Site.Data.button.dark_primary_color }};
-//$button_light_primary_color: {{ .Site.Data.button.light_primary_color }};
-//$button_hacker_primary_color: {{ .Site.Data.button.hacker_primary_color }};
-//$button_solarized_primary_color: {{ .Site.Data.button.solarized_primary_color }};
-//$button_kimbie_primary_color: {{ .Site.Data.button.kimbie_primary_color }};
 //////// THEMES - MID
-//TODO: remove this + usage in themes "scss" files => seems useless
-{{ range .Site.Data.theme.themes }}
-$button_{{ .name }}_primary_color: {{ .primary_color }};
-{{ end }}
 
 {{ range .Site.Data.theme.themes }}
 @import 'themes/{{ .name }}';

@@ -33,8 +33,6 @@
     https://github.com/pointyfar/hugo-tags-filter
   - [ ] cycle
 
-- [ ] delete "swipe.js" (+related CSS files)
-  - [ ] but first make sure don't want to use it ... => slider swipe? (would be nice, at least on mobile)
 
 
 ##################

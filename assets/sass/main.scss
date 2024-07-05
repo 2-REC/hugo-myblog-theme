@@ -110,7 +110,6 @@ $navm_theme_right_offset: {{ if and .Site.Params.enableLangChange (gt (len .Site
 @import 'components/pagination';
 //@import 'components/related';
 @import 'components/summary';
-@import 'components/swiper';
 @import 'components/switch';
 @import 'components/taxo';
 @import 'components/toc';

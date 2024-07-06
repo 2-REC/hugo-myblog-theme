@@ -225,7 +225,6 @@
     var singleContentsElem = document.querySelector('.single__contents');
     var navbar = document.querySelector('.navbar');
     var tocFlexbox = document.querySelector('.toc__flexbox');
-    //var tocFlexboxOuter = document.querySelector('.toc__flexbox--outer');
     var expandContents = document.querySelectorAll('.expand__content');
     var boxContents = document.querySelectorAll('.box');
     var notAllowedTitleIds = null;
@@ -342,14 +341,6 @@
                 tocFlexbox.classList.add('hide');
               }
             }
-            /*
-            if (tocFlexboxOuter) {
-              tocFlexboxOuter.setAttribute('data-position', '');
-              if (!tocFlexboxOuter.classList.contains('hide')) {
-                tocFlexboxOuter.classList.add('hide');
-              }
-            }
-            */
           }
         }
       } else { // scroll up
@@ -411,11 +402,6 @@
             if (tocFlexbox && !tocFlexbox.classList.contains('hide')) {
               tocFlexbox.classList.add('hide');
             }
-            /*
-            if (tocFlexboxOuter && !tocFlexboxOuter.classList.contains('hide')) {
-              tocFlexboxOuter.classList.add('hide');
-            }
-            */
           }
           
         }

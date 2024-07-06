@@ -119,26 +119,14 @@
     // =================================================================
 
 
-    // ============================== toc ==============================
+    // ======================= sidebar toc =============================
     {{ $enableToc := ($.Param "enableSidebarToc") }}
-    /* 2-REC: removed "toc" (redundant "enableToc") */
-    //{{ $toc := ($.Param "toc") }}
-    /* 2-REC: removed "hideToc" */
-    //{{ $hideToc := ($.Param "hideToc") }}
     {{ $tocFolding := $.Param "tocFolding" }}
-    
+
     var enableToc = JSON.parse({{ $enableToc | jsonify }});
-    /* 2-REC: removed "toc" (redundant "enableToc") */
-    //var toc = JSON.parse({{ $toc | jsonify }});
-    /* 2-REC: removed "hideToc" */
-    //var hideToc = JSON.parse({{ $hideToc | jsonify }});
     var tocFlexbox = document.querySelector('.toc__flexbox');
-    /* 2-REC: removed "outer toc" */
-    //var tocFlexboxOuter = document.querySelector('.toc__flexbox--outer');
     var tocFolding = JSON.parse({{ $tocFolding | jsonify }});
-    
-    /* 2-REC: removed "toc" (redundant "enableToc") */
-    //if ((enableToc || toc) && document.querySelector('.toc')) {
+
     if (enableToc && document.querySelector('.toc')) {
       var tableOfContentsElem = document.querySelector('.toc').querySelector('#TableOfContents');
 
@@ -186,15 +174,6 @@
               tocFlexbox.classList.add('hide');
             }
           }
-          /* 2-REC: removed "outer toc" */
-          /*
-          if (tocFlexboxOuter) {
-            tocFlexboxOuter.setAttribute('data-position', '');
-            if (!tocFlexboxOuter.classList.contains('hide')) {
-              tocFlexboxOuter.classList.add('hide');
-            }
-          }
-          */
         }
       }
 

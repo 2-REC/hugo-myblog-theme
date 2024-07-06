@@ -2,6 +2,11 @@
 
 # GLOBAL
 
+## README
+
+- [ ] Mention use of libraries/modules in README/disclaimer
+  - [ ] missing ones?
+
 
 # Homepage
 
@@ -17,6 +22,7 @@
 
 * [ ] Add swipe feature to slides? ("swipe.js" or other? "Cycle2"?)
     => Would be nice, at least on mobile.
+
 
 
 
@@ -45,14 +51,6 @@
         - images don't cycle? (cannot go from last fo first)
         - [x] CSS (margins)
  
-- [ ] Mention use of libraries/modules in README/disclaimer
-  - [ ] assets\js\lazysizes.min.js
-    https://github.com/aFarkas/lazysizes
-  - [x] photoswipe
-  - [ ] hugo-tags-filter ("pointyfar")
-    https://github.com/pointyfar/hugo-tags-filter
-  - [x] cycle
-
 
 
 
@@ -548,6 +546,7 @@ LATER:
         * [ ] See what to keep... (+associated in "params.toml")
         * [ ] Add missing icons
         * [ ] See if want to change icons
+        * [ ] Rename/change Twitter (to "X")
     * [ ] summary
         * [ ] Make partial for "meta" block
           => Used by all summaries (+tiles)

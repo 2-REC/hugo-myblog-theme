@@ -543,7 +543,7 @@ TODO: detail only changes from Zzo (not usage)
     * Reading time
     * Tags
 * Summary Tiles
-  * Added possibility to have an image, using tiles as in gallery, with CSS similar to "Creative Protfolio" theme
+  * Added possibility to have an image, using tiles as in gallery, with CSS similar to "Creative Portfolio" theme
 * Gallery + Summary tiles + Recent posts
   * Added "zooming" when hovering the images
   * Fixed sizing issues (20% seems buggy, +use of "match"+"unmatch" doesn't work well when quick resize, +no init trigger on page onload)
@@ -629,12 +629,12 @@ TODO: detail only changes from Zzo (not usage)
 
 ## DISCLAIMER
 
-* Hugo (+developer)
-* Zzo Theme (+developer)
-* Creative Portfolio Theme (+developer)
-    https://themes.gohugo.io/hugo-creative-portfolio-theme
-* jQuery Cycle Plugin (+developer)
-    http://jquery.malsup.com/cycle/
-* "[PhotoSwipe](http://photoswipe.com)" by Dmitry Semenov
+* "[Hugo](https://gohugo.io/)" static site generator
+* "[Hugo Zzo Theme](https://github.com/zzossig/hugo-theme-zzo)" from [zzossig](https://github.com/zzossig)
+* "[Hugo Creative Portfolio Theme](https://github.com/kishaningithub/hugo-creative-portfolio-theme)" from [Kishan B](https://github.com/kishaningithub)
+* "[jQuery Cycle Plugin](http://jquery.malsup.com/cycle/)" from [malsup](https://malsup.com/)
+* "[PhotoSwipe](http://photoswipe.com)" from [Dmitry Semenov](https://twitter.com/dimsemenov)
+* "[lazysizes](https://github.com/aFarkas/lazysizes)" from [Alexander Farkas](https://github.com/aFarkas)
 * "[hugo-easy-gallery](https://github.com/liwenyip/hugo-easy-gallery/)" from [liwenyip](https://github.com/liwenyip)
-* others?
+* "[hugo-tags-filter](https://github.com/pointyfar/hugo-tags-filter)" from [pointyfar](https://github.com/pointyfar)
+* Others? If someone was forgotten, please accept my apologies, I will be happy to fix this!

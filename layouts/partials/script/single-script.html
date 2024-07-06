@@ -146,9 +146,8 @@
           tableOfContentsElem.querySelectorAll('a').forEach(function (elem) {
             elem.addEventListener('click', function () {
               var id = elem.getAttribute('id');
-              navbar.classList.remove('navbar--show');
-              navbar.classList.remove('navbar--hide');
-              navbar.classList.add('navbar--hide');
+              /* specify with clicked on a TOC link */
+              document.querySelector('.single__contents').classList.add("toc--link");
 
               document.querySelector('.toc').querySelectorAll('a').forEach(function (elem) {
                 elem.classList.remove('active');
@@ -237,6 +236,25 @@
         }
       }) : null;
       */
+    }
+    // =================================================================
+
+
+    // ======================= single toc ==============================
+    {{ $enableSingleToc := ($.Param "enableSingleToc") }}
+    var enableSingleToc = JSON.parse({{ $enableSingleToc | jsonify }});
+    if (enableSingleToc && document.querySelector('.expand__content--toc')) {
+      var tableOfContentsElem = document.querySelector('.expand__content--toc').querySelector('#TableOfContents');
+      if (tableOfContentsElem) {
+        if (tableOfContentsElem.querySelectorAll('a').length > 0) {
+          tableOfContentsElem.querySelectorAll('a').forEach(function (elem) {
+            elem.addEventListener('click', function () {
+              /* specify with clicked on a TOC link */
+              document.querySelector('.single__contents').classList.add("toc--link");
+            });
+          });
+        }
+      }
     }
     // =================================================================
 

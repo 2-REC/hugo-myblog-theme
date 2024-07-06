@@ -209,27 +209,32 @@
 
     h2 {
       font-size: 2.2rem;
-      margin: 3.2rem 0 1.5rem 0;
+      margin: 2.8rem 0 1.5rem 0;
+      padding-top: calc(#{$grid_navbar_height * 0.25});
     }
 
     h3 {
       font-size: 1.8rem;
-      margin: 2.8rem 0 1.25rem 0;
+      margin: 2.4rem 0 1.25rem 0;
+      padding-top: calc(#{$grid_navbar_height * 0.25});
     }
 
     h4 {
       font-size: 1.5rem;
-      margin: 2.4rem 0 1rem 0;
+      margin: 2rem 0 1rem 0;
+      padding-top: calc(#{$grid_navbar_height * 0.25});
     }
 
     h5 {
       font-size: 1.2rem;
-      margin: 2rem 0 0.8rem 0;
+      margin: 1.6rem 0 0.8rem 0;
+      padding-top: calc(#{$grid_navbar_height * 0.25});
     }
 
     h6 {
       font-size: 1rem;
-      margin: 1.5rem 0 0.5rem 0;
+      margin: 1.2rem 0 0.5rem 0;
+      padding-top: calc(#{$grid_navbar_height * 0.25});
     }
 
     pre {

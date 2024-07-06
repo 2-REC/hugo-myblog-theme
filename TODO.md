@@ -200,7 +200,6 @@
 - [ ] Toc:
   - check/remove data-folding if not used
   - clean css
-  - check toc in single page body
 
 ##################
 

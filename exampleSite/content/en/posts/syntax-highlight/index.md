@@ -5,7 +5,7 @@ description: "Syntax highlighting test"
 banner: "syntax-highlight.png"
 draft: false
 enableToc: true
-enableTocContent: false
+enableSingleToc: false
 author: Jeus
 tags:
 - hugo

@@ -44,7 +44,7 @@ breadcrumbHome = "both" # Default "icon", values: "text", "icon", "both"
 metaInfoEdit = true
 metaInfoReadingTime = true
 metaTags = true
-enableTocContent = false # TOC in page body
+#enableSingleToc = false # TOC in page body (default false)
 #titleClipboard = true # Default false
 codeClipboard = true # Default false
 
@@ -119,7 +119,7 @@ enableSidebarTags = true # Default: false
 enableSidebarSeries = true # Default: false
 enableSidebarCategories = true # Default: false
 enableSidebarSearch = true # Default: false
-enableToc = true #TODO: rename to enableSidebarToc
+enableSidebarToc = true
 #tocLevels = ["h2", "h3", "h4"] #TODO: seems useless/ignored?
 #tocFolding = true # collapse sub titles
 itemsPerCategory = 5 #TODO: set 1 for each component? (recent, top, etc.)

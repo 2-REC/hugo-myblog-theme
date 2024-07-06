@@ -340,7 +340,7 @@ Selectable in navigation bar on top.
                   descriptionFontSize: 10%
                 spaceBetweenTitleDescription: 5%
               ```
-
+    * TOC: 'enableSingleToc' in params.toml, overridable per post in markdown(?)
 - sidebars
 - galleries
 - footer

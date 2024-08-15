@@ -92,6 +92,8 @@
     <script defer type='text/javascript' src="{{ $jqueryCycle.RelPermalink }}"></script>
     {{ $slider := resources.Get "js/slider-settings.min.js" | resources.Fingerprint }}
     <script defer type='text/javascript' src="{{ $slider.RelPermalink }}"></script>
+    {{ $sliderSwipe := resources.Get "js/slider-swipe.js" | resources.Fingerprint }}
+    <script defer type='text/javascript' src="{{ $sliderSwipe.RelPermalink }}"></script>
     {{- end -}}
   {{ end }}
 {{ end }}

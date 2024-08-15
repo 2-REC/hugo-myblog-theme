@@ -3,9 +3,10 @@
     {{ if eq .Title "Search" }}
         {{ $pages = where $.Site.Pages "Section" "posts" }}
     {{ end }}
+<a href="{{ .RelPermalink }}" class="sidebar-recent__title p2">{{ i18n (lower (printf "recent-%s" .Title)) | default .Title }}</a>
     {{ range first ($.Param "itemsPerCategory") $pages }}
     <li class="sidebar-recent">
-        <a href="{{ .RelPermalink }}" class="sidebar-recent__title p1">{{ .Title }}</a>
+        <a href="{{ .RelPermalink }}" class="sidebar-recent__a p2">{{ .Title }}</a>
     </li>
     {{ end }}
     {{/* TODO: inside or outside the "range"? */}}

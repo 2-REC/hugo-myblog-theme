@@ -28,9 +28,9 @@
         <div class="list__header">
             <h5 class="list__header--title capitalize h5">{{.Title}}</h5>
         </div>
-        <div class="list__header--desc single__contents p2">
-            {{ .Content }}
-        </div>
+        {{ with .Content }}
+        <div class="list__header--desc single__contents p2">{{ . }}</div>
+        {{ end }}
         {{ $summaryShape := lower ($.Param "summaryShape") }}
         {{ if $.Param "summaryShapeList" }}
             {{ $summaryShape = lower ($.Param "summaryShapeList") }}

@@ -23,7 +23,7 @@
         {{ else if eq $value "top" }}
             {{ partial "sidebar/list/posts-by-order" $context.Page }}
         {{ else if eq $value "recent" }}
-            {{ partial "sidebar/list/recent" $context.Page }}
+            {{ partial "sidebar/list/recent-home" $context.Page }}
         {{ else if eq $value "tags" }}
             {{ partial "taxonomy/taxonomy-tags-single" $context.Page }}
         {{ else if eq $value "categories" }}

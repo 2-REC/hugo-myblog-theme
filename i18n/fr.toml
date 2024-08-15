@@ -132,3 +132,6 @@ other = "Temps Lecture"
 # #
 # #[posts-by-order]
 # #other = "TOP POSTS"
+
+[recent-posts]
+other = "Recents"

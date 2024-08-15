@@ -291,10 +291,6 @@
           return null;
         }
 
-        if (singleContentsElem.classList.contains('toc--link')) {
-          /* Don't need hack to force hiding navbar when clicking a TOC link, as already hiding it */
-          singleContentsElem.classList.remove('toc--link');
-        }
         if (!navbar.classList.contains('navbar--hide')) {
           navbar.classList.add('navbar--hide');
         } else if (navbar.classList.contains('navbar--show')) {
@@ -302,6 +298,10 @@
         }
 
         if (singleContentsElem) {
+          if (singleContentsElem.classList.contains('toc--link')) {
+            /* Don't need hack to force hiding navbar when clicking a TOC link, as already hiding it */
+            singleContentsElem.classList.remove('toc--link');
+          }
           if (singleContentsElem.querySelectorAll(tocLevels).length > 0) {
             var offset = singleMainElem.offsetTop + singleContentsElem.offsetTop;
 
@@ -362,20 +362,20 @@
           gttBtn.style.display = "none";
         }
 
-        if (singleContentsElem.classList.contains('toc--link')) {
-          /* ~hack to force hiding navbar when clicking a TOC link */
-          navbar.classList.add('navbar--hide');
-          navbar.classList.remove('navbar--show');
-          singleContentsElem.classList.remove('toc--link');
-        } else {
-          if (navbar.classList.contains('navbar--hide')) {
-            navbar.classList.remove('navbar--hide');
-          } else if (!navbar.classList.contains('navbar--show')) {
-            navbar.classList.add('navbar--show');
-          }
-        }
-
         if (singleContentsElem) {
+          if (singleContentsElem.classList.contains('toc--link')) {
+            /* ~hack to force hiding navbar when clicking a TOC link */
+            navbar.classList.add('navbar--hide');
+            navbar.classList.remove('navbar--show');
+            singleContentsElem.classList.remove('toc--link');
+          } else {
+            if (navbar.classList.contains('navbar--hide')) {
+              navbar.classList.remove('navbar--hide');
+            } else if (!navbar.classList.contains('navbar--show')) {
+              navbar.classList.add('navbar--show');
+            }
+          }
+
           if (singleContentsElem.querySelectorAll(tocLevels).length > 0) {
             var offset = singleMainElem.offsetTop + singleContentsElem.offsetTop;
 
@@ -427,7 +427,6 @@
               tocFlexbox.classList.add('hide');
             }
           }
-          
         }
 
         if (tableOfContentsElem && document.documentElement.scrollTop < 250) {

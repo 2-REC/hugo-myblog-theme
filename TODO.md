@@ -534,6 +534,7 @@ LATER:
         * [ ] list
             * [ ] posts-by-order => see how to handle
               * [ ] Need to manually adapt/set order every time new posts?
+                * ('order' field in post markdown - integer)
         * [ ] sidebar-menu => Empty!?
     * [ ] script
         => See what to keep (and remove uses in code)

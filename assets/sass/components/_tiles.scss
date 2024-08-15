@@ -21,10 +21,13 @@
     width: 25%;
   }
 
-  // 2-REC: Removed first block - buggy? ("screen and (max-width:1200px)")
-  //.fifth {
-  //  width: 20%;
-  //}
+  .fifth {
+    width: 20%;
+  }
+
+  .sixth {
+    width: 16.6%;
+  }
 }
 
 /* clear fix */
@@ -95,6 +98,7 @@ margin: 0.51rem;
 //  background: #fff;
 
 font-size: 14px;
+/*font-size: 12px;*/
 
   @include themify($themes) {
     background-color: themed('tiles-background-color');
@@ -118,8 +122,10 @@ font-size: 14px;
 
 .box-masonry h1 {
   padding-bottom: 0.25em;
-  font-size: 16px;
+font-size: 1em;
+/*font-size: 1.2em;*/
   line-height: 1.25;
+/* TODO: 800? */
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;

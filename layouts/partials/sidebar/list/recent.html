@@ -1,6 +1,9 @@
 {{ if and ($.Param "enableSidebarRecent") ($.Param "itemsPerCategory") }}
-    {{/* TODO: how is the order determined? */}}
-    {{ range first ($.Param "itemsPerCategory") .Pages }}
+    {{ $pages := .Pages }}
+    {{ if eq .Title "Search" }}
+        {{ $pages = where $.Site.Pages "Section" "posts" }}
+    {{ end }}
+    {{ range first ($.Param "itemsPerCategory") $pages }}
     <li class="sidebar-recent">
         <a href="{{ .RelPermalink }}" class="sidebar-recent__title p1">{{ .Title }}</a>
     </li>

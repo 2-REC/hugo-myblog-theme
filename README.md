@@ -234,7 +234,7 @@ TODO: if other authors (post specific), use 'whoami' (TODO!)
         * Set the prameter "bioImage" in the params file "config/_default/params.toml".
             For example, if in "static/images":
             ```
-            bioImage = "/images/avatar.jpg"
+            bioImage = "images/avatar.jpg"
             ```
 
 * Blog author information.
@@ -307,10 +307,8 @@ Selectable in navigation bar on top.
         => Add new fonts in "static/fonts" of site
 
 
-(data/grid.toml?)
+#### CONTENT
 
-
-#### ...
 - search (filters)
 - posts
     TODO: check
@@ -342,13 +340,27 @@ Selectable in navigation bar on top.
               ```
     * TOC: 'enableSingleToc' in params.toml, overridable per post in markdown(?)
 - sidebars
+    * width of sidebars can be changed by setting values in 'data/grid.toml'
 - galleries
 - footer
   showSocialLinks, etc.
 - about page
+    * create 'content/about' directory, with 'index.md' file with minimum content:
+        ```
+        ---
+        title: About
+        type: about
+        ---
+        ```
 - contact page
 
 ...
+
+
+#### NAVBAR
+* entries defined by directories in 'content'.
+* height of navbar can be changed by setting values in 'data/grid.toml'
+
 
 TODO:
 - adapt params

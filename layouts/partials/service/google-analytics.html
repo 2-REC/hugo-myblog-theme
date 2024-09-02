@@ -1,11 +1,9 @@
-{{/* BEGIN */}}
-{{/*
-{{ if not .Site.IsServer }}
+{{- if $.Site.Params.googleAnalytics -}}
+  {{- if not .Site.IsServer -}}
+{{/* TODO: this should be removed, files don't exist
+=> remove all services?
+    {{- template "_internal/google_analytics.html" . -}}
+    {{- template "_internal/google_analytics_async.html" . -}}
 */}}
-{{/* MID */}}
-{{/* OK? */}}
-{{ if and ($.Site.Params.googleAnalytics) (not .Site.IsServer) }}
-{{/* END */}}
-  {{ template "_internal/google_analytics.html" . }}
-  {{ template "_internal/google_analytics_async.html" . }}
-{{ end }}
+  {{- end -}}
+{{- end -}}

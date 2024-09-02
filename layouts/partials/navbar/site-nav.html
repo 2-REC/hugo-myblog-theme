@@ -7,14 +7,14 @@
             {{- $src = "logo/logo.png" | relURL -}}
         {{- end -}}
         {{- if $src }}
-        <a href="{{ "/" | relLangURL }}" title="{{ i18n "tooltip-home" }}" rel="home" class="{{ if eq ($.Param "logoType") "long" }}navbar__long-link{{ else }}navbar__logo-link{{ end }}">
+        <a href="{{ "" | relLangURL }}" title="{{ i18n "tooltip-home" }}" rel="home" class="{{ if eq ($.Param "logoType") "long" }}navbar__long-link{{ else }}navbar__logo-link{{ end }}">
             <img src="{{ $src }}" alt="Home" class="navbar__logo">
         </a>
         {{- else -}}
         &nbsp;&nbsp;
         {{- end -}}
         {{- with .Site.Params.logoText }}
-        <a href="{{ "/" | relLangURL }}" title="{{ i18n "tooltip-home" }}" rel="home" class="navbar__title-link">
+        <a href="{{ "" | relLangURL }}" title="{{ i18n "tooltip-home" }}" rel="home" class="navbar__title-link">
             <h6 class="navbar__title">{{ . }}</h6>
         </a>
         {{- end }}

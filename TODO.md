@@ -31,7 +31,10 @@
 
 !
 - [ ] scripts
-  - [ ] check use of 'defer' for scripts loading (if used in some, required by others, but not all!)
+  - [ ] Make sure to use correct defer loading for scripts
+    - 'defer' to wait page is loaded (and keep order of scripts)
+        => problems when using 'localhost' (though didn't have issue before...?)
+    - no deferring: (nothing)
 
 - [ ] header-slide
   - [x] Check that 'slider-size-fix' is useless

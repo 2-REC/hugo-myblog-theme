@@ -33,7 +33,13 @@ More details about each step are provided in the "Checklist" (TODO: add link) se
     * themes
     * content
 
-* Copy the theme (git clone) to "themes/myblog".
+* Copy the theme to "themes/myblog".
+    * NOTE: If the site is a Git repository, the theme should be added as a submodule:
+        ```
+        cd themes
+        git submodule add https://github.com/2-REC/hugo-myblog-theme.git
+        ```
+        (+add '.gitignore' file)
 
 (**TODO:** Needed?
 * Delete the "exampleSite" subdirectory.
@@ -65,19 +71,19 @@ The lookup order also applies to other files than layout, such as files in "data
 
 Languages:
 * entry for each language
+    * A location must be specified for each language (even if only 1).
+        Specified by "contentdir".
 * "defaultContentLanguage" (config)
-* "enableLangChange" param
-* A location must be specified for each language (even if only 1).
-Specified by "contentdir".
-and/or "defaultContentLanguageInSubdir"?
-
+* "enableLangChange" (params)
+    * set to False if only 1 language (though done automatically)
+* Menus/nav: in "config/_default", 1 file per language (eg: "menus.en.toml" for English)
 * i18n stuff
   Define specific keywords/texts for each language.
   **TODO:** Add info/details
   => Copy i18n directory from theme + adapt content.
 
-=> If only 1 language, no "en" in URL
-(TODO: for itips, add FR later)
+* "defaultContentLanguageInSubdir"
+    => If only 1 language, set it to False (default) to remove "en" from URL.
 
 
 - static/manifest.json (? - role/usage?)

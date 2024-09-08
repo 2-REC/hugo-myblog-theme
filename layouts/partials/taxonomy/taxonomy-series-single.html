@@ -10,7 +10,7 @@
                     {{ if eq $series 0 }}
                         {{ $series = slice $element }}
                     {{ else }}
-                        {{ $series = $series | append (slice $element )}}
+                        {{ $series = $series | append $element }}
                     {{ end }}
                 {{ end }}
             {{ end }}
@@ -18,7 +18,7 @@
             {{ if eq $series 0 }}
                 {{ $series = slice $element }}
             {{ else }}
-                {{ $series = $series | append (slice $element )}}
+                {{ $series = $series | append $element }}
             {{ end }}
         {{ end }}
     {{ end }}

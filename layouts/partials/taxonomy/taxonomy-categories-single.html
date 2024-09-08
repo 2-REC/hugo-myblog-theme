@@ -10,7 +10,7 @@
                     {{ if eq $categories 0 }}
                         {{ $categories = slice $element }}
                     {{ else }}
-                        {{ $categories = $categories | append (slice $element )}}
+                        {{ $categories = $categories | append $element }}
                     {{ end }}
                 {{ end }}
             {{ end }}
@@ -18,7 +18,7 @@
             {{ if eq $categories 0 }}
                 {{ $categories = slice $element }}
             {{ else }}
-                {{ $categories = $categories | append (slice $element )}}
+                {{ $categories = $categories | append $element }}
             {{ end }}
         {{ end }}
     {{ end }}

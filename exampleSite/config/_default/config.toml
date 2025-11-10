@@ -12,7 +12,7 @@ summaryLength = 70
 copyright = "&copy;&nbsp;{year} {}, All Rights Reserved" # If no '{}', whole text will be on the left
 #timeout = 10000 # Default: 10000 (10s)
 enableEmoji = true
-paginate = 10 # Default 10
+paginatation.pagerSize = 10 # Default 10
 
 #pluralizeListTitles = false
 #enableGitInfo = false # Default: false

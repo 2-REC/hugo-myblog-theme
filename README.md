@@ -113,19 +113,23 @@ Languages:
 Home page header.
 
 Different types of headers are handled: "single", "multi" or "custom".
-The desired header type is specified by the parameter "homeHeaderType" in "params.toml".
 
-For "single" and "multi", headers are defined in the "header" section of the "_index.md" file at the root of each language directory in "content" (e.g.: "content/en").
-A different header can be defined for both types.
+Headers with "single" or "multi" types are defined in the "header" section of the "_index.md" file at the root of each language directory in "content" (e.g.: "content/en").
+Different headers can be defined for each type, by giving them unique names (e.g.: "single-image", "single-ratio", etc.).
 
 Examples can be found in "header.md" in "archetypes" directory.
 
 A custom header can be defined in "custom-header.html" in "layouts/partials/header".
 
-If no "header" entry is defined in "params", no header is created.
+The desired header is specified by the parameter "homeHeaderType" in "params.toml".
+For example:
+```
+homeHeaderType = "single-image"
+```
+If "homeHeaderType" is not defined in "params", no header is created.
 
 
-The parameters in "_index.md" for the "single" and "multi" headers are the following:
+The parameters in "_index.md" for the "single" and "multi" header types are the following:
 
 * type:
     * single: Single header.
@@ -217,7 +221,7 @@ TODO: check that complete + add details.
         * spaceBetweenTitleSubtitle: Vertical padding between title and subtitle blocks.
 
 **NOTE:** Measures or size values can use "%" or "px" units.
-Units must be specified, unless te value is 0.
+Units must be specified, unless the value is 0.
 
 
 #### Bio (Optional)
@@ -271,8 +275,9 @@ TODO: if other authors (post specific), use 'whoami' (TODO!)
 
 Recent posts displayed as a "carousel".
 
-Additional slides (not post related) can be defined to be displayed in the carousel.
+> **NOTE:** Posts must have a banner image to be included in the carousel.
 
+Additional slides (not post related) can be defined to be displayed in the carousel.
 
 * The parameters for the carousel are set in the "slider" section of the "params.toml" file.  
     The main parameters are:

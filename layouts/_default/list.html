@@ -28,14 +28,30 @@
         <div class="list__header">
             <h5 class="list__header--title capitalize h5">{{.Title}}</h5>
         </div>
-        <div class="list__header--desc single__contents p2">
-            {{ .Content }}
-        </div>
+        {{ with .Content }}
+        <div class="list__header--desc single__contents p2">{{ . }}</div>
+        {{ end }}
         {{ $summaryShape := lower ($.Param "summaryShape") }}
         {{ if $.Param "summaryShapeList" }}
             {{ $summaryShape = lower ($.Param "summaryShapeList") }}
         {{ end }}
-        {{ $paginator := .Paginate (where .Pages "Type" .Type).ByWeight }}
+        {{ $paginatorSize := 12 }}
+        {{ if eq $summaryShape "card" }}
+            {{ $paginatorSize = 4 }}
+        {{ else if eq $summaryShape "classic" }}
+            {{ $paginatorSize = 8 }}
+        {{ else if eq $summaryShape "compact" }}
+            {{ $paginatorSize = 12 }}
+        {{ else if eq $summaryShape "tiles" }}
+            {{/* NOTE: Unfortunately, pagination is static, and thus cannot adapt to screen size.
+                       For this reason, with tiles, 12 posts per page has been chosen, as it has the most multiples,
+                       and will work for the different grid sizes (1, 2, 3, 4).
+                       Though it might still be wrong as the grid tiles don't necessarily have the same sizes,
+                       and can be misaligned.
+            */}}
+            {{ $paginatorSize = 12 }}
+        {{ end }}
+        {{ $paginator := .Paginate (where .Pages "Type" .Type).ByWeight $paginatorSize }}
         {{ $pages := $paginator.Pages }}
         {{ if not (eq $summaryShape "tiles") }}
         <div class="summary__container" data-display="block">

@@ -1,4 +1,4 @@
-{{ if .Params.enableTocContent }}
+{{ if or .Params.enableSingleToc (and (ne .Params.enableSingleToc false) .Site.Params.enableSingleToc) }}
 <div class="expand">
   <button type="button" class="expand__button" aria-label="Expand Button">
     <span class="expand-icon expand-icon__right">

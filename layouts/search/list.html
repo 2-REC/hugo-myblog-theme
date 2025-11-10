@@ -29,9 +29,11 @@
     <h5 class="list__header--title capitalize h5">{{ .Title }}</h5>
   </div>
   {{/* TODO: make nicer CSS */}}
+  {{ with .Content }}
   <div class="list__header--desc p2">
-    {{.Content}}
+    {{ . }}
   </div>
+  {{ end }}
   {{ $summaryShape := lower ($.Param "summaryShape") }}
   {{ if $.Param "summaryShapeTaxonomy" }}
     {{ $summaryShape = lower ($.Param "summaryShapeTaxonomy") }}
@@ -282,7 +284,7 @@
       <hr class="hr-fade">
 
       <div class="filter-box">
-        <div><h2 class="taxo__title-nolink"><span id="selectedItemCount"></span> {{ i18n "items" }}</h2></div>
+        <div class="taxo__title-nolink">{{ i18n "items" }}: <span id="selectedItemCount"></span></div>
       </div>
 
       {{ if not (eq $summaryShape "tiles") }}

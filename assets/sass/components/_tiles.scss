@@ -21,10 +21,13 @@
     width: 25%;
   }
 
-  // 2-REC: Removed first block - buggy? ("screen and (max-width:1200px)")
-  //.fifth {
-  //  width: 20%;
-  //}
+  .fifth {
+    width: 20%;
+  }
+
+  .sixth {
+    width: 16.6%;
+  }
 }
 
 /* clear fix */
@@ -74,19 +77,6 @@
     
     @include flexbox();
     @include justify-content(center);
-
-/*
-  @include themify($themes) {
-//    background-color: themed('title-color');
-//    color: themed('title-color');
-    color: themed('link');
-
-    @include on-event {
-//      background-color: themed('link-hover');
-      color: themed('link-hover');
-    }
-  }
-*/
   }
 }
 
@@ -108,14 +98,11 @@ margin: 0.51rem;
 //  background: #fff;
 
 font-size: 14px;
+/*font-size: 12px;*/
 
-/* ?
   @include themify($themes) {
-    color: themed('body-background-color');
-    //color: themed('backdrop-background-color');
-    //color: themed('content-box-background-color');
+    background-color: themed('tiles-background-color');
   }
-*/
 
   box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2);
 
@@ -135,8 +122,10 @@ font-size: 14px;
 
 .box-masonry h1 {
   padding-bottom: 0.25em;
-  font-size: 16px;
+font-size: 1em;
+/*font-size: 1.2em;*/
   line-height: 1.25;
+/* TODO: 800? */
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -337,10 +326,8 @@ text-shadow: 0 0 1px 2px rgba(0, 0, 0, 0.6);
 
     @include themify($themes) {
       color: themed('gallery-title-color');
-      text-shadow: 1.2px 1.2px 0 themed('gallery-title-color'),
-        2.4px 2.4px 0 lighten(themed('gallery-title-shadow-color'), 4%),
-        3.6px 3.6px 0 lighten(themed('gallery-title-shadow-color'), 8%),
-        4.8px 4.8px 0 lighten(themed('gallery-title-shadow-color'), 12%);
+      /* TODO: could be configurable (?) */
+      text-shadow: 1.2px 1.2px 0 themed('gallery-title-shadow-color');
     }    
   }
 }
@@ -429,8 +416,6 @@ margin: 0.51rem;
   transition: all 0.2s ease-out;
 
   @include themify($themes) {
-//TODO: useless - to remove
-//    color: themed('gallery-mask-color');
     background-color: themed('gallery-mask-background-color');
   }
 }
@@ -443,7 +428,15 @@ margin: 0.51rem;
   position: absolute;
   left: 0;
   right: 0;
-  top: 0;
+
+  /* center text vertically on image */
+  /* TODO: '5 cqh'? Shouldn't be 50? */
+  container-name: tile-text-header;
+  container-type: inline-size;
+  //top: 0;
+  top: 50%;
+  margin-top: -5cqh;
+
   padding: 15px 20px 15px;
 
   opacity: 0;
@@ -457,7 +450,7 @@ margin: 0.51rem;
   transition: all 0.2s ease-out;
 }
 
-// ~ 'gallery-tile-description'
+// Also overrides 'gallery-tile-description'
 .gallery-tile .gallery-tile-hover-text-header p {
   //position: absolute;
   //left: 50%;
@@ -477,8 +470,7 @@ margin: 0.51rem;
   @include flex-direction(column);
   @include align-items(center);
   @include themify($themes) {
-//    color: themed('link');
-    color: themed('link-hover');
+    color: themed('gallery-link');
   }
 
   //TODO: adapt with my icons!
@@ -486,6 +478,14 @@ margin: 0.51rem;
     font-family: 'icon-font';
     content: "\e801";
     font-size: 1.5rem;
+  }
+}
+
+/* TODO: keep? change? */
+/* resize text when container gets too small */
+@container tile-text-header (max-width: 225px) {
+  .gallery-tile .gallery-tile-hover-text-header p {
+    font-size: 0.75em;
   }
 }
 

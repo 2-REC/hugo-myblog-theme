@@ -28,7 +28,15 @@
       font-weight: bold;
       a {
         @include themify($themes) {
-          color: themed('link-hover');
+          color: themed('pagination-number-active-color');
+        }      
+      }
+    }
+
+    &:hover {
+      a {
+        @include themify($themes) {
+          color: themed('pagination-number-hover-color');
         }      
       }
     }
@@ -79,8 +87,9 @@
     @include on-event {
       .pagination-single__icon {
         @include themify($themes) {
+          /* TODO: gtt? should be something else */
           color: themed('gtt-hover-color');
-          background-color: themed('gtt-hover-background-color');
+          background-color: themed('gtt-background-hover-color');
         }
       }
     }

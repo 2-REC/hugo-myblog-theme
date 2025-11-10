@@ -7,10 +7,12 @@ custom_js = []
 meta_image = ""
 #themecolor = "" #TODO: remove (unused)
 
-notAllowedTypesInHome = ["about", "contact"] #TODO: adapt!
-notAllowedTypesInHomeSidebar = ["about", "archive", "search"] #TODO: adapt! (contact?)
-#notAllowedTypesInArchive #TODO!
-#notAllowedTypesInHomeFeed = ["about", "archive", "contact", "galleries" ] #TODO: IF using 'showFeedLinks' - adapt! (look in original Zzo)
+#TODO: adapt! ('contact'? 'archive' when handled, etc.)
+notAllowedTypesInHome = ["about", "contact"] # posts types in home page
+notAllowedTypesInHomeSidebar = ["about", "search"] # posts types in lists on home page ('top'+'recent')
+#notAllowedTypesInArchive #TODO: 'archive' currently not handled
+#TODO: If using 'showFeedLinks' - adapt! (look in original Zzo) (+'archive' when handled, etc.)
+#notAllowedTypesInHomeFeed = ["about", "contact", "galleries" ]
 
 viewportSize = "wide" # widest, wider, wide, normal, narrow
 #enableSideDataLeft = true # Default: false
@@ -42,7 +44,7 @@ breadcrumbHome = "both" # Default "icon", values: "text", "icon", "both"
 metaInfoEdit = true
 metaInfoReadingTime = true
 metaTags = true
-enableTocContent = false # TOC in page body
+#enableSingleToc = false # TOC in page body (default false)
 #titleClipboard = true # Default false
 codeClipboard = true # Default false
 
@@ -80,22 +82,21 @@ galleryZoom = true
 #disableSearchAuthors = true # Default: false
 
 
-#TODO: rename all params to "bio..." (+propagate impacts)
-# whoami
+# Creator (bio)
 # Not necessary if no "bio" in sidebars
-myname = "Someone"
-email = "someone@email.com" #TODO: use same as in "socialOptions" - Duplicate? Remove here?
-whoami = "Blogger"
+bioName = "Someone"
+#bioShowEmail = true # Default: false
+bioDescription = "Blogger"
 bioImage = "" # Example: "/images/bio/avatar.jpg"
-useGravatar = false
-location = "City, Country"
-organization = "Hugo"
-link = "https://somesite.org"
+bioLocation = "City, Country"
+bioOrganization = "Hugo"
+bioLink = "https://somesite.org"
+#bioHideSocial = true # Default: false
 
 # Sidebar
 #TODO: depends on page type! (=> specify!)
 # Allowed components: "thumbnail", "bio", "top", "recent", "tags", "categories", "series", "search", custom", "-"
-#sidebarHomeLeft = [ ... ] #TODO
+#sidebarHomeLeft = []
 sidebarHomeRight = [ "bio", "recent", "-", "tags", "categories", "series", "search" ] #TODO
 sidebarSingleLeft = [ "thumbnail", "-", "toc" ] #TODO
 #sidebarSingleRight = [ "toc", "tags", "categories", "series", "search" ] #TODO
@@ -118,7 +119,7 @@ enableSidebarTags = true # Default: false
 enableSidebarSeries = true # Default: false
 enableSidebarCategories = true # Default: false
 enableSidebarSearch = true # Default: false
-enableToc = true #TODO: rename to enableSidebarToc
+enableSidebarToc = true
 #tocLevels = ["h2", "h3", "h4"] #TODO: seems useless/ignored?
 #tocFolding = true # collapse sub titles
 itemsPerCategory = 5 #TODO: set 1 for each component? (recent, top, etc.)
@@ -196,8 +197,7 @@ enableBusuanzi = false
 
 [socialOptions]
   #TODO: Add missing icons!
-  email = "mailto:your@email.com"
-  phone = ""
+  email = "your@email.com"
   facebook = "http://facebook.com/"
   twitter = "http://twitter.com/"
   github = "https://github.com/2-REC/hugo-myblog-theme"

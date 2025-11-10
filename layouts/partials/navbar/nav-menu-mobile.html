@@ -24,22 +24,26 @@
         </li>
 
         {{ range .Children }}
-          <li class="navbarm__menu--item navbarm__menu--subitem">
-            <a href="{{ .URL | relLangURL }}">{{ safeHTML .Name }}</a>
-          </li>
+          {{ if $.GetPage .URL }}
+            <li class="navbarm__menu--item navbarm__menu--subitem">
+              <a href="{{ .URL | relLangURL }}">{{ safeHTML .Name }}</a>
+            </li>
+          {{ end }}
         {{ end }}
       {{ else }}
-        {{/* If "name" starts with "icon-" => use icon */}}
-        {{ if eq (substr .Name 0 5) "icon-" }}
-          <li class="navbarm__menu--item {{ if $active }}active{{ end }}">
-            <a href="{{ $menu.URL | relLangURL }}">
-              <span class="{{ .Name }}"></span>
-            </a>
-          </li>
-        {{ else }}
-          <li class="navbarm__menu--item {{ if $active }}active{{ end }}">
-            <a href="{{ $menu.URL | relLangURL }}">{{ safeHTML $menu.Name }}</a>
-          </li>
+        {{ if $.GetPage .URL }}
+          {{/* If "name" starts with "icon-" => use icon */}}
+          {{ if eq (substr .Name 0 5) "icon-" }}
+            <li class="navbarm__menu--item {{ if $active }}active{{ end }}">
+              <a href="{{ $menu.URL | relLangURL }}">
+                <span class="{{ .Name }}"></span>
+              </a>
+            </li>
+          {{ else }}
+            <li class="navbarm__menu--item {{ if $active }}active{{ end }}">
+              <a href="{{ $menu.URL | relLangURL }}">{{ safeHTML $menu.Name }}</a>
+            </li>
+          {{ end }}
         {{ end }}
       {{ end }}
     {{ end }}

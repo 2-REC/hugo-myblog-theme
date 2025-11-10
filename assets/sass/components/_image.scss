@@ -1,27 +1,28 @@
 .image {
   //TODO: add other image specific CSS (move from other files)
 
+  /* NOTE: could use 'figcaption' instead, but this allows more flexibility
+   * if want different types of captions (by adding more classes)
+   */
   &__text {
     position: absolute;
-      bottom: 0;
-      right: 0;
+    bottom: 0;
+    right: 0;
+    text-align: right;
 
-    //margin: 0.1rem;
-//    padding: 0.2rem;
+    margin: 0;
     padding-left: 0.2rem;
     padding-right: 0.2rem;
 
     //TODO: set font!
     //font-family: ...;
+/*    font-style: italic;*/
     font-weight: 600;
     font-size: .5em;
 
-    //TODO: use theme colours?
-    //color: black;
-    //background-color: rgba(255, 255, 255, .5);
     @include themify($themes) {
-      color: themed('title-color');
-      background-color: themed('gallery-mask-background-color');
+      color: themed('figcaption-color');
+      background-color: themed('figcaption-background-color');
     }
 
     .inline-caption {
@@ -30,6 +31,7 @@
 
     .inline-copyright {
       display: inline;
+      white-space: nowrap;
       &::before {
         content: "\00a9\2009"; /* Copyright symbol followed by a thin space character */
       }
@@ -39,28 +41,19 @@
 
 
 /* TODO(2-REC): Move elsewhere (?) */
-.post_image {
-/*
+.post_image_container {
   position: relative;
-*/
-  @include themify($themes) {
-    /* TODO(2-REC): Use other color? */
-    background-color: themed("gallery-mask-background-color");
-  }
 }
-.post_image > figcaption {
-/*
-  position: absolute;
-  bottom: 0;
-  right: 0;
-*/
-  margin: 0;
+
+.post_image {
+  cursor: pointer;
 
   @include themify($themes) {
+    /* TODO: used? use other variable? */
     background-color: themed("gallery-mask-background-color");
   }
 }
-.post_image figcaption p {
-  margin: 0.25rem;
-  text-align: right;
+
+.post_image img {
+  width: 100%;
 }

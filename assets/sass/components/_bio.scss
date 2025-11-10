@@ -1,18 +1,21 @@
+/* TODO: See what can add as CSS options */
 .bio {
   @include flexbox();
   @include justify-content(center);
   @include align-items(flex-start);
   @include flex-direction(column);
-  @include themify($codeblock) {
-    color: themed('content-pre-color');
+  @include themify($themes) {
+    color: themed('bio-color');
   }
 
   width: 100%;
-  //TODO: Keep? (long words)
-  // => See how can add options in CSS
   overflow-wrap: anywhere;
   max-width: 928px;
   font-family: $title-font;
+
+  @include themify($themes) {
+    font-size: themed('bio-text-size');
+  }
 
   &__photo {
     border-radius: 0.25rem;
@@ -44,23 +47,22 @@ width: 100%;
     font-weight: 700;
     letter-spacing: 1px;
     font-family: inherit;
-    font-size: 26px;
-    margin-top: 0.8rem;
+    font-size: 1.5em;
+    margin-top: 0.8em;
 
-    //TODO: add this?
-    //@include themify($themes) {
-    //  color: themed('body-color');
-    //}
+    @include themify($themes) {
+      color: themed('bio-name-color');
+    }
   }
 
   &__desc {
-    margin: 0.5rem 0;
-    font-size: 14px;
+    margin: 0.5em 0;
+    font-size: 1em;
   }
 
   &__info {
-    font-size: 14px;
-    margin: 0.1rem 0;
+    font-size: 1em;
+    margin: 0.1em 0;
     @include flexbox();
     @include align-items(center);
     @include justify-content(center);
@@ -69,19 +71,19 @@ width: 100%;
   &[data-dir="ltr"] {
     .bio__info {
       &--icon {
-        margin-right: 0.25rem;
+        margin-right: 0.25em;
 
-        font-size: 1rem;
+        font-size: 1em;
 
         @include flexbox();
         @include align-items(center);
         @include themify($themes) {
-          color: themed('social-icon-color');
+          color: themed('bio-social-icon-color');
         }
       }
 
       a {
-        padding-right: 1rem;
+        padding-right: 1em;
         @include truncate($sidebar-width);
       }
     }
@@ -90,17 +92,17 @@ width: 100%;
   &[data-dir="rtl"] {
     .bio__info {
       &--icon {
-        margin-left: 0.25rem !important;
+        margin-left: 0.25em !important;
         
         @include flexbox();
         @include align-items(center);
         @include themify($themes) {
-          color: themed('social-icon-color');
+          color: themed('bio-social-icon-color');
         }
       }
 
       a {
-        padding-left: 1rem;
+        padding-left: 1em;
         @include truncate($sidebar-width);
       }
     }
@@ -122,9 +124,9 @@ width: 100%;
       @include align-items(center);
       @include justify-content(center);
       @include themify($themes) {
-        color: themed('social-icon-color');
+        color: themed('bio-social-icon-color');
         @include on-event {
-          color: themed('social-icon-hover-color');
+          color: themed('bio-social-icon-hover-color');
         }
       }
     }

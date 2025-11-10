@@ -2,7 +2,7 @@
 {{/* TODO: make sure it's ok... */}}
 {{/* 2-REC - SIDEBAR - BEGIN */}}
 {{/*
-<main class="single__main {{ if or ($.Param "enableToc") ($.Param "toc") }}{{ if $.Param "hideToc" }}main{{ else if eq ($.Param "tocPosition") "outer" }}main{{ else }}main-main{{ end }}{{ else }}main{{ end }}">
+<main class="single__main {{ if or ($.Param "enableSidebarToc") ($.Param "toc") }}{{ if $.Param "hideToc" }}main{{ else if eq ($.Param "tocPosition") "outer" }}main{{ else }}main-main{{ end }}{{ else }}main{{ end }}">
 */}}
 {{/* 2-REC - SIDEBAR - MID */}}
 {{ $enableSidebar := false }}
@@ -63,7 +63,7 @@
             {{ partial "pagination/pagination-single" . }}
             {{ partial "comments/comments.html" . }}
             */}}
-            {{ partial "body/photoswipe" . }}
+            {{ partial "body/load-photoswipe" . }}
         </div>
     </div>
     {{/* 2-REC - SIDEBAR - MID */}}

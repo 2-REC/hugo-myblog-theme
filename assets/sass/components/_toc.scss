@@ -48,40 +48,6 @@
     position: absolute;
   }
 
-//// BEGIN
-// 2-REC: Removed outer toc
-//  &__flexbox--outer[data-position="fixed"] {
-//    @include flexbox();
-//    @include align-items(center);
-//    top: 4.2rem;
-//    left: 1rem;
-//    position: absolute;
-//    
-//    @media only screen and (max-width: 1300px) {
-//      display: none;
-//    }
-//
-//    &[data-ani="true"] {
-//      @include animation('slide-in-down-little .2s .3s 1 ease-in backwards');
-//    }
-//  }
-//
-//  &__flexbox--outer[data-dir="ltr"] {
-//    top: 4.2rem;
-//    left: 1rem;
-//  }
-//
-//  &__flexbox--outer[data-dir="rtl"] {
-//    top: 4.2rem;
-//    right: 1rem;
-//
-//    .toc__title {
-//      margin-top: 0.75rem;
-//      margin-left: 0.5rem;
-//    }
-//  }
-//// MID
-
   &__title {
     font-size: 0.9rem;
     margin-top: 0.5rem;
@@ -91,7 +57,7 @@
     }
     
     @include themify($themes) {
-      color: themed('toc-label-color');
+      color: themed('toc-title-color');
     }
 
 //// BEGIN
@@ -107,7 +73,7 @@
   &[data-dir="ltr"] {
     @include themify($themes) {
       a {
-        color: themed('toc-vertical-line');
+        color: themed('toc-label-color');
         position: relative;
         text-indent: -1em;
 
@@ -120,18 +86,19 @@
       }
 
       .active {
-        color: themed('toc-vertical-line-active');
+        color: themed('toc-label-active-color');
         font-weight: 700;
       }
     }
 
+    /* TODO: seems unused? */
     ul {
       @include themify($themes) {
-        li {        
+        li {
           li {
             margin-left: .5rem;
             color: themed('sidebar-li-color');
-          }  
+          }
         }
       }
     }
@@ -140,7 +107,7 @@
   &[data-dir="rtl"] {
     @include themify($themes) {
       a {
-        color: themed('toc-vertical-line');
+        color: themed('toc-label-color');
         position: relative;
         text-indent: -1em;
 
@@ -153,11 +120,12 @@
       }
 
       .active {
-        color: themed('toc-vertical-line-active');
+        color: themed('toc-label-active-color');
         font-weight: 700;
       }
     }
 
+    /* TODO: seems unused? */
     ul {
       @include themify($themes) {
         li {
@@ -170,12 +138,13 @@
     }
   }
 
+  /* TODO: seems unused? */
   ul {
     @include themify($themes) {
       a {
-        color: themed('toc-title-color');
+        color: themed('toc-label-color');
         &.active {
-          color: themed('toc-vertical-line-active');
+          color: themed('toc-label-active-color');
         }
       }
     }

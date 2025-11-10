@@ -12,7 +12,7 @@
           {{ end }}
           {{ $height := $heightPixel }}
 
-            <div class="site-header__align-{{ .alignX }}"
+            <figure class="site-header__align-{{ .alignX }}"
                 data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}"
                 style="{{ if .image }}
                          {{ $image := index ($context.Resources.Match .image) 0 }}
@@ -23,14 +23,14 @@
                        {{ end }}
                        height: {{ $height }}px;">
               {{ if or .caption .copyright }}
-                <div class="image__text">
+                <figcaption class="image__text">
                   {{ if .caption }}
                     <p class="inline-caption">{{ .caption | markdownify }}{{ if .copyright }}&nbsp;&ndash;{{ end }}</p>
                   {{ end }}
                   {{ with .copyright }}
                     <p class="inline-copyright">{{ . | markdownify }}</p>
                   {{ end }}
-                </div>
+                </figcaption>
               {{ end }}
 
               {{ $header := . }}
@@ -238,7 +238,7 @@
                   {{ end }}
                 {{ end }}
               </div>
-            </div>
+            </figure>
 
       {{ end }}
     </div>

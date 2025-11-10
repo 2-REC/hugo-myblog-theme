@@ -1,5 +1,6 @@
 {{ $ctx := .ctx }}
 {{ $share := .share }}
+{{/* TODO: way to share directly in app (instead of opening browser)? */}}
 <a class="action__item" data-type="share" target="_blank" rel="noreferrer"
     href="https://web.whatsapp.com/send?text={{ $ctx.Title }} - {{ $ctx.Permalink | absLangURL }}"
     title="WhatsApp"

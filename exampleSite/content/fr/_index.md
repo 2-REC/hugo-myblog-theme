@@ -1,6 +1,7 @@
 ---
 header:
   - type: single
+    fit: fixed
     height: 235px
     image:
         src: images/header/background.jpg
@@ -25,6 +26,7 @@ header:
     spaceBetweenTitleSubtitle: 10%
 
   - type: multi
+    fit: fixed
     height: 235px
     options:
         transition_effect: fade
@@ -36,6 +38,8 @@ header:
             size: cover
             repeat: no-repeat
             position: center
+            copyright: "No rights reserved"
+            caption: random image
         alignX: left
         alignY: top
         paddingX: 50px
@@ -86,6 +90,7 @@ header:
             size: cover
             repeat: no-repeat
             position: center
+            copyright: "libre"
         alignX: right
         alignY: bottom
         paddingX: 25px

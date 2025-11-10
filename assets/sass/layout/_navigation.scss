@@ -228,7 +228,7 @@ width: $grid_navbar_height;
         background-color: themed('navbar-background-color');
         @include on-event {
           color: themed('navbar-title-hover-color');
-          // background-color: themed('navbar-menu-hover-background-color');
+          // background-color: themed('navbar-menu-item-hover-background-color');
           text-decoration: none;
           border-bottom: 1px solid themed('navbar-border-bottom-color');
         }
@@ -288,8 +288,7 @@ width: $grid_navbar_height;
 
       @include box-shadow(0, 1px, 3px, 0, rgba(0, 0, 0, 0.4));
       @include themify($themes) {
-        border-top: 4px solid themed("dropdown-border-top-color");
-        background-color: themed("dropdown-content-background-color");
+        border-top: 4px solid themed("navbar-border-top-color");
       }
 
       @media only screen and (max-width: 769px) {
@@ -298,7 +297,6 @@ width: $grid_navbar_height;
         box-shadow: none;
         @include themify($themes) {
           border-top: none;
-          background-color: themed("navbar-mobile-background-color");
         }
       }
     }
@@ -316,11 +314,12 @@ width: $grid_navbar_height;
 
       @include truncate(150px);
       @include themify($themes) {
-        color: themed("dropdown-item-color");
+        /* TODO: CHECK WHAT IT IS! */
+        color: themed("navbar-title-color");
         background-color: themed("navbar-background-color");
         @include on-event {
-          color: themed("navbar-dropdown-item-hover-color");
-          background-color: themed("navbar-menu-hover-background-color");
+          color: themed("navbar-menu-item-hover-color");
+          background-color: themed("navbar-menu-item-hover-background-color");
           text-decoration: none;          
 
           &:last-child {
@@ -414,14 +413,13 @@ color: themed('navbar-title-color');
 
       @include box-shadow(0, 1px, 3px, 0, rgba(0, 0, 0, 0.4));
       @include themify($themes) {
-        border-top: 4px solid themed("dropdown-border-top-color");
-        background-color: themed("dropdown-content-background-color");
+        border-top: 4px solid themed("navbar-border-top-color");
       }
 
       .is-active {
         @include themify($themes) {
           color: themed('navbar-title-active-color');
-          background-color: themed("dropdown-item-hover-background-color");
+          background-color: themed("navbar-menu-item-active-background-color");
           font-weight: bold;
         }
       }
@@ -436,12 +434,12 @@ color: themed('navbar-title-color');
 
       @include no-select;
       @include themify($themes) {
-        color: themed("dropdown-item-color");
+        color: themed("navbar-title-color");
         background-color: themed("navbar-background-color");
 
         @include on-event {
-          color: themed("navbar-dropdown-item-hover-color");
-          background-color: themed("navbar-menu-hover-background-color");
+          color: themed("navbar-menu-item-hover-color");
+          background-color: themed("navbar-menu-item-hover-background-color");
           text-decoration: none;
 
           &:last-child {
@@ -509,7 +507,7 @@ color: themed('navbar-title-color');
     &--term {
       &[data-index="0"] {
         @include themify($themes) {
-          border-top: 1px solid themed('search-border-outline-color');
+          border-top: 1px solid themed('navbar-border-bottom-color');
         }
       }
     }
@@ -536,14 +534,15 @@ color: themed('navbar-title-color');
       }
 
       @include themify($themes) {
-        color: themed('body-color');
+        color: themed("navbar-title-color");
+        background-color: themed("navbar-background-color");
         &.active {
           font-weight: bold;
           color: themed('navbar-title-active-color');
         }
         
         @include on-event {
-          background-color: themed('navbar-menu-hover-background-color');
+          background-color: themed('navbar-menu-item-hover-background-color');
         }
       }
     }

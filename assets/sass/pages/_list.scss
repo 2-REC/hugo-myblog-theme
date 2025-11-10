@@ -80,10 +80,8 @@
 
       @include themify($themes) {
         color: themed('list-title-color');
-        text-shadow: 1.2px 1.2px 0 themed('list-title-color'),
-          2.4px 2.4px 0 lighten(themed('list-title-shadow-color'), 4%),
-          3.6px 3.6px 0 lighten(themed('list-title-shadow-color'), 8%),
-          4.8px 4.8px 0 lighten(themed('list-title-shadow-color'), 12%);
+        /* TODO: could be configurable (?) */
+        text-shadow: 1.2px 1.2px 0 themed('list-title-shadow-color');
       }    
     }
 

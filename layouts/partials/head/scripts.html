@@ -8,6 +8,12 @@
 {{ end }}
 {{ end }}
 
+{{/* TODO: MOVE JQUERY TO static/plugins! */}}
+{{/*
+<script src="{{ "plugins/jquery/jquery.min.js" | relURL }}"></script>
+*/}}
+{{ $jquery := resources.Get "js/jquery.min.js" | resources.Fingerprint }}
+<script defer src="{{ $jquery.RelPermalink }}"></script>
 {{ $enquire := resources.Get "js/enquire.min.js" | resources.Fingerprint }}
 <script src="{{ $enquire.RelPermalink }}"></script>
 {{ $lazysizes := resources.Get "js/lazysizes.min.js" | resources.Fingerprint }}
@@ -100,12 +106,6 @@
       }
     }) : null;
     // ============================================================
-
-
-    /* 2-REC: Removed search feature
-    // =================== search-result desktop ==================
-    // =============================================================
-    */
 
 
     // ============================ tab ============================
@@ -222,13 +222,16 @@
     var tocElem = document.querySelector('.toc');
     var tableOfContentsElem = tocElem ? tocElem.querySelector('#TableOfContents') : null;
     //var toggleTocElem = document.getElementById('toggle-toc');
+    var singleMainElem = document.querySelector('.single__main');
     var singleContentsElem = document.querySelector('.single__contents');
     var navbar = document.querySelector('.navbar');
     var tocFlexbox = document.querySelector('.toc__flexbox');
-    //var tocFlexboxOuter = document.querySelector('.toc__flexbox--outer');
     var expandContents = document.querySelectorAll('.expand__content');
     var boxContents = document.querySelectorAll('.box');
     var notAllowedTitleIds = null;
+
+    {{ $navbar_height := .Site.Data.grid.grid_navbar_height }}
+    var navbar_height = parseInt(JSON.parse({{ $navbar_height | jsonify }}));
 
     {{ $tocFolding := $.Param "tocFolding" }}
     var tocFolding = JSON.parse({{ $tocFolding | jsonify }});
@@ -272,7 +275,10 @@
     
     window.onscroll = function () {
       scrollFunction();
-      
+
+      navbar.classList.remove('navbar--show');
+      navbar.classList.remove('navbar--hide');
+
       var st = window.pageYOffset || document.documentElement.scrollTop;
       if (st > lastScrollTop) { // scroll down
         if (st < 250) {
@@ -284,7 +290,7 @@
         if (st < 45) {
           return null;
         }
-        
+
         if (!navbar.classList.contains('navbar--hide')) {
           navbar.classList.add('navbar--hide');
         } else if (navbar.classList.contains('navbar--show')) {
@@ -292,7 +298,13 @@
         }
 
         if (singleContentsElem) {
+          if (singleContentsElem.classList.contains('toc--link')) {
+            /* Don't need hack to force hiding navbar when clicking a TOC link, as already hiding it */
+            singleContentsElem.classList.remove('toc--link');
+          }
           if (singleContentsElem.querySelectorAll(tocLevels).length > 0) {
+            var offset = singleMainElem.offsetTop + singleContentsElem.offsetTop;
+
             singleContentsElem.querySelectorAll(tocLevels).forEach(function (elem) {
               /*
               if (toggleTocElem && !toggleTocElem.checked) {
@@ -303,8 +315,9 @@
               if (notAllowedTitleIds && notAllowedTitleIds.includes(elem.getAttribute('id'))) {
                 return null;
               }
-              
-              if (document.documentElement.scrollTop >= elem.offsetTop) {
+
+              //if (document.documentElement.scrollTop >= elem.offsetTop) {
+              if (st >= elem.offsetTop + offset - navbar_height/2) {
                 if (tableOfContentsElem) {
                   var id = elem.getAttribute('id');
                   tocElem.querySelectorAll('a').forEach(function (elem) {
@@ -342,14 +355,6 @@
                 tocFlexbox.classList.add('hide');
               }
             }
-            /*
-            if (tocFlexboxOuter) {
-              tocFlexboxOuter.setAttribute('data-position', '');
-              if (!tocFlexboxOuter.classList.contains('hide')) {
-                tocFlexboxOuter.classList.add('hide');
-              }
-            }
-            */
           }
         }
       } else { // scroll up
@@ -357,14 +362,23 @@
           gttBtn.style.display = "none";
         }
 
-        if (navbar.classList.contains('navbar--hide')) {
-          navbar.classList.remove('navbar--hide');
-        } else if (!navbar.classList.contains('navbar--show')) {
-          navbar.classList.add('navbar--show');
-        }
-
         if (singleContentsElem) {
+          if (singleContentsElem.classList.contains('toc--link')) {
+            /* ~hack to force hiding navbar when clicking a TOC link */
+            navbar.classList.add('navbar--hide');
+            navbar.classList.remove('navbar--show');
+            singleContentsElem.classList.remove('toc--link');
+          } else {
+            if (navbar.classList.contains('navbar--hide')) {
+              navbar.classList.remove('navbar--hide');
+            } else if (!navbar.classList.contains('navbar--show')) {
+              navbar.classList.add('navbar--show');
+            }
+          }
+
           if (singleContentsElem.querySelectorAll(tocLevels).length > 0) {
+            var offset = singleMainElem.offsetTop + singleContentsElem.offsetTop;
+
             singleContentsElem.querySelectorAll(tocLevels).forEach(function (elem) {
               /*
               if (toggleTocElem && !toggleTocElem.checked) {
@@ -376,7 +390,8 @@
                 return null;
               }
 
-              if (document.documentElement.scrollTop >= elem.offsetTop) {
+              //if (document.documentElement.scrollTop >= elem.offsetTop) {
+              if (st >= elem.offsetTop + offset - navbar_height) {
                 if (tableOfContentsElem) {
                   var id = elem.getAttribute('id');
                   tocElem.querySelectorAll('a').forEach(function (elem) {
@@ -411,13 +426,7 @@
             if (tocFlexbox && !tocFlexbox.classList.contains('hide')) {
               tocFlexbox.classList.add('hide');
             }
-            /*
-            if (tocFlexboxOuter && !tocFlexboxOuter.classList.contains('hide')) {
-              tocFlexboxOuter.classList.add('hide');
-            }
-            */
           }
-          
         }
 
         if (tableOfContentsElem && document.documentElement.scrollTop < 250) {

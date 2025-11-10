@@ -12,7 +12,7 @@ summaryLength = 70
 copyright = "&copy;&nbsp;{year} {}, All Rights Reserved" # If no '{}', whole text will be on the left
 #timeout = 10000 # Default: 10000 (10s)
 enableEmoji = true
-paginate = 10 # Default 10
+paginatation.pagerSize = 10 # Default 10
 
 #pluralizeListTitles = false
 #enableGitInfo = false # Default: false
@@ -34,21 +34,25 @@ paginate = 10 # Default 10
     ordered = false
     startLevel = 1
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 [taxonomies]
   category = "categories"
   tag = "tags"
   series = "series"
+
+[languages]
+  [languages.en]
+    title = "MyBlog Theme"
+    languageName = "English"
+    weight = 1
+    contentdir = "content/en"
+    [languages.en.params]
+      languagedir = "ltr"
+      languageShort = "EN"
+  [languages.fr]
+    title = "Theme MyBlog"
+    languageName = "Français"
+    weight = 2
+    contentdir = "content/fr"
+    [languages.fr.params]
+      languagedir = "ltr"
+      languageShort = "FR"

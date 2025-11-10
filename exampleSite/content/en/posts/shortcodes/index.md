@@ -7,7 +7,7 @@ copyright: "Hugo"
 slide: true
 draft: false
 enableToc: true
-enableTocContent: true
+enableSingleToc: true
 tags:
 - shortcode
 series:

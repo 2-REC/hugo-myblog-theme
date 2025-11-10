@@ -38,6 +38,7 @@
     }
   }
 
+  /* TODO: used? keep? */
   &__link {
     font-size: 0.8rem;
     margin: 0.25rem 0.5rem 0;
@@ -46,20 +47,29 @@
   .social {
     margin: 0.25rem;
     a {
-      @include themify($themes) {        
+      @include themify($themes) {
         text-decoration: none;
         color: themed('social-icon-color');
         &:hover {
           color: themed('social-icon-hover-color');
           transition: color 0.2s ease;
-        }        
-      }   
+        }
+      }
     }
   }
 
   hr {
     @include themify($themes) {
-      border-top: 1px solid themed('hr-color') !important;
+      border-top: 1px solid themed('footer-hr-color') !important;
+    }
+  }
+
+  a {
+    @include themify($themes) {
+      color: themed('footer-link-color');
+      &:hover {
+        color: themed('footer-link-hover-color');
+      }
     }
   }
 }

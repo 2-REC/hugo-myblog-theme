@@ -1,5 +1,5 @@
 {{ if $.Param "enableLangChange" }}
-{{ if $.Param "enableLangChange" }}
+{{ if gt (len .Site.Languages) 1 }}
 {{ $siteLanguages := .Site.Languages }}
 {{ $pageLang := .Page.Lang }}
 {{ $label := $pageLang }}

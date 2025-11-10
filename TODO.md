@@ -1,24 +1,63 @@
 # TODO
 
-- [ ] add '-' in desired '{{' and '}}'
+# GLOBAL
+
+## README
 
 - [ ] Mention use of libraries/modules in README/disclaimer
-  - [ ] assets\js\lazysizes.min.js
-    https://github.com/aFarkas/lazysizes
-  - [ ] photoswipe
-  - [ ] hugo-tags-filter ("pointyfar")
-    https://github.com/pointyfar/hugo-tags-filter
+  - [ ] missing ones?
+
+
+# Homepage
+
+## Header
+
+* [ ] Disable selection in header.
+
+## Featured / Slides
+
+* [ ] Update to latest? (if no breaking changes)
+    https://jquery.malsup.com/cycle2/
+    (swipe support on mobile)
+
+* [ ] Add swipe feature to slides? ("swipe.js" or other? "Cycle2"?)
+    => Would be nice, at least on mobile.
+
+
+
+
+----
+
+
+!
+- [ ] scripts
+  - [ ] Make sure to use correct defer loading for scripts
+    - 'defer' to wait page is loaded (and keep order of scripts)
+        => problems when using 'localhost' (though didn't have issue before...?)
+    - no deferring: (nothing)
+
+- [ ] header-slide
+  - [x] Check that 'slider-size-fix' is useless
+    - [x] delete 'slider-size-fix.js' file
+    - [x] revert to original 'jquery.cycle.all.min.js' file
+  - [ ] Handle separate X align+padding for title & subtitle (alignX+paddingX)
+  - [ ] Handle 'em' units (+'rem'?)
+
+- [ ] header-post
+  - [ ] Handle '%' and 'em' units (+'rem'?)
+
+- [ ] Figures/images
+  - [ ] use 'itemprop' for every "figure" tag? (now only for gallery + image shortcode)
+    - [x] handle thumbnails (image + gallery)
+    - [ ] 'image' shortcode
+        - [x] handle thumbnails
+        - images don't cycle? (cannot go from last fo first)
+        - [x] CSS (margins)
+ 
+
 
 
 ##################
-2022/09/05
-- [ ] Figures/images
-    - [ ] "Override" default Hugo "figure" shortcode to handle copyright label/text as in header images (overlay)
-        - [ ] param "label"
-        - [ ] param "copyright"
-        - [ ] param "src"
-        - [ ] don't use "alt" as caption text when fullscreen
-
 2022/08/10
 - [ ] Code blocks
     - [ ] fix line number column width issue (horizontal scroll bar)
@@ -27,22 +66,6 @@
     - [ ] add option/param to hide the language label/header
 - [ ] Posts meta
     - [ ] Hide 'modified' date if same as 'creation' date
-
-
-2022/07/05
-- [ ] Header
-  - [x] Check that 'slider-size-fix' is useless
-    - [x] delete 'slider-size-fix.js' file
-    - [x] revert to original 'jquery.cycle.all.min.js' file
-        - [ ] update to latest? (if no breaking changes)
-    - [ ] remove commented code in 'header-slide.html'
-  - [ ] Handle separate X align+padding for title & subtitle (alignX+paddingX)
-
-
-2022/06/26
-- [ ] Themes: get rid of "primary_color" definition + code in "assets/sass/main.scss"
-    Creates issue when defining new themes, need to adapt the name of the variable "$button_{{ .name }}_primary_color"
-    => ```$button_{{ .name }}_primary_color: {{ .primary_color }};``` seems useless (?)
 
 
 2022/04/02
@@ -93,10 +116,6 @@
         https://gronskiy.com/posts/filtering-posts-over-multiple-taxonomies-hugo/
       - [ ] Check "Shuffle JS", if static
         https://vestride.github.io/Shuffle/
-
-- [ ] "recent carousel"
-  - [ ] bug? => when resizing, warning message from "cycle":
-    [cycle] options not found, "prev/next" ignored
 
 
 2021/07/18
@@ -182,7 +201,6 @@
 - [ ] Toc:
   - check/remove data-folding if not used
   - clean css
-  - check toc in single page body
 
 ##################
 
@@ -257,6 +275,8 @@
     * [ ] "Carousel" images
 
 * [ ] Slides: Recent posts / Carousel
+    * [ ] Add 'disableFeaturedOnMobile' param
+        => set 'display: none' when param is set.
     * [ ] Switch to Cycle2
         http://jquery.malsup.com/cycle2/
     * [ ] Clean CSS (as well as for tiles)
@@ -380,7 +400,7 @@
     * [ ] Adapt entries (+order)
 * [ ] params.toml
     * [ ] notAllowedTypesInHome, notAllowedTypesInHomeSidebar, etc.
-        => Should instead have "allowedTypesInHome", "allowedTypesInHomeSidebar", etc.
+        => Rename to "notAllowedTypesInPosts" & "notAllowedTypesInPostLists"
     * [ ] notAllowedTypesInHomeFeed
         => Adapt to page/posts types
     * [ ] enableHomeSidebarTitles
@@ -517,6 +537,7 @@ LATER:
         * [ ] list
             * [ ] posts-by-order => see how to handle
               * [ ] Need to manually adapt/set order every time new posts?
+                * ('order' field in post markdown - integer)
         * [ ] sidebar-menu => Empty!?
     * [ ] script
         => See what to keep (and remove uses in code)
@@ -529,6 +550,7 @@ LATER:
         * [ ] See what to keep... (+associated in "params.toml")
         * [ ] Add missing icons
         * [ ] See if want to change icons
+        * [ ] Rename/change Twitter (to "X")
     * [ ] summary
         * [ ] Make partial for "meta" block
           => Used by all summaries (+tiles)
@@ -543,7 +565,15 @@ LATER:
 ## LATER
 
 * [ ] Make specific css type +theme colors for each page type
-  => Add other specific params for each page (font, etc)
+  * [ ] Add other specific params for each page (font, etc)
+    => Rewrite entire font handling.
+    Remove from "data/fonts.toml" (and change in "main.scss")
+    (and use fonts defined in "_mixins.scss")
+    eg:
+    ```
+    $twotone: (
+        font-title: "\"Merriweather\", sans-serif",
+        ...
+    ```
   * [ ] about, contact, gallery, terms
   * [ ] list (used by list, taxo, galleries)
-

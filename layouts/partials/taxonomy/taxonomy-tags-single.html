@@ -10,7 +10,7 @@
                     {{ if eq $tags 0 }}
                         {{ $tags = slice $element }}
                     {{ else }}
-                        {{ $tags = $tags | append (slice $element )}}
+                        {{ $tags = $tags | append $element }}
                     {{ end }}
                 {{ end }}
             {{ end }}
@@ -18,7 +18,7 @@
             {{ if eq $tags 0 }}
                 {{ $tags = slice $element }}
             {{ else }}
-                {{ $tags = $tags | append (slice $element )}}
+                {{ $tags = $tags | append $element }}
             {{ end }}
         {{ end }}
     {{ end }}
@@ -28,7 +28,7 @@
 <div class="taxo">
     <section>
         <span class="title p2">
-            <a href="{{ "/tags/" | relLangURL }}" class="taxo__title">
+            <a href="{{ "tags/" | relLangURL }}" class="taxo__title">
                 {{ i18n "tags"}}
             </a>
         </span>

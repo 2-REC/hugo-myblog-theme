@@ -33,7 +33,13 @@ More details about each step are provided in the "Checklist" (TODO: add link) se
     * themes
     * content
 
-* Copy the theme (git clone) to "themes/myblog".
+* Copy the theme to "themes/myblog".
+    * NOTE: If the site is a Git repository, the theme should be added as a submodule:
+        ```
+        cd themes
+        git submodule add https://github.com/2-REC/hugo-myblog-theme.git
+        ```
+        (+add '.gitignore' file)
 
 (**TODO:** Needed?
 * Delete the "exampleSite" subdirectory.
@@ -65,19 +71,19 @@ The lookup order also applies to other files than layout, such as files in "data
 
 Languages:
 * entry for each language
+    * A location must be specified for each language (even if only 1).
+        Specified by "contentdir".
 * "defaultContentLanguage" (config)
-* "enableLangChange" param
-* A location must be specified for each language (even if only 1).
-Specified by "contentdir".
-and/or "defaultContentLanguageInSubdir"?
-
+* "enableLangChange" (params)
+    * set to False if only 1 language (though done automatically)
+* Menus/nav: in "config/_default", 1 file per language (eg: "menus.en.toml" for English)
 * i18n stuff
   Define specific keywords/texts for each language.
   **TODO:** Add info/details
   => Copy i18n directory from theme + adapt content.
 
-=> If only 1 language, no "en" in URL
-(TODO: for itips, add FR later)
+* "defaultContentLanguageInSubdir"
+    => If only 1 language, set it to False (default) to remove "en" from URL.
 
 
 - static/manifest.json (? - role/usage?)
@@ -220,10 +226,11 @@ The "bio" section can be added to sidebars.
 It contains information relative to the blogger/author.
 
 TODO: Also in "about" page. (?)
+TODO: if other authors (post specific), use 'whoami' (TODO!)
 
 
 * Avatar image (Optional).  
-    => 3 different ways:
+    => 2 different ways:
     * Default location (automatic):
         * Create directories "static/images/bio".
         * Add an image file "avatar" (".jpg", ".png" or ".svg") in the directory.
@@ -233,28 +240,28 @@ TODO: Also in "about" page. (?)
         * Set the prameter "bioImage" in the params file "config/_default/params.toml".
             For example, if in "static/images":
             ```
-            bioImage = "/images/avatar.jpg"
+            bioImage = "images/avatar.jpg"
             ```
-    * Gravatar: (TODO: check how it works + test)
-        * useGravatar = true
-            (TODO: + other params?)
 
-* "whoami": Blog author information.
-    (TODO: rename "whoami" + fields)
+* Blog author information.
     For example:
-    * myname = "Someone Else"
-    * whoami = "Blogger"
+    * bioName = "Bob Solo"
+    * bioDescription = "Blogger"
     * Optional:
-        * location = "City, Country"
-        * organization = "Hugo"
-        * email = "someone@email.com"
-            **NOTE:** Sould use the same as in "socialOptions".
-        * link = "https://somesite.org"
+        * bioLocation = "City, Country"
+        * bioOrganization = "Hugo"
+        * bioShowEmail
+            * true: Use value defined in "socialOptions" (and email not added to social icons).
+            * false (default): Email added to social icons.
+        * bioLink = "https://somesite.org"
+        * bioHideSocial
+            * true: Hide social icons.
+            * false (default): Show social icons.
 
 * Social Options: Contact information, such as social networks, sites and communities.  
     (TODO: Check for missing icons!)  
     => Long list of supported platforms. Check "socialOptions" in "params.toml" for the complete list.
-    Examples of social options: email, phone, facebook, twitter, github, instagram, youtube, linkedin, pinterest, steam.
+    Examples of social options: email, facebook, twitter, github, instagram, youtube, linkedin, pinterest, steam.
     **NOTE:** Additional options can be added by creating a new entry in the list (in params file) and adding its corresponding icon. See (TODO: add link) for details.  
         (TODO: check if correct (to add new option), or if need other changes)
     **NOTE:** The social options can also be in the site footer. See below for details.
@@ -306,10 +313,8 @@ Selectable in navigation bar on top.
         => Add new fonts in "static/fonts" of site
 
 
-(data/grid.toml?)
+#### CONTENT
 
-
-#### ...
 - search (filters)
 - posts
     TODO: check
@@ -317,15 +322,51 @@ Selectable in navigation bar on top.
         * Header
           * Added header in single page with optional title and description (similar working than main header 'single' type)
             TODO: detail more...
-
+            Example: (in "posts/markdown-syntax/index.md")
+              ```
+              header:
+                height: 235px (only 'px' for now... TODO: handle '%' + 'em')
+                image: images/banner/hugo.png
+                copyright: "Hugo?"
+                caption: "'Hugons'"
+                alignX: left
+                alignY: bottom
+                paddingX: 10px
+                paddingY: 10px
+                title:
+                  titleColor:
+                  titleShadow: true
+                  titleFontSize: 25%
+                description:
+                  descriptionColor:
+                  descriptionShadow: false
+                  descriptionCursive: true
+                  descriptionFontSize: 10%
+                spaceBetweenTitleDescription: 5%
+              ```
+    * TOC: 'enableSingleToc' in params.toml, overridable per post in markdown(?)
 - sidebars
+    * width of sidebars can be changed by setting values in 'data/grid.toml'
 - galleries
 - footer
   showSocialLinks, etc.
 - about page
+    * create 'content/about' directory, with 'index.md' file with minimum content:
+        ```
+        ---
+        title: About
+        type: about
+        ---
+        ```
 - contact page
 
 ...
+
+
+#### NAVBAR
+* entries defined by directories in 'content'.
+* height of navbar can be changed by setting values in 'data/grid.toml'
+
 
 TODO:
 - adapt params
@@ -406,10 +447,18 @@ TODO: complete/rewrite/etc.
 - Gallery
     * Removed modes ("one-by-one", "remote" and "at-once")
     * If "images" in front-matter: equivalent to "one-by-one" mode
-      * "image", "caption" and "copyright" (if present) fields will be used for each image
+      * "image", "title", "caption" and "copyright", "thumb" (if present) fields will be used for each image
       * If "image" starts with "http", the image will be considered as remote (online image)
+      * If "image" starts with "/", the image will be considered as "static" (in "static" dir instead of post's "content")
     * If no "images" in front-matter: equivalent to "at-once" mode
       * Images obtained from "images" subdirectory
+  TODO: add:
+  - global parameters:
+    - figcaption: true|false
+    - used for all image, if not overloaded
+      - imagesCopyright
+      - thumb
+
 * Recent posts
     * Added carousel from "Travelify" theme (uses "jQuery.cycle" library)
     * Added parameters for the slides transitions (transition effect, delay and duration)
@@ -421,13 +470,11 @@ TODO: detail only changes from Zzo (not usage)
   * Types:
     * Single: Single header
     * Multi: Slides
-        * Uses the "Cycle" library for the slideshow.
-            **NOTE:** The "swipe" feature is not handled here.
     * Custom: Defined in "custom-header.html"
     * None: No entry in "params" => No header
   * Slides:
     * When "multi", uses "Cycle" library for slideshow
-      ! - Removed "swipe" feature as in Zzo
+        **NOTE:** The "swipe" feature is not handled anymore.
     * Slider settings specified in "options" field
   * Image: Optional
   * Titles + Subtitles
@@ -472,7 +519,7 @@ TODO: detail only changes from Zzo (not usage)
     * If 'copyright' defined in site config
     * Params 'copyrightOptions'
       * 'copyrightLink': Allow copyright owner to be a link. If not defined: no link
-      * 'copyrightOwner': Owner of the copyright. If not defined: 'myname' param is used instead
+      * 'copyrightOwner': Owner of the copyright. If not defined: 'bioName' param is used instead
       * 'copyrightStartYear': Allow range for copyright period. If not defined: only current year
       * Removed copyright image
 
@@ -493,7 +540,7 @@ TODO: detail only changes from Zzo (not usage)
 * Themes
   * More dynamic theme management.
     For each theme:
-    - Add entry+infos in "data/theme.toml" (name, chroma, chroma_background, primary_color)
+    - Add entry+infos in "data/theme.toml" (name, chroma, chroma_background)
     - Add scss files ("themes/name.scss" + "themes/chroma_background.scss" + "syntax/chroma.scss")
   * Default case for 'theme' if current value in local storage is not valid
     => Remove 'theme' from localStorage if value is not in list of themes (in 'data/theme.toml').
@@ -514,15 +561,14 @@ TODO: detail only changes from Zzo (not usage)
     * Reading time
     * Tags
 * Summary Tiles
-  * Added possibility to have an image, using tiles as in gallery, with CSS similar to "Creative Protfolio" theme
+  * Added possibility to have an image, using tiles as in gallery, with CSS similar to "Creative Portfolio" theme
 * Gallery + Summary tiles + Recent posts
   * Added "zooming" when hovering the images
   * Fixed sizing issues (20% seems buggy, +use of "match"+"unmatch" doesn't work well when quick resize, +no init trigger on page onload)
   * Image files need to be located in the post directory (eg: "content\en\gallery\photos") instead of in "static" directory
 * Photoswipe (galleries and posts images)
-  * View not closing when swiping outside of an image
-  * View closing when clicking (even if on image - TODO: should fix that?)
-  * Exit fullscreen mode when leaving view
+  * Replaced by "[Photoswipe]()" used in "[hugo-easy-gallery](https://github.com/liwenyip/hugo-easy-gallery/)" from [liwenyip](https://github.com/liwenyip).
+  * Allows better touch controls (zoom, pan, swipe).
 * Header
   * Changed "swiper" to "slider" (uses "jQuery.cycle" library)
   * Added more alignment possibilities
@@ -579,12 +625,14 @@ TODO: detail only changes from Zzo (not usage)
 
 * All themes but "light" & "dark"
 * Search feature
-  * ~Replaced by filters search
+    * Removed as wasn't fully fonctional
+    * ~Replaced by feature to filter on taxonomy terms
 * Swipe
-  - Removed swipe shortcodes "swiper" and "swiperItem"
-  - Removed swipe from header (using slider from "jQuery.cycle" library)
+    * Removed swipe shortcodes "swiper" and "swiperItem"
+    * Removed swipe from header (using "slider" from "jQuery.cycle" library)
 * Busuanzi site counter
 * Baidu Analytics
+* Gravatar (in bio)
 * Publications
 
 
@@ -598,10 +646,13 @@ TODO: detail only changes from Zzo (not usage)
 
 
 ## DISCLAIMER
-* Hugo (+developer)
-* Zzo Theme (+developer)
-* Creative Protfolio Theme (+developer)
-    https://themes.gohugo.io/hugo-creative-portfolio-theme
-* jQuery Cycle Plugin (+developer)
-    http://jquery.malsup.com/cycle/
-* others?
+
+* "[Hugo](https://gohugo.io/)" static site generator
+* "[Hugo Zzo Theme](https://github.com/zzossig/hugo-theme-zzo)" from [zzossig](https://github.com/zzossig)
+* "[Hugo Creative Portfolio Theme](https://github.com/kishaningithub/hugo-creative-portfolio-theme)" from [Kishan B](https://github.com/kishaningithub)
+* "[jQuery Cycle Plugin](http://jquery.malsup.com/cycle/)" from [malsup](https://malsup.com/)
+* "[PhotoSwipe](http://photoswipe.com)" from [Dmitry Semenov](https://twitter.com/dimsemenov)
+* "[lazysizes](https://github.com/aFarkas/lazysizes)" from [Alexander Farkas](https://github.com/aFarkas)
+* "[hugo-easy-gallery](https://github.com/liwenyip/hugo-easy-gallery/)" from [liwenyip](https://github.com/liwenyip)
+* "[hugo-tags-filter](https://github.com/pointyfar/hugo-tags-filter)" from [pointyfar](https://github.com/pointyfar)
+* Others? If someone was forgotten, please accept my apologies, I will be happy to fix this!

@@ -119,26 +119,14 @@
     // =================================================================
 
 
-    // ============================== toc ==============================
-    {{ $enableToc := ($.Param "enableToc") }}
-    /* 2-REC: removed "toc" (redundant "enableToc") */
-    //{{ $toc := ($.Param "toc") }}
-    /* 2-REC: removed "hideToc" */
-    //{{ $hideToc := ($.Param "hideToc") }}
+    // ======================= sidebar toc =============================
+    {{ $enableToc := ($.Param "enableSidebarToc") }}
     {{ $tocFolding := $.Param "tocFolding" }}
-    
+
     var enableToc = JSON.parse({{ $enableToc | jsonify }});
-    /* 2-REC: removed "toc" (redundant "enableToc") */
-    //var toc = JSON.parse({{ $toc | jsonify }});
-    /* 2-REC: removed "hideToc" */
-    //var hideToc = JSON.parse({{ $hideToc | jsonify }});
     var tocFlexbox = document.querySelector('.toc__flexbox');
-    /* 2-REC: removed "outer toc" */
-    //var tocFlexboxOuter = document.querySelector('.toc__flexbox--outer');
     var tocFolding = JSON.parse({{ $tocFolding | jsonify }});
-    
-    /* 2-REC: removed "toc" (redundant "enableToc") */
-    //if ((enableToc || toc) && document.querySelector('.toc')) {
+
     if (enableToc && document.querySelector('.toc')) {
       var tableOfContentsElem = document.querySelector('.toc').querySelector('#TableOfContents');
 
@@ -158,9 +146,8 @@
           tableOfContentsElem.querySelectorAll('a').forEach(function (elem) {
             elem.addEventListener('click', function () {
               var id = elem.getAttribute('id');
-              navbar.classList.remove('navbar--show');
-              navbar.classList.remove('navbar--hide');
-              navbar.classList.add('navbar--hide');
+              /* specify with clicked on a TOC link */
+              document.querySelector('.single__contents').classList.add("toc--link");
 
               document.querySelector('.toc').querySelectorAll('a').forEach(function (elem) {
                 elem.classList.remove('active');
@@ -186,15 +173,6 @@
               tocFlexbox.classList.add('hide');
             }
           }
-          /* 2-REC: removed "outer toc" */
-          /*
-          if (tocFlexboxOuter) {
-            tocFlexboxOuter.setAttribute('data-position', '');
-            if (!tocFlexboxOuter.classList.contains('hide')) {
-              tocFlexboxOuter.classList.add('hide');
-            }
-          }
-          */
         }
       }
 
@@ -258,6 +236,25 @@
         }
       }) : null;
       */
+    }
+    // =================================================================
+
+
+    // ======================= single toc ==============================
+    {{ $enableSingleToc := ($.Param "enableSingleToc") }}
+    var enableSingleToc = JSON.parse({{ $enableSingleToc | jsonify }});
+    if (enableSingleToc && document.querySelector('.expand__content--toc')) {
+      var tableOfContentsElem = document.querySelector('.expand__content--toc').querySelector('#TableOfContents');
+      if (tableOfContentsElem) {
+        if (tableOfContentsElem.querySelectorAll('a').length > 0) {
+          tableOfContentsElem.querySelectorAll('a').forEach(function (elem) {
+            elem.addEventListener('click', function () {
+              /* specify with clicked on a TOC link */
+              document.querySelector('.single__contents').classList.add("toc--link");
+            });
+          });
+        }
+      }
     }
     // =================================================================
 

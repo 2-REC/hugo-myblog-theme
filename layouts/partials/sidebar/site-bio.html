@@ -2,75 +2,79 @@
 <section class="bio" data-dir="{{ $.Param "languagedir" | default "ltr" }}">
     {{- if ($.Param "enableBioImage" | default true) -}}
     <div class="bio__photo-wrapper">
-        {{ if site.Params.useGravatar -}}
-            {{- $src := printf "https://s.gravatar.com/avatar/%s?s=200" (md5 ($.Param "email")) -}}
-        <img src="{{ $src }}" alt="{{ if $.Param "myname" }}{{ $.Param "myname" }}{{ else }}Avatar{{ end }}" class="bio__photo" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}"/>
-        {{ else -}}
-            {{- $src := "" -}}
-            {{- if $.Param "bioImage" -}}
-                {{- $src = $.Param "bioImage" -}}
-            {{- else if (fileExists "static/images/bio/avatar.png") -}}
-                {{- $src = "images/bio/avatar.png" | relURL -}}
-            {{- else if (fileExists "static/images/bio/avatar.jpg") -}}
-                {{- $src = "images/bio/avatar.jpg" | relURL -}}
-            {{- else if (fileExists "static/images/bio/avatar.svg") -}}
-                {{- $src = "images/bio/avatar.svg" | relURL -}}
-            {{- end -}}
-            {{- if $src -}}
-        <img data-src="{{ $src }}" alt="{{ if $.Param "myname" }}{{ $.Param "myname" }}{{ else }}Avatar{{ end }}" src="data:image/svg+xml,%0A{{ partial "svgs/etc/bio.svg" }}" class="lazyload bio__photo" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}"/>
-            {{- end -}}
+        {{- $src := "" -}}
+        {{- if $.Param "bioImage" -}}
+            {{- $src = $.Param "bioImage" -}}
+        {{- else if (fileExists "static/images/bio/avatar.png") -}}
+            {{- $src = "images/bio/avatar.png" | relURL -}}
+        {{- else if (fileExists "static/images/bio/avatar.jpg") -}}
+            {{- $src = "images/bio/avatar.jpg" | relURL -}}
+        {{- else if (fileExists "static/images/bio/avatar.svg") -}}
+            {{- $src = "images/bio/avatar.svg" | relURL -}}
+        {{- end -}}
+        {{- if $src -}}
+        <img data-src="{{ $src }}" alt="{{ if $.Param "bioName" }}{{ $.Param "bioName" }}{{ else }}Avatar{{ end }}" src="data:image/svg+xml,%0A{{ partial "svgs/etc/bio.svg" }}" class="lazyload bio__photo" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}"/>
         {{- end }}
     </div>
     {{ end -}}
     <div class="bio__name">
-    {{- $.Param "myname" -}}
+    {{- $.Param "bioName" -}}
     </div>
     <div class="bio__desc">
-    {{- $.Param "whoami" -}}
+    {{- $.Param "bioDescription" -}}
     </div>
-    {{- if $.Param "organization" }}
+    {{- with $.Param "bioOrganization" }}
     <div class="bio__info">
         <div class="bio__info--icon">
             <span class="icon-user"></span>
         </div>
-        {{- $.Param "organization" -}}
+        {{- . -}}
     </div>
     {{- end -}}
-    {{- if $.Param "location" }}
+    {{- with $.Param "bioLocation" }}
     <div class="bio__info">
         <div class="bio__info--icon">
             <span class="icon-location"></span>
         </div>
-        {{- $.Param "location" -}}
+        {{- . -}}
     </div>
     {{- end -}}
-    {{- if $.Param "email" }}
+    {{- if $.Param "bioShowEmail" }}
+        {{- range $name, $path := $.Param "socialOptions" }}
+            {{- if eq $name "email" }}
     <div class="bio__info">
         <div class="bio__info--icon">
             <span class="icon-mail-alt"></span>
         </div>
-        <a href="mailto:{{ $.Param "email" }}">{{ $.Param "email" }}</a>
+        <a href="mailto:{{ $path }}">{{ $path }}</a>
     </div>
+            {{- end -}}
+        {{- end -}}
     {{- end -}}
-    {{- if $.Param "link" }}
+    {{- with $.Param "bioLink" }}
     <div class="bio__info">
         <div class="bio__info--icon">
             <span class="icon-link"></span>
         </div>
-        <a href="{{ $.Param "link" }}" target="_blank" rel="noreferrer">{{ $.Param "link" }}</a>
+        <a href="{{ . }}" target="_blank" rel="noreferrer">{{ . }}</a>
     </div>
     {{- end }}
-    {{/* TODO(2-REC): want it optional? */}}
-    {{/* TODO(2-REC): Handle 'phone' as 'email': remove from here and add entry above */}}
+    {{- if not ($.Param "bioHideSocial") -}}
     <div class="bio__social">
-    {{- range $name, $path := $.Param "socialOptions" }}
-        {{- if (and $path (ne $name "email")) }}
+        {{- range $name, $path := $.Param "socialOptions" }}
+            {{- if $path }}
+                {{- if not (and ($.Param "bioShowEmail") (eq $name "email")) }}
+                    {{- if eq $name "email" }}
+                        {{- $path = printf "mailto:%s" $path -}}
+                    {{- end -}}
         <a href="{{ $path | safeURL }}" target="_blank" rel="noreferrer" title="{{ $name }}" aria-label="{{ $name }}">
             {{- partial (print "svgs/social/" $name ".svg") (dict "width" 25 "height" 25) -}}
         </a>
-        {{- end -}}
-    {{- end }}
+                {{- end -}}
+            {{- end -}}
+        {{- end }}
     </div>
+    {{- end }}
 </section>
 {{- if $.Param "enableSidebarSeparator" }}
 <hr class="hr-fade sidebar-hr"/>

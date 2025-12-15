@@ -514,7 +514,7 @@
     if (localTheme) {
       selectThemeItemElem ? 
       selectThemeItemElem.forEach(function (elem) {
-        if (elem.text.trim() === localTheme) {
+        if (elem.title.trim() === localTheme) {
           elem.classList.add('is-active');
         } else {
           elem.classList.remove('is-active');
@@ -529,7 +529,7 @@
     selectThemeItemElem ? 
     selectThemeItemElem.forEach(function (v, i) {
       v.addEventListener('click', function (e) {
-        var selectedThemeVariant = e.target.text.trim();
+        var selectedThemeVariant = e.target.title.trim();
         localStorage.setItem('theme', selectedThemeVariant);
         setMetaColor(selectedThemeVariant);
 
@@ -538,7 +538,7 @@
         selectThemeElem.forEach(function(rootElem) {
           rootElem.querySelectorAll('a').forEach(function (elem) {
             if (elem.classList) {
-              if (elem.text.trim() === selectedThemeVariant) {
+              if (elem.title.trim() === selectedThemeVariant) {
                 if (!elem.classList.contains('is-active')) {
                   elem.classList.add('is-active');
                 }
@@ -590,4 +590,21 @@
   // ============================================================
 */}}
   });
+
+function toggleMenu(parentElement,event) {
+  const elements = parentElement.querySelectorAll('.dropdown-content');
+  const singleElement = elements[0];
+  if (singleElement.style.display !== 'block') {
+    event.stopPropagation();
+    singleElement.style.display = 'block';
+  }
+}
+
+window.onclick = function(event) {
+    const dropdowns = document.getElementsByClassName('dropdown-content');
+    for (var i = 0; i < dropdowns.length; i++) {
+      const openDropdown = dropdowns[i];
+      openDropdown.style.display = 'none';
+    }
+}
 </script>

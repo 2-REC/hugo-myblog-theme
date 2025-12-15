@@ -5,7 +5,7 @@
 */}}
 <div class="navbar-selector navbar-theme-selector-mobile" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}">
   <div class="dropdown">
-    <button class="dropdown-trigger navbar__slide-down" aria-label="Select Theme Button" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}">
+    <button class="dropdown-trigger navbar__slide-down" onclick="toggleMenu(this.parentElement,event)" aria-label="Select Theme Button" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}">
       {{/*
       {{ partial "svgs/etc/invert-colors.svg" (dict "width" 22 "height" 22) }}      
       */}}
@@ -13,14 +13,10 @@
     </button>
     <div class="dropdown-content select-theme">
       {{ if .Site.Data.theme.themes }}
-        {{ $themeOptions := slice }}
-        {{ range .Site.Data.theme.themes }}
-          {{ $themeOptions = $themeOptions | append .name }}
-        {{ end }}
-        {{ range $index, $value := $themeOptions }}
-        <a href="#" class="dropdown-item select-theme__item {{ if (eq $index 0) }}is-active{{ end }}">
-          {{ . }}
-        </a>
+        {{ range $index, $value := .Site.Data.theme.themes }}
+          <a href="#" title="{{ $value.name }}" class="dropdown-item select-theme__item {{ if (eq $index 0) }}is-active{{ end }}">
+            {{ $value.label }}
+          </a>
         {{ end }}
       {{ end }}
     </div>

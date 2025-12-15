@@ -12,7 +12,7 @@
         {{ end }}
         <div class="navbar-selector" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}">
           <div class="dropdown">
-            <button class="dropdown-trigger navbar__slide-down" aria-label="Select Language Button" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}">
+            <button class="dropdown-trigger navbar__slide-down" onclick="toggleMenu(this.parentElement,event)" aria-label="Select Language Button" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}">
               {{/* TODO: adapt icon, and make same size as 'theme' */}}
               <div class="navbar__menu-item">{{ partial "svgs/etc/globe.svg" }}{{ $label }}</div>
             </button>

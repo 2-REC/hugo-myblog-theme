@@ -7,6 +7,11 @@
   }
 }
 
-@function themed($key) {   
-  @return map-get($theme-map, $key);
+@function themed($key, $default:null) {
+  $value: map-get($theme-map, $key);
+  @if $value == null {
+    @return $default;
+  }
+  //@warn "Undefined key: #{$key} in $theme-map.";
+  @return $value;
 }

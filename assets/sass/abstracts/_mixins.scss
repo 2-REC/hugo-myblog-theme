@@ -1,5 +1,6 @@
 $theme-map: null;
 
+/* for elements children of 'theme' */
 @mixin themify($themes) {
   @each $theme, $map in $themes {
     .theme__#{$theme} & {
@@ -12,6 +13,21 @@ $theme-map: null;
             $key: $value
           )
         ) !global;
+      }
+      @content;
+      $theme-map: null !global;
+    }
+  }
+}
+
+/* for top-level elements (parents of 'theme') */
+@mixin themify-direct($themes) {
+  @each $theme, $map in $themes {
+    &.theme__#{$theme} { 
+      $theme-map: () !global;
+      @each $key, $submap in $map {
+        $value: map-get(map-get($themes, $theme), "#{$key}");
+        $theme-map: map-merge($theme-map, ($key: $value)) !global;
       }
       @content;
       $theme-map: null !global;

@@ -48,12 +48,15 @@
 
     &--text {
       text-align: center;
-      font-family: $title-font;
       font-size: 14px;
       padding: 0.5rem;
       width: 40%;
       height: auto;
       margin: 0 auto;
+
+      @include themify($themes) {
+        font-family: themed('title-font', $title-font);
+      }
     }
   }
 
@@ -64,12 +67,12 @@
     width: 100px;
     padding: 0.8rem;
     height: auto;
-    font-family: $title-font;
     font-size: 16px;
     background: transparent;
 
     @include no-select;
     @include themify($themes) {
+      font-family: themed('title-font', $title-font);
       color: themed('gtt-color');
     }
   }

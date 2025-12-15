@@ -11,7 +11,7 @@ Based on the ZZO theme (TODO: add link). The main changes are:
 * ... (TODO: continue)
 
 
-## Usage
+# Usage
 
 Instructions to build a new site using the "MyBlog" Hugo theme.
 
@@ -23,9 +23,9 @@ The Hugo command "hugo new site" can be used to create the new site, but the str
 More details about each step are provided in the "Checklist" (TODO: add link) section below.
 
 
-### Main Steps
+## Main Steps
 
-#### Preparation
+### Preparation
 
 * Create a new directory to contain the new site.
 
@@ -55,7 +55,7 @@ Information can be found in the [Hugo's Lookup Order](https://gohugo.io/template
 The lookup order also applies to other files than layout, such as files in "data", "i18n", assets", etc.
 
 
-#### Config
+### Config
 (TODO: move below?)
 
 * Edit the config file "config/_default/config.toml":
@@ -90,7 +90,7 @@ Languages:
 **TODO:** Add info/details
 
 
-#### Logo + favicon
+### Logo + favicon
 
 * Site icon (favicon):
     * Add an icon file "logo.ico" in the "static/logo" directory.
@@ -108,7 +108,7 @@ Languages:
 + static/manifest.json (logos definition)
 
 
-#### Header (Optional)
+### Header (Optional)
 
 Home page header.
 
@@ -224,7 +224,7 @@ TODO: check that complete + add details.
 Units must be specified, unless the value is 0.
 
 
-#### Bio (Optional)
+### Bio (Optional)
 
 The "bio" section can be added to sidebars.
 It contains information relative to the blogger/author.
@@ -271,7 +271,7 @@ TODO: if other authors (post specific), use 'whoami' (TODO!)
     **NOTE:** The social options can also be in the site footer. See below for details.
 
 
-#### Carousel (Optional)
+### Carousel (Optional)
 
 Recent posts displayed as a "carousel".
 
@@ -299,7 +299,7 @@ Additional slides (not post related) can be defined to be displayed in the carou
     **NOTE:** At least 2 slides are required for the carousel. If there is only 1 slide, the carousel is deactivated.
 
 
-#### Themes
+### Themes
 
 Colours, fonts, etc.
 Can have 1 or more defined styles.
@@ -312,13 +312,104 @@ Each theme must:
 
 Selectable in navigation bar on top.
 
-* fonts:
-    * Main fonts usage specified in "data/fonts.toml"
-    * Available fonts in "static/fonts" of theme.
-        => Add new fonts in "static/fonts" of site
+
+#### Fonts
+
+To avoid ambiguity between a "Hugo theme" serving as the base/template for the site, and the site's themes altering the display, the term "template" will be used to identify the "Hugo theme".
+Thus when mentioning a theme, it will refer to a display variant of the site.
 
 
-#### CONTENT
+##### Template
+
+Fonts defined in the site's template.
+
+- Fonts are defined in "assets/sass/base/_fonts.scss" as CSS "font-face" elements, identifiable via their "font-family" field.
+	eg:
+	```
+	@font-face {
+	    font-family: 'TEST_FONT';
+	    src: url('/fonts/muli-latin-600.woff') format('woff');
+	    font-weight: normal;
+	    font-style: italic;
+	}
+	```
+
+- The associated font files need to be located in "static/fonts" folder.
+	NOTE: The template is using fonts as embedded/self-hosted files instead of CDN.
+
+- Main font types are defined in "data/font.toml", referring to fonts defined in CSS.
+	Additionally, optional fallback fonts can be provided for each font type, as well as the font category ("sans-serif", "serif", "cursive", "monospace", etc.).
+
+	E.g.:
+	```
+	[[font]]
+	  name = "title-font"
+	  type = "Montserrat"
+	  fallbacks = "helvetica, arial" # optional list of fallback fonts
+	  category = "sans-serif"
+	```
+	A variable will be defined for each font type (accessible by prefixing its name with a "$" sign).
+	The variable will then then usable in CSS/SCSS files as "$title-font".
+
+	The following main font types are required (as they are used throughout the site):
+	- title-font
+	- content-font
+	- code-font
+	- cursive-font
+
+	Others optional variables are automatically defined by the template:
+	- legend-font: Image copyright caption.
+	TODO: add more...
+
+	NOTE: These variables can be overridden per theme if desired (see below).
+
+
+##### Site
+
+Add fonts to a website:
+- copy "assets/sass/base/_fonts.scss" file from the template's folder to the site.
+	NOTE: The new file will override the original ones, so fonts that were defined in the original file will have to be explicitly defined in the new one if they are still needed.
+- define new fonts as "font-face" elements, which will be identifiable via their "font-family" field.
+- add the font files in the site's "static/fonts" folder.
+	NOTE: Fonts that are present in the template's "static/fonts" folder are still available.
+
+To define new font types or to override the existing ones:
+- copy "data/font.toml" file from the template's folder to the site.
+	NOTE: The new file will override the original ones, so fonts that were defined in the original file will have to be explicitly defined in the new one if they are still needed.
+- override the existing font types (or keep them unchanged).
+	NOTE: NO SPACES ALLOWED IN FONT TYPE NAMES, TYPES AND CATEGORIES!
+- add new font types.
+	NOTE: NO SPACES ALLOWED IN FONT TYPE NAMES!
+
+Overrides per theme:
+- in theme's specific SCSS file (in site's "assets/sass/themes"), in the theme's main block, override the variables:
+	eg:
+	title-font: "TEST_FONT",
+	or with parenthesis if several values (preferable for fallbacks):
+		title-font: ("TEST FONT", sans-serif),
+
+
+##### Usage
+
+Typically, the usage of a font type variable named "$font-variable" will be of the form:
+```
+@include themify($themes) {
+  font: themed('font-variable', $font-variable);
+}
+```
+First trying to get the theme's overridden value, and falling back to the generic template value if needed.
+
+
+Other variables can be defined per theme using the defined font families and font types.
+eg:
+test-font: "TEST_FONT",
+other-test-font: $font-variable,
+
+All the defined variables can also be used in custom SCSS files, such as "custom.scss".
+
+
+
+### CONTENT
 
 - search (filters)
 - posts
@@ -368,7 +459,7 @@ Selectable in navigation bar on top.
 ...
 
 
-#### NAVBAR
+### NAVBAR
 * entries defined by directories in 'content'.
 * height of navbar can be changed by setting values in 'data/grid.toml'
 
@@ -378,7 +469,7 @@ TODO:
 
 
 
-### Checklist
+## Checklist
 **TODO:** check required (not redundant) + update
 
 Checklist when making a new site using the theme.

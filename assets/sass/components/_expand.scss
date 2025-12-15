@@ -31,7 +31,9 @@
     }
 
     &--toc {
-      font-family: $title-font;
+      @include themify($themes) {
+        font-family: themed('title-font', $title-font);
+      }
       font-size: 15.2px;
       li {
         list-style-type: '📂 ';
@@ -51,13 +53,13 @@
     border: none;
     padding: 0.125rem;
     font-size: 1rem;
-    font-family: $title-font;
     border-top-left-radius: 0.25rem;
     border-top-right-radius: 0.25rem;
 
     @include flexbox();
     @include align-items(center);
     @include themify($themes) {
+      font-family: themed('title-font', $title-font);
       color: inherit;
       background-color: themed('toc-header-background-color');
       &:hover {

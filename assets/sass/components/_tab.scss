@@ -18,13 +18,13 @@
     border: none;
     cursor: pointer;
     font-size: 13.8px;
-    font-family: $title-font;
     text-transform: capitalize;
     padding: 0.5rem 0.75rem;
     border-top-left-radius: 0.25rem;
     border-top-right-radius: 0.25rem;
     
     @include themify($themes) {
+      font-family: themed('title-font', $title-font);
       color: themed('navbar-title-color');
       background-color: themed('body-background-color');
 

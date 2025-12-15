@@ -20,8 +20,8 @@
 
   &__title {
     font-weight: 700;
-    font-family: $title-font;
     @include themify($themes) {
+      font-family: themed('title-font', $title-font);
       color: themed('taxo-title-color');
       &:hover {
         color: themed('link-hover');
@@ -31,8 +31,8 @@
 
   &__title-nolink {
     font-weight: 700;
-    font-family: $title-font;
     @include themify($themes) {
+      font-family: themed('title-font', $title-font);
       color: themed('taxo-title-color');
     }
   }

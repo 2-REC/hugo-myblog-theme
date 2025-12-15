@@ -32,7 +32,6 @@
   .copy-to-clipboard {
     &::after {
       content: 'copy';
-      font-family: $title-font;
       font-size: 9px;
       border: 1px solid #aaa;
       border-radius: 0.125rem;
@@ -40,6 +39,10 @@
       padding: 0 0.1rem;
       right: 1px;
       top: -1px;
+
+      @include themify($themes) {
+        font-family: themed('title-font', $title-font);
+      }
     }
     transition: none !important;
 

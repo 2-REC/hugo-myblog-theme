@@ -25,10 +25,13 @@
         &::before {
             position: absolute;
             content: '⚠️   Warning';
-            font-family: $title-font;
             top: -26.5px;
             left: 0.4rem;
             height: 100%;
+
+            @include themify($themes) {
+              font-family: themed('title-font', $title-font);
+            }
         }
 
         a {
@@ -71,10 +74,13 @@
         &::before {
             position: absolute;
             content: '❌   Error';
-            font-family: $title-font;
             top: -26.5px;
             left: 0.4rem;
             height: 100%;
+
+            @include themify($themes) {
+              font-family: themed('title-font', $title-font);
+            }
         }
 
         a {
@@ -117,10 +123,13 @@
         &::before {
             position: absolute;
             content: 'ℹ️   Info';
-            font-family: $title-font;
             top: -26.5px;
             left: 0.4rem;
             height: 100%;
+
+            @include themify($themes) {
+              font-family: themed('title-font', $title-font);
+            }
         }
 
         a {
@@ -163,10 +172,13 @@
         &::before {
             position: absolute;
             content: '✔️   Success';
-            font-family: $title-font;
             top: -26.5px;
             left: 0.4rem;
             height: 100%;
+
+            @include themify($themes) {
+              font-family: themed('title-font', $title-font);
+            }
         }
 
         a {

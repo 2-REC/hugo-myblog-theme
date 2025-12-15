@@ -24,6 +24,24 @@ $grid_row_gap: {{ .Site.Data.grid.grid_row_gap }};
 //$theme_kimbie_chroma_background: {{ .Site.Data.skin.theme_kimbie_chroma_background }};
 //////// THEMES - MID
 
+@import 'abstracts/functions';
+
+// Fonts
+$fonts: (
+{{ range .Site.Data.font.font }}
+  {{ if and .fallbacks (ne .fallbacks "") }}
+    {{ .name }}: ("{{ .type }}", #{ {{.fallbacks}} }, {{ .category }}),
+  {{ else }}
+    {{ .name }}: ("{{ .type }}", {{ .category }}),
+  {{ end }}
+{{ end }}
+);
+
+{{ range .Site.Data.font.font }}
+{{ printf "$%s: font('%s');" .name .name }}
+{{ end }}
+
+
 {{ range .Site.Data.theme.themes }}
 @import 'themes/{{ .name }}';
 @import 'themes/{{ .chroma_background }}';
@@ -43,15 +61,10 @@ $codeblock: (
 );
 //////// THEMES - END
 
-$title-font: {{ .Site.Data.font.title_font }};
-$content-font: {{ .Site.Data.font.content_font }};
-$cursive-font: {{ .Site.Data.font.cursive_font }};
-
 $viewport_size: {{ .Site.Params.viewportSize | default "normal" }};
 
 @import 'abstracts/variables';
 @import 'abstracts/mixins';
-@import 'abstracts/functions';
 @import 'abstracts/flexbox';
 
 //////// THEMES - BEGIN

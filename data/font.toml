@@ -1,6 +1,20 @@
-title_font = "\"Montserrat\", sans-serif"
-content_font = "\"Muli\", sans-serif"
-# content_font = "\"Merriweather\", serif"
-# content_font = "\"Source Sans Pro\", sans-serif"
-# content_font = "\"League Gothic\", sans-serif"
-cursive_font = "\"Courgette\", cursive"
+# Override fonts or define more in site (by copying this file to site's "data" directory).
+
+[[font]]
+  name = "title-font"
+  type = "helvetica"
+  fallbacks = "arial"
+  category = "sans-serif"
+[[font]]
+  name = "content-font"
+  type = "helvetica"
+  fallbacks = "arial"
+  category = "sans-serif"
+[[font]]
+  name = "cursive-font"
+  type = "cursive"
+  category = "cursive"
+[[font]]
+  name = "code-font"
+  type = "Consolas"
+  category = "monospace"

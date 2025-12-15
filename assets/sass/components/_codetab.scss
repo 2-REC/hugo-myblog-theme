@@ -23,9 +23,12 @@
     outline: none;
     cursor: pointer;
     font-size: 13.8px;
-    font-family: $title-font;
     text-transform: capitalize;
     padding: 0.25rem 0.5rem;
+
+    @include themify($themes) {
+      font-family: themed('title-font', $title-font);
+    }
 
     &:first-child {
       border-top-left-radius: 0.25rem;

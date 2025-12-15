@@ -9,10 +9,9 @@
 
   &__title {
     margin: 2rem 0;
-    //TODO: allow specific font for each page title?
-    font-family: $title-font;
 
     @include themify($themes) {
+      font-family: themed('title-font', $title-font);
       color: themed('about-title-color');
       /* TODO: could be configurable (?) */
       text-shadow: 1.2px 1.2px 0 themed('about-title-shadow-color');

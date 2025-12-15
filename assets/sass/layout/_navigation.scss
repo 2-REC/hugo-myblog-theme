@@ -182,7 +182,9 @@ width: $grid_navbar_height;
   &__title {
     height: $grid_navbar_height;
     font-size: 1.5rem;
-    font-family: $title-font;
+    @include themify($themes) {
+      font-family: themed('title-font', $title-font);
+    }
 
     @include flexbox();
     @include align-items(center);        
@@ -214,8 +216,10 @@ width: $grid_navbar_height;
       height: $grid_navbar_height;
       padding: 0.5rem;
       font-size: 1rem;
-      font-family: $title-font;
       font-weight: 700;
+      @include themify($themes) {
+        font-family: themed('title-font', $title-font);
+      }
       
       @include flexbox();
       @include align-items(center);
@@ -517,12 +521,15 @@ color: themed('navbar-title-color');
 
       & > a {
         height: 100%;
-        font-family: $title-font;
         font-size: 1rem;
         font-weight: bold;
         color: inherit;
         text-decoration: none !important;
         padding: 0 1rem;
+
+        @include themify($themes) {
+          font-family: themed('title-font', $title-font);
+        }
         
         @include flexbox();
         @include align-items(center);

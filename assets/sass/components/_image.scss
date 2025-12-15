@@ -32,6 +32,9 @@
     .inline-copyright {
       display: inline;
       white-space: nowrap;
+      @include themify($themes) {
+        font-family: themed('legend-font', $legend-font);
+      }
       &::before {
         content: "\00a9\2009"; /* Copyright symbol followed by a thin space character */
       }

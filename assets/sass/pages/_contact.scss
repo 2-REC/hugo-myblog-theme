@@ -10,9 +10,9 @@
 
   &__title {
     margin: 2rem 0;
-    font-family: $title-font;
     
     @include themify($themes) {
+      font-family: themed('title-font', $title-font);
       color: themed('contact-title-color');
       text-shadow: 1.2px 1.2px 0 themed('contact-title-shadow-color');
     }    
@@ -74,10 +74,13 @@
   }
 
   &__label {
-    font-family: $title-font;
     font-size: 14px;
     font-weight: bold;
     padding: 0.25rem 0;
+
+    @include themify($themes) {
+      font-family: themed('title-font', $title-font);
+    }
   }
 
   &__desc {
@@ -101,12 +104,12 @@
   &__send {
     height: 35px;
     margin: 0.75rem 0.25rem;
-    font-family: $title-font;
     font-weight: bold;
     border: none;
     border-radius: 0.125rem;
 
     @include themify($themes) {
+      font-family: themed('title-font', $title-font);
       color: inherit;
       border: 1px solid themed('contact-border-color');
       background-color: themed('contact-button-background-color');

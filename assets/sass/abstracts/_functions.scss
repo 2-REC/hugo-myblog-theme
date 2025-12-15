@@ -15,3 +15,11 @@
   //@warn "Undefined key: #{$key} in $theme-map.";
   @return $value;
 }
+
+@function font($key, $default:null) {
+  $value: map-get($fonts, $key);
+  @if $value == null {
+    @return $default;
+  }
+  @return $value;
+}

@@ -566,14 +566,13 @@ LATER:
 
 * [ ] Make specific css type +theme colors for each page type
   * [ ] Add other specific params for each page (font, etc)
-    => Rewrite entire font handling.
-    Remove from "data/fonts.toml" (and change in "main.scss")
-    (and use fonts defined in "_mixins.scss")
-    eg:
-    ```
-    $twotone: (
-        font-title: "\"Merriweather\", sans-serif",
-        ...
-    ```
+    * [ ] add font variables for
+      - NAVBAR!
+        - main title
+        - other titles
+        - menus
+      - bio?
+      - links (taxonomies!)
+      - image comments (photoswipe classes 'pswp__caption'? - add other custom class?)
   * [ ] about, contact, gallery, terms
   * [ ] list (used by list, taxo, galleries)

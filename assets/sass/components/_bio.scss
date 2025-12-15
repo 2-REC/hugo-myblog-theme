@@ -11,10 +11,10 @@
   width: 100%;
   overflow-wrap: anywhere;
   max-width: 928px;
-  font-family: $title-font;
 
   @include themify($themes) {
     font-size: themed('bio-text-size');
+    font-family: themed('title-font', $title-font);
   }
 
   &__photo {

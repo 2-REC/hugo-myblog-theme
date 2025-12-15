@@ -18,14 +18,18 @@
     font-size: 18px;
     line-height: 18px;
     font-weight: bold;
-    font-family: $title-font;
-    
+    @include themify($themes) {
+      font-family: themed('title-font', $title-font);
+    }
+
     @include flexbox();
     @include justify-content(center);
   }
 
   &__item {
-    font-family: $title-font;
+    @include themify($themes) {
+      font-family: themed('title-font', $title-font);
+    }
     font-size: 0.8rem;
     cursor: pointer;
     border-radius: 0.25rem;

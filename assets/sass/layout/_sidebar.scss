@@ -18,11 +18,11 @@
     padding: 0.25rem;
 
     &__title {
-      font-family: $title-font;
       font-weight: 700;
       font-size: 0.95rem;
 
       @include themify($themes) {
+        font-family: themed('title-font', $title-font);
         color: themed('sidebar-title-color');
         &:hover {
           color: themed('sidebar-title-hover-color');
@@ -45,9 +45,9 @@
     }
 
     &__a {
-      font-family: $title-font;
       font-size: 0.95rem;
       @include themify($themes) {
+        font-family: themed('title-font', $title-font);
         color: themed('sidebar-li-color');
         &:hover {
           color: themed('sidebar-li-hover-color');

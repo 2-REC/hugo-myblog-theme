@@ -1,7 +1,9 @@
 //TODO: adapt!
 .not-found {
   height: 100%;
-  font-family: $title-font;
+  @include themify($themes) {
+    font-family: themed('title-font', $title-font);
+  }
 
   @include flexbox();
   @include align-items(center);

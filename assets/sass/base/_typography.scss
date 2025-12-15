@@ -9,12 +9,16 @@ html {
 }
 
 body {
-  font: normal 125% / 1.4 $text-font-stack;
+  @include themify-direct($themes) {
+    font: normal 125% / 1.4 themed('content-font', $content-font);
+  }
 }
 
 code,
 pre {
-  font: normal 125% / 1.8 $code-font-stack;
+  @include themify($themes) {
+    font: normal 125% / 1.8 themed('code-font', $code-font);
+  }
 }
 
 .h1 {

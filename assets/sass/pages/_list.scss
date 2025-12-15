@@ -72,13 +72,15 @@
     align-items: center;
     justify-content: center;
     margin: 1.25rem 0;
-    font-family: $title-font;
+    @include themify($themes) {
+      font-family: themed('title-font', $title-font);
+    }
 
     &--title {
       margin: 2rem 0;
-      font-family: $title-font;
 
       @include themify($themes) {
+        font-family: themed('title-font', $title-font);
         color: themed('list-title-color');
         /* TODO: could be configurable (?) */
         text-shadow: 1.2px 1.2px 0 themed('list-title-shadow-color');

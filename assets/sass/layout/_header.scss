@@ -2,8 +2,11 @@
   overflow: hidden;
 
   .title {
-    font-family: $title-font;
     font-weight: 900;
+
+    @include themify($themes) {
+      font-family: themed('title-font', $title-font);
+    }
   }
 }
 
@@ -19,9 +22,9 @@
   &__title {
     line-height: 1em;
     font-weight: 700;
-    font-family: $title-font;
 
     @include themify($themes) {
+      font-family: themed('title-font', $title-font);
       color: themed('header-title-color-default');
     }
 

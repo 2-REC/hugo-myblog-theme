@@ -599,16 +599,21 @@ TODO: detail only changes from Zzo (not usage)
         TODO: detail more...
 
 * Taxonomies
-  * Search
-    * Added page to search/filter posts on specific fields (tags, categories, author, etc.).
+  * Browse
+    * Added page to browse/filter posts on specific fields (tags, categories, author, etc.).
       The code is using:
         https://github.com/pointyfar/hugo-tags-filter
         Modified version:
         https://github.com/2-REC-forks/hugo-tags-filter
         (TODO: add more details/info)
-    * Optional (disabled if no "search" page found in site content)
+    * Optional (disabled if no "browse" page found in site content)
     * Possibility to switch AND/OR results
       (TODO: add more details...)
+  * Search
+    * Added page to search posts by typing key words.
+      The code is using:
+        https://github.com/pagefind/pagefind
+    * The pages must be generated before building the site. See [documentation](https://pagefind.app/docs/).
 
 * Footer
   * Copyright
@@ -629,6 +634,7 @@ TODO: detail only changes from Zzo (not usage)
 
 
 ## Changed Features from original Zzo Theme
+
 * General
   * Icons
     * Use of an 'icon-font' for icons in text (additionally to SVG tags)
@@ -715,14 +721,14 @@ TODO: detail only changes from Zzo (not usage)
         lineNos = true
         lineNumbersInTable = true
     )
+* Search feature
+    * Replaced existing by 'pagefind'.
+    * Added browse feature to filter on taxonomy terms.
 
 
 ## Removed Features from original Zzo Theme
 
 * All themes but "light" & "dark"
-* Search feature
-    * Removed as wasn't fully fonctional
-    * ~Replaced by feature to filter on taxonomy terms
 * Swipe
     * Removed swipe shortcodes "swiper" and "swiperItem"
     * Removed swipe from header (using "slider" from "jQuery.cycle" library)
@@ -751,4 +757,5 @@ TODO: detail only changes from Zzo (not usage)
 * "[lazysizes](https://github.com/aFarkas/lazysizes)" from [Alexander Farkas](https://github.com/aFarkas)
 * "[hugo-easy-gallery](https://github.com/liwenyip/hugo-easy-gallery/)" from [liwenyip](https://github.com/liwenyip)
 * "[hugo-tags-filter](https://github.com/pointyfar/hugo-tags-filter)" from [pointyfar](https://github.com/pointyfar)
+* "[pagefind](https://github.com/pagefind/pagefind)" from [Pagefind](https://github.com/Pagefind)
 * Others? If someone was forgotten, please accept my apologies, I will be happy to fix this!

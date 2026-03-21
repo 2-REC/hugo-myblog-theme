@@ -104,6 +104,7 @@ $navm_theme_right_offset: {{ if and .Site.Params.enableLangChange (gt (len .Site
 @import 'components/bio';
 @import 'components/breadcrumb';
 //@import 'components/diagram';
+@import 'components/discovery';
 @import 'components/expand';
 @import 'components/gtt';
 @import 'components/hr';

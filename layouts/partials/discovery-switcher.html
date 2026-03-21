@@ -1,0 +1,25 @@
+{{ $searchPage := site.GetPage "/search" }}
+{{ $browsePage := site.GetPage "/browse" }}
+{{ if and $searchPage $browsePage }}
+<nav class="discovery-switcher" aria-label="Content discovery modes">
+  {{ if eq . "search" }}
+    <span class="list__header--title capitalize h5" aria-current="page">
+      {{ $searchPage.Title }}
+    </span>
+  {{ else }}
+    <a href="{{ $searchPage.RelPermalink }}" class="discovery-switcher__item">
+      {{ $searchPage.Title }}
+    </a>
+  {{ end }}
+  <span class="discovery-switcher__separator" aria-hidden="true"></span>
+  {{ if eq . "browse" }}
+    <span class="list__header--title capitalize h5" aria-current="page">
+      {{ $browsePage.Title }}
+    </span>
+  {{ else }}
+    <a href="{{ $browsePage.RelPermalink }}" class="discovery-switcher__item">
+      {{ $browsePage.Title }}
+    </a>
+  {{ end }}
+</nav>
+{{ end }}

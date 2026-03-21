@@ -4,6 +4,18 @@
 <script defer src="{{ $loadPhotswipe.RelPermalink }}"></script>
 <script defer src="{{ "plugins/photoswipe/js/photoswipe.min.js" | relURL }}"></script>
 <script defer src="{{ "plugins/photoswipe/js/photoswipe-ui-default.min.js" | relURL }}"></script>
+{{- end -}}
+
+{{ "<!-- Pagefind -->" | safeHTML }}
+{{- if eq .Type "search" }}
+<link href="{{ "pagefind/pagefind-modular-ui.css" | relURL }}" rel="stylesheet">
+<script src="{{ "pagefind/pagefind-modular-ui.js" | relURL }}"></script>
+<script>
+const bundleString = '{{ "pagefind/" | relURL }}';
+const itemsString = '{{ i18n "items" }}';
+</script>
+{{ $loadPagefind := resources.Get "js/load-pagefind.js" | resources.Minify | resources.Fingerprint }}
+<script defer src="{{ $loadPagefind.RelPermalink }}"></script>
 {{ end -}}
 
 <script>

@@ -86,7 +86,9 @@ margin-bottom: 0.5rem;
 //    padding: 0.25rem;
     padding: 5px;
 
-    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2);
+    @include themify($themes) {
+        box-shadow: 0 0 1px 1px rgba(themed('body-color'), 0.5);
+    }
 
     -webkit-transition: all 0.2s ease-out;
     -moz-transition: all 0.2s ease-out;
@@ -94,8 +96,9 @@ margin-bottom: 0.5rem;
 
     @include transition(all, 0.2s, ease-out);
     @include on-event {
-      @include box-shadow(0, 0, 5px, 1px, rgba(0, 0, 0, 0.4));
-//      background-color: rgba(125, 125, 125, 0.1);
+      @include themify($themes) {
+        @include box-shadow(0, 0, 5px, 1px, rgba(themed('body-color'), 0.7));
+      }
     }
   }
 
@@ -238,18 +241,22 @@ margin-bottom: 0.5rem;
     overflow: hidden;
     text-overflow: ellipsis;
 
-    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2);
+    @include themify($themes) {
+        box-shadow: 0 0 1px 1px rgba(themed('body-color'), 0.5);
+    }
 
     @include flexbox();
     @include flex-direction(row);
 //?    @include justify-content(flex-start);
 
+/*
     @media only screen and (max-width: 500px) {
 //      width: 100%;
       @include flexbox();
       @include flex-direction(column);
       @include justify-content(flex-start);
     }
+*/
 
     -webkit-transition: all 0.2s ease-out;
     -moz-transition: all 0.2s ease-out;
@@ -273,8 +280,9 @@ margin-bottom: 0.5rem;
 */
     @include transition(all, 0.2s, ease-out);
     @include on-event {
-      @include box-shadow(0, 0, 5px, 1px, rgba(0, 0, 0, 0.4));
-//      background-color: rgba(125, 125, 125, 0.1);
+      @include themify($themes) {
+        @include box-shadow(0, 0, 5px, 1px, rgba(themed('body-color'), 0.7));
+      }
     }
   }
 
@@ -342,10 +350,12 @@ margin-top: 0;
         max-width: 90px;
         min-width: 90px;
       }
+/*
 @media only screen and (max-width: 500px) {
   max-width: 100%;
   width: 100%;
 }
+*/
 //margin-left: 0;  
   }
 
@@ -412,7 +422,9 @@ margin-top: 0;
     overflow: hidden;
     text-overflow: ellipsis;
 
-    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2);
+    @include themify($themes) {
+        box-shadow: 0 0 1px 1px rgba(themed('body-color'), 0.5);
+    }
 
     @include flexbox();
     @include flex-direction(row);
@@ -431,8 +443,9 @@ margin-top: 0;
 
     @include transition(all, 0.2s, ease-out);
     @include on-event {
-      @include box-shadow(0, 0, 5px, 1px, rgba(0, 0, 0, 0.4));
-//      background-color: rgba(125, 125, 125, 0.1);
+      @include themify($themes) {
+        @include box-shadow(0, 0, 5px, 1px, rgba(themed('body-color'), 0.7));
+      }
     }
   }
 

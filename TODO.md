@@ -142,7 +142,7 @@
          or other image that spans multiple pages.
         Images for this Card should be at least 280px in width, and at least 150px in height.
         Image must be less than 1MB in size.
-  - [] "twitter" + "og" tags?
+  - [ ] "twitter" + "og" tags?
     => can use "og" for twitter as well, except image should be different
         <meta property="og:title" content="European Travel Destinations">
         <meta property="og:description" content="Offering tour packages for individuals or groups.">
@@ -550,7 +550,6 @@ LATER:
         * [ ] See what to keep... (+associated in "params.toml")
         * [ ] Add missing icons
         * [ ] See if want to change icons
-        * [ ] Rename/change Twitter (to "X")
     * [ ] summary
         * [ ] Make partial for "meta" block
           => Used by all summaries (+tiles)

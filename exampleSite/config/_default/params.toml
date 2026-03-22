@@ -199,7 +199,7 @@ enableBusuanzi = false
   #TODO: Add missing icons!
   email = "your@email.com"
   facebook = "http://facebook.com/"
-  twitter = "http://twitter.com/"
+  twitter = "http://x.com/"
   github = "https://github.com/2-REC/hugo-myblog-theme"
   #stack-overflow = ""
   instagram = ""

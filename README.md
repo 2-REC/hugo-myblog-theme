@@ -688,7 +688,7 @@ TODO: detail only changes from Zzo (not usage)
           color = "#1877F2"
     * Add a partial in "layouts/partials/share" with the same name as in "params" (should be based on an existing one)
     * Add a partial in "layouts/partials/svgs/share" if referenced in the "share" partial
-  * Included platforms: facebook,twitter, reddit, linkedin, tumblr, weibo, douban, line, whatsapp, telegram
+  * Included platforms: facebook, twitter, reddit, linkedin, tumblr, weibo, douban, line, whatsapp, telegram
 * Donation options
   * Changed "donationOptions" parameters into an array "[[donation]]" with an entry for each platform
   * Specify in "params" if using QR Code or URL with param "qr"
@@ -753,7 +753,7 @@ TODO: detail only changes from Zzo (not usage)
 * "[Hugo Zzo Theme](https://github.com/zzossig/hugo-theme-zzo)" from [zzossig](https://github.com/zzossig)
 * "[Hugo Creative Portfolio Theme](https://github.com/kishaningithub/hugo-creative-portfolio-theme)" from [Kishan B](https://github.com/kishaningithub)
 * "[jQuery Cycle Plugin](http://jquery.malsup.com/cycle/)" from [malsup](https://malsup.com/)
-* "[PhotoSwipe](http://photoswipe.com)" from [Dmitry Semenov](https://twitter.com/dimsemenov)
+* "[PhotoSwipe](http://photoswipe.com)" from [Dmitry Semenov](https://x.com/dimsemenov)
 * "[lazysizes](https://github.com/aFarkas/lazysizes)" from [Alexander Farkas](https://github.com/aFarkas)
 * "[hugo-easy-gallery](https://github.com/liwenyip/hugo-easy-gallery/)" from [liwenyip](https://github.com/liwenyip)
 * "[hugo-tags-filter](https://github.com/pointyfar/hugo-tags-filter)" from [pointyfar](https://github.com/pointyfar)

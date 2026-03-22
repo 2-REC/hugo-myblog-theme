@@ -205,7 +205,8 @@ margin-bottom: 0.5rem;
 /**************************************************************************************************/
 
 .summary-classic {
-  padding: 0 1rem;
+  padding: 0;
+  margin: 0 1rem;
   @include flexbox();
   @include flex-direction(column);
 
@@ -217,6 +218,11 @@ margin-bottom: 0.5rem;
   image-rendering: -webkit-optimize-contrast;
   image-rendering: crisp-edges;
   -ms-interpolation-mode: nearest-neighbor;
+
+  @include themify($themes) {
+    color: themed('body-color');
+    background-color: themed('tiles-background-color');
+  }
 
   &[data-ani="true"] {
     @include animation('slide-in-down .2s .3s 1 ease-in both');

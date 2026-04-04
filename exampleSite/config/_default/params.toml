@@ -9,7 +9,7 @@ meta_image = ""
 
 #TODO: adapt! ('contact'? 'archive' when handled, etc.)
 notAllowedTypesInHome = ["about", "contact"] # posts types in home page
-notAllowedTypesInHomeSidebar = ["about", "search"] # posts types in lists on home page ('top'+'recent')
+notAllowedTypesInHomeSidebar = ["about", "search", "browse"] # posts types in lists on home page ('top'+'recent')
 #notAllowedTypesInArchive #TODO: 'archive' currently not handled
 #TODO: If using 'showFeedLinks' - adapt! (look in original Zzo) (+'archive' when handled, etc.)
 #notAllowedTypesInHomeFeed = ["about", "contact", "galleries" ]

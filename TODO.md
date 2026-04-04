@@ -29,6 +29,20 @@
 ----
 
 
+!!
+- [ ] check/update search stuff (now both search + browse)
+	+ add GitHub Actions Workflow
+do with chatgpt:
+```
+I have a GitHub repository containing a static website developed using Hugo, which contains a search feature using Pagefind.
+I want the site to be deployed automatically to its GitHub Pages when I push changes on the "deploy" branch.
+
+Please generate a GitHub Actions Workflow to automatically make the deploy, while also generating the Pagefind search index.
+Provide details and step-by-step instructions on how to do.
+```
+!!
+
+
 !
 - [ ] scripts
   - [ ] Make sure to use correct defer loading for scripts

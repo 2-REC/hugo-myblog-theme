@@ -77,6 +77,10 @@
         position: relative;
         text-indent: -1em;
 
+        &:hover {
+          color: themed('toc-label-hover-color');
+        }
+
         &::before {
           content: '\2022';
           height: 100%;
@@ -111,6 +115,10 @@
         position: relative;
         text-indent: -1em;
 
+        &:hover {
+          color: themed('toc-label-hover-color');
+        }
+
         &::before {
           content: '\2022';
           height: 100%;
@@ -125,7 +133,7 @@
       }
     }
 
-    /* TODO: seems unused? */
+    /* TODO: seems unused? - double 'li'? */
     ul {
       @include themify($themes) {
         li {

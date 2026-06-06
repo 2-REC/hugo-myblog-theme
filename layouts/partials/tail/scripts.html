@@ -1,5 +1,5 @@
 {{ "<!-- PhotoSwipe -->" | safeHTML }}
-{{- if ($.Scratch.Get "photoswipeloaded") }}
+{{- if ($.Store.Get "photoswipeloaded") }}
 {{ $loadPhotswipe := resources.Get "js/load-photoswipe.js" | resources.Minify | resources.Fingerprint }}
 <script defer src="{{ $loadPhotswipe.RelPermalink }}"></script>
 <script defer src="{{ "plugins/photoswipe/js/photoswipe.min.js" | relURL }}"></script>

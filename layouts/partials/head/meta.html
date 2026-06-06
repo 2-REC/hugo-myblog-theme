@@ -98,11 +98,11 @@
 <link rel="canonical" href="{{ .Permalink | absLangURL }}">
 {{ end }}
 <!-- Colors and icons -->
-{{/* TODO: set Scratch values somewhere! */}}
-<meta name="msapplication-TileColor" content="{{ $.Scratch.Get "themeTitleColor" | default "#fff" }}">
-<meta name="msapplication-navbutton-color" content="{{ $.Scratch.Get "themeNavbarColor" | default "#fff" }}">
-<meta name="theme-color" content="{{ $.Scratch.Get "themeNavbarColor" | default "#fff" }}">
-<meta name="apple-mobile-web-app-status-bar-style" content="{{ $.Scratch.Get "themeNavbarColor" | default "#fff" }}">
+{{/* TODO: set Store values somewhere! */}}
+<meta name="msapplication-TileColor" content="{{ $.Store.Get "themeTitleColor" | default "#fff" }}">
+<meta name="msapplication-navbutton-color" content="{{ $.Store.Get "themeNavbarColor" | default "#fff" }}">
+<meta name="theme-color" content="{{ $.Store.Get "themeNavbarColor" | default "#fff" }}">
+<meta name="apple-mobile-web-app-status-bar-style" content="{{ $.Store.Get "themeNavbarColor" | default "#fff" }}">
 <link rel="manifest" href="{{ "manifest.json" | relURL }}">
 {{/* TODO: add meta for tag "msapplication-config"? */}}
 {{ if (fileExists "static/logo/ms-icon.png") -}}

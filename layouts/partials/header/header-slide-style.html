@@ -1,0 +1,286 @@
+{{- /* Build header slide style block. */ -}}
+
+{{/* TODO: check if any rule needs 'important' */}}
+
+{{- $mainParams := .mainParams -}}
+{{- $slideParams := .slideParams -}}
+{{- $mobileSlideParams := .mobileSlideParams -}}
+
+<style>
+@scope {
+
+    /* .slide-holder */
+    :scope {
+        height: 250px;
+    }
+
+    {{- /* Figure */ -}}
+    .site-header {
+        text-align: {{ $slideParams.alignX }};
+
+        {{- if ne $mainParams.fit "image" -}}
+            {{- if $mainParams.image -}}
+                background-image: url('{{ $mainParams.image.src | relURL }}');
+                background-size: {{ $mainParams.image.size }};
+                background-repeat: {{ $mainParams.image.repeat }};
+                background-position: {{ $mainParams.image.position }};
+            {{- end -}}
+            {{- if eq $mainParams.fit "window" -}}
+                height: {{ $mainParams.height }}vh;
+            {{- else -}}
+                height: {{ $mainParams.height }}px;
+            {{- end -}}
+        {{- end -}}
+    }
+
+    {{- /* X Align/Padding */ -}}
+    .padding-x {
+        {{- if ne $slideParams.paddingSide "" -}}
+            display: inherit;
+            padding-{{- $slideParams.paddingSide -}}: {{ $slideParams.paddingValue }};
+            height: 100%;
+        {{- else -}}
+            display: none;
+        {{- end -}}
+    }
+
+    {{- /* Y Align/Padding */ -}}
+    .padding-y {
+        {{- if ne $slideParams.paddingY "" -}}
+            display: inherit;
+            height: {{ $slideParams.paddingY }};
+        {{- else -}}
+            display: none;
+        {{- end -}}
+    }
+
+    .site-header__title {
+        {{- with $mainParams.titleColor -}}
+            color: {{ printf "%s" . | safeCSS }} !important;
+        {{- end -}}
+
+        {{- if eq $mainParams.fit "fixed" -}}
+            font-size: {{ $slideParams.titleFontSize }};
+            {{- if ne $slideParams.titlePaddingY 0 -}}
+                padding-top: {{ $slideParams.titlePaddingY }}px;
+                padding-bottom: {{ $slideParams.titlePaddingY }}px;
+            {{- end -}}
+        {{- else -}}
+            height: {{ $slideParams.titleFontSizePercent }}%;
+        {{- end -}}
+    }
+
+    {{- if ne $mainParams.fit "fixed" -}}
+        .padding-title-top {
+            {{- if ne $slideParams.computedPadding 0 -}}
+                display: inherit;
+                {{- if $slideParams.titlePaddingYPercent -}}
+                    height: {{ printf "calc(100%% * (%v / 100))" $slideParams.computedPadding | safeCSS -}};
+                {{- else -}}
+                    height: {{ printf "%vpx" $slideParams.computedPadding | safeCSS -}};
+                {{- end -}}
+            {{- else -}}
+                display: none;
+            {{- end -}}
+        }
+
+        .padding-title-bottom {
+            {{- if ne $slideParams.computedPadding 0 -}}
+                display: inherit;
+                {{- if $slideParams.titlePaddingYPercent -}}
+                    height: {{ printf "calc(100%% * (%v / 100))" $slideParams.computedPadding | safeCSS -}};
+                {{- else -}}
+                    height: {{ printf "%vpx" $slideParams.computedPadding | safeCSS -}};
+                {{- end -}}
+            {{- else -}}
+                display: none;
+            {{- end -}}
+        }
+    {{- end -}}
+
+    .space-between {
+        {{- if ne $slideParams.spaceBetweenTitleSubtitle 0 -}}
+            display: inherit;
+            height: {{ $slideParams.spaceBetweenTitleSubtitle }};
+        {{- else -}}
+            display: none;
+        {{- end -}}
+    }
+
+    .site-header__subtitle {
+        {{- with $mainParams.subtitleColor -}}
+            color: {{ printf "%s" . | safeCSS }} !important;
+        {{- end -}}
+
+        {{- if eq $mainParams.fit "fixed" -}}
+            font-size: {{ $slideParams.subtitleFontSize }};
+            {{- if ne $slideParams.subtitlePaddingY 0 -}}
+                padding-top: {{ $slideParams.subtitlePaddingY }}px;
+                padding-bottom: {{ $slideParams.subtitlePaddingY }}px;
+            {{- end -}}
+        {{- else -}}
+            height: {{ $slideParams.subtitleFontSizePercent }}%;
+        {{- end -}}
+    }
+
+    {{- if ne $mainParams.fit "fixed" -}}
+        .padding-subtitle-top {
+            {{- if ne $slideParams.computedPaddingSub 0 -}}
+                display: inherit;
+                {{- if $slideParams.subtitlePaddingYPercent -}}
+                    height: {{ printf "calc(100%% * (%v / 100))" $slideParams.computedPaddingSub | safeCSS -}};
+                {{- else -}}
+                    height: {{ printf "%vpx" $slideParams.computedPaddingSub | safeCSS -}};
+                {{- end -}}
+            {{- else -}}
+                display: none;
+            {{- end -}}
+        }
+
+        .padding-subtitle-bottom {
+            {{- if ne $slideParams.computedPaddingSub 0 -}}
+                display: inherit;
+                {{- if $slideParams.subtitlePaddingYPercent -}}
+                    height: {{ printf "calc(100%% * (%v / 100))" $slideParams.computedPaddingSub | safeCSS -}};
+                {{- else -}}
+                    height: {{ printf "%vpx" $slideParams.computedPaddingSub | safeCSS -}};
+                {{- end -}}
+            {{- else -}}
+                display: none;
+            {{- end -}}
+        }
+    {{- end -}}
+
+
+    @media only screen and (max-width: 769px) {
+
+        {{- /* hide header on mobile if no mobile parameters */ -}}
+        {{- $mobileHomeHeader := $.context.Site.Params.mobileHomeHeader | default "true" -}}
+        {{- if eq $mobileSlideParams "" -}}
+            .slider-cycle-header {
+                display: none;
+            }
+        {{- else -}}
+
+{{/* TODO: do same with all 'mobile*' variables (if not overridden => ignore)
+    => check what/how to override */}}
+
+{{/* TODO: add 'titleEnabled' */}}
+
+            {{- /* X Align/Padding */ -}}
+            .site-header {
+                text-align: {{ $mobileSlideParams.alignX }};
+            }
+
+            .padding-x {
+                {{- if ne $mobileSlideParams.paddingSide "" -}}
+                    padding-{{- $mobileSlideParams.paddingSide -}}: {{ $mobileSlideParams.paddingValue }};
+                    height: 100%;
+                    display: inherit;
+                {{- else -}}
+                    display: none;
+                {{- end -}}
+            }
+
+            {{- /* Y Align/Padding */ -}}
+            .padding-y {
+                {{- if ne $mobileSlideParams.paddingY "" -}}
+                    display: inherit;
+                    height: {{ $mobileSlideParams.paddingY }};
+                {{- else -}}
+                    display: none;
+                {{- end -}}
+            }
+
+            .site-header__title {
+                {{- if eq $mainParams.fit "fixed" -}}
+                    font-size: {{ $mobileSlideParams.titleFontSize }};
+                    {{- if ne $mobileSlideParams.titlePaddingY 0 -}}
+                        padding-top: {{ $mobileSlideParams.titlePaddingY }}px;
+                        padding-bottom: {{ $mobileSlideParams.titlePaddingY }}px;
+                    {{- end -}}
+                {{- else -}}
+                    height: {{ $mobileSlideParams.titleFontSizePercent }}%;
+                {{- end -}}
+            }
+
+            {{- if ne $mainParams.fit "fixed" -}}
+                .padding-title-top {
+                    {{- if ne $mobileSlideParams.computedPadding 0 -}}
+                        display: inherit;
+                        {{- if $mobileSlideParams.titlePaddingYPercent -}}
+                            height: {{ printf "calc(100%% * (%v / 100))" $mobileSlideParams.computedPadding | safeCSS -}};
+                        {{- else -}}
+                            height: {{ printf "%vpx" $mobileSlideParams.computedPadding | safeCSS -}};
+                        {{- end -}}
+                    {{- else -}}
+                        display: none;
+                    {{- end -}}
+                }
+
+                .padding-title-bottom {
+                    {{- if ne $mobileSlideParams.computedPadding 0 -}}
+                        display: inherit;
+                        {{- if $mobileSlideParams.titlePaddingYPercent -}}
+                            height: {{ printf "calc(100%% * (%v / 100))" $mobileSlideParams.computedPadding | safeCSS -}};
+                        {{- else -}}
+                            height: {{ printf "%vpx" $mobileSlideParams.computedPadding | safeCSS -}};
+                        {{- end -}}
+                    {{- else -}}
+                        display: none;
+                    {{- end -}}
+                }
+            {{- end -}}
+
+            .space-between {
+                {{- if ne $mobileSlideParams.spaceBetweenTitleSubtitle 0 -}}
+                    display: inherit;
+                    height: {{ $mobileSlideParams.spaceBetweenTitleSubtitle }};
+                {{- else -}}
+                    display: none;
+                {{- end -}}
+            }
+
+            .site-header__subtitle {
+                {{- if eq $mainParams.fit "fixed" -}}
+                    font-size: {{ $mobileSlideParams.subtitleFontSize }};
+                    {{- if ne $mobileSlideParams.subtitlePaddingY 0 -}}
+                        padding-top: {{ $mobileSlideParams.subtitlePaddingY }}px;
+                        padding-bottom: {{ $mobileSlideParams.subtitlePaddingY }}px;
+                    {{- end -}}
+                {{- else -}}
+                    height: {{ $mobileSlideParams.subtitleFontSizePercent }}%;
+                {{- end -}}
+            }
+
+            {{- if ne $mainParams.fit "fixed" -}}
+                .padding-subtitle-top {
+                    {{- if ne $mobileSlideParams.computedPaddingSub 0 -}}
+                        display: inherit;
+                        {{- if $mobileSlideParams.subtitlePaddingYPercent -}}
+                            height: {{ printf "calc(100%% * (%v / 100))" $mobileSlideParams.computedPaddingSub | safeCSS -}};
+                        {{- else -}}
+                            height: {{ printf "%vpx" $mobileSlideParams.computedPaddingSub | safeCSS -}};
+                        {{- end -}}
+                    {{- else -}}
+                        display: none;
+                    {{- end -}}
+                }
+
+                .padding-subtitle-bottom {
+                    {{- if ne $mobileSlideParams.computedPaddingSub 0 -}}
+                        display: inheritq;
+                        {{- if $mobileSlideParams.subtitlePaddingYPercent -}}
+                            height: {{ printf "calc(100%% * (%v / 100))" $mobileSlideParams.computedPaddingSub | safeCSS -}};
+                        {{- else -}}
+                            height: {{ printf "%vpx" $mobileSlideParams.computedPaddingSub | safeCSS -}};
+                        {{- end -}}
+                    {{- else -}}
+                        display: none;
+                    {{- end -}}
+                }
+            {{- end -}}
+        {{- end -}}
+    }
+}
+</style>

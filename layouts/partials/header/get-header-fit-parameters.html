@@ -1,0 +1,47 @@
+{{- /* Header top-level parameters. */ -}}
+{{- $header := . -}}
+
+{{- $ok := true -}}
+{{- $error := "" -}}
+{{- $fit := $header.fit -}}
+{{- $height := 0 -}}
+
+{{- if not $fit -}}
+    {{- $ok = false -}}
+    {{- $error = "'fit' not defined" -}}
+
+{{- else if not (in (slice "image" "fixed" "window" "ratio") $fit ) -}}
+    {{- $ok = false -}}
+    {{- $error = printf "Invalid value '%v' for 'fit'" $fit -}}
+
+{{- else -}}
+    {{- if eq $fit "image" -}}
+        {{- if eq $header.type "multi" -}}
+            {{- $ok = false -}}
+            {{- $error = printf "'fit: %v' cannot be used with 'multi' header type" $fit -}}
+        {{- else if not (isset $header "image") -}}
+            {{- $ok = false -}}
+            {{- $error = printf "'image' must be defined if 'fit: %v'" $fit -}}
+        {{- end -}}
+    {{- else -}}
+        {{- $array := partial "header/convert-value.html" $header.height -}}
+        {{- if eq $fit "fixed" -}}
+            {{- $heightPixel := index $array 1 -}}
+            {{- if eq $heightPixel 0 -}}
+                {{- $ok = false -}}
+                {{- $error = printf "Invalid value for 'height' field used with 'fit: %v'" $fit -}}
+            {{- end -}}
+            {{- $height = $heightPixel -}}
+        {{- else -}}
+            {{- $heightPercent := index $array 0 -}}
+            {{- if eq $heightPercent 0 -}}
+                {{- $ok = false -}}
+                {{- $error = printf "Invalid value for 'height' field used with 'fit: %v'" $fit -}}
+            {{- end -}}
+            {{- $height = $heightPercent -}}
+        {{- end -}}
+    {{- end -}}
+{{- end -}}
+
+{{- $result := dict "ok" $ok "error" $error "fit" $fit "height" $height -}}
+{{- return $result -}}

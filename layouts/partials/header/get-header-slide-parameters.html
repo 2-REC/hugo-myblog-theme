@@ -1,0 +1,286 @@
+{{- /* Header slide parameters. */ -}}
+{{- $header := .header -}}
+{{- $fit := .fit -}}
+{{- $height := .height -}}
+
+{{- /* TODO: check for more errors (?) */ -}}
+{{- $error := "" -}}
+
+{{- $headerAlignX := $header.alignX -}}
+{{- $headerPaddingX := $header.paddingX -}}
+{{- $headerAlignY := $header.alignY -}}
+{{- $headerPaddingY := $header.paddingY -}}
+{{- $headerTitle := $header.title -}}
+{{- $headerTitleFontSize := $header.titleFontSize -}}
+{{- $headerTitlePaddingY := $header.titlePaddingY -}}
+{{- $headerSubtitle := $header.subtitle -}}
+{{- $headerSubtitleFontSize := $header.subtitleFontSize -}}
+{{- $headerSubtitlePaddingY := $header.subtitlePaddingY -}}
+{{- $headerSpaceBetweenTitleSubtitle := $header.spaceBetweenTitleSubtitle -}}
+
+
+{{- /* X Align & Padding */ -}}
+{{- $alignX := $headerAlignX -}}
+{{- $paddingX := $headerPaddingX -}}
+
+{{- $paddingSide := "" -}}
+{{- $paddingValue := 0 -}}
+{{- if eq $alignX "center" -}}
+    {{- $sign := substr $paddingX 0 1 -}}
+    {{- if eq $sign "-" }}
+        {{- $paddingSide = "right" -}}
+        {{- $paddingValue = substr $paddingX 1 -}}
+    {{- else }}
+        {{- $paddingSide = "left" -}}
+        {{- $paddingValue = $paddingX -}}
+    {{- end }}
+{{- else -}}
+    {{- if eq $alignX "left" }}
+        {{- $paddingSide = "left" -}}
+        {{- $paddingValue = $paddingX -}}
+    {{- else if eq $alignX "right" }}
+        {{- $paddingSide = "right" -}}
+        {{- $paddingValue = $paddingX -}}
+    {{- else -}}
+        {{- $error = printf "Unhandled value '%v' for 'alignX'" $alignX -}}
+    {{- end -}}
+{{- end -}}
+
+
+{{- /* Title Font Size */ -}}
+{{- $titleFontSize := "1em" -}}
+{{- $titleFontSizePercent := 0 -}}
+{{- $titleFontSizePixel := 0 -}}
+{{- if $headerTitle -}}
+    {{- with $headerTitleFontSize -}}
+        {{- $array := partial "header/convert-value.html" . -}}
+        {{- $titleFontSizePercent = index $array 0 -}}
+        {{- /* TODO: move inside 'if'? */ -}}
+        {{- $titleFontSizePixel = index $array 1 -}}
+        {{- if eq $fit "fixed" -}}
+            {{- if ne $titleFontSizePercent 0 -}}
+                {{- $titleFontSize = printf "%#vpx" (int (mul $height (div $titleFontSizePercent 100.0))) -}}
+            {{- else -}}
+                {{- $titleFontSize = printf "%#vpx" $titleFontSizePixel -}}
+            {{- end -}}
+        {{- end -}}
+    {{- end -}}
+{{- end -}}
+
+
+{{- /* Subtitle Font Size */ -}}
+{{- $subtitleFontSize := "1em" -}}
+{{- $subtitleFontSizePercent := 0 -}}
+{{- $subtitleFontSizePixel := 0 -}}
+{{- if $headerSubtitle -}}
+    {{- with $headerSubtitleFontSize -}}
+        {{- $array := partial "header/convert-value.html" . -}}
+        {{- $subtitleFontSizePercent = index $array 0 -}}
+        {{- /* TODO: move inside 'if'? */ -}}
+        {{- $subtitleFontSizePixel = index $array 1 -}}
+        {{- if eq $fit "fixed" -}}
+            {{- if ne $subtitleFontSizePercent 0 -}}
+                {{- $subtitleFontSize = printf "%#vpx" (int (mul $height (div $subtitleFontSizePercent 100.0))) -}}
+            {{- else -}}
+                {{- $subtitleFontSize = printf "%#vpx" $subtitleFontSizePixel -}}
+            {{- end -}}
+        {{- end -}}
+    {{- end -}}
+{{- end -}}
+
+
+{{- /* Y Align/Padding */ -}}
+{{- $paddingY := "" -}}
+{{- if eq $headerAlignY "top" -}}
+    {{- if ne $headerPaddingY 0 -}}
+        {{- $paddingY = printf "%v" $headerPaddingY | safeCSS -}}
+    {{- end -}}
+{{- else -}}
+    {{- $heightPercent := 0 -}}
+    {{- $heightPixel := 0 -}}
+    {{- if $headerTitle -}}
+        {{- $paddingYPercent := 0 -}}
+        {{- $paddingYPixel := 0 -}}
+        {{- with $headerTitlePaddingY -}}
+            {{- $array := partial "header/convert-value.html" . -}}
+            {{- $paddingYPercent = index $array 0 -}}
+            {{- $paddingYPixel = index $array 1 -}}
+        {{- end -}}
+        {{- range $headerTitle -}}
+            {{- $heightPercent = add $heightPercent $titleFontSizePercent -}}
+            {{- $heightPixel = add $heightPixel $titleFontSizePixel -}}
+            {{- $heightPercent = add $heightPercent (mul $paddingYPercent 2) -}}
+            {{- $heightPixel = add $heightPixel (mul $paddingYPixel 2) -}}
+        {{- end -}}
+    {{- end -}}
+                                
+    {{- with $headerSpaceBetweenTitleSubtitle -}}
+        {{- $array := partial "header/convert-value.html" . -}}
+        {{- $heightPercent = add $heightPercent (index $array 0) -}}
+        {{- $heightPixel = add $heightPixel (index $array 1) -}}
+    {{- end -}}
+
+    {{- if $headerSubtitle -}}
+        {{- $paddingYPercent := 0 -}}
+        {{- $paddingYPixel := 0 -}}
+        {{- with $headerSubtitlePaddingY -}}
+            {{- $array := partial "header/convert-value.html" . -}}
+            {{- $paddingYPercent = index $array 0 -}}
+            {{- $paddingYPixel = index $array 1 -}}
+        {{- end -}}
+        {{- range $headerSubtitle -}}
+            {{- $heightPercent = add $heightPercent $subtitleFontSizePercent -}}
+            {{- $heightPixel = add $heightPixel $subtitleFontSizePixel -}}
+            {{- $heightPercent = add $heightPercent (mul $paddingYPercent 2) -}}
+            {{- $heightPixel = add $heightPixel (mul $paddingYPixel 2) -}}
+        {{- end -}}
+    {{- end -}}
+
+    {{- $paddingPercent := 0 -}}
+    {{- $paddingPixel := 0 -}}
+    {{- with $headerPaddingY -}}
+        {{- $array := partial "header/convert-value.html" . -}}
+        {{- $paddingPercent = (index $array 0) -}}
+        {{- $paddingPixel = (index $array 1) -}}
+    {{- end -}}
+
+    {{- /* TODO: rewrite with only 1 (percent or pixel) as both can't be set (always 1 equal to 0) */ -}}
+    {{- if eq $headerAlignY "bottom" -}}
+        {{- $heightPercent = add $heightPercent $paddingPercent -}}
+        {{- $heightPixel = add $heightPixel $paddingPixel -}}
+        {{- $paddingY = printf "calc(100%% - %v%% - %vpx)" $heightPercent $heightPixel | safeCSS -}}
+    {{- else -}}
+        {{- $heightPercent = sub (div $heightPercent 2) $paddingPercent -}}
+        {{- $heightPixel = sub (div $heightPixel 2) $paddingPixel -}}
+        {{- $paddingY = printf "calc(50%% - %v%% - %vpx)" $heightPercent $heightPixel | safeCSS -}}
+    {{- end -}}
+{{- end -}}
+
+
+{{- /* Title Y Padding */ -}}
+{{- $titlePaddingYPercent := 0 -}}
+{{- if $headerTitle -}}
+    {{- with $headerTitlePaddingY -}}
+        {{- if ne . 0 -}}
+            {{- $lastIndex := sub (len .) 1 -}}
+            {{- if eq (substr . $lastIndex) "%" -}}
+                {{- $titlePaddingYPercent = substr . 0 $lastIndex -}}
+            {{- end -}}
+        {{- end -}}
+    {{- end -}}
+{{- end -}}
+
+{{- $titlePaddingY := 0 -}}
+{{- with $headerTitlePaddingY -}}
+    {{- if $titlePaddingYPercent -}}
+        {{- $titlePaddingY = mul $height (div (div (float $titlePaddingYPercent) 100) 2) -}}
+    {{- else -}}
+        {{- $unitIndex := sub (len $headerTitlePaddingY) 2 -}}
+        {{- if eq (substr $headerTitlePaddingY $unitIndex) "px" -}}
+            {{- $pxval := substr $headerTitlePaddingY 0 $unitIndex -}}
+            {{- $titlePaddingY = div (float $pxval) 2 -}}
+        {{- end -}}
+    {{- end -}}
+{{- end -}}
+
+{{- $computedPadding := 0 -}}
+{{- with $headerTitlePaddingY -}}
+    {{- if $titlePaddingYPercent -}}
+        {{- $computedPadding = div (float $titlePaddingYPercent) 2 -}}
+    {{- else -}}
+        {{- $unitIndex := sub (len $headerTitlePaddingY) 2 -}}
+        {{- if eq (substr $headerTitlePaddingY $unitIndex) "px" -}}
+            {{- $pxval := substr $headerTitlePaddingY 0 $unitIndex -}}
+            {{- $computedPadding = div (float $pxval) 2 -}}
+        {{- end -}}
+    {{- end -}}
+{{- end -}}
+
+{{- $spaceBetweenTitleSubtitle := 0 -}}
+{{- if and $headerTitle $headerSubtitle -}}
+    {{- with $headerSpaceBetweenTitleSubtitle -}}
+        {{- if ne . 0 -}}
+            {{- $val := string . -}}
+            {{- $percentSpace := 0 -}}
+            {{- $lastIndex := sub (len $val) 1 -}}
+            {{- if eq (substr . $lastIndex) "%" -}}
+                {{- $percentSpace = substr . 0 $lastIndex -}}
+            {{- end -}}
+            {{- if $percentSpace -}}
+                {{- $spaceBetweenTitleSubtitle = printf "calc(100%% * (%v / 100))" $percentSpace | safeCSS -}}
+            {{- else -}}
+                {{- $spaceBetweenTitleSubtitle = printf "%v" . | safeCSS -}}
+            {{- end -}}
+        {{- end -}}
+    {{- end -}}
+{{- end -}}
+
+
+{{- /* Subtitle Y Padding */ -}}
+{{- $subtitlePaddingYPercent := 0 -}}
+{{- if $headerSubtitle -}}
+    {{- with $headerSubtitlePaddingY -}}
+        {{- if ne . 0 -}}
+            {{- $lastIndex := sub (len .) 1 -}}
+            {{- if eq (substr . $lastIndex) "%" -}}
+                {{- $subtitlePaddingYPercent = substr . 0 $lastIndex -}}
+            {{- end -}}
+        {{- end -}}
+    {{- end -}}
+{{- end -}}
+
+{{- $subtitlePaddingY := 0 -}}
+{{- with $headerSubtitlePaddingY -}}
+    {{- if $subtitlePaddingYPercent -}}
+        {{- $subtitlePaddingY = mul $height (div (div (float $subtitlePaddingYPercent) 100) 2) -}}
+    {{- else -}}
+        {{- $unitIndex := sub (len $headerSubtitlePaddingY) 2 -}}
+        {{- if eq (substr $headerSubtitlePaddingY $unitIndex) "px" -}}
+            {{- $pxval := substr $headerSubtitlePaddingY 0 $unitIndex -}}
+            {{- $subtitlePaddingY = div (float $pxval) 2 -}}
+        {{- end -}}
+    {{- end -}}
+{{- end -}}
+
+{{- $computedPaddingSub := 0 -}}
+{{- with $headerSubtitlePaddingY -}}
+    {{- if $subtitlePaddingYPercent -}}
+        {{- $computedPaddingSub = div (float $subtitlePaddingYPercent) 2 -}}
+    {{- else -}}
+        {{- $unitIndex := sub (len $headerSubtitlePaddingY) 2 -}}
+        {{- if eq (substr $headerSubtitlePaddingY $unitIndex) "px" -}}
+            {{- $pxval := substr $headerSubtitlePaddingY 0 $unitIndex -}}
+            {{- $computedPaddingSub = div (float $pxval) 2 -}}
+        {{- end -}}
+    {{- end -}}
+{{- end -}}
+
+
+{{- /* Checks */ -}}
+{{- if ne $fit "fixed" -}}
+    {{- if eq $titleFontSizePercent 0 -}}
+        {{- $error = printf "'titleFontSize' must be in percents if 'fit' is '%v'" $fit -}}
+    {{- end -}}
+{{- end -}}
+
+
+{{- $result := (dict
+ "alignX" $alignX
+ "paddingSide" $paddingSide
+ "paddingValue" $paddingValue
+ "titleFontSize" $titleFontSize
+ "titleFontSizePercent" $titleFontSizePercent
+ "subtitleFontSize" $subtitleFontSize
+ "subtitleFontSizePercent" $subtitleFontSizePercent
+ "paddingY" $paddingY
+ "titlePaddingYPercent" $titlePaddingYPercent
+ "titlePaddingY" $titlePaddingY
+ "computedPadding" $computedPadding
+ "spaceBetweenTitleSubtitle" $spaceBetweenTitleSubtitle
+ "subtitlePaddingYPercent" $subtitlePaddingYPercent
+ "subtitlePaddingY" $subtitlePaddingY
+ "computedPaddingSub" $computedPaddingSub
+ "error" $error
+) -}}
+
+{{- return $result -}}

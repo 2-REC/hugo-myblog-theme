@@ -9,13 +9,9 @@
 <style>
 @scope {
 
-    /* .slide-holder */
-    :scope {
-        height: 250px;
-    }
-
     {{- /* Figure */ -}}
-    .site-header {
+/*    .site-header {*/
+    :scope {
         text-align: {{ $slideParams.alignX }};
 
         {{- if ne $mainParams.fit "image" -}}
@@ -168,7 +164,8 @@
 {{/* TODO: add 'titleEnabled' */}}
 
             {{- /* X Align/Padding */ -}}
-            .site-header {
+/*            .site-header {*/
+            :scope {
                 text-align: {{ $mobileSlideParams.alignX }};
             }
 

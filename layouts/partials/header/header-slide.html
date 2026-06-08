@@ -37,7 +37,14 @@
                         {{ range $slides -}}
                             {{- $header := . -}}
 
-                            <div class="slide-holder">
+                            {{/* Figure */}}
+                            <figure class="site-header
+                                           {{- if ne $fit "image" -}}
+                                           {{- if eq $fit "ratio" }} fit-ratio{{ end -}}
+                                           {{- if eq $type "multi" }} slide-header{{ end -}}
+                                           {{- end }}"
+                                    data-ani="{{ $.context.Site.Params.enableUiAnimation | default "true" }}">
+
                                 {{- /* Initializes header parameters */ -}}
                                 {{- $headerAlignX := $header.alignX | default "center" -}}
                                 {{- $headerPaddingX := $header.paddingX | default 0 -}}
@@ -119,72 +126,64 @@
 
                                 {{- partial "header/header-slide-style.html" (dict "mainParams" $mainParams "slideParams" $headerSlideParameters "mobileSlideParams" $mobileSlideParams) -}}
 
-                                {{/* Figure */}}
-                                <figure class="site-header
-                                               {{- if ne $fit "image" -}}
-                                               {{- if eq $fit "ratio" }} fit-ratio{{ end -}}
-                                               {{- if eq $type "multi" }} slide-header{{ end -}}
-                                               {{- end }}"
-                                        data-ani="{{ $.context.Site.Params.enableUiAnimation | default "true" }}">
-                                    {{ with $header.image -}}
-                                        {{- if eq $fit "image" -}}
-                                        {{- /* TODO: change copyright handling! */}}
-                                        <img class="site-header__image" src="{{ .src | relURL }}" alt="{{ with .caption }}{{ . }}{{ end }}"
-                                                data-caption="{{ with .caption }}{{ print . }}{{ end }}{{ with .copyright }}&nbsp;&hyphen;&nbsp;&copy;&nbsp;{{ . }}{{ end }}"/>
-                                        {{- end -}}
-                                        {{ if or .caption .copyright -}}
-                                            <figcaption class="image__text">
-                                                {{ if .caption -}}
-                                                    <p class="inline-caption">{{ .caption | markdownify }}{{ if .copyright }}&nbsp;&ndash;&nbsp;{{ end }}</p>
-                                                {{- end -}}
-                                                {{ with .copyright -}}
-                                                    <p class="inline-copyright">{{ . | markdownify }}</p>
-                                                {{- end }}
-                                            </figcaption>
-                                        {{- end -}}
+                                {{ with $header.image -}}
+                                    {{- if eq $fit "image" -}}
+                                    {{- /* TODO: change copyright handling! */}}
+                                    <img class="site-header__image" src="{{ .src | relURL }}" alt="{{ with .caption }}{{ . }}{{ end }}"
+                                            data-caption="{{ with .caption }}{{ print . }}{{ end }}{{ with .copyright }}&nbsp;&hyphen;&nbsp;&copy;&nbsp;{{ . }}{{ end }}"/>
                                     {{- end -}}
+                                    {{ if or .caption .copyright -}}
+                                        <figcaption class="image__text">
+                                            {{ if .caption -}}
+                                                <p class="inline-caption">{{ .caption | markdownify }}{{ if .copyright }}&nbsp;&ndash;&nbsp;{{ end }}</p>
+                                            {{- end -}}
+                                            {{ with .copyright -}}
+                                                <p class="inline-copyright">{{ . | markdownify }}</p>
+                                            {{- end }}
+                                        </figcaption>
+                                    {{- end -}}
+                                {{- end -}}
 
-                                    <div class="site-header__content">
+                                <div class="site-header__content">
 
-                                        {{- /* X Align/Padding */ -}}
+                                    {{- /* X Align/Padding */ -}}
 {{- /* TODO: add 'padding-block' class? */ -}}
-                                        <div class="padding-x">
+                                    <div class="padding-x">
 
-                                            {{- /* Y Align/Padding */ -}}
-                                            <div class="padding-block padding-y"></div>
+                                        {{- /* Y Align/Padding */ -}}
+                                        <div class="padding-block padding-y"></div>
 
-                                            {{- /* Title */ -}}
-                                            {{- if $header.title -}}
-                                                {{- range $header.title -}}
-                                                    <div class="padding-block padding-title-top"></div>
-                                                    <div class="site-header__title
-                                                                {{- if ne $fit "fixed" }} flex-font{{- end -}}
-                                                                {{- if $header.titleShadow }} site-header__title--shadow{{ end }}">
-                                                        {{- . -}}
-                                                    </div>
-                                                    <div class="padding-block padding-title-bottom"></div>
-                                                {{- end -}}
+                                        {{- /* Title */ -}}
+                                        {{- if $header.title -}}
+                                            {{- range $header.title -}}
+                                                <div class="padding-block padding-title-top"></div>
+                                                <div class="site-header__title
+                                                            {{- if ne $fit "fixed" }} flex-font{{- end -}}
+                                                            {{- if $header.titleShadow }} site-header__title--shadow{{ end }}">
+                                                    {{- . -}}
+                                                </div>
+                                                <div class="padding-block padding-title-bottom"></div>
                                             {{- end -}}
+                                        {{- end -}}
 
-                                            {{- /* Inbetween Space */ -}}
-                                            <div class="padding-block space-between"></div>
+                                        {{- /* Inbetween Space */ -}}
+                                        <div class="padding-block space-between"></div>
 
-                                            {{- /* Subtitle */ -}}
-                                            {{- if $header.subtitle -}}
-                                                {{- range $header.subtitle -}} 
-                                                    <div class="padding-block padding-subtitle-top"></div>
-                                                    <div class="site-header__subtitle
-                                                                {{- if ne $fit "fixed" }} flex-font{{ end -}}
-                                                                {{- if $header.subtitleShadow }} site-header__subtitle--shadow{{ end }}">
-                                                        {{- . -}}
-                                                    </div>
-                                                    <div class="padding-block padding-subtitle-bottom"></div>
-                                                {{- end -}}
+                                        {{- /* Subtitle */ -}}
+                                        {{- if $header.subtitle -}}
+                                            {{- range $header.subtitle -}} 
+                                                <div class="padding-block padding-subtitle-top"></div>
+                                                <div class="site-header__subtitle
+                                                            {{- if ne $fit "fixed" }} flex-font{{ end -}}
+                                                            {{- if $header.subtitleShadow }} site-header__subtitle--shadow{{ end }}">
+                                                    {{- . -}}
+                                                </div>
+                                                <div class="padding-block padding-subtitle-bottom"></div>
                                             {{- end -}}
-                                        </div>
+                                        {{- end -}}
                                     </div>
-                                </figure>
-                            </div>
+                                </div>
+                            </figure>
                         {{- end -}}
                     {{- end -}}
                 </div>

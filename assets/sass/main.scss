@@ -93,6 +93,13 @@ $length: {{ if .Site.Params.themeOptions }}{{ len .Site.Params.themeOptions }}{{
 $navm_theme_right_offset: {{ if and .Site.Params.enableLangChange (gt (len .Site.Languages) 1) }}2.25{{ else }}1{{ end }};
 ////////
 
+$split: 0;
+{{ with .Site.Params.slider.split }}
+  {{ if ne . 0 }}
+    $split: "{{ math.Min . 100 }}%";
+  {{ end }}
+{{ end }}
+
 @import 'layout/navigation';
 @import 'layout/grid';
 @import 'layout/header';

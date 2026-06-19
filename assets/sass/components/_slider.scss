@@ -13,6 +13,16 @@ display: block;
 .slides figure {
   height: 100%;
   overflow:hidden;
+@if $split != 0 {
+  width: #{$split};
+}
+}
+@if $split != 0 {
+@media only screen and (max-width: 767px) {
+  .slides figure {
+    width: inherit;
+  }
+}
 }
 
 .slides figure img {
@@ -107,42 +117,97 @@ display: block;
 /* NOTE: colors are set in child elements: 'featured-text', 'featured-title' & 'featured-content'  */
 
 .slide-textbox {
+@if $split != 0 {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
 /* TODO: this or 'draggable="false"' in html 'img' tag? */
 user-drag: none;
 -webkit-user-drag: none;
 -moz-user-select: none;
 }
+/* TODO: OK? */
+@if $split != 0 {
+@media only screen and (max-width: 767px) {
+  .slide-textbox {
+    display: inherit;
+    width: inherit;
+    height: inherit;
+  }
+}
+}
 
+@if $split == 0 {
 .featured-text {
-	position: absolute;
-//	top: 10px;
-top: 5%;
-//	right: 30px;
-right: 5%;
-	text-align: right;
-//	color: #fff;
-	-webkit-box-shadow: none;
-	box-shadow: none;
-	padding: 20px;
-	background: #555;
-	background: rgba(0, 0, 0, 0.5);
-	margin-top: 4px;
-	float: right;
-	clear: right;
-	width: auto;
-	max-width: 50%;
-	max-height: 80%;
-overflow: hidden;
-//	text-shadow: 0 2px 2px rgba(0,0,0,0.4);
-	border-radius: 4px;
-	border: none;
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  text-align: right;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  padding: 20px;
+  margin-top: 4px;
+  float: right;
+  clear: right;
+  width: auto;
+  max-width: 50%;
+  max-height: 80%;
+  overflow: hidden;
+  border-radius: 4px;
+  border: none;
 
   @include themify($themes) {
     background-color: themed('featured-background-color');
   }
-
-//  pointer-events: none;
 }
+} @else {
+.featured-text {
+  width: calc(100% - #{$split});
+  height: 100%;
+  text-align: left;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  padding: 20px;
+  overflow: hidden;
+  border: none;
+
+  @include themify($themes) {
+    background-color: themed('featured-background-color');
+  }
+}
+.slides a:hover {
+  text-decoration: none;
+}
+
+@media only screen and (max-width: 767px) {
+  .featured-text {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    text-align: right;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    padding: 20px;
+    margin-top: 4px;
+    float: right;
+    clear: right;
+    width: auto;
+    height: auto;
+    max-width: 50%;
+    max-height: 80%;
+    overflow: hidden;
+    border-radius: 4px;
+    border: none;
+
+    @include themify($themes) {
+      background-color: themed('featured-background-color');
+    }
+  }
+}
+
+} /* end if 'split' */
+
 /*
 .featured-text .featured-title {
 	font: 28px Helvetica, sans-serif;

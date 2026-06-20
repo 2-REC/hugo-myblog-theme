@@ -158,7 +158,7 @@ user-drag: none;
   border: none;
 
   @include themify($themes) {
-    background-color: themed('featured-background-color');
+    background-color: rgba(themed('featured-background-color'), 0.75);
   }
 }
 } @else {
